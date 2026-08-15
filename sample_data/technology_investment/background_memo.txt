@@ -1,0 +1,7 @@
+Background Memo — Technology Investment Review
+
+The proposed two-phase initiative would consolidate approved operational data into an executive analytics experience. Phase one would focus on a limited set of service-line measures and would avoid clinical decision-making functionality.
+
+Key risks include incomplete integration estimates, unclear benefit ownership, workforce adoption, vendor dependency, data-access permissions, cybersecurity review, and the possibility that reporting improvements do not translate into operational action.
+
+Suggested investment measures include executive preparation time saved, reduction in manual reconciliation, decision turnaround time, user-validated data accuracy, total operating cost, and benefit realization at 90 and 180 days.

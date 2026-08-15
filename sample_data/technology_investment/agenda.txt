@@ -1,0 +1,11 @@
+Executive Technology Investment Review — Sample Agenda
+
+Objective: Decide whether to fund a two-phase clinical operations analytics modernization initiative and establish financial and delivery guardrails.
+
+Agenda:
+1. Review the proposed scope, expected operational benefits, and total cost range.
+2. Assess integration, cybersecurity, workforce adoption, and vendor dependencies.
+3. Determine whether to approve phase-one funding with measurable release criteria.
+4. Confirm the executive sponsor, benefit owner, delivery owner, and 90-day review date.
+
+Decision requested: Approve, revise, or defer phase-one funding and identify the accountable benefit owner.

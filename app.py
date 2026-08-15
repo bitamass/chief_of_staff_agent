@@ -10,7 +10,7 @@ from pypdf import PdfReader
 
 
 st.set_page_config(
-    page_title="Executive Meeting Intelligence Agent",
+    page_title="Chief of Staff Agent",
     page_icon="🧭",
     layout="wide",
 )
@@ -35,6 +35,57 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
+SCENARIOS = {
+    "AI Agent Governance Pilot": {
+        "folder": "ai_governance",
+        "title": "AI Governance Steering Discussion",
+        "objective": "Review the proposed AI-agent governance approach and determine whether to sponsor a limited executive meeting-preparation pilot.",
+        "attendees": "CIO; UW-IT partner; HR leader; AI governance lead",
+        "questions": [
+            "What minimum information should every UW AI agent disclose before it is approved or deployed?",
+            "Should agent registration and oversight be centralized or managed through a federated UW/UW Medicine model?",
+            "Who should own the pilot, and what evidence would be required before considering approved system integrations?",
+        ],
+        "next_steps": [
+            "Name an executive sponsor and operational owner for a time-boxed pilot.",
+            "Agree on success measures: preparation time saved, factual accuracy, source coverage, and executive usefulness.",
+            "Complete privacy, security, records-management, and governance review before connecting any UW system.",
+        ],
+    },
+    "Executive Technology Investment Review": {
+        "folder": "technology_investment",
+        "title": "Executive Technology Investment Review",
+        "objective": "Decide whether to fund a two-phase clinical operations analytics modernization initiative and establish financial and delivery guardrails.",
+        "attendees": "CIO; CFO; clinical operations leader; enterprise architecture lead; finance partner",
+        "questions": [
+            "Which measurable operational outcome must the first phase deliver before additional funding is released?",
+            "What costs and dependencies are not yet included in the current estimate?",
+            "Which executive owns benefit realization after the technology is delivered?",
+        ],
+        "next_steps": [
+            "Confirm the phase-one funding ceiling, executive sponsor, and accountable benefit owner.",
+            "Validate integration, change-management, security, and ongoing support costs before contracting.",
+            "Schedule a 90-day value review with agreed financial and operational measures.",
+        ],
+    },
+    "UW Medicine Operational Risk Review": {
+        "folder": "operational_risk",
+        "title": "UW Medicine Digital Operations Risk Review",
+        "objective": "Assess readiness for a limited clinical-support technology pilot and decide whether operational, security, and continuity risks are sufficiently controlled.",
+        "attendees": "CIO; clinical operations leader; CISO delegate; patient safety representative; service owner",
+        "questions": [
+            "What event would trigger an immediate pause or rollback of the pilot?",
+            "Who has final authority during a patient-safety, cybersecurity, or service-continuity incident?",
+            "What evidence must be reviewed before the pilot expands beyond the initial unit?",
+        ],
+        "next_steps": [
+            "Name the service owner, clinical safety owner, and incident decision authority.",
+            "Complete a tabletop exercise covering downtime, incorrect output, and access-control failure.",
+            "Approve measurable go/no-go thresholds and a documented rollback plan before launch.",
+        ],
+    },
+}
 
 
 def read_file(uploaded):
@@ -65,6 +116,8 @@ def find_sentences(records, keywords, limit=4):
             lowered = sentence.lower().rstrip(":")
             if lowered in {"agenda", "prior discussion notes", "background memo — executive meeting intelligence pilot"}:
                 continue
+            if "sample agenda" in lowered or lowered.startswith("background memo"):
+                continue
             for prefix in ("objective:", "decision requested:"):
                 if lowered.startswith(prefix):
                     sentence = sentence.split(":", 1)[1].strip()
@@ -80,11 +133,15 @@ def find_sentences(records, keywords, limit=4):
     return found
 
 
-def make_demo_brief(title, objective, attendees, records):
+def make_demo_brief(title, objective, attendees, records, scenario_name=None):
     commitments = find_sentences(records, ["interest", "shared approach", "agreed", "commit", "support"], 3)
     risks = find_sentences(records, ["concern", "risk", "permission", "duplicate", "privacy", "security", "oversight"], 4)
     decisions = find_sentences(records, ["decision", "determine", "approve", "pilot", "owner", "ownership"], 3)
-    background = find_sentences(records, ["agent", "governance", "prototype", "meeting", "executive"], 4)
+    background = find_sentences(
+        records,
+        ["agent", "governance", "prototype", "meeting", "executive", "initiative", "technology", "operational", "clinical", "investment", "pilot"],
+        4,
+    )
 
     if not commitments:
         commitments = [("Leadership expressed interest in a shared approach to managing AI agents across organizational units.", "Prior Discussion Notes")]
@@ -93,16 +150,9 @@ def make_demo_brief(title, objective, attendees, records):
     if not decisions:
         decisions = [("Decide whether to sponsor a limited meeting-preparation pilot using approved sample data.", "Meeting Agenda")]
 
-    questions = [
-        "What minimum information should every UW AI agent disclose before it is approved or deployed?",
-        "Should agent registration and oversight be centralized or managed through a federated UW/UW Medicine model?",
-        "Who should own the pilot, and what evidence would be required before considering approved system integrations?",
-    ]
-    next_steps = [
-        "Name an executive sponsor and operational owner for a time-boxed pilot.",
-        "Agree on success measures: preparation time saved, factual accuracy, source coverage, and executive usefulness.",
-        "Complete privacy, security, records-management, and governance review before connecting any UW system.",
-    ]
+    scenario = SCENARIOS.get(scenario_name or "AI Agent Governance Pilot", SCENARIOS["AI Agent Governance Pilot"])
+    questions = scenario["questions"]
+    next_steps = scenario["next_steps"]
     return {
         "title": title,
         "objective": objective,
@@ -186,8 +236,8 @@ def brief_docx(brief, records):
 
 
 st.markdown(
-    '<div class="hero"><h1>Executive Meeting Intelligence Agent</h1>'
-    '<p>Decision-ready context, commitments, risks, and questions—grounded in approved meeting materials.</p></div>',
+    '<div class="hero"><h1>Chief of Staff Agent</h1>'
+    '<p>Executive meeting intelligence that turns approved materials into decision-ready context, commitments, risks, and questions.</p></div>',
     unsafe_allow_html=True,
 )
 st.markdown(
@@ -210,24 +260,44 @@ with st.sidebar:
     st.subheader("Future state—not connected")
     st.caption("Outlook calendar · Teams summaries · SharePoint · Approved external intelligence")
 
+st.subheader("Choose a demonstration scenario")
+scenario_name = st.selectbox(
+    "Scenario",
+    list(SCENARIOS),
+    label_visibility="collapsed",
+    key="scenario_name",
+)
+scenario = SCENARIOS[scenario_name]
+scenario_action, scenario_description = st.columns([1, 2.4])
+with scenario_action:
+    if st.button("Load Selected Scenario", use_container_width=True):
+        st.session_state.meeting_title = scenario["title"]
+        st.session_state.meeting_objective = scenario["objective"]
+        st.session_state.attendees = scenario["attendees"]
+        st.session_state.active_scenario = scenario_name
+        st.session_state.pop("brief", None)
+        st.rerun()
+with scenario_description:
+    st.caption("Loads three approved sample documents and updates the meeting context. No upload is required.")
+
+if "meeting_title" not in st.session_state:
+    st.session_state.meeting_title = SCENARIOS["AI Agent Governance Pilot"]["title"]
+if "meeting_objective" not in st.session_state:
+    st.session_state.meeting_objective = SCENARIOS["AI Agent Governance Pilot"]["objective"]
+if "attendees" not in st.session_state:
+    st.session_state.attendees = SCENARIOS["AI Agent Governance Pilot"]["attendees"]
+
 left, right = st.columns([1.15, 1])
 with left:
-    meeting_title = st.text_input("Meeting title", "AI Governance Steering Discussion")
+    meeting_title = st.text_input("Meeting title", key="meeting_title")
     meeting_objective = st.text_area(
         "Meeting objective",
-        "Review the proposed AI-agent governance approach and determine whether to sponsor a limited executive meeting-preparation pilot.",
+        key="meeting_objective",
         height=95,
     )
 with right:
     meeting_date = st.date_input("Meeting date", value=date.today())
-    attendees = st.text_area("Attendees / roles", "CIO; UW-IT partner; HR leader; AI governance lead", height=95)
-
-sample_col, sample_note = st.columns([1, 2.4])
-with sample_col:
-    if st.button("Load Included Sample Scenario", use_container_width=True):
-        st.session_state.use_included_sample = True
-with sample_note:
-    st.caption("Recommended for the guided demo. Loads the included agenda, prior notes, and background memo.")
+    attendees = st.text_area("Attendees / roles", key="attendees", height=95)
 
 files = st.file_uploader(
     "Upload the agenda, prior notes, and background documents",
@@ -242,8 +312,9 @@ for uploaded in files or []:
     if content.strip():
         records.append({"name": uploaded.name, "label": source_label(uploaded.name), "text": content})
 
-if not records and st.session_state.get("use_included_sample"):
-    sample_dir = Path(__file__).parent / "sample_data"
+if not records and st.session_state.get("active_scenario"):
+    active_name = st.session_state.active_scenario
+    sample_dir = Path(__file__).parent / "sample_data" / SCENARIOS[active_name]["folder"]
     for path in [
         sample_dir / "agenda.txt",
         sample_dir / "prior_discussion_notes.txt",
@@ -259,7 +330,13 @@ if st.button("Generate Decision-Ready Brief", use_container_width=True):
     if not records:
         st.warning("Upload at least one sample document to generate the brief.")
     else:
-        st.session_state.brief = make_demo_brief(meeting_title, meeting_objective, attendees, records)
+        st.session_state.brief = make_demo_brief(
+            meeting_title,
+            meeting_objective,
+            attendees,
+            records,
+            st.session_state.get("active_scenario"),
+        )
         st.session_state.records = records
         st.session_state.generated_date = str(meeting_date)
 

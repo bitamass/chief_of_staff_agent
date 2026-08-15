@@ -1,0 +1,7 @@
+Background Memo — Digital Operations Risk Review
+
+The proposed pilot would provide non-diagnostic workflow support in one operational unit. It would use approved test data during validation and would not autonomously take clinical action.
+
+Required controls include role-based permissions, audit logging, cybersecurity testing, human review, downtime procedures, monitoring for incorrect output, incident escalation, and a documented rollback plan. The service owner must coordinate with clinical safety, privacy, security, and operations.
+
+Suggested readiness measures include response accuracy, correction frequency, service availability, incident response time, workflow impact, user-reported safety concerns, and successful completion of a pre-launch tabletop exercise.

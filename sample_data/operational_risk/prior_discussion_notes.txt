@@ -1,0 +1,7 @@
+Prior Discussion Notes
+
+Clinical and technology leaders supported a limited pilot only if it remains advisory and does not replace professional judgment. The group agreed that human review, clear escalation paths, and rapid rollback capability are required.
+
+Key concerns included incorrect or delayed output, inappropriate access, workflow disruption, unclear incident authority, and service continuity during downtime. Patient safety requested explicit communication and monitoring measures before launch.
+
+No final decision was made about launch readiness, pilot duration, incident thresholds, or who has authority to pause the service.

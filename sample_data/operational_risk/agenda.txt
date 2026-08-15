@@ -1,0 +1,11 @@
+UW Medicine Digital Operations Risk Review — Sample Agenda
+
+Objective: Assess readiness for a limited clinical-support technology pilot and decide whether operational, security, and continuity risks are sufficiently controlled.
+
+Agenda:
+1. Review pilot scope, intended users, and prohibited uses.
+2. Confirm access controls, monitoring, downtime procedures, and escalation paths.
+3. Determine go/no-go thresholds and rollback authority.
+4. Identify the service owner, clinical safety owner, and next readiness review.
+
+Decision requested: Approve, conditionally approve, or pause the pilot pending additional risk controls.
