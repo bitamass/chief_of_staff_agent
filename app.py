@@ -1,0 +1,324 @@
+import os
+import re
+from datetime import date
+from io import BytesIO
+from pathlib import Path
+
+import streamlit as st
+from docx import Document
+from pypdf import PdfReader
+
+
+st.set_page_config(
+    page_title="Executive Meeting Intelligence Agent",
+    page_icon="🧭",
+    layout="wide",
+)
+
+st.markdown(
+    """
+    <style>
+    :root { --uw-purple:#4b2e83; --uw-gold:#b7a57a; --ink:#172033; --soft:#f5f3f8; }
+    .block-container {padding-top: 2.2rem; max-width: 1280px;}
+    h1, h2, h3 {color: var(--ink);}
+    .hero {border-left:6px solid var(--uw-gold); padding:.25rem 0 .25rem 1rem; margin-bottom:1rem;}
+    .hero h1 {margin:0; font-size:2.25rem;}
+    .hero p {margin:.35rem 0 0; color:#5a6475;}
+    .safe-banner {background:#f4f0fa; border:1px solid #d9cfea; border-radius:10px; padding:.8rem 1rem; margin:.7rem 0 1.2rem;}
+    .brief-card {background:white; border:1px solid #e3e6eb; border-radius:12px; padding:1rem 1.1rem; min-height:145px; box-shadow:0 2px 8px rgba(20,30,50,.04);}
+    .brief-card h4 {color:var(--uw-purple); margin:0 0 .5rem;}
+    .source {color:#5b6677; font-size:.86rem;}
+    div.stButton > button {background:var(--uw-purple); color:white; border:0; border-radius:8px; font-weight:650;}
+    div.stButton > button:hover {background:#382261; color:white;}
+    [data-testid="stMetric"] {background:#faf9fc; border:1px solid #e2dbea; padding:.8rem; border-radius:10px;}
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+
+def read_file(uploaded):
+    name = uploaded.name.lower()
+    raw = uploaded.read()
+    if name.endswith((".txt", ".md")):
+        return raw.decode("utf-8", errors="ignore")
+    if name.endswith(".pdf"):
+        return "\n".join((p.extract_text() or "") for p in PdfReader(BytesIO(raw)).pages)
+    if name.endswith(".docx"):
+        return "\n".join(p.text for p in Document(BytesIO(raw)).paragraphs)
+    return ""
+
+
+def source_label(filename):
+    stem = re.sub(r"[_-]+", " ", filename.rsplit(".", 1)[0]).strip().title()
+    return stem or filename
+
+
+def find_sentences(records, keywords, limit=4):
+    found = []
+    for record in records:
+        # Preserve paragraph boundaries so document titles and section labels do
+        # not become fused with the first substantive sentence.
+        sentences = re.split(r"\n+|(?<=[.!?])\s+|\s*[•]\s*", record["text"])
+        for sentence in sentences:
+            sentence = re.sub(r"^\s*\d+[.)]\s*", "", sentence).strip(" -\t")
+            lowered = sentence.lower().rstrip(":")
+            if lowered in {"agenda", "prior discussion notes", "background memo — executive meeting intelligence pilot"}:
+                continue
+            for prefix in ("objective:", "decision requested:"):
+                if lowered.startswith(prefix):
+                    sentence = sentence.split(":", 1)[1].strip()
+                    lowered = sentence.lower()
+            if len(sentence) < 28:
+                continue
+            if any(word.lower() in sentence.lower() for word in keywords):
+                item = (sentence, record["label"])
+                if item not in found:
+                    found.append(item)
+            if len(found) >= limit:
+                return found
+    return found
+
+
+def make_demo_brief(title, objective, attendees, records):
+    commitments = find_sentences(records, ["interest", "shared approach", "agreed", "commit", "support"], 3)
+    risks = find_sentences(records, ["concern", "risk", "permission", "duplicate", "privacy", "security", "oversight"], 4)
+    decisions = find_sentences(records, ["decision", "determine", "approve", "pilot", "owner", "ownership"], 3)
+    background = find_sentences(records, ["agent", "governance", "prototype", "meeting", "executive"], 4)
+
+    if not commitments:
+        commitments = [("Leadership expressed interest in a shared approach to managing AI agents across organizational units.", "Prior Discussion Notes")]
+    if not risks:
+        risks = [("The pilot requires explicit access controls, source traceability, human review, and an accountable owner.", "Background Memo")]
+    if not decisions:
+        decisions = [("Decide whether to sponsor a limited meeting-preparation pilot using approved sample data.", "Meeting Agenda")]
+
+    questions = [
+        "What minimum information should every UW AI agent disclose before it is approved or deployed?",
+        "Should agent registration and oversight be centralized or managed through a federated UW/UW Medicine model?",
+        "Who should own the pilot, and what evidence would be required before considering approved system integrations?",
+    ]
+    next_steps = [
+        "Name an executive sponsor and operational owner for a time-boxed pilot.",
+        "Agree on success measures: preparation time saved, factual accuracy, source coverage, and executive usefulness.",
+        "Complete privacy, security, records-management, and governance review before connecting any UW system.",
+    ]
+    return {
+        "title": title,
+        "objective": objective,
+        "attendees": attendees,
+        "background": background,
+        "commitments": commitments,
+        "risks": risks,
+        "decisions": decisions,
+        "questions": questions,
+        "next_steps": next_steps,
+    }
+
+
+def cited_markdown(items):
+    return "\n".join(f"- {text} **[{source}]**" for text, source in items)
+
+
+def brief_markdown(brief, records):
+    questions = "\n".join(f"- {x}" for x in brief["questions"])
+    next_steps = "\n".join(f"- {x}" for x in brief["next_steps"])
+    sources = "\n".join(f"- {r['label']} ({r['name']})" for r in records)
+    return f"""# Executive Meeting Brief
+
+**Meeting:** {brief['title']}  
+**Objective:** {brief['objective']}  
+**Attendees / roles:** {brief['attendees']}
+
+## Relevant Background
+{cited_markdown(brief['background'])}
+
+## Prior Decisions and Commitments
+{cited_markdown(brief['commitments'])}
+
+## Open Issues and Risks
+{cited_markdown(brief['risks'])}
+
+## Decisions or Alignment Needed
+{cited_markdown(brief['decisions'])}
+
+## Recommended Questions
+{questions}
+
+## Recommended Next Steps
+{next_steps}
+
+## Sources Reviewed
+{sources}
+
+## Governance Notice
+Generated from session-only uploaded documents. Human review is required. This prototype is not connected to UW production systems.
+"""
+
+
+def brief_docx(brief, records):
+    doc = Document()
+    doc.add_heading("Executive Meeting Brief", 0)
+    doc.add_paragraph(f"Meeting: {brief['title']}")
+    doc.add_paragraph(f"Objective: {brief['objective']}")
+    doc.add_paragraph(f"Attendees / roles: {brief['attendees']}")
+    sections = [
+        ("Relevant Background", brief["background"], True),
+        ("Prior Decisions and Commitments", brief["commitments"], True),
+        ("Open Issues and Risks", brief["risks"], True),
+        ("Decisions or Alignment Needed", brief["decisions"], True),
+        ("Recommended Questions", brief["questions"], False),
+        ("Recommended Next Steps", brief["next_steps"], False),
+    ]
+    for heading, items, cited in sections:
+        doc.add_heading(heading, level=1)
+        for item in items:
+            text = f"{item[0]} [{item[1]}]" if cited else item
+            doc.add_paragraph(text, style="List Bullet")
+    doc.add_heading("Sources Reviewed", level=1)
+    for record in records:
+        doc.add_paragraph(f"{record['label']} ({record['name']})", style="List Bullet")
+    doc.add_heading("Governance Notice", level=1)
+    doc.add_paragraph("Generated from session-only uploaded documents. Human review is required. This prototype is not connected to UW production systems.")
+    output = BytesIO()
+    doc.save(output)
+    return output.getvalue()
+
+
+st.markdown(
+    '<div class="hero"><h1>Executive Meeting Intelligence Agent</h1>'
+    '<p>Decision-ready context, commitments, risks, and questions—grounded in approved meeting materials.</p></div>',
+    unsafe_allow_html=True,
+)
+st.markdown(
+    '<div class="safe-banner"><b>Guided demonstration:</b> Uses sample data only. '
+    'No UW production systems, Epic, Outlook, Teams, or SharePoint are connected.</div>',
+    unsafe_allow_html=True,
+)
+
+with st.sidebar:
+    st.header("Agent Governance & Safeguards")
+    st.success("Guided demonstration")
+    for label in [
+        "Human review required",
+        "Source traceability enabled",
+        "Session-only document use",
+        "No production or Epic data",
+    ]:
+        st.checkbox(label, value=True, disabled=True)
+    st.divider()
+    st.subheader("Future state—not connected")
+    st.caption("Outlook calendar · Teams summaries · SharePoint · Approved external intelligence")
+
+left, right = st.columns([1.15, 1])
+with left:
+    meeting_title = st.text_input("Meeting title", "AI Governance Steering Discussion")
+    meeting_objective = st.text_area(
+        "Meeting objective",
+        "Review the proposed AI-agent governance approach and determine whether to sponsor a limited executive meeting-preparation pilot.",
+        height=95,
+    )
+with right:
+    meeting_date = st.date_input("Meeting date", value=date.today())
+    attendees = st.text_area("Attendees / roles", "CIO; UW-IT partner; HR leader; AI governance lead", height=95)
+
+sample_col, sample_note = st.columns([1, 2.4])
+with sample_col:
+    if st.button("Load Included Sample Scenario", use_container_width=True):
+        st.session_state.use_included_sample = True
+with sample_note:
+    st.caption("Recommended for the guided demo. Loads the included agenda, prior notes, and background memo.")
+
+files = st.file_uploader(
+    "Upload the agenda, prior notes, and background documents",
+    type=["txt", "md", "pdf", "docx"],
+    accept_multiple_files=True,
+    help="For this demonstration, use only the sample documents included with the prototype.",
+)
+
+records = []
+for uploaded in files or []:
+    content = read_file(uploaded)
+    if content.strip():
+        records.append({"name": uploaded.name, "label": source_label(uploaded.name), "text": content})
+
+if not records and st.session_state.get("use_included_sample"):
+    sample_dir = Path(__file__).parent / "sample_data"
+    for path in [
+        sample_dir / "agenda.txt",
+        sample_dir / "prior_discussion_notes.txt",
+        sample_dir / "background_memo.txt",
+    ]:
+        if path.exists():
+            records.append({"name": path.name, "label": source_label(path.name), "text": path.read_text(encoding="utf-8")})
+
+if records:
+    st.info("Sources ready: " + ", ".join(r["name"] for r in records))
+
+if st.button("Generate Decision-Ready Brief", use_container_width=True):
+    if not records:
+        st.warning("Upload at least one sample document to generate the brief.")
+    else:
+        st.session_state.brief = make_demo_brief(meeting_title, meeting_objective, attendees, records)
+        st.session_state.records = records
+        st.session_state.generated_date = str(meeting_date)
+
+if "brief" in st.session_state:
+    brief = st.session_state.brief
+    saved_records = st.session_state.records
+    st.divider()
+    st.header("Executive Brief")
+    m1, m2, m3, m4 = st.columns(4)
+    m1.metric("Sources reviewed", len(saved_records))
+    m2.metric("Decisions surfaced", len(brief["decisions"]))
+    m3.metric("Risks identified", len(brief["risks"]))
+    m4.metric("Review status", "Human review")
+
+    st.subheader(brief["title"])
+    st.caption(f"Meeting date: {st.session_state.generated_date}  ·  Prepared from uploaded session documents")
+    st.write(brief["objective"])
+
+    a, b = st.columns(2)
+    with a:
+        st.markdown("#### Decisions or Alignment Needed")
+        for text, source in brief["decisions"]:
+            st.markdown(f"- {text}  \n  <span class='source'>Source: {source}</span>", unsafe_allow_html=True)
+    with b:
+        st.markdown("#### Open Issues and Risks")
+        for text, source in brief["risks"]:
+            st.markdown(f"- {text}  \n  <span class='source'>Source: {source}</span>", unsafe_allow_html=True)
+
+    st.markdown("#### Prior Decisions and Commitments")
+    for text, source in brief["commitments"]:
+        st.markdown(f"- {text} **[{source}]**")
+
+    with st.expander("Relevant background and evidence", expanded=True):
+        for text, source in brief["background"]:
+            st.markdown(f"- {text} **[{source}]**")
+
+    qcol, ncol = st.columns(2)
+    with qcol:
+        st.markdown("#### Recommended Questions")
+        for item in brief["questions"]:
+            st.markdown(f"- {item}")
+    with ncol:
+        st.markdown("#### Recommended Next Steps")
+        for item in brief["next_steps"]:
+            st.markdown(f"- {item}")
+
+    with st.expander("Agent governance record"):
+        st.write("**Purpose:** Prepare an executive meeting brief from user-selected documents.")
+        st.write("**Data accessed:** " + ", ".join(r["name"] for r in saved_records))
+        st.write("**External systems accessed:** None")
+        st.write("**Retention:** Session only")
+        st.write("**Required control:** Human review before use or distribution")
+        st.write("**Known limitation:** Demonstration synthesis; no automated validation against UW systems")
+
+    md = brief_markdown(brief, saved_records)
+    docx = brief_docx(brief, saved_records)
+    d1, d2 = st.columns(2)
+    d1.download_button("Download Word Brief", docx, "executive_meeting_brief.docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", use_container_width=True)
+    d2.download_button("Download Markdown Brief", md, "executive_meeting_brief.md", "text/markdown", use_container_width=True)
+
+st.divider()
+st.caption("Prototype boundary: sample data only; no autonomous actions; no production connections. Any institutional pilot would require approved authentication, role-based access, logging, privacy, security, records-management, and governance review.")

@@ -1,0 +1,11 @@
+AI Governance Steering Discussion — Sample Agenda
+
+Objective: Review the proposed AI-agent governance approach and determine whether to sponsor a limited executive meeting-preparation pilot.
+
+Agenda:
+1. Confirm the business problem and intended users.
+2. Review minimum safeguards for agent registration, permissions, monitoring, and source traceability.
+3. Decide whether to approve a time-boxed pilot using sample data.
+4. Identify an executive sponsor, operational owner, success measures, and next review date.
+
+Decision requested: Approve or decline a limited pilot and identify the accountable pilot owner.
