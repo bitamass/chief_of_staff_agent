@@ -1,4 +1,4 @@
-# Chief of Staff Agent — Eric Demo
+# Chief of Staff Agent
 
 This Streamlit prototype serves as an AI Chief of Staff by preparing decision-ready executive meeting briefs from sample agendas, prior notes, and background documents. It demonstrates source traceability and a lightweight agent-governance record without connecting to UW production systems.
 
