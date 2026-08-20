@@ -1,4 +1,3 @@
-import os
 import re
 from datetime import date
 from io import BytesIO
@@ -37,10 +36,10 @@ st.markdown(
 )
 
 SCENARIOS = {
-    "AI Agent Governance Pilot": {
+    "AI Agent Governance Discussion": {
         "folder": "ai_governance",
-        "title": "AI Governance Steering Discussion",
-        "objective": "Review the proposed AI-agent governance approach and determine whether to sponsor a limited executive meeting-preparation pilot.",
+        "title": "AI Agent Governance Discussion",
+        "objective": "Explore how agent governance could apply to an executive meeting-preparation use case and identify the questions that would require further consideration.",
         "attendees": "CIO; UW-IT partner; HR leader; AI governance lead",
         "questions": [
             "What minimum information should every UW AI agent disclose before it is approved or deployed?",
@@ -48,9 +47,9 @@ SCENARIOS = {
             "Who should own the pilot, and what evidence would be required before considering approved system integrations?",
         ],
         "next_steps": [
-            "Name an executive sponsor and operational owner for a time-boxed pilot.",
-            "Agree on success measures: preparation time saved, factual accuracy, source coverage, and executive usefulness.",
-            "Complete privacy, security, records-management, and governance review before connecting any UW system.",
+            "Identify the roles that would be needed to evaluate a limited use case.",
+            "Define possible success measures, including preparation time saved, factual accuracy, source coverage, and executive usefulness.",
+            "Document the privacy, security, records-management, and governance reviews that would be required before any institutional connection could be considered.",
         ],
     },
     "Executive Technology Investment Review": {
@@ -105,9 +104,12 @@ def source_label(filename):
     return stem or filename
 
 
-def find_sentences(records, keywords, limit=4):
+def find_sentences(records, keywords, limit=4, labels=None, excluded=None):
     found = []
+    excluded = [x.lower() for x in (excluded or [])]
     for record in records:
+        if labels and record["label"] not in labels:
+            continue
         # Preserve paragraph boundaries so document titles and section labels do
         # not become fused with the first substantive sentence.
         sentences = re.split(r"\n+|(?<=[.!?])\s+|\s*[•]\s*", record["text"])
@@ -118,11 +120,15 @@ def find_sentences(records, keywords, limit=4):
                 continue
             if "sample agenda" in lowered or lowered.startswith("background memo"):
                 continue
+            if any(term in lowered for term in excluded):
+                continue
             for prefix in ("objective:", "decision requested:"):
                 if lowered.startswith(prefix):
                     sentence = sentence.split(":", 1)[1].strip()
                     lowered = sentence.lower()
             if len(sentence) < 28:
+                continue
+            if any(term in sentence.lower() for term in excluded):
                 continue
             if any(word.lower() in sentence.lower() for word in keywords):
                 item = (sentence, record["label"])
@@ -134,23 +140,47 @@ def find_sentences(records, keywords, limit=4):
 
 
 def make_demo_brief(title, objective, attendees, records, scenario_name=None):
-    commitments = find_sentences(records, ["interest", "shared approach", "agreed", "commit", "support"], 3)
-    risks = find_sentences(records, ["concern", "risk", "permission", "duplicate", "privacy", "security", "oversight"], 4)
-    decisions = find_sentences(records, ["decision", "determine", "approve", "pilot", "owner", "ownership"], 3)
+    commitments = find_sentences(
+        records,
+        ["interest", "agreed", "requested", "supported", "required"],
+        3,
+        labels={"Prior Discussion Notes"},
+        excluded=["no final decision"],
+    )
+    risks = find_sentences(
+        records,
+        ["concern", "risk", "permission", "access", "privacy", "security", "dependency", "downtime", "incident"],
+        4,
+        labels={"Prior Discussion Notes", "Background Memo"},
+        excluded=["low-risk prototype", "no final decision", "suggested readiness measures"],
+    )
+    decisions = find_sentences(
+        records,
+        ["decision requested", "decide", "determine", "approve", "confirm", "identify"],
+        3,
+        labels={"Agenda"},
+        excluded=["objective:", "no approval is requested"],
+    )
     background = find_sentences(
         records,
-        ["agent", "governance", "prototype", "meeting", "executive", "initiative", "technology", "operational", "clinical", "investment", "pilot"],
+        ["agent", "governance", "prototype", "executive", "initiative", "technology", "operational", "clinical", "investment", "demonstration"],
         4,
+        labels={"Background Memo"},
     )
 
+    # Keep the executive brief concise by preventing the same source sentence
+    # from appearing in more than one section.
+    used_text = {text for section in (commitments, risks, decisions) for text, _ in section}
+    background = [item for item in background if item[0] not in used_text]
+
     if not commitments:
-        commitments = [("Leadership expressed interest in a shared approach to managing AI agents across organizational units.", "Prior Discussion Notes")]
+        commitments = [("No prior commitments were identified in the selected demonstration documents.", "Prior Discussion Notes")]
     if not risks:
         risks = [("The pilot requires explicit access controls, source traceability, human review, and an accountable owner.", "Background Memo")]
     if not decisions:
-        decisions = [("Decide whether to sponsor a limited meeting-preparation pilot using approved sample data.", "Meeting Agenda")]
+        decisions = [("No approval decision is requested; identify the questions that merit further exploration.", "Agenda")]
 
-    scenario = SCENARIOS.get(scenario_name or "AI Agent Governance Pilot", SCENARIOS["AI Agent Governance Pilot"])
+    scenario = SCENARIOS.get(scenario_name or "AI Agent Governance Discussion", SCENARIOS["AI Agent Governance Discussion"])
     questions = scenario["questions"]
     next_steps = scenario["next_steps"]
     return {
@@ -202,7 +232,7 @@ def brief_markdown(brief, records):
 {sources}
 
 ## Governance Notice
-Generated from session-only uploaded documents. Human review is required. This prototype is not connected to UW production systems.
+Generated from selected demonstration documents. Human review is required. This prototype is not connected to UW production systems.
 """
 
 
@@ -229,7 +259,7 @@ def brief_docx(brief, records):
     for record in records:
         doc.add_paragraph(f"{record['label']} ({record['name']})", style="List Bullet")
     doc.add_heading("Governance Notice", level=1)
-    doc.add_paragraph("Generated from session-only uploaded documents. Human review is required. This prototype is not connected to UW production systems.")
+    doc.add_paragraph("Generated from selected demonstration documents. Human review is required. This prototype is not connected to UW production systems.")
     output = BytesIO()
     doc.save(output)
     return output.getvalue()
@@ -237,7 +267,7 @@ def brief_docx(brief, records):
 
 st.markdown(
     '<div class="hero"><h1>Chief of Staff Agent</h1>'
-    '<p>Executive meeting intelligence that turns approved materials into decision-ready context, commitments, risks, and questions.</p></div>',
+    '<p>Independent exploratory prototype demonstrating one possible executive meeting-preparation use case.</p></div>',
     unsafe_allow_html=True,
 )
 st.markdown(
@@ -278,14 +308,14 @@ with scenario_action:
         st.session_state.pop("brief", None)
         st.rerun()
 with scenario_description:
-    st.caption("Loads three approved sample documents and updates the meeting context. No upload is required.")
+    st.caption("Loads three curated demonstration documents and updates the meeting context.")
 
 if "meeting_title" not in st.session_state:
-    st.session_state.meeting_title = SCENARIOS["AI Agent Governance Pilot"]["title"]
+    st.session_state.meeting_title = SCENARIOS["AI Agent Governance Discussion"]["title"]
 if "meeting_objective" not in st.session_state:
-    st.session_state.meeting_objective = SCENARIOS["AI Agent Governance Pilot"]["objective"]
+    st.session_state.meeting_objective = SCENARIOS["AI Agent Governance Discussion"]["objective"]
 if "attendees" not in st.session_state:
-    st.session_state.attendees = SCENARIOS["AI Agent Governance Pilot"]["attendees"]
+    st.session_state.attendees = SCENARIOS["AI Agent Governance Discussion"]["attendees"]
 
 left, right = st.columns([1.15, 1])
 with left:
@@ -299,20 +329,8 @@ with right:
     meeting_date = st.date_input("Meeting date", value=date.today())
     attendees = st.text_area("Attendees / roles", key="attendees", height=95)
 
-files = st.file_uploader(
-    "Upload the agenda, prior notes, and background documents",
-    type=["txt", "md", "pdf", "docx"],
-    accept_multiple_files=True,
-    help="For this demonstration, use only the sample documents included with the prototype.",
-)
-
 records = []
-for uploaded in files or []:
-    content = read_file(uploaded)
-    if content.strip():
-        records.append({"name": uploaded.name, "label": source_label(uploaded.name), "text": content})
-
-if not records and st.session_state.get("active_scenario"):
+if st.session_state.get("active_scenario"):
     active_name = st.session_state.active_scenario
     sample_dir = Path(__file__).parent / "sample_data" / SCENARIOS[active_name]["folder"]
     for path in [
@@ -328,7 +346,7 @@ if records:
 
 if st.button("Generate Decision-Ready Brief", use_container_width=True):
     if not records:
-        st.warning("Upload at least one sample document to generate the brief.")
+        st.warning("Select Load Selected Scenario before generating the brief.")
     else:
         st.session_state.brief = make_demo_brief(
             meeting_title,
@@ -352,7 +370,7 @@ if "brief" in st.session_state:
     m4.metric("Review status", "Human review")
 
     st.subheader(brief["title"])
-    st.caption(f"Meeting date: {st.session_state.generated_date}  ·  Prepared from uploaded session documents")
+    st.caption(f"Meeting date: {st.session_state.generated_date}  ·  Prepared from selected demonstration documents")
     st.write(brief["objective"])
 
     a, b = st.columns(2)

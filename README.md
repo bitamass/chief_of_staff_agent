@@ -1,6 +1,6 @@
-# Chief of Staff Agent
+# Chief of Staff Agent — Guided Demonstration
 
-This Streamlit prototype serves as an AI Chief of Staff by preparing decision-ready executive meeting briefs from sample agendas, prior notes, and background documents. It demonstrates source traceability and a lightweight agent-governance record without connecting to UW production systems.
+This independent exploratory Streamlit prototype demonstrates one possible executive meeting-preparation use case. It prepares decision-ready briefs from curated sample agendas, prior notes, and background documents. It also demonstrates source traceability and a lightweight agent-governance record without connecting to UW production systems.
 
 ## Run on Windows
 
@@ -15,7 +15,7 @@ This Streamlit prototype serves as an AI Chief of Staff by preparing decision-re
 
    `python -m streamlit run app.py`
 
-6. Choose one of the three demonstration scenarios, select **Load Selected Scenario**, and then select **Generate Decision-Ready Brief**. You may also upload your own approved sample files instead.
+6. Choose one of the three demonstration scenarios, select **Load Selected Scenario**, and then select **Generate Decision-Ready Brief**.
 
 ## Prototype boundary
 

@@ -1,7 +1,7 @@
-Background Memo — Executive Meeting Intelligence Pilot
+Background Memo — Executive Meeting Intelligence Demonstration
 
-The proposed prototype prepares a concise executive brief containing meeting context, prior commitments, unresolved issues, decisions needed, recommended questions, next actions, and source references.
+This exploratory prototype prepares a concise executive brief containing meeting context, prior commitments, unresolved issues, decisions needed, recommended questions, next actions, and source references.
 
-The first demonstration must use sample documents supplied directly by the user and must not connect to production clinical or university systems. Any future institutional integration would require authentication, role-based permissions, audit logging, privacy and security review, records-management review, governance approval, and a clearly accountable service owner.
+This demonstration uses curated sample documents and does not connect to production clinical or university systems. Any future institutional integration would require authentication, role-based permissions, audit logging, privacy and security review, records-management review, governance approval, and a clearly accountable service owner.
 
-Suggested pilot measures include preparation time saved, factual accuracy, percentage of important claims linked to a source, executive usefulness, and the number of corrections required during human review.
+Possible evaluation measures include preparation time saved, factual accuracy, percentage of important claims linked to a source, executive usefulness, and the number of corrections required during human review.

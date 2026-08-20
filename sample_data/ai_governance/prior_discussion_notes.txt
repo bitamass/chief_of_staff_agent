@@ -1,7 +1,7 @@
 Prior Discussion Notes
 
-Leadership expressed interest in a shared approach to managing AI agents across organizational units. Key concerns included visibility into what agents are doing, avoiding duplicate agents, validating permissions, ensuring agents remain aligned to their intended purpose, and providing managers with usable oversight tools.
+One possibility discussed was a shared approach to managing AI agents across organizational units. Key concerns included visibility into what agents are doing, avoiding duplicate agents, validating permissions, ensuring agents remain aligned to their intended purpose, and providing managers with usable oversight tools.
 
-A narrow meeting-preparation assistant was identified as a possible low-risk prototype. The initial concept would use an agenda, prior meeting summaries, organizational background, and approved external information to prepare an executive before a meeting.
+A narrow meeting-preparation assistant provides one example of how the broader concept could be explored. Such a demonstration could use an agenda, prior meeting summaries, organizational background, and approved external information to prepare an executive before a meeting.
 
-No final decision was made about ownership, sponsorship, or whether agent oversight should be centralized or federated.
+No decision was made about pursuing this use case or about whether agent oversight should be centralized or federated.
