@@ -37,17 +37,25 @@ DELIVERABLES = {
 
 MEETING_EVENTS = {
     -21: {"id": "m01", "title": "Monthly Business Review", "participants": ["p01", "p02", "p03", "p06"], "initiative_ids": ["init01", "init02"], "summary": "Leadership requested clearer benefit measures before new commitments."},
+    -20: {"id": "m14", "title": "Clinical Operations Baseline Review", "participants": ["p02", "p04", "p06"], "initiative_ids": ["init01"], "summary": "The team documented current reporting effort, turnaround time, and data-quality issues to establish a measurable baseline."},
+    -19: {"id": "m15", "title": "Agentification Use-Case Intake", "participants": ["p01", "p02", "p06"], "initiative_ids": ["init02"], "summary": "The group reviewed possible executive-support use cases and agreed to evaluate them against usefulness, feasibility, and governance needs."},
     -18: {"id": "m02", "title": "Analytics Discovery Session", "participants": ["p02", "p04", "p05", "p06"], "initiative_ids": ["init01"], "summary": "The team confirmed that reporting delays and inconsistent definitions are the primary problems."},
     -15: {"id": "m03", "title": "Finance and ROI Review", "participants": ["p03", "p04", "p06"], "initiative_ids": ["init01"], "summary": "Finance requested phased funding and a named owner for benefit realization."},
     -12: {"id": "m04", "title": "Executive Decision Support Workshop", "participants": ["p01", "p02", "p06"], "initiative_ids": ["init02"], "summary": "Participants selected executive meeting preparation as the first skill to demonstrate."},
+    -11: {"id": "m16", "title": "Clinical Operations Data Readiness Review", "participants": ["p02", "p04", "p05", "p07"], "initiative_ids": ["init01"], "summary": "The review identified source ownership, data definitions, access dependencies, and validation work required for a limited phase-one pilot."},
     -9: {"id": "m05", "title": "Enterprise Architecture and Risk Review", "participants": ["p02", "p05", "p07"], "initiative_ids": ["init01", "init02"], "summary": "The review identified identity, access, retention, traceability, and human review as required controls."},
+    -7: {"id": "m17", "title": "Agentification Brief Design Review", "participants": ["p01", "p02", "p06"], "initiative_ids": ["init02"], "summary": "The team agreed that the brief should connect prior decisions, open actions, current risks, and upcoming meetings with visible source traceability."},
     -6: {"id": "m06", "title": "Agentification Prototype Content Review", "participants": ["p02", "p06", "p07"], "initiative_ids": ["init02"], "summary": "The group asked that current functionality be clearly separated from future capabilities."},
     -3: {"id": "m07", "title": "Technology Investment Review", "participants": ["p02", "p03", "p04", "p06"], "initiative_ids": ["init01"], "summary": "The estimate was incomplete without integration, support, and change-management costs."},
     0: {"id": "m08", "title": "Executive Technology Investment Review", "participants": ["p01", "p02", "p03", "p04", "p05"], "initiative_ids": ["init01"], "summary": "Today: determine whether evidence supports a limited phase-one investment and define funding conditions."},
     2: {"id": "m09", "title": "Executive Brief Prototype Demonstration", "participants": ["p01", "p02", "p06"], "initiative_ids": ["init02"], "summary": "Demonstrate the meeting-preparation skill and collect feedback on usefulness and missing context."},
+    4: {"id": "m18", "title": "Clinical Operations Funding Conditions Review", "participants": ["p01", "p03", "p04", "p06"], "initiative_ids": ["init01"], "summary": "Review the proposed funding ceiling, benefit owner, phase-one measures, and conditions that must be satisfied before funds are released."},
     5: {"id": "m10", "title": "Security and Data Handling Working Session", "participants": ["p02", "p05", "p07"], "initiative_ids": ["init01", "init02"], "summary": "Document controls required before any institutional connection."},
+    6: {"id": "m19", "title": "Agentification Feedback Synthesis", "participants": ["p02", "p06", "p07"], "initiative_ids": ["init02"], "summary": "Synthesize demonstration feedback, corrections, missing context, and proposed evaluation measures for the next concept review."},
     8: {"id": "m11", "title": "Phase-One Charter Review", "participants": ["p01", "p03", "p04", "p06"], "initiative_ids": ["init01"], "summary": "Review the revised charter, cost model, owners, and release criteria."},
+    11: {"id": "m20", "title": "Clinical Operations Pilot Readiness Check", "participants": ["p02", "p04", "p05", "p06", "p07"], "initiative_ids": ["init01"], "summary": "Confirm whether cost, data, architecture, security, ownership, and change-management conditions are ready for an executive recommendation."},
     12: {"id": "m12", "title": "Agentification Concept Validation Readout", "participants": ["p01", "p02", "p06", "p07"], "initiative_ids": ["init02"], "summary": "Review feedback and decide whether a formal requirements package should be developed."},
+    13: {"id": "m21", "title": "Agentification Requirements Planning", "participants": ["p02", "p05", "p06", "p07"], "initiative_ids": ["init02"], "summary": "If concept validation is favorable, define the business, data, permission, instruction, architecture, governance, and operating requirements for a limited pilot."},
     14: {"id": "m13", "title": "Biweekly Portfolio Review Governance", "participants": ["p01", "p02", "p03", "p04", "p06"], "initiative_ids": ["init01", "init02"], "summary": "Reconcile decisions, dependencies, resources, and next-stage recommendations."},
 }
 
@@ -66,54 +74,6 @@ ACTIONS = [
     {"id": "act04", "source_meeting_id": "m06", "initiative_id": "init02", "owner": "p06", "due_offset": 12, "status": "Planned", "action": "Capture validation feedback and recommend whether to develop requirements.", "review_meeting_id": "m12"},
 ]
 
-# Display and briefing configuration belongs here—not in the user interface—so
-# the synthetic backend remains the single source of truth.
-DEMO_SCENARIO_CONFIG = {
-    "Executive Technology Investment Review": {
-        "meeting_id": "m08",
-        "objective": "Determine whether evidence supports a limited phase-one investment and define its funding, ownership, and delivery conditions.",
-        "questions": [
-            "Which measurable operational outcome must the first phase deliver before additional funding is released?",
-            "What costs and dependencies are not yet included in the current estimate?",
-            "Which executive owns benefit realization after the technology is delivered?",
-        ],
-        "next_steps": [
-            "Confirm the phase-one funding ceiling, executive sponsor, and accountable benefit owner.",
-            "Validate integration, change-management, security, and ongoing support costs before contracting.",
-            "Schedule a 90-day value review with agreed financial and operational measures.",
-        ],
-    },
-    "Executive Brief Prototype Demonstration": {
-        "meeting_id": "m09",
-        "objective": "Demonstrate the meeting-preparation skill and gather executive feedback on its usefulness, clarity, evidence, and missing context.",
-        "questions": [
-            "Which parts of the brief would be most useful before an executive meeting?",
-            "What important context or evidence is missing from the demonstration?",
-            "What level of human review would be required before the brief could be relied upon?",
-        ],
-        "next_steps": [
-            "Capture feedback on usefulness, clarity, corrections, and missing information.",
-            "Confirm which executive-support workflow should be evaluated next.",
-            "Determine whether the concept merits a formal requirements package.",
-        ],
-    },
-    "Security and Data Handling Working Session": {
-        "meeting_id": "m10",
-        "objective": "Document the security, privacy, identity, access, retention, and traceability controls required before any institutional connection.",
-        "questions": [
-            "Which data classifications and sources would be appropriate for a limited evaluation?",
-            "Which identity, permission, logging, retention, and human-review controls are required?",
-            "Which reviews and accountable owners would be required before any connection is considered?",
-        ],
-        "next_steps": [
-            "Document the proposed data boundary and prohibited sources.",
-            "Identify required security, privacy, records-management, and architecture reviews.",
-            "Define evidence and approval conditions for any future integration decision.",
-        ],
-    },
-}
-
-
 def build_synthetic_context(today):
     """Return the complete, dated five-week synthetic context."""
     calendar = [{"offset": offset, "date": today + timedelta(days=offset), "meeting": MEETING_EVENTS.get(offset)} for offset in range(-21, 15)]
@@ -124,27 +84,54 @@ def build_synthetic_context(today):
     return {"today": today, "calendar": calendar, "meetings": meetings, "participants": PARTICIPANTS, "initiatives": INITIATIVES, "charters": CHARTERS, "deliverables": deliverables, "decisions": decisions, "actions": actions}
 
 
-def build_demo_scenarios(context):
-    """Derive all scenario-facing metadata from the linked backend records."""
+def build_initiative_scenarios(context):
+    """Turn every initiative into a selectable, time-aware briefing scenario."""
     scenarios = {}
-    for label, config in DEMO_SCENARIO_CONFIG.items():
-        meeting = context["meetings"][config["meeting_id"]]
+    today = context["today"]
+    for initiative_id, initiative in context["initiatives"].items():
+        related_meetings = sorted(
+            (meeting for meeting in context["meetings"].values() if initiative_id in meeting["initiative_ids"]),
+            key=lambda meeting: meeting["date"],
+        )
+        current = next((meeting for meeting in related_meetings if meeting["date"] == today), None)
+        upcoming = next((meeting for meeting in related_meetings if meeting["date"] > today), None)
+        meeting = current or upcoming or related_meetings[-1]
         attendee_roles = [context["participants"][pid]["role"] for pid in meeting["participants"]]
-        scenarios[label] = {
-            **config,
+        charter = context["charters"][initiative["charter_id"]]
+        owner = context["participants"][initiative["owner"]]
+        open_actions = [action for action in context["actions"] if action["initiative_id"] == initiative_id and action["status"] != "Complete"]
+        deliverables = [item for item in context["deliverables"].values() if item["initiative_id"] == initiative_id]
+        next_deliverable = min(deliverables, key=lambda item: item["due_date"])
+        questions = [
+            f"Which of the charter success measures—{', '.join(charter['success_measures'])}—must be demonstrated next?",
+            f"What must be resolved before {meeting['title']} on {meeting['date']:%b %d}?",
+            f"Does the {owner['role']} have the information and authority needed to advance this initiative?",
+        ]
+        next_steps = [action["action"] for action in open_actions[:3]]
+        if len(next_steps) < 3:
+            next_steps.append(f"Confirm readiness and ownership for {next_deliverable['name']} due {next_deliverable['due_date']:%b %d}.")
+        if len(next_steps) < 3:
+            next_steps.append(f"Review progress at {meeting['title']} on {meeting['date']:%b %d}.")
+        scenarios[initiative["name"]] = {
+            "initiative_id": initiative_id,
+            "meeting_id": meeting["id"],
             "title": meeting["title"],
             "date": meeting["date"],
+            "objective": initiative["objective"],
             "attendees": "; ".join(attendee_roles),
+            "questions": questions,
+            "next_steps": next_steps[:3],
         }
     return scenarios
 
 
-def build_scenario_records(context, scenario_label):
+def build_scenario_records(context, initiative_name):
     """Render the three briefing sources from the same linked backend data."""
-    scenario = build_demo_scenarios(context)[scenario_label]
+    scenario = build_initiative_scenarios(context)[initiative_name]
     meeting = context["meetings"][scenario["meeting_id"]]
-    initiative_ids = set(meeting["initiative_ids"])
-    initiatives = [context["initiatives"][iid] for iid in meeting["initiative_ids"]]
+    initiative_id = scenario["initiative_id"]
+    initiative_ids = {initiative_id}
+    initiatives = [context["initiatives"][initiative_id]]
 
     prior_meetings = sorted(
         (

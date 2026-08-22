@@ -2,7 +2,7 @@
 
 This independent exploratory Streamlit prototype demonstrates one Chief of Staff skill: Executive Meeting Preparation. It prepares decision-ready briefs from agenda, prior-note, and background-memo views generated from one linked synthetic operating context. Other Chief of Staff capabilities described in the broader concept are not active in this demonstration.
 
-`synthetic_context.py` is the single source of truth for a fully synthetic five-week executive operating context. It covers 21 days before the current date through 14 days after it, including day-by-day calendar entries, fictional participants, meeting notes, decisions, action items, initiatives, deliverables, charters, scenario objectives, questions, and next steps. The app generates its agenda, prior-notes, and background-memo views from those linked records rather than maintaining separate hard-coded scenario data.
+`synthetic_context.py` is the single source of truth for a fully synthetic five-week executive operating context. It covers 21 days before the current date through 14 days after it, including day-by-day calendar entries, fictional participants, meeting notes, decisions, action items, initiatives, deliverables, and charters. The app uses the initiatives themselves as selectable scenarios and derives each initiative's relevant meeting, agenda, prior notes, background, questions, and next steps from its linked records.
 
 ## Run on Windows
 
@@ -17,7 +17,7 @@ This independent exploratory Streamlit prototype demonstrates one Chief of Staff
 
    `python -m streamlit run app.py`
 
-6. Choose one of the three demonstration scenarios, select **Load Sample Meeting Materials**, and then select **Create Executive Meeting Brief**.
+6. Choose an initiative, select **Load Sample Meeting Materials**, and then select **Create Executive Meeting Brief**.
 
 ## Prototype boundary
 

@@ -4,7 +4,7 @@ from io import BytesIO
 
 import streamlit as st
 from docx import Document
-from synthetic_context import build_demo_scenarios, build_scenario_records, build_synthetic_context, today_continuity
+from synthetic_context import build_initiative_scenarios, build_scenario_records, build_synthetic_context, today_continuity
 
 
 st.set_page_config(
@@ -110,8 +110,8 @@ def make_demo_brief(title, objective, attendees, records, scenario_name=None):
     if not decisions:
         decisions = [("No approval decision is requested; identify the questions that merit further exploration.", "Agenda")]
 
-    default_scenario = SCENARIOS["Executive Technology Investment Review"]
-    scenario = SCENARIOS.get(scenario_name or "Executive Technology Investment Review", default_scenario)
+    default_scenario = next(iter(SCENARIOS.values()))
+    scenario = SCENARIOS.get(scenario_name, default_scenario)
     questions = scenario["questions"]
     next_steps = scenario["next_steps"]
     return {
@@ -209,7 +209,7 @@ st.markdown(
 
 operating_context = build_synthetic_context(date.today())
 continuity = today_continuity(operating_context)
-SCENARIOS = build_demo_scenarios(operating_context)
+SCENARIOS = build_initiative_scenarios(operating_context)
 
 st.subheader("Today's executive operating context")
 st.caption("A synthetic five-week timeline: three weeks of operating history and two weeks of forward plans.")
@@ -272,10 +272,10 @@ with st.sidebar:
     st.subheader("Future state—not connected")
     st.caption("Outlook calendar · Teams summaries · SharePoint · Approved external intelligence")
 
-st.subheader("Choose a demonstration scenario")
+st.subheader("Choose an initiative")
 scenario_order = list(SCENARIOS)
 scenario_name = st.selectbox(
-    "Scenario",
+    "Initiative",
     scenario_order,
     label_visibility="collapsed",
     key="scenario_name",
@@ -294,14 +294,15 @@ with scenario_action:
 with scenario_description:
     st.caption("Loads three curated demonstration documents and updates the meeting context.")
 
+default_scenario = next(iter(SCENARIOS.values()))
 if "meeting_title" not in st.session_state:
-    st.session_state.meeting_title = SCENARIOS["Executive Technology Investment Review"]["title"]
+    st.session_state.meeting_title = default_scenario["title"]
 if "meeting_objective" not in st.session_state:
-    st.session_state.meeting_objective = SCENARIOS["Executive Technology Investment Review"]["objective"]
+    st.session_state.meeting_objective = default_scenario["objective"]
 if "attendees" not in st.session_state:
-    st.session_state.attendees = SCENARIOS["Executive Technology Investment Review"]["attendees"]
+    st.session_state.attendees = default_scenario["attendees"]
 if "meeting_date" not in st.session_state:
-    st.session_state.meeting_date = SCENARIOS["Executive Technology Investment Review"]["date"]
+    st.session_state.meeting_date = default_scenario["date"]
 
 left, right = st.columns([1.15, 1])
 with left:
