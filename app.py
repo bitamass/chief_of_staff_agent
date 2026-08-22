@@ -24,6 +24,11 @@ st.markdown(
     .hero h1 {margin:0; font-size:2.25rem;}
     .hero p {margin:.35rem 0 0; color:#5a6475;}
     .safe-banner {background:#f4f0fa; border:1px solid #d9cfea; border-radius:10px; padding:.8rem 1rem; margin:.7rem 0 1.2rem;}
+    .skill-card {background:#f8fafc; border:1px solid #dfe4eb; border-left:5px solid var(--uw-purple); border-radius:10px; padding:1rem 1.1rem; margin:.5rem 0 1rem;}
+    .skill-card h3 {margin:0 0 .35rem; color:var(--uw-purple); font-size:1.25rem;}
+    .skill-card p {margin:.2rem 0; color:#30394a;}
+    .step-card {background:white; border:1px solid #e3e6eb; border-radius:10px; padding:.75rem .85rem; min-height:112px;}
+    .step-card b {color:var(--uw-purple);}
     .brief-card {background:white; border:1px solid #e3e6eb; border-radius:12px; padding:1rem 1.1rem; min-height:145px; box-shadow:0 2px 8px rgba(20,30,50,.04);}
     .brief-card h4 {color:var(--uw-purple); margin:0 0 .5rem;}
     .source {color:#5b6677; font-size:.86rem;}
@@ -44,7 +49,7 @@ SCENARIOS = {
         "questions": [
             "What minimum information should every UW AI agent disclose before it is approved or deployed?",
             "Should agent registration and oversight be centralized or managed through a federated UW/UW Medicine model?",
-            "Who should own the pilot, and what evidence would be required before considering approved system integrations?",
+            "Which roles would be needed to evaluate this use case, and what evidence would be required before any institutional integration could be considered?",
         ],
         "next_steps": [
             "Identify the roles that would be needed to evaluate a limited use case.",
@@ -267,7 +272,7 @@ def brief_docx(brief, records):
 
 st.markdown(
     '<div class="hero"><h1>Chief of Staff Agent</h1>'
-    '<p>Independent exploratory prototype demonstrating one possible executive meeting-preparation use case.</p></div>',
+    '<p>Exploratory demonstration of one executive-support skill.</p></div>',
     unsafe_allow_html=True,
 )
 st.markdown(
@@ -276,8 +281,32 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+st.markdown(
+    '<div class="skill-card">'
+    '<h3>Skill being demonstrated: Executive Meeting Preparation</h3>'
+    '<p>Reviews a sample agenda, prior discussion notes, and background information to prepare a source-linked executive brief.</p>'
+    '<p><b>The brief includes:</b> relevant context, decisions or alignment needed, risks, prior commitments, recommended questions, and possible next steps.</p>'
+    '<p><b>Human role:</b> Review and correct the brief before it is used or distributed.</p>'
+    '</div>',
+    unsafe_allow_html=True,
+)
+
+st.markdown("#### How this demonstration works")
+step1, step2, step3, step4 = st.columns(4)
+for column, number, title, description in [
+    (step1, "1", "Choose", "Select a sample executive meeting."),
+    (step2, "2", "Load", "Load its three curated meeting documents."),
+    (step3, "3", "Create", "Create a source-linked executive meeting brief."),
+    (step4, "4", "Review", "Review the findings, sources, and limitations."),
+]:
+    with column:
+        st.markdown(
+            f'<div class="step-card"><b>{number}. {title}</b><br>{description}</div>',
+            unsafe_allow_html=True,
+        )
+
 with st.sidebar:
-    st.header("Agent Governance & Safeguards")
+    st.header("Demonstration Safeguards")
     st.success("Guided demonstration")
     for label in [
         "Human review required",
@@ -291,16 +320,21 @@ with st.sidebar:
     st.caption("Outlook calendar · Teams summaries · SharePoint · Approved external intelligence")
 
 st.subheader("Choose a demonstration scenario")
+scenario_order = [
+    "Executive Technology Investment Review",
+    "AI Agent Governance Discussion",
+    "UW Medicine Operational Risk Review",
+]
 scenario_name = st.selectbox(
     "Scenario",
-    list(SCENARIOS),
+    scenario_order,
     label_visibility="collapsed",
     key="scenario_name",
 )
 scenario = SCENARIOS[scenario_name]
 scenario_action, scenario_description = st.columns([1, 2.4])
 with scenario_action:
-    if st.button("Load Selected Scenario", use_container_width=True):
+    if st.button("Load Sample Meeting Materials", use_container_width=True):
         st.session_state.meeting_title = scenario["title"]
         st.session_state.meeting_objective = scenario["objective"]
         st.session_state.attendees = scenario["attendees"]
@@ -311,11 +345,11 @@ with scenario_description:
     st.caption("Loads three curated demonstration documents and updates the meeting context.")
 
 if "meeting_title" not in st.session_state:
-    st.session_state.meeting_title = SCENARIOS["AI Agent Governance Discussion"]["title"]
+    st.session_state.meeting_title = SCENARIOS["Executive Technology Investment Review"]["title"]
 if "meeting_objective" not in st.session_state:
-    st.session_state.meeting_objective = SCENARIOS["AI Agent Governance Discussion"]["objective"]
+    st.session_state.meeting_objective = SCENARIOS["Executive Technology Investment Review"]["objective"]
 if "attendees" not in st.session_state:
-    st.session_state.attendees = SCENARIOS["AI Agent Governance Discussion"]["attendees"]
+    st.session_state.attendees = SCENARIOS["Executive Technology Investment Review"]["attendees"]
 
 left, right = st.columns([1.15, 1])
 with left:
@@ -344,9 +378,9 @@ if st.session_state.get("active_scenario"):
 if records:
     st.info("Sources ready: " + ", ".join(r["name"] for r in records))
 
-if st.button("Generate Decision-Ready Brief", use_container_width=True):
+if st.button("Create Executive Meeting Brief", use_container_width=True):
     if not records:
-        st.warning("Select Load Selected Scenario before generating the brief.")
+        st.warning("Select Load Sample Meeting Materials before creating the brief.")
     else:
         st.session_state.brief = make_demo_brief(
             meeting_title,
@@ -414,6 +448,19 @@ if "brief" in st.session_state:
     d1, d2 = st.columns(2)
     d1.download_button("Download Word Brief", docx, "executive_meeting_brief.docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", use_container_width=True)
     d2.download_button("Download Markdown Brief", md, "executive_meeting_brief.md", "text/markdown", use_container_width=True)
+
+with st.expander("Other potential Chief of Staff skills — not included in this prototype"):
+    st.markdown(
+        "- Daily and weekly planning\n"
+        "- Calendar and priority preparation\n"
+        "- Decision and commitment tracking\n"
+        "- Initiative and risk monitoring\n"
+        "- Executive communications\n"
+        "- Stakeholder coordination\n"
+        "- Organizational context and memory\n"
+        "- Specialized-agent orchestration"
+    )
+    st.caption("These capabilities are part of the broader vision and are not active in the current demonstration.")
 
 st.divider()
 st.caption("Prototype boundary: sample data only; no autonomous actions; no production connections. Any institutional pilot would require approved authentication, role-based access, logging, privacy, security, records-management, and governance review.")
