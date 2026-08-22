@@ -23,11 +23,6 @@ st.markdown(
     .hero h1 {margin:0; font-size:2.25rem;}
     .hero p {margin:.35rem 0 0; color:#5a6475;}
     .safe-banner {background:#f4f0fa; border:1px solid #d9cfea; border-radius:10px; padding:.8rem 1rem; margin:.7rem 0 1.2rem;}
-    .skill-card {background:#f8fafc; border:1px solid #dfe4eb; border-left:5px solid var(--uw-purple); border-radius:10px; padding:1rem 1.1rem; margin:.5rem 0 1rem;}
-    .skill-card h3 {margin:0 0 .35rem; color:var(--uw-purple); font-size:1.25rem;}
-    .skill-card p {margin:.2rem 0; color:#30394a;}
-    .step-card {background:white; border:1px solid #e3e6eb; border-radius:10px; padding:.75rem .85rem; min-height:112px;}
-    .step-card b {color:var(--uw-purple);}
     .brief-card {background:white; border:1px solid #e3e6eb; border-radius:12px; padding:1rem 1.1rem; min-height:145px; box-shadow:0 2px 8px rgba(20,30,50,.04);}
     .brief-card h4 {color:var(--uw-purple); margin:0 0 .5rem;}
     .source {color:#5b6677; font-size:.86rem;}
@@ -211,30 +206,6 @@ st.markdown(
     'No UW production systems, Epic, Outlook, Teams, or SharePoint are connected.</div>',
     unsafe_allow_html=True,
 )
-
-st.markdown(
-    '<div class="skill-card">'
-    '<h3>Skill being demonstrated: Executive Meeting Preparation</h3>'
-    '<p>Reviews a sample agenda, prior discussion notes, and background information to prepare a source-linked executive brief.</p>'
-    '<p><b>The brief includes:</b> relevant context, decisions or alignment needed, risks, prior commitments, recommended questions, and possible next steps.</p>'
-    '<p><b>Human role:</b> Review and correct the brief before it is used or distributed.</p>'
-    '</div>',
-    unsafe_allow_html=True,
-)
-
-st.markdown("#### How this demonstration works")
-step1, step2, step3, step4 = st.columns(4)
-for column, number, title, description in [
-    (step1, "1", "Choose", "Select a sample executive meeting."),
-    (step2, "2", "Load", "Load its three curated meeting documents."),
-    (step3, "3", "Create", "Create a source-linked executive meeting brief."),
-    (step4, "4", "Review", "Review the findings, sources, and limitations."),
-]:
-    with column:
-        st.markdown(
-            f'<div class="step-card"><b>{number}. {title}</b><br>{description}</div>',
-            unsafe_allow_html=True,
-        )
 
 operating_context = build_synthetic_context(date.today())
 continuity = today_continuity(operating_context)
