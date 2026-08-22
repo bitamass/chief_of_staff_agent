@@ -1,12 +1,10 @@
 import re
 from datetime import date
 from io import BytesIO
-from pathlib import Path
 
 import streamlit as st
 from docx import Document
-from pypdf import PdfReader
-from synthetic_context import build_synthetic_context, today_continuity
+from synthetic_context import build_demo_scenarios, build_scenario_records, build_synthetic_context, today_continuity
 
 
 st.set_page_config(
@@ -40,75 +38,6 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-
-SCENARIOS = {
-    "AI Agent Governance Discussion": {
-        "folder": "ai_governance",
-        "title": "AI Agent Governance Discussion",
-        "objective": "Explore how agent governance could apply to an executive meeting-preparation use case and identify the questions that would require further consideration.",
-        "attendees": "CIO; UW-IT partner; HR leader; AI governance lead",
-        "questions": [
-            "What minimum information should every UW AI agent disclose before it is approved or deployed?",
-            "Should agent registration and oversight be centralized or managed through a federated UW/UW Medicine model?",
-            "Which roles would be needed to evaluate this use case, and what evidence would be required before any institutional integration could be considered?",
-        ],
-        "next_steps": [
-            "Identify the roles that would be needed to evaluate a limited use case.",
-            "Define possible success measures, including preparation time saved, factual accuracy, source coverage, and executive usefulness.",
-            "Document the privacy, security, records-management, and governance reviews that would be required before any institutional connection could be considered.",
-        ],
-    },
-    "Executive Technology Investment Review": {
-        "folder": "technology_investment",
-        "title": "Executive Technology Investment Review",
-        "objective": "Decide whether to fund a two-phase clinical operations analytics modernization initiative and establish financial and delivery guardrails.",
-        "attendees": "CIO; CFO; clinical operations leader; enterprise architecture lead; finance partner",
-        "questions": [
-            "Which measurable operational outcome must the first phase deliver before additional funding is released?",
-            "What costs and dependencies are not yet included in the current estimate?",
-            "Which executive owns benefit realization after the technology is delivered?",
-        ],
-        "next_steps": [
-            "Confirm the phase-one funding ceiling, executive sponsor, and accountable benefit owner.",
-            "Validate integration, change-management, security, and ongoing support costs before contracting.",
-            "Schedule a 90-day value review with agreed financial and operational measures.",
-        ],
-    },
-    "UW Medicine Operational Risk Review": {
-        "folder": "operational_risk",
-        "title": "UW Medicine Digital Operations Risk Review",
-        "objective": "Assess readiness for a limited clinical-support technology pilot and decide whether operational, security, and continuity risks are sufficiently controlled.",
-        "attendees": "CIO; clinical operations leader; CISO delegate; patient safety representative; service owner",
-        "questions": [
-            "What event would trigger an immediate pause or rollback of the pilot?",
-            "Who has final authority during a patient-safety, cybersecurity, or service-continuity incident?",
-            "What evidence must be reviewed before the pilot expands beyond the initial unit?",
-        ],
-        "next_steps": [
-            "Name the service owner, clinical safety owner, and incident decision authority.",
-            "Complete a tabletop exercise covering downtime, incorrect output, and access-control failure.",
-            "Approve measurable go/no-go thresholds and a documented rollback plan before launch.",
-        ],
-    },
-}
-
-
-def read_file(uploaded):
-    name = uploaded.name.lower()
-    raw = uploaded.read()
-    if name.endswith((".txt", ".md")):
-        return raw.decode("utf-8", errors="ignore")
-    if name.endswith(".pdf"):
-        return "\n".join((p.extract_text() or "") for p in PdfReader(BytesIO(raw)).pages)
-    if name.endswith(".docx"):
-        return "\n".join(p.text for p in Document(BytesIO(raw)).paragraphs)
-    return ""
-
-
-def source_label(filename):
-    stem = re.sub(r"[_-]+", " ", filename.rsplit(".", 1)[0]).strip().title()
-    return stem or filename
-
 
 def find_sentences(records, keywords, limit=4, labels=None, excluded=None):
     found = []
@@ -308,6 +237,7 @@ for column, number, title, description in [
 
 operating_context = build_synthetic_context(date.today())
 continuity = today_continuity(operating_context)
+SCENARIOS = build_demo_scenarios(operating_context)
 
 st.subheader("Today's executive operating context")
 st.caption("A synthetic five-week timeline: three weeks of operating history and two weeks of forward plans.")
@@ -389,6 +319,7 @@ with scenario_action:
         st.session_state.meeting_title = scenario["title"]
         st.session_state.meeting_objective = scenario["objective"]
         st.session_state.attendees = scenario["attendees"]
+        st.session_state.meeting_date = scenario["date"]
         st.session_state.active_scenario = scenario_name
         st.session_state.pop("brief", None)
         st.rerun()
@@ -401,6 +332,8 @@ if "meeting_objective" not in st.session_state:
     st.session_state.meeting_objective = SCENARIOS["Executive Technology Investment Review"]["objective"]
 if "attendees" not in st.session_state:
     st.session_state.attendees = SCENARIOS["Executive Technology Investment Review"]["attendees"]
+if "meeting_date" not in st.session_state:
+    st.session_state.meeting_date = SCENARIOS["Executive Technology Investment Review"]["date"]
 
 left, right = st.columns([1.15, 1])
 with left:
@@ -411,20 +344,13 @@ with left:
         height=95,
     )
 with right:
-    meeting_date = st.date_input("Meeting date", value=date.today())
+    meeting_date = st.date_input("Meeting date", key="meeting_date")
     attendees = st.text_area("Attendees / roles", key="attendees", height=95)
 
 records = []
 if st.session_state.get("active_scenario"):
     active_name = st.session_state.active_scenario
-    sample_dir = Path(__file__).parent / "sample_data" / SCENARIOS[active_name]["folder"]
-    for path in [
-        sample_dir / "agenda.txt",
-        sample_dir / "prior_discussion_notes.txt",
-        sample_dir / "background_memo.txt",
-    ]:
-        if path.exists():
-            records.append({"name": path.name, "label": source_label(path.name), "text": path.read_text(encoding="utf-8")})
+    records = build_scenario_records(operating_context, active_name)
 
 if records:
     st.info("Sources ready: " + ", ".join(r["name"] for r in records))
