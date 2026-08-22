@@ -4,6 +4,8 @@ This independent exploratory Streamlit prototype demonstrates one Chief of Staff
 
 `synthetic_context.py` is the single source of truth for a fully synthetic five-week executive operating context. It covers 21 days before the current date through 14 days after it, including day-by-day calendar entries, fictional participants, meeting notes, decisions, action items, initiatives, deliverables, and charters. The app uses the initiatives themselves as selectable scenarios and derives each initiative's relevant meeting, agenda, prior notes, background, questions, and next steps from its linked records.
 
+The initiative selector appears above the timeline. Changing it immediately filters the people, prior meetings, prior decisions, prior actions, upcoming meetings, actions due and owners, upcoming decisions, and detailed supporting lists to the selected initiative.
+
 ## Run on Windows
 
 1. Extract the ZIP file.

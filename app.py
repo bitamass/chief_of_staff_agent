@@ -4,7 +4,7 @@ from io import BytesIO
 
 import streamlit as st
 from docx import Document
-from synthetic_context import build_initiative_scenarios, build_scenario_records, build_synthetic_context, today_continuity
+from synthetic_context import build_initiative_scenarios, build_scenario_records, build_synthetic_context, initiative_continuity
 
 
 st.set_page_config(
@@ -208,37 +208,62 @@ st.markdown(
 )
 
 operating_context = build_synthetic_context(date.today())
-continuity = today_continuity(operating_context)
 SCENARIOS = build_initiative_scenarios(operating_context)
 
-st.subheader("Today's executive operating context")
-st.caption("A synthetic five-week timeline: three weeks of operating history and two weeks of forward plans.")
-cm1, cm2, cm3, cm4 = st.columns(4)
-cm1.metric("Prior decisions", len(operating_context["decisions"]))
-cm2.metric("Open actions", len(continuity["open_actions"]))
-cm3.metric("Active initiatives", len(operating_context["initiatives"]))
-cm4.metric("Upcoming meetings", len(continuity["upcoming_meetings"]))
+st.subheader("Choose an initiative")
+scenario_name = st.selectbox(
+    "Initiative",
+    list(SCENARIOS),
+    label_visibility="collapsed",
+    key="scenario_name",
+)
+scenario = SCENARIOS[scenario_name]
+continuity = initiative_continuity(operating_context, scenario["initiative_id"])
 
-history_col, future_col = st.columns(2)
-with history_col:
-    st.markdown("#### What led to today")
-    for item in continuity["recent_decisions"]:
+st.markdown("#### People connected to this initiative")
+people_columns = st.columns(min(len(continuity["participants"]), 4))
+for index, person in enumerate(continuity["participants"]):
+    with people_columns[index % len(people_columns)]:
+        st.markdown(f"**{person['name']}**  \n{person['role']}")
+
+st.subheader("Executive timeline")
+st.caption(f"Filtered to {scenario_name}: three weeks of operating history and two weeks of forward plans.")
+
+st.markdown("#### Prior context")
+past1, past2, past3 = st.columns(3)
+past1.metric("Prior meetings", len(continuity["prior_meetings"]))
+past2.metric("Prior decisions", len(continuity["prior_decisions"]))
+past3.metric("Prior actions", len(continuity["prior_actions"]))
+
+st.markdown("#### Forward view")
+future1, future2, future3 = st.columns(3)
+future1.metric("Upcoming meetings", len(continuity["upcoming_meetings"]))
+future2.metric("Actions due and owners", len(continuity["actions_due"]))
+future3.metric("Upcoming decisions", len(continuity["upcoming_decisions"]))
+
+st.markdown("#### Meetings, decisions, and actions for the selected initiative")
+detail_meetings, detail_decisions, detail_actions = st.columns(3)
+with detail_meetings:
+    st.markdown("##### Meetings")
+    for item in reversed(continuity["prior_meetings"]):
+        st.markdown(f"- **Prior · {item['date']:%b %d}:** {item['title']}")
+    for item in continuity["current_meetings"]:
+        st.markdown(f"- **Today · {item['date']:%b %d}:** {item['title']}")
+    for item in continuity["upcoming_meetings"]:
+        st.markdown(f"- **Upcoming · {item['date']:%b %d}:** {item['title']}")
+with detail_decisions:
+    st.markdown("##### Decisions")
+    for item in reversed(continuity["prior_decisions"]):
         source_meeting = operating_context["meetings"][item["meeting_id"]]
-        st.markdown(
-            f"- **{item['date']:%b %d}:** {item['decision']}  \n"
-            f"  <span class='source'>Source: {source_meeting['title']}</span>",
-            unsafe_allow_html=True,
-        )
-with future_col:
-    st.markdown("#### What today's decisions affect")
-    for item in continuity["open_actions"]:
-        review_meeting = operating_context["meetings"][item["review_meeting_id"]]
+        st.markdown(f"- **Made · {item['date']:%b %d}:** {item['decision']}  \n  <span class='source'>{source_meeting['title']}</span>", unsafe_allow_html=True)
+    for item in continuity["upcoming_decisions"]:
+        meeting = operating_context["meetings"][item["meeting_id"]]
+        st.markdown(f"- **Upcoming · {item['date']:%b %d}:** {item['decision']}  \n  <span class='source'>{meeting['title']}</span>", unsafe_allow_html=True)
+with detail_actions:
+    st.markdown("##### Actions")
+    for item in continuity["all_actions"]:
         owner = operating_context["participants"][item["owner"]]
-        st.markdown(
-            f"- **Due {item['due_date']:%b %d}:** {item['action']}  \n"
-            f"  <span class='source'>Owner: {owner['role']} · Reviewed at {review_meeting['title']} on {review_meeting['date']:%b %d}</span>",
-            unsafe_allow_html=True,
-        )
+        st.markdown(f"- **{item['status']} · Due {item['due_date']:%b %d}:** {item['action']}  \n  <span class='source'>Owner: {owner['name']} — {owner['role']}</span>", unsafe_allow_html=True)
 
 with st.expander("Explore the complete five-week synthetic calendar and supporting records"):
     calendar_rows = []
@@ -272,15 +297,7 @@ with st.sidebar:
     st.subheader("Future state—not connected")
     st.caption("Outlook calendar · Teams summaries · SharePoint · Approved external intelligence")
 
-st.subheader("Choose an initiative")
-scenario_order = list(SCENARIOS)
-scenario_name = st.selectbox(
-    "Initiative",
-    scenario_order,
-    label_visibility="collapsed",
-    key="scenario_name",
-)
-scenario = SCENARIOS[scenario_name]
+st.subheader("Prepare the selected initiative brief")
 scenario_action, scenario_description = st.columns([1, 2.4])
 with scenario_action:
     if st.button("Load Sample Meeting Materials", width="stretch"):

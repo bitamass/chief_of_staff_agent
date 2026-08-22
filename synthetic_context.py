@@ -74,6 +74,15 @@ ACTIONS = [
     {"id": "act04", "source_meeting_id": "m06", "initiative_id": "init02", "owner": "p06", "due_offset": 12, "status": "Planned", "action": "Capture validation feedback and recommend whether to develop requirements.", "review_meeting_id": "m12"},
 ]
 
+UPCOMING_DECISIONS = [
+    {"id": "ud01", "meeting_id": "m09", "initiative_id": "init02", "decision": "Determine whether the executive brief is useful and complete enough to justify continued concept validation."},
+    {"id": "ud02", "meeting_id": "m18", "initiative_id": "init01", "decision": "Confirm the funding ceiling, benefit owner, and conditions required before phase-one funds are released."},
+    {"id": "ud03", "meeting_id": "m11", "initiative_id": "init01", "decision": "Approve or revise the phase-one charter, accountable owners, measures, and release criteria."},
+    {"id": "ud04", "meeting_id": "m20", "initiative_id": "init01", "decision": "Determine whether the initiative is ready for an executive pilot recommendation."},
+    {"id": "ud05", "meeting_id": "m12", "initiative_id": "init02", "decision": "Decide whether to develop a formal requirements package for the Agentification Pilot."},
+    {"id": "ud06", "meeting_id": "m13", "initiative_id": "init01", "decision": "Reconcile dependencies and determine the next stage for the initiative portfolio."},
+]
+
 def build_synthetic_context(today):
     """Return the complete, dated five-week synthetic context."""
     calendar = [{"offset": offset, "date": today + timedelta(days=offset), "meeting": MEETING_EVENTS.get(offset)} for offset in range(-21, 15)]
@@ -81,7 +90,8 @@ def build_synthetic_context(today):
     decisions = [{**item, "date": today + timedelta(days=item["offset"])} for item in DECISIONS]
     actions = [{**item, "due_date": today + timedelta(days=item["due_offset"])} for item in ACTIONS]
     deliverables = {key: {**item, "due_date": today + timedelta(days=item["due_offset"])} for key, item in DELIVERABLES.items()}
-    return {"today": today, "calendar": calendar, "meetings": meetings, "participants": PARTICIPANTS, "initiatives": INITIATIVES, "charters": CHARTERS, "deliverables": deliverables, "decisions": decisions, "actions": actions}
+    upcoming_decisions = [{**item, "date": meetings[item["meeting_id"]]["date"]} for item in UPCOMING_DECISIONS]
+    return {"today": today, "calendar": calendar, "meetings": meetings, "participants": PARTICIPANTS, "initiatives": INITIATIVES, "charters": CHARTERS, "deliverables": deliverables, "decisions": decisions, "actions": actions, "upcoming_decisions": upcoming_decisions}
 
 
 def build_initiative_scenarios(context):
@@ -184,7 +194,56 @@ def build_scenario_records(context, initiative_name):
 def today_continuity(context):
     """Return the operating history and forward dependencies relevant today."""
     today = context["today"]
-    recent = sorted((d for d in context["decisions"] if d["date"] <= today), key=lambda x: x["date"], reverse=True)[:4]
-    actions = sorted((a for a in context["actions"] if a["status"] != "Complete" and a["due_date"] >= today), key=lambda x: x["due_date"])
-    meetings = sorted((m for m in context["meetings"].values() if m["date"] > today), key=lambda x: x["date"])[:5]
-    return {"recent_decisions": recent, "open_actions": actions, "upcoming_meetings": meetings}
+    prior_meetings = sorted((m for m in context["meetings"].values() if m["date"] < today), key=lambda x: x["date"], reverse=True)
+    prior_decisions = sorted((d for d in context["decisions"] if d["date"] <= today), key=lambda x: x["date"], reverse=True)
+    prior_actions = sorted((a for a in context["actions"] if a["status"] == "Complete" or a["due_date"] < today), key=lambda x: x["due_date"], reverse=True)
+    upcoming_meetings = sorted((m for m in context["meetings"].values() if m["date"] > today), key=lambda x: x["date"])
+    actions_due = sorted((a for a in context["actions"] if a["status"] != "Complete" and a["due_date"] >= today), key=lambda x: x["due_date"])
+    upcoming_decisions = sorted((d for d in context["upcoming_decisions"] if d["date"] > today), key=lambda x: x["date"])
+    return {
+        "prior_meetings": prior_meetings,
+        "prior_decisions": prior_decisions,
+        "prior_actions": prior_actions,
+        "upcoming_meetings": upcoming_meetings,
+        "actions_due": actions_due,
+        "upcoming_decisions": upcoming_decisions,
+    }
+
+
+def initiative_continuity(context, initiative_id):
+    """Return past and forward records for one selected initiative."""
+    today = context["today"]
+    related_meetings = [
+        meeting for meeting in context["meetings"].values()
+        if initiative_id in meeting["initiative_ids"]
+    ]
+    prior_meetings = sorted((m for m in related_meetings if m["date"] < today), key=lambda x: x["date"], reverse=True)
+    upcoming_meetings = sorted((m for m in related_meetings if m["date"] > today), key=lambda x: x["date"])
+    current_meetings = sorted((m for m in related_meetings if m["date"] == today), key=lambda x: x["date"])
+    prior_decisions = sorted(
+        (d for d in context["decisions"] if d["initiative_id"] == initiative_id and d["date"] <= today),
+        key=lambda x: x["date"],
+        reverse=True,
+    )
+    upcoming_decisions = sorted(
+        (d for d in context["upcoming_decisions"] if d["initiative_id"] == initiative_id and d["date"] > today),
+        key=lambda x: x["date"],
+    )
+    all_actions = sorted(
+        (a for a in context["actions"] if a["initiative_id"] == initiative_id),
+        key=lambda x: x["due_date"],
+    )
+    prior_actions = [a for a in all_actions if a["status"] == "Complete" or a["due_date"] < today]
+    actions_due = [a for a in all_actions if a["status"] != "Complete" and a["due_date"] >= today]
+    participant_ids = sorted({pid for meeting in related_meetings for pid in meeting["participants"]})
+    return {
+        "prior_meetings": prior_meetings,
+        "current_meetings": current_meetings,
+        "upcoming_meetings": upcoming_meetings,
+        "prior_decisions": prior_decisions,
+        "upcoming_decisions": upcoming_decisions,
+        "prior_actions": prior_actions,
+        "actions_due": actions_due,
+        "all_actions": all_actions,
+        "participants": [context["participants"][pid] for pid in participant_ids],
+    }
