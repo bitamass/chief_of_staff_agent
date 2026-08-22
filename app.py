@@ -6,6 +6,7 @@ from pathlib import Path
 import streamlit as st
 from docx import Document
 from pypdf import PdfReader
+from synthetic_context import build_synthetic_context, today_continuity
 
 
 st.set_page_config(
@@ -305,6 +306,56 @@ for column, number, title, description in [
             unsafe_allow_html=True,
         )
 
+operating_context = build_synthetic_context(date.today())
+continuity = today_continuity(operating_context)
+
+st.subheader("Today's executive operating context")
+st.caption("A synthetic five-week timeline: three weeks of operating history and two weeks of forward plans.")
+cm1, cm2, cm3, cm4 = st.columns(4)
+cm1.metric("Prior decisions", len(operating_context["decisions"]))
+cm2.metric("Open actions", len(continuity["open_actions"]))
+cm3.metric("Active initiatives", len(operating_context["initiatives"]))
+cm4.metric("Upcoming meetings", len(continuity["upcoming_meetings"]))
+
+history_col, future_col = st.columns(2)
+with history_col:
+    st.markdown("#### What led to today")
+    for item in continuity["recent_decisions"]:
+        source_meeting = operating_context["meetings"][item["meeting_id"]]
+        st.markdown(
+            f"- **{item['date']:%b %d}:** {item['decision']}  \n"
+            f"  <span class='source'>Source: {source_meeting['title']}</span>",
+            unsafe_allow_html=True,
+        )
+with future_col:
+    st.markdown("#### What today's decisions affect")
+    for item in continuity["open_actions"]:
+        review_meeting = operating_context["meetings"][item["review_meeting_id"]]
+        owner = operating_context["participants"][item["owner"]]
+        st.markdown(
+            f"- **Due {item['due_date']:%b %d}:** {item['action']}  \n"
+            f"  <span class='source'>Owner: {owner['role']} · Reviewed at {review_meeting['title']} on {review_meeting['date']:%b %d}</span>",
+            unsafe_allow_html=True,
+        )
+
+with st.expander("Explore the complete five-week synthetic calendar and supporting records"):
+    calendar_rows = []
+    for day in operating_context["calendar"]:
+        event = day["meeting"]
+        calendar_rows.append({
+            "Date": day["date"].strftime("%a, %b %d"),
+            "Relative day": "Today" if day["offset"] == 0 else f"{day['offset']:+d}",
+            "Meeting": event["title"] if event else "—",
+            "Context": event["summary"] if event else "No scheduled executive meeting; continuity retained.",
+        })
+    st.dataframe(calendar_rows, width="stretch", hide_index=True)
+    st.markdown("#### Documented backend records")
+    st.write("**Participants:** " + ", ".join(p["role"] for p in operating_context["participants"].values()))
+    st.write("**Initiatives:** " + "; ".join(i["name"] for i in operating_context["initiatives"].values()))
+    st.write("**Charters:** " + "; ".join(c["title"] for c in operating_context["charters"].values()))
+    st.write("**Deliverables:** " + "; ".join(d["name"] for d in operating_context["deliverables"].values()))
+    st.caption("Every meeting, decision, action, initiative, charter, and deliverable uses a synthetic identifier so related records can be traced across time.")
+
 with st.sidebar:
     st.header("Demonstration Safeguards")
     st.success("Guided demonstration")
@@ -334,7 +385,7 @@ scenario_name = st.selectbox(
 scenario = SCENARIOS[scenario_name]
 scenario_action, scenario_description = st.columns([1, 2.4])
 with scenario_action:
-    if st.button("Load Sample Meeting Materials", use_container_width=True):
+    if st.button("Load Sample Meeting Materials", width="stretch"):
         st.session_state.meeting_title = scenario["title"]
         st.session_state.meeting_objective = scenario["objective"]
         st.session_state.attendees = scenario["attendees"]
@@ -378,7 +429,7 @@ if st.session_state.get("active_scenario"):
 if records:
     st.info("Sources ready: " + ", ".join(r["name"] for r in records))
 
-if st.button("Create Executive Meeting Brief", use_container_width=True):
+if st.button("Create Executive Meeting Brief", width="stretch"):
     if not records:
         st.warning("Select Load Sample Meeting Materials before creating the brief.")
     else:
@@ -446,8 +497,8 @@ if "brief" in st.session_state:
     md = brief_markdown(brief, saved_records)
     docx = brief_docx(brief, saved_records)
     d1, d2 = st.columns(2)
-    d1.download_button("Download Word Brief", docx, "executive_meeting_brief.docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", use_container_width=True)
-    d2.download_button("Download Markdown Brief", md, "executive_meeting_brief.md", "text/markdown", use_container_width=True)
+    d1.download_button("Download Word Brief", docx, "executive_meeting_brief.docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", width="stretch")
+    d2.download_button("Download Markdown Brief", md, "executive_meeting_brief.md", "text/markdown", width="stretch")
 
 with st.expander("Other potential Chief of Staff skills — not included in this prototype"):
     st.markdown(
