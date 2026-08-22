@@ -1,56 +1,54 @@
 """Synthetic executive context for the Chief of Staff demonstration.
 
-Everything in this module is fictional. Dates use offsets from ``today`` so
-the story always covers three weeks of history and two weeks of forward plans.
+Everything in this module is fictional, including individual names, titles, and roles.
+
+Dates use offsets from ``today`` so the model always covers three weeks of history and two weeks of forward plans.
 """
 
 from datetime import timedelta
 
 
 PARTICIPANTS = {
-    "p01": {"name": "Alex Morgan", "role": "Executive sponsor"},
-    "p02": {"name": "Jordan Lee", "role": "Technology leader"},
-    "p03": {"name": "Riley Chen", "role": "Finance partner"},
-    "p04": {"name": "Morgan Patel", "role": "Clinical operations leader"},
-    "p05": {"name": "Casey Williams", "role": "Enterprise architecture lead"},
+    "p01": {"name": "Alex Morgan", "role": "Chief Technology Officer"},
+    "p02": {"name": "Jordan Lee", "role": "Senior Technology Manager"},
+    "p03": {"name": "Riley Chen", "role": "Finance Manager"},
+    "p04": {"name": "Morgan Patel", "role": "Clinical Operations Manager"},
+    "p05": {"name": "Casey Williams", "role": "Enterprise architect"},
     "p06": {"name": "Taylor Brooks", "role": "Program director"},
-    "p07": {"name": "Avery Johnson", "role": "Security and privacy partner"},
-    "p08": {"name": "Cameron Davis", "role": "Patient safety representative"},
-    "p09": {"name": "Drew Thompson", "role": "Service owner"},
+    "p07": {"name": "Avery Johnson", "role": "Enterprise Security and privacy Manager"},
 }
 
 INITIATIVES = {
-    "init01": {"name": "Clinical Operations Analytics Modernization", "owner": "p06", "status": "Proposed phase-one pilot", "objective": "Reduce manual reporting and improve decision latency.", "charter_id": "charter01"},
-    "init02": {"name": "Executive Decision Intelligence Pilot", "owner": "p02", "status": "Concept validation", "objective": "Test source-linked preparation of executive meeting briefs.", "charter_id": "charter02"},
+    "init01": {"name": "Clinical Operations Modernization", "owner": "p06", "status": "Proposed phase-one pilot", "objective": "Reduce manual reporting and improve decision latency.", "charter_id": "charter01"},
+    "init02": {"name": "Agentification Pilot", "owner": "p02", "status": "Concept validation", "objective": "Test source-linked preparation of executive meeting briefs.", "charter_id": "charter02"},
 }
 
 CHARTERS = {
-    "charter01": {"title": "Analytics Modernization Phase-One Charter", "scope": "One operational domain, approved data, and a 90-day value review.", "out_of_scope": "Enterprise rollout, autonomous decisions, and unapproved clinical data.", "success_measures": ["Preparation time", "Accuracy", "Adoption", "Documented value"]},
+    "charter01": {"title": "Clinical Operations Modernization Phase 1 Charter", "scope": "One operational domain, approved data, and a 90-day value review.", "out_of_scope": "Enterprise rollout, autonomous decisions, and unapproved clinical data.", "success_measures": ["Preparation time", "Accuracy", "Adoption", "Documented value"]},
     "charter02": {"title": "Executive Decision Intelligence Concept Charter", "scope": "Meeting preparation from curated demonstration documents with human review.", "out_of_scope": "Production integrations, autonomous actions, and institutional deployment.", "success_measures": ["Factual accuracy", "Source traceability", "Executive usefulness", "Time saved"]},
 }
 
 DELIVERABLES = {
     "del01": {"name": "Phase-one cost and dependency model", "initiative_id": "init01", "owner": "p03", "due_offset": 3, "status": "In progress"},
     "del02": {"name": "Integration and security readiness assessment", "initiative_id": "init01", "owner": "p05", "due_offset": 7, "status": "Not started"},
-    "del03": {"name": "Executive meeting brief prototype", "initiative_id": "init02", "owner": "p02", "due_offset": -2, "status": "Draft complete"},
-    "del04": {"name": "Concept-validation findings", "initiative_id": "init02", "owner": "p06", "due_offset": 12, "status": "Planned"},
+    "del03": {"name": "Executive meeting brief", "initiative_id": "init02", "owner": "p02", "due_offset": -2, "status": "Draft complete"},
+    "del04": {"name": "Concept validation findings", "initiative_id": "init02", "owner": "p06", "due_offset": 12, "status": "Planned"},
 }
 
 MEETING_EVENTS = {
-    -21: {"id": "m01", "title": "Monthly Portfolio Review", "participants": ["p01", "p02", "p03", "p06"], "initiative_ids": ["init01", "init02"], "summary": "Leadership requested clearer benefit measures before new commitments."},
+    -21: {"id": "m01", "title": "Monthly Business Review", "participants": ["p01", "p02", "p03", "p06"], "initiative_ids": ["init01", "init02"], "summary": "Leadership requested clearer benefit measures before new commitments."},
     -18: {"id": "m02", "title": "Analytics Discovery Session", "participants": ["p02", "p04", "p05", "p06"], "initiative_ids": ["init01"], "summary": "The team confirmed that reporting delays and inconsistent definitions are the primary problems."},
-    -15: {"id": "m03", "title": "Finance and Value Review", "participants": ["p03", "p04", "p06"], "initiative_ids": ["init01"], "summary": "Finance requested phased funding and a named owner for benefit realization."},
-    -12: {"id": "m04", "title": "Executive Support Use-Case Workshop", "participants": ["p01", "p02", "p06"], "initiative_ids": ["init02"], "summary": "Participants selected executive meeting preparation as the first skill to demonstrate."},
-    -9: {"id": "m05", "title": "Architecture and Risk Review", "participants": ["p02", "p05", "p07"], "initiative_ids": ["init01", "init02"], "summary": "The review identified identity, access, retention, traceability, and human review as required controls."},
-    -6: {"id": "m06", "title": "Prototype Content Review", "participants": ["p02", "p06", "p07"], "initiative_ids": ["init02"], "summary": "The group asked that current functionality be clearly separated from future capabilities."},
-    -3: {"id": "m07", "title": "Investment Pre-Read Review", "participants": ["p02", "p03", "p04", "p06"], "initiative_ids": ["init01"], "summary": "The estimate was incomplete without integration, support, and change-management costs."},
+    -15: {"id": "m03", "title": "Finance and ROI Review", "participants": ["p03", "p04", "p06"], "initiative_ids": ["init01"], "summary": "Finance requested phased funding and a named owner for benefit realization."},
+    -12: {"id": "m04", "title": "Executive Decision Support Workshop", "participants": ["p01", "p02", "p06"], "initiative_ids": ["init02"], "summary": "Participants selected executive meeting preparation as the first skill to demonstrate."},
+    -9: {"id": "m05", "title": "Enterprise Architecture and Risk Review", "participants": ["p02", "p05", "p07"], "initiative_ids": ["init01", "init02"], "summary": "The review identified identity, access, retention, traceability, and human review as required controls."},
+    -6: {"id": "m06", "title": "Agentification Prototype Content Review", "participants": ["p02", "p06", "p07"], "initiative_ids": ["init02"], "summary": "The group asked that current functionality be clearly separated from future capabilities."},
+    -3: {"id": "m07", "title": "Technology Investment Review", "participants": ["p02", "p03", "p04", "p06"], "initiative_ids": ["init01"], "summary": "The estimate was incomplete without integration, support, and change-management costs."},
     0: {"id": "m08", "title": "Executive Technology Investment Review", "participants": ["p01", "p02", "p03", "p04", "p05"], "initiative_ids": ["init01"], "summary": "Today: determine whether evidence supports a limited phase-one investment and define funding conditions."},
     2: {"id": "m09", "title": "Executive Brief Prototype Demonstration", "participants": ["p01", "p02", "p06"], "initiative_ids": ["init02"], "summary": "Demonstrate the meeting-preparation skill and collect feedback on usefulness and missing context."},
-    5: {"id": "m10", "title": "AI Agent Governance Discussion", "participants": ["p02", "p05", "p06", "p07"], "initiative_ids": ["init02"], "summary": "Explore governance questions and document controls required before any institutional connection."},
+    5: {"id": "m10", "title": "Security and Data Handling Working Session", "participants": ["p02", "p05", "p07"], "initiative_ids": ["init01", "init02"], "summary": "Document controls required before any institutional connection."},
     8: {"id": "m11", "title": "Phase-One Charter Review", "participants": ["p01", "p03", "p04", "p06"], "initiative_ids": ["init01"], "summary": "Review the revised charter, cost model, owners, and release criteria."},
-    10: {"id": "m14", "title": "UW Medicine Digital Operations Risk Review", "participants": ["p02", "p04", "p07", "p08", "p09"], "initiative_ids": ["init01"], "summary": "Assess whether operational, security, patient-safety, and continuity controls are sufficient for a limited pilot."},
-    12: {"id": "m12", "title": "Concept Validation Readout", "participants": ["p01", "p02", "p06", "p07"], "initiative_ids": ["init02"], "summary": "Review feedback and decide whether a formal requirements package should be developed."},
-    14: {"id": "m13", "title": "Biweekly Portfolio Decision Forum", "participants": ["p01", "p02", "p03", "p04", "p06"], "initiative_ids": ["init01", "init02"], "summary": "Reconcile decisions, dependencies, resources, and next-stage recommendations."},
+    12: {"id": "m12", "title": "Agentification Concept Validation Readout", "participants": ["p01", "p02", "p06", "p07"], "initiative_ids": ["init02"], "summary": "Review feedback and decide whether a formal requirements package should be developed."},
+    14: {"id": "m13", "title": "Biweekly Portfolio Review Governance", "participants": ["p01", "p02", "p03", "p04", "p06"], "initiative_ids": ["init01", "init02"], "summary": "Reconcile decisions, dependencies, resources, and next-stage recommendations."},
 }
 
 DECISIONS = [
@@ -73,7 +71,7 @@ ACTIONS = [
 DEMO_SCENARIO_CONFIG = {
     "Executive Technology Investment Review": {
         "meeting_id": "m08",
-        "objective": "Decide whether to fund a two-phase clinical operations analytics modernization initiative and establish financial and delivery guardrails.",
+        "objective": "Determine whether evidence supports a limited phase-one investment and define its funding, ownership, and delivery conditions.",
         "questions": [
             "Which measurable operational outcome must the first phase deliver before additional funding is released?",
             "What costs and dependencies are not yet included in the current estimate?",
@@ -85,32 +83,32 @@ DEMO_SCENARIO_CONFIG = {
             "Schedule a 90-day value review with agreed financial and operational measures.",
         ],
     },
-    "AI Agent Governance Discussion": {
-        "meeting_id": "m10",
-        "objective": "Explore how agent governance could apply to an executive meeting-preparation use case and identify questions requiring further consideration.",
+    "Executive Brief Prototype Demonstration": {
+        "meeting_id": "m09",
+        "objective": "Demonstrate the meeting-preparation skill and gather executive feedback on its usefulness, clarity, evidence, and missing context.",
         "questions": [
-            "What minimum information should every AI agent disclose before approval or deployment?",
-            "Should registration and oversight be centralized or managed through a federated model?",
-            "Which roles and evidence would be needed before institutional integration could be considered?",
+            "Which parts of the brief would be most useful before an executive meeting?",
+            "What important context or evidence is missing from the demonstration?",
+            "What level of human review would be required before the brief could be relied upon?",
         ],
         "next_steps": [
-            "Identify the roles needed to evaluate a limited use case.",
-            "Define measures for time saved, factual accuracy, source coverage, and executive usefulness.",
-            "Document required privacy, security, records-management, and governance reviews.",
+            "Capture feedback on usefulness, clarity, corrections, and missing information.",
+            "Confirm which executive-support workflow should be evaluated next.",
+            "Determine whether the concept merits a formal requirements package.",
         ],
     },
-    "UW Medicine Operational Risk Review": {
-        "meeting_id": "m14",
-        "objective": "Assess readiness for a limited clinical-support technology pilot and determine whether operational, security, patient-safety, and continuity risks are sufficiently controlled.",
+    "Security and Data Handling Working Session": {
+        "meeting_id": "m10",
+        "objective": "Document the security, privacy, identity, access, retention, and traceability controls required before any institutional connection.",
         "questions": [
-            "What event would trigger an immediate pause or rollback of the pilot?",
-            "Who has final authority during a patient-safety, cybersecurity, or continuity incident?",
-            "What evidence must be reviewed before expansion beyond the initial unit?",
+            "Which data classifications and sources would be appropriate for a limited evaluation?",
+            "Which identity, permission, logging, retention, and human-review controls are required?",
+            "Which reviews and accountable owners would be required before any connection is considered?",
         ],
         "next_steps": [
-            "Name the service owner, clinical safety owner, and incident decision authority.",
-            "Complete a tabletop exercise covering downtime, incorrect output, and access-control failure.",
-            "Approve measurable go/no-go thresholds and a documented rollback plan before launch.",
+            "Document the proposed data boundary and prohibited sources.",
+            "Identify required security, privacy, records-management, and architecture reviews.",
+            "Define evidence and approval conditions for any future integration decision.",
         ],
     },
 }

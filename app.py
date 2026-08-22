@@ -115,7 +115,8 @@ def make_demo_brief(title, objective, attendees, records, scenario_name=None):
     if not decisions:
         decisions = [("No approval decision is requested; identify the questions that merit further exploration.", "Agenda")]
 
-    scenario = SCENARIOS.get(scenario_name or "AI Agent Governance Discussion", SCENARIOS["AI Agent Governance Discussion"])
+    default_scenario = SCENARIOS["Executive Technology Investment Review"]
+    scenario = SCENARIOS.get(scenario_name or "Executive Technology Investment Review", default_scenario)
     questions = scenario["questions"]
     next_steps = scenario["next_steps"]
     return {
@@ -301,11 +302,7 @@ with st.sidebar:
     st.caption("Outlook calendar · Teams summaries · SharePoint · Approved external intelligence")
 
 st.subheader("Choose a demonstration scenario")
-scenario_order = [
-    "Executive Technology Investment Review",
-    "AI Agent Governance Discussion",
-    "UW Medicine Operational Risk Review",
-]
+scenario_order = list(SCENARIOS)
 scenario_name = st.selectbox(
     "Scenario",
     scenario_order,
