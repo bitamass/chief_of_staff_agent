@@ -8,7 +8,9 @@ The initiative selector appears above the timeline. Changing it immediately filt
 
 The four synthetic initiatives are Clinical Operations Modernization, Agentification Pilot, Monthly Business Review, and Clinical Research Developments. All names, roles, meetings, decisions, actions, and supporting records are fictional and created only for this demonstration.
 
-The app discovers numbered capability folders and their child skill folders directly from the repository. It currently connects selected meeting-intelligence, decision-log, and initiative-portfolio skills to the synthetic context; other discovered skills remain clearly labeled as framework-only until their instruction and input contracts are implemented.
+The app discovers numbered capability folders and their child skill folders directly from the repository checkout deployed by Streamlit. For the selected skill, it reads the available `SKILL.md`, `README.md`, `INPUTS.md`, `WORKFLOW.md`, `OUTPUTS.md`, `PROMPT.md`, and `EVALUATION.md` files. This does not require a GitHub API token or a live network request. Repository changes appear after Streamlit redeploys the latest commit.
+
+The app currently connects selected meeting-intelligence, decision-log, and initiative-portfolio skills to the synthetic context. Connected skills produce a working result; other discovered skills are clearly labeled as framework-only and their repository documentation remains available for review.
 
 ## Run on Windows
 

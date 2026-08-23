@@ -5,7 +5,7 @@ from pathlib import Path
 
 import streamlit as st
 from docx import Document
-from skill_catalog import CONNECTED_SKILLS, discover_capabilities
+from skill_catalog import CONNECTED_SKILLS, discover_skill_catalog
 from synthetic_context_v4 import DATASET_VERSION, build_initiative_scenarios, build_scenario_records, build_synthetic_context, initiative_continuity
 
 
@@ -230,7 +230,11 @@ for index, person in enumerate(continuity["participants"]):
     with people_columns[index % len(people_columns)]:
         st.markdown(f"**{person['name']}**  \n{person['role']}")
 
-capabilities = discover_capabilities(Path(__file__).parent)
+skill_catalog = discover_skill_catalog(Path(__file__).parent)
+capabilities = {
+    capability: list(skills)
+    for capability, skills in skill_catalog.items()
+}
 capability_labels = list(capabilities)
 default_capability_index = next((i for i, label in enumerate(capability_labels) if label.startswith("02 ")), 0)
 st.markdown("#### Choose a Chief of Staff capability and skill")
@@ -249,13 +253,44 @@ skill_name = st.selectbox(
     index=default_skill_index,
     key=f"skill_name_{capability_name}",
 )
-if skill_name in CONNECTED_SKILLS:
-    st.success(f"Selected repository skill: {capability_name} → {skill_name}")
+selected_skill = skill_catalog[capability_name][skill_name]
+repository_documents = selected_skill["documents"]
+if selected_skill["source"] == "repository":
+    definition_status = f"Loaded from `{selected_skill['repository_path']}`"
+else:
+    definition_status = "Repository skill folders were not included in this deployment; using the built-in catalog fallback."
+
+if selected_skill["connected"]:
+    st.success(f"Connected skill: {capability_name} → {skill_name}. {definition_status}")
 else:
     st.info(
-        f"{skill_name} is available in the repository framework but is not yet connected to this demo's synthetic inputs. "
-        "Its SKILL, INPUTS, WORKFLOW, OUTPUTS, PROMPT, and EVALUATION files should be reviewed before activation."
+        f"Framework-only skill: {capability_name} → {skill_name}. {definition_status} "
+        "The definition can be reviewed, but this prototype does not execute it yet."
     )
+
+with st.expander("View the selected repository skill definition"):
+    if repository_documents:
+        st.caption(
+            "These files were read from the GitHub repository checkout deployed with this Streamlit app. "
+            "No live GitHub API connection or token is used."
+        )
+        document_labels = {
+            "SKILL.md": "Skill definition",
+            "README.md": "Overview",
+            "INPUTS.md": "Required inputs",
+            "WORKFLOW.md": "Workflow",
+            "OUTPUTS.md": "Expected outputs",
+            "PROMPT.md": "Prompt instructions",
+            "EVALUATION.md": "Evaluation criteria",
+        }
+        for filename, content in repository_documents.items():
+            st.markdown(f"##### {document_labels.get(filename, filename)}")
+            st.markdown(content)
+    else:
+        st.warning(
+            "No definition files were found for this skill in the deployed app. "
+            "Confirm that the numbered capability folders were uploaded to the repository root."
+        )
 
 st.subheader("Executive timeline")
 st.caption(f"Filtered to {scenario_name}: three weeks of operating history and two weeks of forward plans.")
