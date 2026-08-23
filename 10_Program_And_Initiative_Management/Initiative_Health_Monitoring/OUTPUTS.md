@@ -1,10 +1,10 @@
 # Outputs — Initiative Health Monitoring
 
 ## Required work product
-- Purpose-built initiative health monitoring executive work product
-- Evidence, owner, date, status, and source fields
-- Analysis findings and exceptions
-- Recommended action and human-review requirement
+- Initiative health scorecard
+- Scope, schedule, cost, risk, resource, and outcome ratings
+- Trend, evidence, and root causes
+- Recovery action and executive support required
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

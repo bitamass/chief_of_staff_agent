@@ -1,10 +1,10 @@
 # Outputs — Calendar Prioritization
 
 ## Required work product
-- Weighted scoring matrix
-- 1–5 score and rationale for every candidate
-- Ranked priority list
-- Fund, keep, sequence, defer, delegate, or stop recommendation
+- Prioritized and time-blocked calendar
+- Meeting scores and rationale
+- Protected preparation and focus blocks
+- Attend, delegate, shorten, reschedule, or decline recommendations
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

@@ -1,6 +1,6 @@
 ---
 name: executive-communications-board-meeting-summaries
-description: Perform board meeting summaries using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform board meeting summaries using its specific evidence contract, business logic, and executive output.
 ---
 # Board Meeting Summaries
 
@@ -8,10 +8,10 @@ description: Perform board meeting summaries using the named evidence, business 
 Perform **board meeting summaries** as a distinct executive workflow—not as a generic summary.
 
 ## Skill logic
-1. Normalize the dated source evidence.
-2. Apply the skill-specific business rules.
-3. Identify exceptions, dependencies, owners, and uncertainty.
-4. Produce the required executive work product and recommendations.
+1. Preserve the chronology and source of prior discussions.
+2. Separate discussion, decisions, commitments, actions, and unresolved questions.
+3. Consolidate repeated themes and identify changes in position.
+4. Highlight context that affects the upcoming executive discussion.
 
 ## Operating rules
 - Use INPUTS.md as the evidence contract.

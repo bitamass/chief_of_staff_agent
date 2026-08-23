@@ -1,6 +1,6 @@
 ---
 name: initiative-strategic-alignment-map-initiatives-to-strategic-objectives
-description: Perform map initiatives to strategic objectives using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform map initiatives to strategic objectives using its specific evidence contract, business logic, and executive output.
 ---
 # Map Initiatives To Strategic Objectives
 
@@ -9,8 +9,8 @@ Perform **map initiatives to strategic objectives** as a distinct executive work
 
 ## Skill logic
 1. Trace objectives to outcomes, measures, milestones, and deliverables.
-2. Compare current evidence with plan, target, and capacity.
-3. Identify variance, dependencies, duplication, and root causes.
+2. Compare current evidence with plan, target, dependency, and capacity.
+3. Identify variance, duplication, conflicts, gaps, and root causes.
 4. Recommend sequencing, recovery, resource, or governance intervention.
 
 ## Operating rules

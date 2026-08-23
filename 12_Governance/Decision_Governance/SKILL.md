@@ -1,6 +1,6 @@
 ---
 name: governance-decision-governance
-description: Perform decision governance using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform decision governance using its specific evidence contract, business logic, and executive output.
 ---
 # Decision Governance
 
@@ -8,10 +8,10 @@ description: Perform decision governance using the named evidence, business rule
 Perform **decision governance** as a distinct executive workflow—not as a generic summary.
 
 ## Skill logic
-1. Frame the exact decision, authority, deadline, and desired outcome.
-2. Compare options against explicit criteria and constraints.
-3. Document rationale, consequences, assumptions, and missing evidence.
-4. Recommend a path while preserving human decision authority.
+1. Verify the decision or approval statement, authority, scope, and deadline.
+2. Document options, rationale, consequences, and evidence gaps.
+3. Link the decision to affected work and follow-up actions.
+4. Flag conflicting, superseded, or not-yet-approved records.
 
 ## Operating rules
 - Use INPUTS.md as the evidence contract.

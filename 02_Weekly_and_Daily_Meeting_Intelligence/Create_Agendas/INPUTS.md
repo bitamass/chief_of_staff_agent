@@ -1,11 +1,11 @@
 # Inputs — Create Agendas
 
 ## Required inputs
-- Meeting objective and desired outcomes
-- Decision questions and required approvals
+- Meeting objective, desired outcomes, and available time
+- Decision questions and approvals required
 - Participants, roles, and topic owners
 - Prior decisions, open actions, and unresolved issues
-- Available meeting time and required pre-reads
+- Required evidence, pre-reads, and follow-up method
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

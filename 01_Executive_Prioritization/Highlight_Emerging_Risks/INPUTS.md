@@ -1,10 +1,10 @@
 # Inputs — Highlight Emerging Risks
 
 ## Required inputs
-- Approved strategic goals and top business priorities
-- Initiative charters, benefits, owners, and requested decisions
-- Deliverables, deadlines, dependencies, effort, and capacity
-- Priority criteria, weights, and consequences of delay
+- Risk register and active issue log
+- Scores, trends, controls, mitigations, and owners
+- Thresholds, review dates, and escalation criteria
+- Affected initiatives, decisions, and deliverables
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

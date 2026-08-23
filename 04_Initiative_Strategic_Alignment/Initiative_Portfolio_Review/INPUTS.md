@@ -1,10 +1,10 @@
 # Inputs — Initiative Portfolio Review
 
 ## Required inputs
-- Approved strategic objectives and enterprise priorities
-- Initiative charters, outcomes, deliverables, and owners
-- OKRs, measures, benefits, dependencies, and resource demand
-- Portfolio status, risks, duplication, and investment constraints
+- Complete initiative portfolio and charters
+- Strategic goals and expected benefits
+- Status, cost, risk, dependencies, and resource demand
+- Priority criteria, capacity, and investment constraints
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

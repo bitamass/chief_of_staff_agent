@@ -2,7 +2,7 @@
 
 ## Required inputs
 - Stakeholder roster and role descriptions
-- Formal decision rights and reporting relationships
+- Formal authority and reporting relationships
 - Evidence of influence, interest, impact, and current position
 - Relevant decisions and engagement history
 

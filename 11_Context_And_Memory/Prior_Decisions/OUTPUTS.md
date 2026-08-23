@@ -1,10 +1,10 @@
 # Outputs — Prior Decisions
 
 ## Required work product
-- Decision or approval queue
-- Authority, deadline, options, and readiness
-- Evidence gaps and consequence of delay
-- Recommended next action
+- Source-linked decision register
+- Decision, authority, date, rationale, and status
+- Alternatives, implications, and affected work
+- Follow-up actions and amendment history
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

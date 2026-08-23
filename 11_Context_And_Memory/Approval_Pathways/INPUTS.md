@@ -1,10 +1,10 @@
 # Inputs — Approval Pathways
 
 ## Required inputs
-- Approved organizational records and effective dates
-- Meeting notes, decisions, assumptions, blockers, and milestones
-- Structures, roles, committees, authorities, and reporting lines
-- Strategic priorities, source ownership, validity, and revision history
+- Decision or request type
+- Policies, thresholds, committees, and delegated authorities
+- Required evidence, reviews, and sequencing
+- Prior approved examples and escalation route
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

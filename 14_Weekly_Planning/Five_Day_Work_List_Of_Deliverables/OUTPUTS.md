@@ -1,10 +1,10 @@
 # Outputs — Five Day Work List Of Deliverables
 
 ## Required work product
-- Accountability register
-- Owner, due date, status, and completion evidence
-- Dependency and source record
-- Follow-up or escalation recommendation
+- Five-day executive work plan
+- Daily outcomes, meetings, preparation, and deadlines
+- Capacity conflicts and dependencies
+- Delegation, deferral, and contingency recommendations
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

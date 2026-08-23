@@ -1,6 +1,6 @@
 ---
 name: stakeholder-management-engagement-planning
-description: Perform engagement planning using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform engagement planning using its specific evidence contract, business logic, and executive output.
 ---
 # Engagement Planning
 
@@ -8,10 +8,10 @@ description: Perform engagement planning using the named evidence, business rule
 Perform **engagement planning** as a distinct executive workflow—not as a generic summary.
 
 ## Skill logic
-1. Map formal roles, decision rights, influence, impact, and interests.
-2. Use evidence rather than personal speculation.
-3. Identify gaps, conflicts, and the appropriate engagement level.
-4. Assign communication or accountability actions.
+1. Map roles, decision rights, influence, impact, interests, and evidence.
+2. Distinguish formal authority from informal influence.
+3. Identify accountability, representation, engagement, and communication gaps.
+4. Assign owners, engagement levels, timing, and success indicators.
 
 ## Operating rules
 - Use INPUTS.md as the evidence contract.

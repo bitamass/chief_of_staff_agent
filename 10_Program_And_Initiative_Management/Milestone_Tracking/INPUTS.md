@@ -1,10 +1,10 @@
 # Inputs — Milestone Tracking
 
 ## Required inputs
-- Initiative charters, plans, objectives, and expected benefits
-- Milestones, deliverables, owners, dates, and acceptance criteria
-- Resources, budget, dependencies, risks, and status evidence
-- OKRs, capacity, priorities, and intervention thresholds
+- Milestone definitions and acceptance criteria
+- Baseline, forecast, and actual dates
+- Owners, dependencies, completion evidence, and decisions
+- Variance thresholds and corrective actions
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

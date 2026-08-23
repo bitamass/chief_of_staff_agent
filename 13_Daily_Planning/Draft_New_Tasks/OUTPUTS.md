@@ -1,10 +1,10 @@
 # Outputs — Draft New Tasks
 
 ## Required work product
-- Purpose-built draft new tasks executive work product
-- Evidence, owner, date, status, and source fields
-- Analysis findings and exceptions
-- Recommended action and human-review requirement
+- Task creation or update set
+- Action, owner, due date, priority, and completion criteria
+- Source, dependency, and evidence
+- Changes requiring approval or follow-up
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

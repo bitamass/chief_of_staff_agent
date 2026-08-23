@@ -1,6 +1,6 @@
 ---
 name: governance-issue-escalation
-description: Perform issue escalation using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform issue escalation using its specific evidence contract, business logic, and executive output.
 ---
 # Issue Escalation
 
@@ -8,10 +8,10 @@ description: Perform issue escalation using the named evidence, business rules, 
 Perform **issue escalation** as a distinct executive workflow—not as a generic summary.
 
 ## Skill logic
-1. Normalize the dated source evidence.
-2. Apply the skill-specific business rules.
-3. Identify exceptions, dependencies, owners, and uncertainty.
-4. Produce the required executive work product and recommendations.
+1. Write or validate cause-event-impact statements.
+2. Assess likelihood, impact, velocity, trend, controls, and evidence confidence.
+3. Compare exposure with appetite, thresholds, and escalation criteria.
+4. Assign monitoring, mitigation, response, and review actions.
 
 ## Operating rules
 - Use INPUTS.md as the evidence contract.

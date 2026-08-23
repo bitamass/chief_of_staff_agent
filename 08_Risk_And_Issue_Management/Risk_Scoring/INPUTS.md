@@ -4,7 +4,7 @@
 - Cause-event-impact risk statements
 - Approved likelihood and impact scales
 - Evidence for likelihood, impact, velocity, and proximity
-- Existing controls and control-effectiveness evidence
+- Controls and control-effectiveness evidence
 - Risk appetite, thresholds, owners, and review dates
 
 ## Validation

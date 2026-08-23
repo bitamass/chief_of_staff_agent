@@ -1,6 +1,6 @@
 ---
 name: daily-planning-update-existing-tasks
-description: Perform update existing tasks using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform update existing tasks using its specific evidence contract, business logic, and executive output.
 ---
 # Update Existing Tasks
 
@@ -8,10 +8,10 @@ description: Perform update existing tasks using the named evidence, business ru
 Perform **update existing tasks** as a distinct executive workflow—not as a generic summary.
 
 ## Skill logic
-1. Normalize the dated source evidence.
-2. Apply the skill-specific business rules.
-3. Identify exceptions, dependencies, owners, and uncertainty.
-4. Produce the required executive work product and recommendations.
+1. Normalize the skill-specific dated evidence.
+2. Apply the named workflow and business rules.
+3. Identify owners, exceptions, dependencies, and uncertainty.
+4. Produce the required executive work product and recommendation.
 
 ## Operating rules
 - Use INPUTS.md as the evidence contract.

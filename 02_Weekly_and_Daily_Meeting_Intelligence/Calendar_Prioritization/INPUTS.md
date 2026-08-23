@@ -1,10 +1,10 @@
 # Inputs — Calendar Prioritization
 
 ## Required inputs
-- Calendar entries, meeting objectives, and attendee roles
-- Agendas, prior meeting notes, decisions, and commitments
-- Actions, owners, due dates, status evidence, and dependencies
-- Relevant initiative context, risks, metrics, and source dates
+- Calendar entries with objectives, attendees, and duration
+- Executive priorities and required decisions
+- Preparation, travel, transition, and focus-time requirements
+- Delegation options and immovable constraints
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

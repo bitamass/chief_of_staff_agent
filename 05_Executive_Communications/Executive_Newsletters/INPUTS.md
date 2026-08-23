@@ -1,10 +1,10 @@
 # Inputs — Executive Newsletters
 
 ## Required inputs
-- Approved facts, decisions, metrics, and source material
-- Audience, purpose, tone, channel, timing, and call to action
-- Sensitive topics, disclosure limits, and approval authority
-- Likely questions, stakeholder concerns, and support resources
+- Approved organizational updates and metrics
+- Audience profile and editorial period
+- Milestones, stories, recognition, and upcoming events
+- Approved calls to action, tone, and release authority
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

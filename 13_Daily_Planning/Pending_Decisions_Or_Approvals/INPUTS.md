@@ -1,10 +1,10 @@
 # Inputs — Pending Decisions Or Approvals
 
 ## Required inputs
-- Today's calendar, deadlines, available time, and constraints
-- Weekly priorities, tasks, meetings, and preparation requirements
-- Pending decisions, approvals, actions, risks, and dependencies
-- Owners, effort estimates, focus needs, and delegation options
+- Decision and approval requests
+- Authority, deadline, meeting, and desired outcome
+- Options, evidence, dependencies, and readiness
+- Consequence of delay and preparation owner
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

@@ -1,10 +1,10 @@
 # Inputs — Initiative Health Monitoring
 
 ## Required inputs
-- Initiative charters, plans, objectives, and expected benefits
-- Milestones, deliverables, owners, dates, and acceptance criteria
-- Resources, budget, dependencies, risks, and status evidence
-- OKRs, capacity, priorities, and intervention thresholds
+- Initiative charter and expected outcomes
+- Scope, schedule, budget, resource, and benefit status
+- Risks, issues, dependencies, and stakeholder confidence
+- Health thresholds, trend history, and recovery actions
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

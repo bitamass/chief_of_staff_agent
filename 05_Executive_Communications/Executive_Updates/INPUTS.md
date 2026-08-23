@@ -1,10 +1,10 @@
 # Inputs — Executive Updates
 
 ## Required inputs
-- Approved facts, decisions, metrics, and source material
-- Audience, purpose, tone, channel, timing, and call to action
-- Sensitive topics, disclosure limits, and approval authority
-- Likely questions, stakeholder concerns, and support resources
+- Prior report and current reporting period
+- Achievements, metrics, milestones, and variances
+- Decisions, risks, actions, and next steps
+- Audience, length, owner, and approval status
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

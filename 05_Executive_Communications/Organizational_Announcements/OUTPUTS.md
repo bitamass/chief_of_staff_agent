@@ -3,7 +3,8 @@
 ## Required work product
 - Audience-specific communication plan or draft
 - Approved message, evidence, tone, and call to action
-- Channel, timing, owner, and approval checklist
+- Channel, timing, owner, and feedback method
+- Approval and distribution checklist
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

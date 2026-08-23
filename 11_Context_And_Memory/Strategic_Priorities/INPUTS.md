@@ -1,10 +1,10 @@
 # Inputs — Strategic Priorities
 
 ## Required inputs
-- Approved organizational records and effective dates
-- Meeting notes, decisions, assumptions, blockers, and milestones
-- Structures, roles, committees, authorities, and reporting lines
-- Strategic priorities, source ownership, validity, and revision history
+- Approved strategy and operating plan
+- Executive communications and portfolio decisions
+- Funding choices, owners, measures, and time horizons
+- Linked initiatives and current validity
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

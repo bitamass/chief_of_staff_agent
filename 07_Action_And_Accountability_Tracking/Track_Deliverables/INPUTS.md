@@ -1,10 +1,10 @@
 # Inputs — Track Deliverables
 
 ## Required inputs
-- Actions, commitments, deliverables, and acceptance criteria
-- Accountable owners, due dates, status, and completion evidence
-- Source meetings, dependencies, blockers, and revised dates
-- Escalation thresholds, reporting period, and affected outcomes
+- Deliverable inventory by initiative
+- Owner, due date, acceptance criteria, and status
+- Dependencies, completion evidence, and schedule baseline
+- Priority, effort, and escalation thresholds
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

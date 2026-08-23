@@ -1,10 +1,10 @@
 # Outputs — Escalate Overdue Actions
 
 ## Required work product
-- Accountability register
-- Owner, due date, status, and completion evidence
-- Dependency and source record
-- Follow-up or escalation recommendation
+- Purpose-built escalate overdue actions executive work product
+- Evidence, owner, date, status, and source fields
+- Skill-specific findings and exceptions
+- Recommendation and human-review requirement
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

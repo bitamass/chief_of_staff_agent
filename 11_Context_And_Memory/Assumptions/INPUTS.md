@@ -1,10 +1,10 @@
 # Inputs — Assumptions
 
 ## Required inputs
-- Approved organizational records and effective dates
-- Meeting notes, decisions, assumptions, blockers, and milestones
-- Structures, roles, committees, authorities, and reporting lines
-- Strategic priorities, source ownership, validity, and revision history
+- Plans, forecasts, decisions, and meeting records
+- Explicit and implied assumption statements
+- Evidence, owner, confidence, impact, and expiration date
+- Validation method and related dependencies
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

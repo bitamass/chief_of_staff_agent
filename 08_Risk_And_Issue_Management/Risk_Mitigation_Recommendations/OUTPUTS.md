@@ -1,10 +1,10 @@
 # Outputs — Risk Mitigation Recommendations
 
 ## Required work product
-- Purpose-built risk mitigation recommendations executive work product
-- Evidence, owner, date, status, and source fields
-- Analysis findings and exceptions
-- Recommended action and human-review requirement
+- Risk treatment plan
+- Avoid, reduce, transfer, accept, or monitor recommendation
+- Actions, owners, dates, cost, and dependencies
+- Target residual exposure and trigger
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

@@ -1,6 +1,6 @@
 ---
 name: context-and-memory-formal-reporting-structures
-description: Perform formal reporting structures using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform formal reporting structures using its specific evidence contract, business logic, and executive output.
 ---
 # Formal Reporting Structures
 
@@ -8,10 +8,10 @@ description: Perform formal reporting structures using the named evidence, busin
 Perform **formal reporting structures** as a distinct executive workflow—not as a generic summary.
 
 ## Skill logic
-1. Normalize the dated source evidence.
-2. Apply the skill-specific business rules.
-3. Identify exceptions, dependencies, owners, and uncertainty.
-4. Produce the required executive work product and recommendations.
+1. Map roles, reporting relationships, authorities, and required sequence.
+2. Validate the effective date and source of each relationship.
+3. Identify gaps, overlaps, ambiguity, or missing approvals.
+4. Produce the structure or pathway with items requiring confirmation.
 
 ## Operating rules
 - Use INPUTS.md as the evidence contract.

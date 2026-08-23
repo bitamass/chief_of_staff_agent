@@ -1,10 +1,10 @@
 # Outputs — Weekly Key Decisions Or Approvals
 
 ## Required work product
-- Time-phased executive plan
-- Ranked outcomes and preparation blocks
-- Conflicts and capacity implications
-- Defer, delegate, shorten, or reschedule recommendations
+- Five-day executive work plan
+- Daily outcomes, meetings, preparation, and deadlines
+- Capacity conflicts and dependencies
+- Delegation, deferral, and contingency recommendations
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

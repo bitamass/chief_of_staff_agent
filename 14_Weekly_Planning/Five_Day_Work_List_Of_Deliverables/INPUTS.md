@@ -1,10 +1,10 @@
 # Inputs — Five Day Work List Of Deliverables
 
 ## Required inputs
-- Five-day calendar and available capacity
-- Weekly outcomes, deadlines, and milestones
-- Deliverables, decisions, owners, and dependencies
-- Preparation time, risks, and carryover from the prior week
+- Deliverable inventory by initiative
+- Owner, due date, acceptance criteria, and status
+- Dependencies, completion evidence, and schedule baseline
+- Priority, effort, and escalation thresholds
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

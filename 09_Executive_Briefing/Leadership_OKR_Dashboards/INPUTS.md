@@ -1,10 +1,10 @@
 # Inputs — Leadership OKR Dashboards
 
 ## Required inputs
-- Executive question, audience, purpose, and time limit
-- Approved internal evidence, metrics, decisions, and risks
-- Relevant external sources, dates, and credibility where allowed
-- Options, recommendation, requested action, and disclosure limits
+- Objectives and key-result definitions
+- Baselines, targets, current actuals, and confidence
+- Owners, reporting cadence, and source systems
+- Linked initiatives, deliverables, and recovery actions
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

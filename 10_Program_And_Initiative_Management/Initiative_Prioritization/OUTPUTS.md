@@ -3,8 +3,8 @@
 ## Required work product
 - Weighted scoring matrix
 - 1–5 score and rationale for every candidate
-- Ranked priority list
-- Fund, keep, sequence, defer, delegate, or stop recommendation
+- Ranked priority list and capacity implications
+- Advance, sequence, defer, delegate, or stop recommendation
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

@@ -1,10 +1,10 @@
 # Outputs — Issue And Risk Dashboard
 
 ## Required work product
-- Executive dashboard specification
-- Decision-relevant measures and thresholds
-- Trend and exception indicators
-- Owners, data sources, and refresh cadence
+- Executive risk-and-issue view
+- Exposure, trend, controls, and owners
+- Mitigation and review status
+- Threshold breach and escalation recommendation
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

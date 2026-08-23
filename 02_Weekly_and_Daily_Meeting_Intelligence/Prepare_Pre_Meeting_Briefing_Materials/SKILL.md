@@ -1,6 +1,6 @@
 ---
 name: weekly-and-daily-meeting-intelligence-prepare-pre-meeting-briefing-materials
-description: Perform prepare pre meeting briefing materials using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform prepare pre meeting briefing materials using its specific evidence contract, business logic, and executive output.
 ---
 # Prepare Pre Meeting Briefing Materials
 
@@ -8,10 +8,10 @@ description: Perform prepare pre meeting briefing materials using the named evid
 Perform **prepare pre meeting briefing materials** as a distinct executive workflow—not as a generic summary.
 
 ## Skill logic
-1. Select only audience- and decision-relevant evidence.
-2. Separate confirmed facts, decisions, risks, and recommendations.
-3. Organize the material for the specified audience and length.
-4. Cite claims and route the draft for human approval.
+1. Define what the executive needs to know, decide, ask, and watch.
+2. Connect prior decisions and commitments with current status.
+3. Prioritize meeting-specific evidence, risks, participants, and questions.
+4. Assemble concise preparation material with source references.
 
 ## Operating rules
 - Use INPUTS.md as the evidence contract.

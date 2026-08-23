@@ -1,6 +1,6 @@
 ---
 name: program-and-initiative-management-initiative-health-monitoring
-description: Perform initiative health monitoring using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform initiative health monitoring using its specific evidence contract, business logic, and executive output.
 ---
 # Initiative Health Monitoring
 
@@ -9,8 +9,8 @@ Perform **initiative health monitoring** as a distinct executive workflow—not 
 
 ## Skill logic
 1. Trace objectives to outcomes, measures, milestones, and deliverables.
-2. Compare current evidence with plan, target, and capacity.
-3. Identify variance, dependencies, duplication, and root causes.
+2. Compare current evidence with plan, target, dependency, and capacity.
+3. Identify variance, duplication, conflicts, gaps, and root causes.
 4. Recommend sequencing, recovery, resource, or governance intervention.
 
 ## Operating rules

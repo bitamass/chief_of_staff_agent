@@ -1,10 +1,10 @@
 # Inputs — Generate Status Reports
 
 ## Required inputs
-- Actions, commitments, deliverables, and acceptance criteria
-- Accountable owners, due dates, status, and completion evidence
-- Source meetings, dependencies, blockers, and revised dates
-- Escalation thresholds, reporting period, and affected outcomes
+- Prior report and current reporting period
+- Achievements, metrics, milestones, and variances
+- Decisions, risks, actions, and next steps
+- Audience, length, owner, and approval status
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

@@ -1,6 +1,6 @@
 ---
 name: weekly-planning-five-day-work-list-of-deliverables
-description: Perform five day work list of deliverables using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform five day work list of deliverables using its specific evidence contract, business logic, and executive output.
 ---
 # Five Day Work List Of Deliverables
 
@@ -8,10 +8,10 @@ description: Perform five day work list of deliverables using the named evidence
 Perform **five day work list of deliverables** as a distinct executive workflow—not as a generic summary.
 
 ## Skill logic
-1. Place fixed commitments and deadlines first.
-2. Score outcomes by value, urgency, consequence, and effort.
-3. Reserve realistic preparation, focus, transition, and contingency time.
-4. Resolve overload through deferral, delegation, shortening, or rescheduling.
+1. Normalize the commitment or work item, owner, deadline, and completion condition.
+2. Compare current evidence with the promised result and date.
+3. Identify missing ownership, dependency, variance, or overdue status.
+4. Recommend follow-up, corrective action, or escalation.
 
 ## Operating rules
 - Use INPUTS.md as the evidence contract.

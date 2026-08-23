@@ -1,6 +1,6 @@
 ---
 name: weekly-and-daily-meeting-intelligence-create-agendas
-description: Perform create agendas using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform create agendas using its specific evidence contract, business logic, and executive output.
 ---
 # Create Agendas
 
@@ -8,10 +8,10 @@ description: Perform create agendas using the named evidence, business rules, an
 Perform **create agendas** as a distinct executive workflow—not as a generic summary.
 
 ## Skill logic
-1. Normalize the dated source evidence.
-2. Apply the skill-specific business rules.
-3. Identify exceptions, dependencies, owners, and uncertainty.
-4. Produce the required executive work product and recommendations.
+1. Translate the meeting objective into outcome-oriented topics.
+2. Place decisions and approvals before informational updates.
+3. Assign topic owners, time boxes, evidence, and pre-reads.
+4. Reserve time to confirm decisions, actions, owners, and due dates.
 
 ## Operating rules
 - Use INPUTS.md as the evidence contract.

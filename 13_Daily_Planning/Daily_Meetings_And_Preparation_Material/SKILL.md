@@ -1,6 +1,6 @@
 ---
 name: daily-planning-daily-meetings-and-preparation-material
-description: Perform daily meetings and preparation material using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform daily meetings and preparation material using its specific evidence contract, business logic, and executive output.
 ---
 # Daily Meetings And Preparation Material
 
@@ -8,10 +8,10 @@ description: Perform daily meetings and preparation material using the named evi
 Perform **daily meetings and preparation material** as a distinct executive workflow—not as a generic summary.
 
 ## Skill logic
-1. Place fixed commitments and deadlines first.
-2. Score outcomes by value, urgency, consequence, and effort.
-3. Reserve realistic preparation, focus, transition, and contingency time.
-4. Resolve overload through deferral, delegation, shortening, or rescheduling.
+1. Define what the executive needs to know, decide, ask, and watch.
+2. Connect prior decisions and commitments with current status.
+3. Prioritize meeting-specific evidence, risks, participants, and questions.
+4. Assemble concise preparation material with source references.
 
 ## Operating rules
 - Use INPUTS.md as the evidence contract.

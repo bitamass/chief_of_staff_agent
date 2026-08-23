@@ -1,10 +1,10 @@
 # Inputs — Delegate Or Share Work
 
 ## Required inputs
-- Today's calendar, deadlines, available time, and constraints
-- Weekly priorities, tasks, meetings, and preparation requirements
-- Pending decisions, approvals, actions, risks, and dependencies
-- Owners, effort estimates, focus needs, and delegation options
+- Current task list and deadlines
+- Required authority, confidentiality, and access
+- Team roles, skills, capacity, and workload
+- Expected output and executive review checkpoint
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

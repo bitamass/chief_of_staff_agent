@@ -1,6 +1,6 @@
 ---
 name: action-and-accountability-tracking-escalate-overdue-actions
-description: Perform escalate overdue actions using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform escalate overdue actions using its specific evidence contract, business logic, and executive output.
 ---
 # Escalate Overdue Actions
 
@@ -8,10 +8,10 @@ description: Perform escalate overdue actions using the named evidence, business
 Perform **escalate overdue actions** as a distinct executive workflow—not as a generic summary.
 
 ## Skill logic
-1. Normalize the dated source evidence.
-2. Apply the skill-specific business rules.
-3. Identify exceptions, dependencies, owners, and uncertainty.
-4. Produce the required executive work product and recommendations.
+1. Normalize the commitment or work item, owner, deadline, and completion condition.
+2. Compare current evidence with the promised result and date.
+3. Identify missing ownership, dependency, variance, or overdue status.
+4. Recommend follow-up, corrective action, or escalation.
 
 ## Operating rules
 - Use INPUTS.md as the evidence contract.

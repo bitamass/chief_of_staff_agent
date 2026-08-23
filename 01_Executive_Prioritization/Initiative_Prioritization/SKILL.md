@@ -1,6 +1,6 @@
 ---
 name: executive-prioritization-initiative-prioritization
-description: Perform initiative prioritization using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform initiative prioritization using its specific evidence contract, business logic, and executive output.
 ---
 # Initiative Prioritization
 
@@ -8,11 +8,10 @@ description: Perform initiative prioritization using the named evidence, busines
 Perform **initiative prioritization** as a distinct executive workflow—not as a generic summary.
 
 ## Skill logic
-1. Define and weight explicit value, urgency, effort, risk, and dependency criteria.
-2. Score every item from 1 to 5 for each criterion.
-3. Calculate and explain the overall rank.
-4. Test the ranking against capacity and mandatory constraints.
-5. Recommend what to advance, defer, delegate, or stop.
+1. Define and weight value, urgency, effort, risk, and dependency criteria.
+2. Score each candidate from 1 to 5 and explain the evidence.
+3. Test the ranking against capacity, conflicts, and mandatory constraints.
+4. Recommend what to advance, sequence, defer, delegate, or stop.
 
 ## Operating rules
 - Use INPUTS.md as the evidence contract.

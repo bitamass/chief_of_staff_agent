@@ -1,10 +1,10 @@
 # Inputs — Organizational Announcements
 
 ## Required inputs
-- Approved facts, decisions, metrics, and source material
-- Audience, purpose, tone, channel, timing, and call to action
-- Sensitive topics, disclosure limits, and approval authority
-- Likely questions, stakeholder concerns, and support resources
+- Approved organizational change and effective date
+- Rationale and affected audiences
+- What changes, what remains unchanged, and actions required
+- Support resources, leader quote, and release authority
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

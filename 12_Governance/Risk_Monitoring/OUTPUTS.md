@@ -1,10 +1,10 @@
 # Outputs — Risk Monitoring
 
 ## Required work product
-- Purpose-built risk monitoring executive work product
-- Evidence, owner, date, status, and source fields
-- Analysis findings and exceptions
-- Recommended action and human-review requirement
+- Executive risk-and-issue view
+- Exposure, trend, controls, and owners
+- Mitigation and review status
+- Threshold breach and escalation recommendation
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

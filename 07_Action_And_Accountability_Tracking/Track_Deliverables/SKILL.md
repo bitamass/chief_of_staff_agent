@@ -1,6 +1,6 @@
 ---
 name: action-and-accountability-tracking-track-deliverables
-description: Perform track deliverables using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform track deliverables using its specific evidence contract, business logic, and executive output.
 ---
 # Track Deliverables
 
@@ -8,10 +8,10 @@ description: Perform track deliverables using the named evidence, business rules
 Perform **track deliverables** as a distinct executive workflow—not as a generic summary.
 
 ## Skill logic
-1. Trace objectives to outcomes, measures, milestones, and deliverables.
-2. Compare current evidence with plan, target, and capacity.
-3. Identify variance, dependencies, duplication, and root causes.
-4. Recommend sequencing, recovery, resource, or governance intervention.
+1. Normalize the commitment or work item, owner, deadline, and completion condition.
+2. Compare current evidence with the promised result and date.
+3. Identify missing ownership, dependency, variance, or overdue status.
+4. Recommend follow-up, corrective action, or escalation.
 
 ## Operating rules
 - Use INPUTS.md as the evidence contract.

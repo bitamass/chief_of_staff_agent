@@ -1,10 +1,10 @@
 # Inputs — Issue And Risk Dashboard
 
 ## Required inputs
-- Risk statements and active issue descriptions
-- Likelihood, impact, velocity, proximity, and scoring scales
-- Controls, mitigation actions, triggers, thresholds, and owners
-- Trend history, affected initiatives, appetite, and review cadence
+- Approved board agenda and materials
+- Meeting notes, resolutions, votes, and decisions
+- Assigned actions and accountable owners
+- Disclosure, public-record, and confidentiality constraints
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

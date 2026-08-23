@@ -1,10 +1,10 @@
 # Outputs — Delegate Or Share Work
 
 ## Required work product
-- Purpose-built delegate or share work executive work product
-- Evidence, owner, date, status, and source fields
-- Analysis findings and exceptions
-- Recommended action and human-review requirement
+- Delegation plan
+- Proposed owner and rationale
+- Authority, access, deadline, and expected output
+- Handoff and review checkpoint
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

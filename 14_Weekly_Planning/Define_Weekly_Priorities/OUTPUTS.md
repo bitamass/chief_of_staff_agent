@@ -1,10 +1,10 @@
 # Outputs — Define Weekly Priorities
 
 ## Required work product
-- Weighted scoring matrix
-- 1–5 score and rationale for every candidate
-- Ranked priority list
-- Fund, keep, sequence, defer, delegate, or stop recommendation
+- Five-day executive work plan
+- Daily outcomes, meetings, preparation, and deadlines
+- Capacity conflicts and dependencies
+- Delegation, deferral, and contingency recommendations
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

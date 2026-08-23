@@ -1,10 +1,10 @@
 # Inputs — Initiative Dependency Management
 
 ## Required inputs
-- Initiative charters, plans, objectives, and expected benefits
-- Milestones, deliverables, owners, dates, and acceptance criteria
-- Resources, budget, dependencies, risks, and status evidence
-- OKRs, capacity, priorities, and intervention thresholds
+- Initiative plans and deliverable dates
+- Provider and receiver for each dependency
+- Required-by date, status, and acceptance condition
+- Schedule, resource, external, and decision constraints
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

@@ -2,7 +2,7 @@
 
 ## Required work product
 - Demand-versus-capacity view
-- Allocation and skill gaps
+- Allocation conflicts and skill gaps
 - Scenario options
 - Recommended allocation and approval request
 

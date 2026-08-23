@@ -1,10 +1,10 @@
 # Inputs — Action Item Management
 
 ## Required inputs
-- Calendar entries, meeting objectives, and attendee roles
-- Agendas, prior meeting notes, decisions, and commitments
-- Actions, owners, due dates, status evidence, and dependencies
-- Relevant initiative context, risks, metrics, and source dates
+- Meeting notes and explicit action statements
+- Owner, due date, priority, and completion criteria
+- Source meeting, dependencies, and current evidence
+- Escalation rule and next review date
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

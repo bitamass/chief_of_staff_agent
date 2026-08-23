@@ -1,6 +1,6 @@
 ---
 name: risk-and-issue-management-risk-scoring
-description: Perform risk scoring using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform risk scoring using its specific evidence contract, business logic, and executive output.
 ---
 # Risk Scoring
 
@@ -9,9 +9,9 @@ Perform **risk scoring** as a distinct executive workflow—not as a generic sum
 
 ## Skill logic
 1. Write or validate cause-event-impact statements.
-2. Assess likelihood, impact, velocity, controls, and trend using evidence.
-3. Compare exposure with approved thresholds.
-4. Identify triggers, owners, and treatment or escalation needs.
+2. Assess likelihood, impact, velocity, trend, controls, and evidence confidence.
+3. Compare exposure with appetite, thresholds, and escalation criteria.
+4. Assign monitoring, mitigation, response, and review actions.
 
 ## Operating rules
 - Use INPUTS.md as the evidence contract.

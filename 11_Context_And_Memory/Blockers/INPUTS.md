@@ -1,10 +1,10 @@
 # Inputs — Blockers
 
 ## Required inputs
-- Approved organizational records and effective dates
-- Meeting notes, decisions, assumptions, blockers, and milestones
-- Structures, roles, committees, authorities, and reporting lines
-- Strategic priorities, source ownership, validity, and revision history
+- Blocked outcome or deliverable
+- Root-cause evidence, owner, age, and impact
+- Dependencies and attempted resolutions
+- Decision rights and escalation options
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

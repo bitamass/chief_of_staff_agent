@@ -1,11 +1,11 @@
 # Inputs — Track Decisions
 
 ## Required inputs
-- Exact decision statement and status
+- Exact decision statement and current status
 - Decision maker, date, and source meeting
-- Rationale and alternatives considered
+- Rationale, options, and assumptions
 - Affected initiatives, deliverables, and dependencies
-- Follow-up actions, owners, and amendments
+- Follow-up actions, amendments, and superseding decisions
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

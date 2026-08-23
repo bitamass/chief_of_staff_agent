@@ -1,10 +1,10 @@
 # Inputs — Update Existing Tasks
 
 ## Required inputs
-- Today's calendar, deadlines, available time, and constraints
-- Weekly priorities, tasks, meetings, and preparation requirements
-- Pending decisions, approvals, actions, risks, and dependencies
-- Owners, effort estimates, focus needs, and delegation options
+- Existing task record and revision history
+- Latest owner update and status evidence
+- Changed date, scope, dependency, or completion criteria
+- Approval requirements for material changes
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

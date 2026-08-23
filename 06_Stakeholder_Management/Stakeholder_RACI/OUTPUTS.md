@@ -2,9 +2,9 @@
 
 ## Required work product
 - RACI matrix by work package or decision
-- Exactly one accountable role where possible
-- Gap, overlap, and conflict findings
-- Required authority clarification
+- One accountable role where possible
+- Gap, overlap, and authority-conflict findings
+- Required clarification
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

@@ -1,10 +1,10 @@
 # Outputs — Leadership Briefings
 
 ## Required work product
-- Source-linked executive brief
-- Relevant context and prior decisions
-- Risks, actions, decisions, and questions
-- Recommendations and source list
+- Decision-ready executive brief
+- Situation, evidence, implications, and risks
+- Options, recommendation, and requested action
+- Questions and source list
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

@@ -1,10 +1,10 @@
 # Inputs — Manage Competing Priorities
 
 ## Required inputs
-- Approved strategic goals and top business priorities
-- Initiative charters, benefits, owners, and requested decisions
-- Deliverables, deadlines, dependencies, effort, and capacity
-- Priority criteria, weights, and consequences of delay
+- Approved priorities and deadlines
+- Shared resource, funding, calendar, and decision constraints
+- Dependencies and consequences of delay
+- Current commitments and resolution authority
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

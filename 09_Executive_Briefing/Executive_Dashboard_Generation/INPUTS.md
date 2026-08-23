@@ -1,10 +1,10 @@
 # Inputs — Executive Dashboard Generation
 
 ## Required inputs
-- Executive question, audience, purpose, and time limit
-- Approved internal evidence, metrics, decisions, and risks
-- Relevant external sources, dates, and credibility where allowed
-- Options, recommendation, requested action, and disclosure limits
+- Approved board agenda and materials
+- Meeting notes, resolutions, votes, and decisions
+- Assigned actions and accountable owners
+- Disclosure, public-record, and confidentiality constraints
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

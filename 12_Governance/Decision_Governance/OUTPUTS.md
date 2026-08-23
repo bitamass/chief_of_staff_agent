@@ -4,7 +4,7 @@
 - Decision or approval queue
 - Authority, deadline, options, and readiness
 - Evidence gaps and consequence of delay
-- Recommended next action
+- Recommended preparation and next action
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

@@ -1,6 +1,6 @@
 ---
 name: weekly-and-daily-meeting-intelligence-meeting-preparation
-description: Perform meeting preparation using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform meeting preparation using its specific evidence contract, business logic, and executive output.
 ---
 # Meeting Preparation
 
@@ -8,10 +8,10 @@ description: Perform meeting preparation using the named evidence, business rule
 Perform **meeting preparation** as a distinct executive workflow—not as a generic summary.
 
 ## Skill logic
-1. Normalize the dated source evidence.
-2. Apply the skill-specific business rules.
-3. Identify exceptions, dependencies, owners, and uncertainty.
-4. Produce the required executive work product and recommendations.
+1. Define what the executive needs to know, decide, ask, and watch.
+2. Connect prior decisions and commitments with current status.
+3. Prioritize meeting-specific evidence, risks, participants, and questions.
+4. Assemble concise preparation material with source references.
 
 ## Operating rules
 - Use INPUTS.md as the evidence contract.

@@ -1,6 +1,6 @@
 ---
 name: executive-communications-organizational-announcements
-description: Perform organizational announcements using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform organizational announcements using its specific evidence contract, business logic, and executive output.
 ---
 # Organizational Announcements
 
@@ -8,10 +8,10 @@ description: Perform organizational announcements using the named evidence, busi
 Perform **organizational announcements** as a distinct executive workflow—not as a generic summary.
 
 ## Skill logic
-1. Select only audience- and decision-relevant evidence.
-2. Separate confirmed facts, decisions, risks, and recommendations.
-3. Organize the material for the specified audience and length.
-4. Cite claims and route the draft for human approval.
+1. Select only audience- and decision-relevant approved evidence.
+2. Separate facts, decisions, risks, actions, and recommendations.
+3. Organize the message for the audience, purpose, channel, and length.
+4. Cite material claims and route the draft for human approval.
 
 ## Operating rules
 - Use INPUTS.md as the evidence contract.

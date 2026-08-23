@@ -1,6 +1,6 @@
 ---
 name: daily-planning-overview-of-work-week-ahead
-description: Perform overview of work week ahead using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform overview of work week ahead using its specific evidence contract, business logic, and executive output.
 ---
 # Overview Of Work Week Ahead
 
@@ -8,9 +8,9 @@ description: Perform overview of work week ahead using the named evidence, busin
 Perform **overview of work week ahead** as a distinct executive workflow—not as a generic summary.
 
 ## Skill logic
-1. Place fixed commitments and deadlines first.
-2. Score outcomes by value, urgency, consequence, and effort.
-3. Reserve realistic preparation, focus, transition, and contingency time.
+1. Place immovable meetings, deadlines, and decisions first.
+2. Rank outcomes by value, urgency, consequence, and effort.
+3. Reserve preparation, focus, transition, and contingency time.
 4. Resolve overload through deferral, delegation, shortening, or rescheduling.
 
 ## Operating rules

@@ -1,10 +1,10 @@
 # Inputs — Draft New Tasks
 
 ## Required inputs
-- Today's calendar, deadlines, available time, and constraints
-- Weekly priorities, tasks, meetings, and preparation requirements
-- Pending decisions, approvals, actions, risks, and dependencies
-- Owners, effort estimates, focus needs, and delegation options
+- Meeting outcomes, decisions, and commitments
+- Project plan and owner roles
+- Deadlines, dependencies, and priority
+- Completion evidence and acceptance criteria
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

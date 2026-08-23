@@ -1,10 +1,10 @@
 # Inputs — Engagement Planning
 
 ## Required inputs
-- Stakeholder roster, roles, relationships, and decision rights
-- Influence, impact, interests, concerns, and current support
-- Initiative decisions, milestones, and engagement history
-- Communication channels, owners, timing, and escalation paths
+- Stakeholder map and initiative objective
+- Stakeholder interests, influence, impact, and current support
+- Upcoming decisions and engagement history
+- Available channels, owners, timing, and success indicators
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

@@ -1,10 +1,10 @@
 # Inputs — One Pagers
 
 ## Required inputs
-- Executive question, audience, purpose, and time limit
-- Approved internal evidence, metrics, decisions, and risks
-- Relevant external sources, dates, and credibility where allowed
-- Options, recommendation, requested action, and disclosure limits
+- Executive question, purpose, audience, and time limit
+- Approved evidence, metrics, decisions, risks, and sources
+- Options, recommendation, and requested action
+- Likely questions, sensitive topics, and disclosure limits
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

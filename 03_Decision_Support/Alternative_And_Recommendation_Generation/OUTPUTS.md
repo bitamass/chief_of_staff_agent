@@ -1,10 +1,10 @@
 # Outputs — Alternative And Recommendation Generation
 
 ## Required work product
-- Purpose-built alternative and recommendation generation executive work product
-- Evidence, owner, date, status, and source fields
-- Analysis findings and exceptions
-- Recommended action and human-review requirement
+- Materially different options including do-nothing
+- Option comparison and criterion scores
+- Recommended option and rationale
+- Fallback and conditions that would change the recommendation
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

@@ -1,10 +1,10 @@
 # Inputs — Calendar Based Planning
 
 ## Required inputs
-- Today's calendar, deadlines, available time, and constraints
-- Weekly priorities, tasks, meetings, and preparation requirements
-- Pending decisions, approvals, actions, risks, and dependencies
-- Owners, effort estimates, focus needs, and delegation options
+- Calendar entries with objectives, attendees, and duration
+- Executive priorities and required decisions
+- Preparation, travel, transition, and focus-time requirements
+- Delegation options and immovable constraints
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

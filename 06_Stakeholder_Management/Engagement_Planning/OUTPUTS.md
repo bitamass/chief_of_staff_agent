@@ -1,10 +1,10 @@
 # Outputs — Engagement Planning
 
 ## Required work product
-- Purpose-built engagement planning executive work product
-- Evidence, owner, date, status, and source fields
-- Analysis findings and exceptions
-- Recommended action and human-review requirement
+- Stakeholder engagement plan
+- Engagement level, message, channel, and timing
+- Owner, success indicator, and follow-up
+- Risk and escalation path
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

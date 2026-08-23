@@ -1,6 +1,6 @@
 ---
 name: executive-briefing-leadership-okr-dashboards
-description: Perform leadership okr dashboards using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform leadership okr dashboards using its specific evidence contract, business logic, and executive output.
 ---
 # Leadership OKR Dashboards
 
@@ -8,10 +8,10 @@ description: Perform leadership okr dashboards using the named evidence, busines
 Perform **leadership okr dashboards** as a distinct executive workflow—not as a generic summary.
 
 ## Skill logic
-1. Trace objectives to outcomes, measures, milestones, and deliverables.
-2. Compare current evidence with plan, target, and capacity.
-3. Identify variance, dependencies, duplication, and root causes.
-4. Recommend sequencing, recovery, resource, or governance intervention.
+1. Select only audience- and decision-relevant approved evidence.
+2. Separate facts, decisions, risks, actions, and recommendations.
+3. Organize the message for the audience, purpose, channel, and length.
+4. Cite material claims and route the draft for human approval.
 
 ## Operating rules
 - Use INPUTS.md as the evidence contract.

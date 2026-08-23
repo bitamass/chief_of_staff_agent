@@ -3,7 +3,7 @@
 ## Required work product
 - Scored risk register
 - Inherent and residual likelihood-impact ratings
-- Control effectiveness and evidence confidence
+- Control effectiveness and confidence
 - Threshold status and review action
 
 ## Executive presentation

@@ -1,10 +1,10 @@
 # Inputs — Meeting Preparation
 
 ## Required inputs
-- Calendar entries, meeting objectives, and attendee roles
-- Agendas, prior meeting notes, decisions, and commitments
-- Actions, owners, due dates, status evidence, and dependencies
-- Relevant initiative context, risks, metrics, and source dates
+- Meeting objective, agenda, date, and attendee roles
+- Prior meeting notes, decisions, commitments, and actions
+- Relevant initiative status, risks, metrics, and documents
+- Decisions expected, likely questions, and preparation time
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

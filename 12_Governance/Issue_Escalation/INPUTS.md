@@ -1,10 +1,10 @@
 # Inputs — Issue Escalation
 
 ## Required inputs
-- Policies, governance charters, decision rights, and thresholds
-- Decision, issue, or risk record with owner and business impact
-- Required evidence, reviews, approvals, and accountable bodies
-- Escalation criteria, control status, monitoring, and audit records
+- Risk register and active issue log
+- Scores, trends, controls, mitigations, and owners
+- Thresholds, review dates, and escalation criteria
+- Affected initiatives, decisions, and deliverables
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

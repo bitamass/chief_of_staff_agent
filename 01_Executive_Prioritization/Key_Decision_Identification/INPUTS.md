@@ -1,10 +1,10 @@
 # Inputs — Key Decision Identification
 
 ## Required inputs
-- Approved strategic goals and top business priorities
-- Initiative charters, benefits, owners, and requested decisions
-- Deliverables, deadlines, dependencies, effort, and capacity
-- Priority criteria, weights, and consequences of delay
+- Records directly associated with Key Decision Identification
+- Purpose, accountable owner, and time horizon
+- Dated source evidence and current status
+- Dependencies, constraints, and success criteria
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

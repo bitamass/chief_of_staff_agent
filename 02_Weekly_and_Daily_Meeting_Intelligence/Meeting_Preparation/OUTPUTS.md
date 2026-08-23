@@ -1,10 +1,10 @@
 # Outputs — Meeting Preparation
 
 ## Required work product
-- Source-linked executive brief
+- Source-linked executive meeting brief
 - Relevant context and prior decisions
-- Risks, actions, decisions, and questions
-- Recommendations and source list
+- Open actions, risks, decision questions, and participant considerations
+- Recommended questions, next steps, and source list
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

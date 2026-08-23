@@ -1,6 +1,6 @@
 ---
 name: daily-planning-daily-priorities
-description: Perform daily priorities using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform daily priorities using its specific evidence contract, business logic, and executive output.
 ---
 # Daily Priorities
 
@@ -8,11 +8,10 @@ description: Perform daily priorities using the named evidence, business rules, 
 Perform **daily priorities** as a distinct executive workflow—not as a generic summary.
 
 ## Skill logic
-1. Define and weight explicit value, urgency, effort, risk, and dependency criteria.
-2. Score every item from 1 to 5 for each criterion.
-3. Calculate and explain the overall rank.
-4. Test the ranking against capacity and mandatory constraints.
-5. Recommend what to advance, defer, delegate, or stop.
+1. Place immovable meetings, deadlines, and decisions first.
+2. Rank outcomes by value, urgency, consequence, and effort.
+3. Reserve preparation, focus, transition, and contingency time.
+4. Resolve overload through deferral, delegation, shortening, or rescheduling.
 
 ## Operating rules
 - Use INPUTS.md as the evidence contract.

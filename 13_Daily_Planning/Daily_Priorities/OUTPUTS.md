@@ -1,10 +1,10 @@
 # Outputs — Daily Priorities
 
 ## Required work product
-- Weighted scoring matrix
-- 1–5 score and rationale for every candidate
-- Ranked priority list
-- Fund, keep, sequence, defer, delegate, or stop recommendation
+- Ranked list of three to five daily outcomes
+- 1–5 value and urgency scores with rationale
+- Time blocks and preparation requirements
+- Defer or delegate recommendations and end-of-day success test
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

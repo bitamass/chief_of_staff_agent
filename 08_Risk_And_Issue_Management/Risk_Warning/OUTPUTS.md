@@ -3,8 +3,8 @@
 ## Required work product
 - Early-warning notice
 - Trigger evidence and trend
-- Expected impact window
-- Immediate response and escalation recommendation
+- Expected impact window and affected work
+- Immediate response and escalation
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

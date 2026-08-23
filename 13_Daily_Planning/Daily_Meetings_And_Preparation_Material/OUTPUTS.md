@@ -1,10 +1,10 @@
 # Outputs — Daily Meetings And Preparation Material
 
 ## Required work product
-- Time-phased executive plan
-- Ranked outcomes and preparation blocks
-- Conflicts and capacity implications
-- Defer, delegate, shorten, or reschedule recommendations
+- Source-linked executive meeting brief
+- Relevant context and prior decisions
+- Open actions, risks, decision questions, and participant considerations
+- Recommended questions, next steps, and source list
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

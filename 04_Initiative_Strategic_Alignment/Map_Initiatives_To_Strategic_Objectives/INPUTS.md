@@ -1,10 +1,10 @@
 # Inputs — Map Initiatives To Strategic Objectives
 
 ## Required inputs
-- Approved strategic objectives and enterprise priorities
-- Initiative charters, outcomes, deliverables, and owners
-- OKRs, measures, benefits, dependencies, and resource demand
-- Portfolio status, risks, duplication, and investment constraints
+- Approved strategic objectives and business priorities
+- Initiative charters, outcomes, owners, and measures
+- Deliverables, expected value, deadlines, and dependencies
+- Alignment scoring criteria and evidence sources
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

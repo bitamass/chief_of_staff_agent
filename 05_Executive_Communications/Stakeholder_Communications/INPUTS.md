@@ -1,10 +1,10 @@
 # Inputs — Stakeholder Communications
 
 ## Required inputs
-- Approved facts, decisions, metrics, and source material
-- Audience, purpose, tone, channel, timing, and call to action
-- Sensitive topics, disclosure limits, and approval authority
-- Likely questions, stakeholder concerns, and support resources
+- Stakeholder segments and communication objective
+- Approved facts, interests, concerns, and desired action
+- Channel, timing, tone, owner, and feedback mechanism
+- Disclosure limits and approval authority
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

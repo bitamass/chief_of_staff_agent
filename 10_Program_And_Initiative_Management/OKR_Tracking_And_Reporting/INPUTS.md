@@ -1,10 +1,10 @@
 # Inputs — OKR Tracking And Reporting
 
 ## Required inputs
-- Initiative charters, plans, objectives, and expected benefits
-- Milestones, deliverables, owners, dates, and acceptance criteria
-- Resources, budget, dependencies, risks, and status evidence
-- OKRs, capacity, priorities, and intervention thresholds
+- Objectives and key-result definitions
+- Baselines, targets, current actuals, and confidence
+- Owners, reporting cadence, and source systems
+- Linked initiatives, deliverables, and recovery actions
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

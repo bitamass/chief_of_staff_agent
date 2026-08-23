@@ -1,10 +1,10 @@
 # Inputs — Overview Of Work Week Ahead
 
 ## Required inputs
-- Today's calendar, deadlines, available time, and constraints
-- Weekly priorities, tasks, meetings, and preparation requirements
-- Pending decisions, approvals, actions, risks, and dependencies
-- Owners, effort estimates, focus needs, and delegation options
+- Five-day calendar and available capacity
+- Weekly outcomes, deadlines, and milestones
+- Deliverables, decisions, owners, and dependencies
+- Preparation time, risks, and carryover from the prior week
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

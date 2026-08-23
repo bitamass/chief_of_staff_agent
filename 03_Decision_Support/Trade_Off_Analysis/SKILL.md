@@ -1,6 +1,6 @@
 ---
 name: decision-support-trade-off-analysis
-description: Perform trade off analysis using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform trade off analysis using its specific evidence contract, business logic, and executive output.
 ---
 # Trade Off Analysis
 
@@ -8,10 +8,10 @@ description: Perform trade off analysis using the named evidence, business rules
 Perform **trade off analysis** as a distinct executive workflow—not as a generic summary.
 
 ## Skill logic
-1. Frame the exact decision, authority, deadline, and desired outcome.
-2. Compare options against explicit criteria and constraints.
-3. Document rationale, consequences, assumptions, and missing evidence.
-4. Recommend a path while preserving human decision authority.
+1. Frame the exact decision and materially different options.
+2. Score options against weighted criteria and constraints.
+3. Compare benefits, costs, risks, speed, reversibility, and stakeholder effects.
+4. Test key assumptions and explain the recommended option and fallback.
 
 ## Operating rules
 - Use INPUTS.md as the evidence contract.

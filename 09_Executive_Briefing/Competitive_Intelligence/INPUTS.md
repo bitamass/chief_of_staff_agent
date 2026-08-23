@@ -1,10 +1,10 @@
 # Inputs — Competitive Intelligence
 
 ## Required inputs
-- Executive question, audience, purpose, and time limit
-- Approved internal evidence, metrics, decisions, and risks
-- Relevant external sources, dates, and credibility where allowed
-- Options, recommendation, requested action, and disclosure limits
+- Approved external sources with dates and credibility
+- Named peers or competitors and comparison dimensions
+- Internal strategy and relevant performance evidence
+- Market developments, opportunities, threats, and uncertainties
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

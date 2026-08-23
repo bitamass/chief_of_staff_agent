@@ -1,10 +1,10 @@
 # Inputs — Formal Reporting Structures
 
 ## Required inputs
-- Approved organizational records and effective dates
-- Meeting notes, decisions, assumptions, blockers, and milestones
-- Structures, roles, committees, authorities, and reporting lines
-- Strategic priorities, source ownership, validity, and revision history
+- Current organization charts and role descriptions
+- Reporting lines, committees, and governance charters
+- Decision rights and delegated authorities
+- Effective dates and known vacancies or ambiguities
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

@@ -1,10 +1,10 @@
 # Outputs — Initiative Dependency Management
 
 ## Required work product
-- Purpose-built initiative dependency management executive work product
-- Evidence, owner, date, status, and source fields
-- Analysis findings and exceptions
-- Recommended action and human-review requirement
+- Dependency register and map
+- Provider, receiver, required date, and status
+- Schedule and decision impact
+- Resolution owner and escalation
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

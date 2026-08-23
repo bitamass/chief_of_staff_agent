@@ -2,9 +2,9 @@
 
 ## Required work product
 - Timed, decision-oriented agenda
-- Topic owner and desired outcome for each item
-- Decision questions and required evidence
-- Pre-read and follow-up sections
+- Topic owner and desired outcome for every item
+- Decision questions, evidence, and pre-reads
+- Decision and action capture section
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

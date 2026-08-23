@@ -1,10 +1,10 @@
 # Inputs — Priority Conflict Detection
 
 ## Required inputs
-- Approved strategic objectives and enterprise priorities
-- Initiative charters, outcomes, deliverables, and owners
-- OKRs, measures, benefits, dependencies, and resource demand
-- Portfolio status, risks, duplication, and investment constraints
+- Approved priorities and deadlines
+- Shared resource, funding, calendar, and decision constraints
+- Dependencies and consequences of delay
+- Current commitments and resolution authority
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

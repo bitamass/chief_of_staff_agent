@@ -1,10 +1,10 @@
 # Inputs — Resource Management
 
 ## Required inputs
-- Initiative charters, plans, objectives, and expected benefits
-- Milestones, deliverables, owners, dates, and acceptance criteria
-- Resources, budget, dependencies, risks, and status evidence
-- OKRs, capacity, priorities, and intervention thresholds
+- Resource demand by initiative, period, and skill
+- Available capacity, cost, and current allocations
+- Priority ranking, deadlines, and dependencies
+- Constraints and reallocation authority
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

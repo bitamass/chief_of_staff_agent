@@ -3,8 +3,8 @@
 ## Required work product
 - Accountability register
 - Owner, due date, status, and completion evidence
-- Dependency and source record
-- Follow-up or escalation recommendation
+- Dependency and source meeting
+- Follow-up, next checkpoint, or escalation recommendation
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

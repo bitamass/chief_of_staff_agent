@@ -2,9 +2,10 @@
 
 ## Required inputs
 - Decision statement, authority, deadline, and desired outcome
-- Options, constraints, evaluation criteria, and weights
-- Benefits, costs, risks, stakeholder effects, and assumptions
-- Prior decisions, evidence sources, and consequences of delay
+- Options including do-nothing
+- Weighted evaluation criteria
+- Benefits, costs, risks, speed, reversibility, and stakeholder impact
+- Constraints and assumptions for sensitivity testing
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

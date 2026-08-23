@@ -1,10 +1,10 @@
 # Inputs — Risk Mitigation Recommendations
 
 ## Required inputs
-- Risk statements and active issue descriptions
-- Likelihood, impact, velocity, proximity, and scoring scales
-- Controls, mitigation actions, triggers, thresholds, and owners
-- Trend history, affected initiatives, appetite, and review cadence
+- Scored risk statements and affected objectives
+- Existing controls and control effectiveness
+- Risk appetite and target residual exposure
+- Treatment options, cost, feasibility, owners, and dates
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

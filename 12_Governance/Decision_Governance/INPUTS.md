@@ -1,10 +1,10 @@
 # Inputs — Decision Governance
 
 ## Required inputs
-- Policies, governance charters, decision rights, and thresholds
-- Decision, issue, or risk record with owner and business impact
-- Required evidence, reviews, approvals, and accountable bodies
-- Escalation criteria, control status, monitoring, and audit records
+- Decision type and exact request
+- Policies, thresholds, decision rights, and authorities
+- Required evidence, consultation, approvals, and records
+- Monitoring, review, and audit obligations
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

@@ -1,10 +1,10 @@
 # Inputs — Risk Warning
 
 ## Required inputs
-- Risk statements and active issue descriptions
-- Likelihood, impact, velocity, proximity, and scoring scales
-- Controls, mitigation actions, triggers, thresholds, and owners
-- Trend history, affected initiatives, appetite, and review cadence
+- Risk triggers and warning thresholds
+- Current leading-indicator evidence and trend
+- Affected initiatives, impact window, and owner
+- Immediate response and escalation plan
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

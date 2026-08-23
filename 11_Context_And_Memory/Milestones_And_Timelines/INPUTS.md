@@ -1,10 +1,10 @@
 # Inputs — Milestones And Timelines
 
 ## Required inputs
-- Approved organizational records and effective dates
-- Meeting notes, decisions, assumptions, blockers, and milestones
-- Structures, roles, committees, authorities, and reporting lines
-- Strategic priorities, source ownership, validity, and revision history
+- Milestone definitions and acceptance criteria
+- Baseline, forecast, and actual dates
+- Owners, dependencies, completion evidence, and decisions
+- Variance thresholds and corrective actions
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

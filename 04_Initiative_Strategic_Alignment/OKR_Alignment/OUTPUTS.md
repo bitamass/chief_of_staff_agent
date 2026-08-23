@@ -2,7 +2,7 @@
 
 ## Required work product
 - OKR alignment and progress matrix
-- Baseline, target, actual, and confidence
+- Baseline, target, actual, confidence, and trend
 - Linked initiatives and owners
 - Gap or recovery recommendation
 

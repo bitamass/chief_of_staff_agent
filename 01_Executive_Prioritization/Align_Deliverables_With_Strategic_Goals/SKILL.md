@@ -1,6 +1,6 @@
 ---
 name: executive-prioritization-align-deliverables-with-strategic-goals
-description: Perform align deliverables with strategic goals using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform align deliverables with strategic goals using its specific evidence contract, business logic, and executive output.
 ---
 # Align Deliverables With Strategic Goals
 

@@ -3,7 +3,7 @@
 ## Required work product
 - Source-linked decision register
 - Decision, authority, date, rationale, and status
-- Alternatives and consequences
+- Alternatives, implications, and affected work
 - Follow-up actions and amendment history
 
 ## Executive presentation

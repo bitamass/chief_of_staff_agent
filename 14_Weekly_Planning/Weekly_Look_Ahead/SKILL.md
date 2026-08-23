@@ -1,6 +1,6 @@
 ---
 name: weekly-planning-weekly-look-ahead
-description: Perform weekly look ahead using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform weekly look ahead using its specific evidence contract, business logic, and executive output.
 ---
 # Weekly Look Ahead
 
@@ -8,9 +8,9 @@ description: Perform weekly look ahead using the named evidence, business rules,
 Perform **weekly look ahead** as a distinct executive workflow—not as a generic summary.
 
 ## Skill logic
-1. Place fixed commitments and deadlines first.
-2. Score outcomes by value, urgency, consequence, and effort.
-3. Reserve realistic preparation, focus, transition, and contingency time.
+1. Place immovable meetings, deadlines, and decisions first.
+2. Rank outcomes by value, urgency, consequence, and effort.
+3. Reserve preparation, focus, transition, and contingency time.
 4. Resolve overload through deferral, delegation, shortening, or rescheduling.
 
 ## Operating rules

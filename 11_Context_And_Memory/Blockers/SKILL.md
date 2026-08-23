@@ -1,6 +1,6 @@
 ---
 name: context-and-memory-blockers
-description: Perform blockers using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform blockers using its specific evidence contract, business logic, and executive output.
 ---
 # Blockers
 
@@ -8,10 +8,10 @@ description: Perform blockers using the named evidence, business rules, and exec
 Perform **blockers** as a distinct executive workflow—not as a generic summary.
 
 ## Skill logic
-1. Normalize the dated source evidence.
-2. Apply the skill-specific business rules.
-3. Identify exceptions, dependencies, owners, and uncertainty.
-4. Produce the required executive work product and recommendations.
+1. Extract and normalize the assumption or blocker.
+2. Assign source, owner, date, confidence or impact, and related work.
+3. Identify validation or resolution options and dependencies.
+4. Set review, retirement, resolution, or escalation action.
 
 ## Operating rules
 - Use INPUTS.md as the evidence contract.

@@ -1,10 +1,11 @@
 # Inputs — Prior Decisions
 
 ## Required inputs
-- Approved organizational records and effective dates
-- Meeting notes, decisions, assumptions, blockers, and milestones
-- Structures, roles, committees, authorities, and reporting lines
-- Strategic priorities, source ownership, validity, and revision history
+- Exact decision statement and current status
+- Decision maker, date, and source meeting
+- Rationale, options, and assumptions
+- Affected initiatives, deliverables, and dependencies
+- Follow-up actions, amendments, and superseding decisions
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

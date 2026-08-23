@@ -3,8 +3,8 @@
 ## Required work product
 - Purpose-built initiative portfolio review executive work product
 - Evidence, owner, date, status, and source fields
-- Analysis findings and exceptions
-- Recommended action and human-review requirement
+- Skill-specific findings and exceptions
+- Recommendation and human-review requirement
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

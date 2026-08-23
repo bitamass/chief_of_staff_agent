@@ -1,10 +1,10 @@
 # Inputs — Monitor Commitments
 
 ## Required inputs
-- Actions, commitments, deliverables, and acceptance criteria
-- Accountable owners, due dates, status, and completion evidence
-- Source meetings, dependencies, blockers, and revised dates
-- Escalation thresholds, reporting period, and affected outcomes
+- Commitment statement, owner, and source meeting
+- Original and revised due dates
+- Completion criteria and current status evidence
+- Dependencies, prior follow-up, and escalation threshold
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

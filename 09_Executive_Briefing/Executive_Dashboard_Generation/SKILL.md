@@ -1,6 +1,6 @@
 ---
 name: executive-briefing-executive-dashboard-generation
-description: Perform executive dashboard generation using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform executive dashboard generation using its specific evidence contract, business logic, and executive output.
 ---
 # Executive Dashboard Generation
 
@@ -8,10 +8,10 @@ description: Perform executive dashboard generation using the named evidence, bu
 Perform **executive dashboard generation** as a distinct executive workflow—not as a generic summary.
 
 ## Skill logic
-1. Normalize the dated source evidence.
-2. Apply the skill-specific business rules.
-3. Identify exceptions, dependencies, owners, and uncertainty.
-4. Produce the required executive work product and recommendations.
+1. Select only audience- and decision-relevant approved evidence.
+2. Separate facts, decisions, risks, actions, and recommendations.
+3. Organize the message for the audience, purpose, channel, and length.
+4. Cite material claims and route the draft for human approval.
 
 ## Operating rules
 - Use INPUTS.md as the evidence contract.

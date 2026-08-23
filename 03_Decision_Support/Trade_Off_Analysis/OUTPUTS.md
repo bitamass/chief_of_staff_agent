@@ -4,7 +4,7 @@
 - Option and trade-off matrix
 - Weighted criterion scores
 - Benefits sacrificed and risks accepted
-- Sensitivity analysis and recommendation
+- Sensitivity analysis, recommendation, and fallback
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

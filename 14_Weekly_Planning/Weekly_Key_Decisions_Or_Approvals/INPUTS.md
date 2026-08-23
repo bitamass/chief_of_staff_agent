@@ -1,10 +1,10 @@
 # Inputs — Weekly Key Decisions Or Approvals
 
 ## Required inputs
-- Five-day calendar and available capacity
-- Weekly outcomes, deadlines, and milestones
-- Deliverables, decisions, owners, and dependencies
-- Preparation time, risks, and carryover from the prior week
+- Decision and approval requests
+- Authority, deadline, meeting, and desired outcome
+- Options, evidence, dependencies, and readiness
+- Consequence of delay and preparation owner
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

@@ -1,6 +1,6 @@
 ---
 name: initiative-strategic-alignment-initiative-portfolio-review
-description: Perform initiative portfolio review using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
+description: Perform initiative portfolio review using its specific evidence contract, business logic, and executive output.
 ---
 # Initiative Portfolio Review
 
@@ -9,8 +9,8 @@ Perform **initiative portfolio review** as a distinct executive workflow—not a
 
 ## Skill logic
 1. Trace objectives to outcomes, measures, milestones, and deliverables.
-2. Compare current evidence with plan, target, and capacity.
-3. Identify variance, dependencies, duplication, and root causes.
+2. Compare current evidence with plan, target, dependency, and capacity.
+3. Identify variance, duplication, conflicts, gaps, and root causes.
 4. Recommend sequencing, recovery, resource, or governance intervention.
 
 ## Operating rules

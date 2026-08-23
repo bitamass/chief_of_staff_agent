@@ -1,11 +1,11 @@
 # Inputs — Trade Off Analysis
 
 ## Required inputs
-- Decision options including do-nothing
+- Decision statement, authority, deadline, and desired outcome
+- Options including do-nothing
 - Weighted evaluation criteria
-- Benefits, costs, risks, speed, and reversibility for each option
-- Stakeholder and operational impacts
-- Constraints and assumptions requiring sensitivity testing
+- Benefits, costs, risks, speed, reversibility, and stakeholder impact
+- Constraints and assumptions for sensitivity testing
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

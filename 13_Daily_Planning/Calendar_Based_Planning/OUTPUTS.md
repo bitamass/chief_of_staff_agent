@@ -1,10 +1,10 @@
 # Outputs — Calendar Based Planning
 
 ## Required work product
-- Time-phased executive plan
-- Ranked outcomes and preparation blocks
-- Conflicts and capacity implications
-- Defer, delegate, shorten, or reschedule recommendations
+- Prioritized and time-blocked calendar
+- Meeting scores and rationale
+- Protected preparation and focus blocks
+- Attend, delegate, shorten, reschedule, or decline recommendations
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

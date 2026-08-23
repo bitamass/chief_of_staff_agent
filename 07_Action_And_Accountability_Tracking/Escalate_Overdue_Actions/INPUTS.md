@@ -1,10 +1,10 @@
 # Inputs — Escalate Overdue Actions
 
 ## Required inputs
-- Actions, commitments, deliverables, and acceptance criteria
-- Accountable owners, due dates, status, and completion evidence
-- Source meetings, dependencies, blockers, and revised dates
-- Escalation thresholds, reporting period, and affected outcomes
+- Overdue action list with owners
+- Original and revised due dates
+- Status evidence, dependencies, and business impact
+- Prior follow-up and escalation thresholds
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

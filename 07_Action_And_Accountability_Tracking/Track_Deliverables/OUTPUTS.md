@@ -1,10 +1,10 @@
 # Outputs — Track Deliverables
 
 ## Required work product
-- Accountability register
-- Owner, due date, status, and completion evidence
-- Dependency and source record
-- Follow-up or escalation recommendation
+- Deliverable tracker by initiative
+- Owner, due date, acceptance criteria, and status
+- Schedule variance and dependencies
+- Corrective action, reprioritization, or escalation
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

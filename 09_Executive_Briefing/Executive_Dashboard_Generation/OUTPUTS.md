@@ -1,10 +1,10 @@
 # Outputs — Executive Dashboard Generation
 
 ## Required work product
-- Executive dashboard specification
-- Decision-relevant measures and thresholds
-- Trend and exception indicators
-- Owners, data sources, and refresh cadence
+- Board meeting summary
+- Matters considered and formal actions
+- Votes, decisions, owners, and follow-ups
+- Disclosure note and sources
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.

@@ -1,10 +1,10 @@
 # Inputs — Strategic Alignment Analysis
 
 ## Required inputs
-- Initiative charters, plans, objectives, and expected benefits
-- Milestones, deliverables, owners, dates, and acceptance criteria
-- Resources, budget, dependencies, risks, and status evidence
-- OKRs, capacity, priorities, and intervention thresholds
+- Approved strategic objectives and business priorities
+- Initiative charters, outcomes, owners, and measures
+- Deliverables, expected value, deadlines, and dependencies
+- Alignment scoring criteria and evidence sources
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

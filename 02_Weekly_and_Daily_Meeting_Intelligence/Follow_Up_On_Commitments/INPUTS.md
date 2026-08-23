@@ -1,10 +1,10 @@
 # Inputs — Follow Up On Commitments
 
 ## Required inputs
-- Calendar entries, meeting objectives, and attendee roles
-- Agendas, prior meeting notes, decisions, and commitments
-- Actions, owners, due dates, status evidence, and dependencies
-- Relevant initiative context, risks, metrics, and source dates
+- Commitment statement, owner, and source meeting
+- Original and revised due dates
+- Completion criteria and current status evidence
+- Dependencies, prior follow-up, and escalation threshold
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.

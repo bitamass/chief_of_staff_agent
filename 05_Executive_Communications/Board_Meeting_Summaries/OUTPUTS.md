@@ -1,10 +1,10 @@
 # Outputs — Board Meeting Summaries
 
 ## Required work product
-- Purpose-built board meeting summaries executive work product
-- Evidence, owner, date, status, and source fields
-- Analysis findings and exceptions
-- Recommended action and human-review requirement
+- Chronological prior-discussion summary
+- Themes and changed positions
+- Confirmed decisions, commitments, and owners
+- Unresolved questions and source references
 
 ## Executive presentation
 - Lead with the decision, priority, exception, or action required.
