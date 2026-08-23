@@ -235,62 +235,6 @@ capabilities = {
     capability: list(skills)
     for capability, skills in skill_catalog.items()
 }
-capability_labels = list(capabilities)
-default_capability_index = next((i for i, label in enumerate(capability_labels) if label.startswith("02 ")), 0)
-st.markdown("#### Choose a Chief of Staff capability and skill")
-capability_name = st.selectbox(
-    "Capability",
-    capability_labels,
-    index=default_capability_index,
-    key="capability_name",
-)
-skill_options = capabilities[capability_name]
-preferred_skill = "Prepare Pre-Meeting Briefing Materials"
-default_skill_index = skill_options.index(preferred_skill) if preferred_skill in skill_options else 0
-skill_name = st.selectbox(
-    "Skill",
-    skill_options,
-    index=default_skill_index,
-    key=f"skill_name_{capability_name}",
-)
-selected_skill = skill_catalog[capability_name][skill_name]
-repository_documents = selected_skill["documents"]
-if selected_skill["source"] == "repository":
-    definition_status = f"Loaded from `{selected_skill['repository_path']}`"
-else:
-    definition_status = "Repository skill folders were not included in this deployment; using the built-in catalog fallback."
-
-if selected_skill["connected"]:
-    st.success(f"Connected skill: {capability_name} → {skill_name}. {definition_status}")
-else:
-    st.info(
-        f"Framework-only skill: {capability_name} → {skill_name}. {definition_status} "
-        "The definition can be reviewed, but this prototype does not execute it yet."
-    )
-
-with st.expander("View the selected repository skill definition"):
-    if repository_documents:
-        st.caption(
-            "These files were read from the GitHub repository checkout deployed with this Streamlit app. "
-            "No live GitHub API connection or token is used."
-        )
-        document_labels = {
-            "SKILL.md": "Skill definition",
-            "README.md": "Overview",
-            "INPUTS.md": "Required inputs",
-            "WORKFLOW.md": "Workflow",
-            "OUTPUTS.md": "Expected outputs",
-            "PROMPT.md": "Prompt instructions",
-            "EVALUATION.md": "Evaluation criteria",
-        }
-        for filename, content in repository_documents.items():
-            st.markdown(f"##### {document_labels.get(filename, filename)}")
-            st.markdown(content)
-    else:
-        st.warning(
-            "No definition files were found for this skill in the deployed app. "
-            "Confirm that the numbered capability folders were uploaded to the repository root."
-        )
 
 st.subheader("Executive timeline")
 st.caption(f"Filtered to {scenario_name}: three weeks of operating history and two weeks of forward plans.")
@@ -361,6 +305,95 @@ with detail_actions:
         else:
             st.caption("No upcoming actions recorded.")
 
+with st.expander("Explore the complete five-week synthetic calendar and supporting records"):
+    calendar_rows = []
+    for day in operating_context["calendar"]:
+        event = day["meeting"]
+        calendar_rows.append({
+            "Date": day["date"].strftime("%a, %b %d"),
+            "Relative day": "Today" if day["offset"] == 0 else f"{day['offset']:+d}",
+            "Meeting": event["title"] if event else "—",
+            "Context": event["summary"] if event else "No scheduled executive meeting; continuity retained.",
+        })
+    st.dataframe(calendar_rows, width="stretch", hide_index=True)
+    st.markdown("#### Documented backend records")
+    st.write("**Participants:** " + ", ".join(p["role"] for p in operating_context["participants"].values()))
+    st.write("**Initiatives:** " + "; ".join(i["name"] for i in operating_context["initiatives"].values()))
+    st.write("**Charters:** " + "; ".join(c["title"] for c in operating_context["charters"].values()))
+    st.write("**Deliverables:** " + "; ".join(d["name"] for d in operating_context["deliverables"].values()))
+    st.caption("Every meeting, decision, action, initiative, charter, and deliverable uses a synthetic identifier so related records can be traced across time.")
+
+with st.sidebar:
+    st.header("Demonstration Safeguards")
+    st.success("Chiefs of Staff Demo")
+    for label in [
+        "Human review required",
+        "Source traceability enabled",
+        "Session-only document use",
+        "No production or Epic data",
+    ]:
+        st.checkbox(label, value=True, disabled=True)
+    st.divider()
+    st.subheader("Future state—not connected")
+    st.caption("Outlook calendar · Teams summaries · SharePoint · Approved external intelligence")
+
+capability_labels = list(capabilities)
+default_capability_index = next((i for i, label in enumerate(capability_labels) if label.startswith("02 ")), 0)
+st.markdown("#### Choose a Chief of Staff capability and skill")
+capability_name = st.selectbox(
+    "Capability",
+    capability_labels,
+    index=default_capability_index,
+    key="capability_name",
+)
+skill_options = capabilities[capability_name]
+preferred_skill = "Prepare Pre-Meeting Briefing Materials"
+default_skill_index = skill_options.index(preferred_skill) if preferred_skill in skill_options else 0
+skill_name = st.selectbox(
+    "Skill",
+    skill_options,
+    index=default_skill_index,
+    key=f"skill_name_{capability_name}",
+)
+selected_skill = skill_catalog[capability_name][skill_name]
+repository_documents = selected_skill["documents"]
+if selected_skill["source"] == "repository":
+    definition_status = f"Loaded from `{selected_skill['repository_path']}`"
+else:
+    definition_status = "Repository skill folders were not included in this deployment; using the built-in catalog fallback."
+
+if selected_skill["connected"]:
+    st.success(f"Connected skill: {capability_name} → {skill_name}. {definition_status}")
+else:
+    st.info(
+        f"Framework-only skill: {capability_name} → {skill_name}. {definition_status} "
+        "The definition can be reviewed, but this prototype does not execute it yet."
+    )
+
+with st.expander("View the selected repository skill definition"):
+    if repository_documents:
+        st.caption(
+            "These files were read from the GitHub repository checkout deployed with this Streamlit app. "
+            "No live GitHub API connection or token is used."
+        )
+        document_labels = {
+            "SKILL.md": "Skill definition",
+            "README.md": "Overview",
+            "INPUTS.md": "Required inputs",
+            "WORKFLOW.md": "Workflow",
+            "OUTPUTS.md": "Expected outputs",
+            "PROMPT.md": "Prompt instructions",
+            "EVALUATION.md": "Evaluation criteria",
+        }
+        for filename, content in repository_documents.items():
+            st.markdown(f"##### {document_labels.get(filename, filename)}")
+            st.markdown(content)
+    else:
+        st.warning(
+            "No definition files were found for this skill in the deployed app. "
+            "Confirm that the numbered capability folders were uploaded to the repository root."
+        )
+
 st.markdown("#### Selected Chief of Staff skill output")
 skill_records = build_scenario_records(operating_context, scenario_name)
 if skill_name in {"Action Item Management", "Follow Up On Commitments"}:
@@ -393,38 +426,6 @@ elif skill_name == "Initiative Portfolio Review":
             st.markdown(f"- **{item['status']} · Due {item['due_date']:%b %d}:** {item['name']}")
 else:
     st.warning("This skill is listed for framework review only. It is not executed because its repository instructions and required synthetic inputs have not yet been connected.")
-
-with st.expander("Explore the complete five-week synthetic calendar and supporting records"):
-    calendar_rows = []
-    for day in operating_context["calendar"]:
-        event = day["meeting"]
-        calendar_rows.append({
-            "Date": day["date"].strftime("%a, %b %d"),
-            "Relative day": "Today" if day["offset"] == 0 else f"{day['offset']:+d}",
-            "Meeting": event["title"] if event else "—",
-            "Context": event["summary"] if event else "No scheduled executive meeting; continuity retained.",
-        })
-    st.dataframe(calendar_rows, width="stretch", hide_index=True)
-    st.markdown("#### Documented backend records")
-    st.write("**Participants:** " + ", ".join(p["role"] for p in operating_context["participants"].values()))
-    st.write("**Initiatives:** " + "; ".join(i["name"] for i in operating_context["initiatives"].values()))
-    st.write("**Charters:** " + "; ".join(c["title"] for c in operating_context["charters"].values()))
-    st.write("**Deliverables:** " + "; ".join(d["name"] for d in operating_context["deliverables"].values()))
-    st.caption("Every meeting, decision, action, initiative, charter, and deliverable uses a synthetic identifier so related records can be traced across time.")
-
-with st.sidebar:
-    st.header("Demonstration Safeguards")
-    st.success("Chiefs of Staff Demo")
-    for label in [
-        "Human review required",
-        "Source traceability enabled",
-        "Session-only document use",
-        "No production or Epic data",
-    ]:
-        st.checkbox(label, value=True, disabled=True)
-    st.divider()
-    st.subheader("Future state—not connected")
-    st.caption("Outlook calendar · Teams summaries · SharePoint · Approved external intelligence")
 
 st.subheader("Most relevant upcoming meeting")
 scenario_action, scenario_description = st.columns([1, 2.4])
