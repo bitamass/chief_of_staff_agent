@@ -1,9 +1,13 @@
-# Output — Key Decision Identification
+# Outputs — Key Decision Identification
 
-Produce the **decision or approval queue** containing:
+## Required work product
+- Decision or approval queue
+- Authority, deadline, options, and readiness
+- Evidence gaps and consequence of delay
+- Recommended next action
 
-- Executive purpose and time horizon
-- Evidence-based findings specific to key decision identification
-- Owner, dates, status, and source references
-- Exceptions, dependencies, or unresolved questions
-- Recommended executive action and human-review note
+## Executive presentation
+- Lead with the decision, priority, exception, or action required.
+- Show owners, dates, status, scores, rationale, and sources where applicable.
+- Identify evidence gaps, conflicts, and unresolved assumptions.
+- End with recommendations and items requiring human approval.

@@ -1,6 +1,12 @@
 # Inputs — Initiative Dependency Management
 
-- Core evidence: charters, plans, milestones, resources, dependencies, OKRs, deliverables, and status updates.
-- Skill-specific evidence: Charter, milestones, dependencies, benefits, and latest status.
-- Required metadata: source, date, owner, status, and confidence.
-- If evidence is missing, list the gap rather than filling it by inference.
+## Required inputs
+- Initiative charters, plans, objectives, and expected benefits
+- Milestones, deliverables, owners, dates, and acceptance criteria
+- Resources, budget, dependencies, risks, and status evidence
+- OKRs, capacity, priorities, and intervention thresholds
+
+## Validation
+- Confirm source, owner, effective date, and approval status.
+- Flag missing, conflicting, stale, or unverified inputs.
+- Use synthetic or explicitly approved data only in the demonstration.

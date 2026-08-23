@@ -1,6 +1,12 @@
 # Inputs — Action Item Management
 
-- Core evidence: calendar entries, agendas, participants, prior notes, decisions, and action items.
-- Skill-specific evidence: purpose, accountable owner, time horizon, and success criteria.
-- Required metadata: source, date, owner, status, and confidence.
-- If evidence is missing, list the gap rather than filling it by inference.
+## Required inputs
+- Calendar entries, meeting objectives, and attendee roles
+- Agendas, prior meeting notes, decisions, and commitments
+- Actions, owners, due dates, status evidence, and dependencies
+- Relevant initiative context, risks, metrics, and source dates
+
+## Validation
+- Confirm source, owner, effective date, and approval status.
+- Flag missing, conflicting, stale, or unverified inputs.
+- Use synthetic or explicitly approved data only in the demonstration.

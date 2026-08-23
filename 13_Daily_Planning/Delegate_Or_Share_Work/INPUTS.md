@@ -1,6 +1,12 @@
 # Inputs — Delegate Or Share Work
 
-- Core evidence: today's calendar, priorities, tasks, decisions, preparation needs, owners, and available time.
-- Skill-specific evidence: purpose, accountable owner, time horizon, and success criteria.
-- Required metadata: source, date, owner, status, and confidence.
-- If evidence is missing, list the gap rather than filling it by inference.
+## Required inputs
+- Today's calendar, deadlines, available time, and constraints
+- Weekly priorities, tasks, meetings, and preparation requirements
+- Pending decisions, approvals, actions, risks, and dependencies
+- Owners, effort estimates, focus needs, and delegation options
+
+## Validation
+- Confirm source, owner, effective date, and approval status.
+- Flag missing, conflicting, stale, or unverified inputs.
+- Use synthetic or explicitly approved data only in the demonstration.

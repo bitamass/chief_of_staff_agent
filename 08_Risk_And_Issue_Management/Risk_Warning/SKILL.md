@@ -1,18 +1,21 @@
 ---
 name: risk-and-issue-management-risk-warning
-description: Produce the early-warning notice with trigger evidence used for executive Chief of Staff work. Use when the user needs risk warning within risk and issue management.
+description: Perform risk warning using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
 ---
 # Risk Warning
 
 ## Purpose
-Risk Warning helps identify, assess, communicate, and mitigate executive risks and issues.
+Perform **risk warning** as a distinct executive workflow—not as a generic summary.
 
-## Instructions
-1. Confirm the executive question, owner, and time horizon.
-2. Use only dated, attributable evidence.
-3. Write cause-event-impact statements, assess exposure, test controls, and identify triggers.
-4. Produce the early-warning notice with trigger evidence defined in OUTPUTS.md.
-5. State gaps, assumptions, and items requiring human review.
+## Skill logic
+1. Write or validate cause-event-impact statements.
+2. Assess likelihood, impact, velocity, controls, and trend using evidence.
+3. Compare exposure with approved thresholds.
+4. Identify triggers, owners, and treatment or escalation needs.
 
-## Boundary
-Separate current issues from future risks and never imply assurance without evidence.
+## Operating rules
+- Use INPUTS.md as the evidence contract.
+- Produce every item in OUTPUTS.md.
+- Cite material findings and explain every score.
+- Separate facts, assumptions, analysis, and recommendations.
+- Require human review before distribution, approval, reassignment, or action.

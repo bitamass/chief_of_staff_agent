@@ -1,9 +1,13 @@
-# Output — Blockers
+# Outputs — Blockers
 
-Produce the **blocker register with resolution path** containing:
+## Required work product
+- Blocker register
+- Root cause, owner, age, and impact
+- Resolution options and dependencies
+- Help or escalation required
 
-- Executive purpose and time horizon
-- Evidence-based findings specific to blockers
-- Owner, dates, status, and source references
-- Exceptions, dependencies, or unresolved questions
-- Recommended executive action and human-review note
+## Executive presentation
+- Lead with the decision, priority, exception, or action required.
+- Show owners, dates, status, scores, rationale, and sources where applicable.
+- Identify evidence gaps, conflicts, and unresolved assumptions.
+- End with recommendations and items requiring human approval.

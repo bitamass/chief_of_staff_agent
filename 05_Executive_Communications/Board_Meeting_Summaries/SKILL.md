@@ -1,18 +1,21 @@
 ---
 name: executive-communications-board-meeting-summaries
-description: Produce the board meeting summaries executive work product used for executive Chief of Staff work. Use when the user needs board meeting summaries within executive communications.
+description: Perform board meeting summaries using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
 ---
 # Board Meeting Summaries
 
 ## Purpose
-Board Meeting Summaries helps produce audience-specific executive communications with an appropriate level of detail.
+Perform **board meeting summaries** as a distinct executive workflow—not as a generic summary.
 
-## Instructions
-1. Confirm the executive question, owner, and time horizon.
-2. Use only dated, attributable evidence.
-3. Connect prior discussion, current purpose, participants, decisions, and follow-up without losing chronology.
-4. Produce the board meeting summaries executive work product defined in OUTPUTS.md.
-5. State gaps, assumptions, and items requiring human review.
+## Skill logic
+1. Normalize the dated source evidence.
+2. Apply the skill-specific business rules.
+3. Identify exceptions, dependencies, owners, and uncertainty.
+4. Produce the required executive work product and recommendations.
 
-## Boundary
-Do not publish or distribute; require approval and protect sensitive information.
+## Operating rules
+- Use INPUTS.md as the evidence contract.
+- Produce every item in OUTPUTS.md.
+- Cite material findings and explain every score.
+- Separate facts, assumptions, analysis, and recommendations.
+- Require human review before distribution, approval, reassignment, or action.

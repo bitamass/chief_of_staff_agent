@@ -1,9 +1,13 @@
-# Output — Weekly Key Decisions Or Approvals
+# Outputs — Weekly Key Decisions Or Approvals
 
-Produce the **decision or approval queue** containing:
+## Required work product
+- Time-phased executive plan
+- Ranked outcomes and preparation blocks
+- Conflicts and capacity implications
+- Defer, delegate, shorten, or reschedule recommendations
 
-- Executive purpose and time horizon
-- Evidence-based findings specific to weekly key decisions or approvals
-- Owner, dates, status, and source references
-- Exceptions, dependencies, or unresolved questions
-- Recommended executive action and human-review note
+## Executive presentation
+- Lead with the decision, priority, exception, or action required.
+- Show owners, dates, status, scores, rationale, and sources where applicable.
+- Identify evidence gaps, conflicts, and unresolved assumptions.
+- End with recommendations and items requiring human approval.

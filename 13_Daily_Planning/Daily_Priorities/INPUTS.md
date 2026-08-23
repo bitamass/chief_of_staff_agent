@@ -1,6 +1,12 @@
 # Inputs — Daily Priorities
 
-- Core evidence: today's calendar, priorities, tasks, decisions, preparation needs, owners, and available time.
-- Skill-specific evidence: Scoring criteria and capacity limits; Time constraints, focus blocks, and immovable commitments.
-- Required metadata: source, date, owner, status, and confidence.
-- If evidence is missing, list the gap rather than filling it by inference.
+## Required inputs
+- Weekly goals and today's non-negotiable deadlines
+- Today's calendar and available focus time
+- Open actions, pending decisions, and preparation needs
+- Value, urgency, effort, and consequence-of-delay criteria
+
+## Validation
+- Confirm source, owner, effective date, and approval status.
+- Flag missing, conflicting, stale, or unverified inputs.
+- Use synthetic or explicitly approved data only in the demonstration.

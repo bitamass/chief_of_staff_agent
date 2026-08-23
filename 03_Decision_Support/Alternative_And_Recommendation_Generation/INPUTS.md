@@ -1,6 +1,12 @@
 # Inputs — Alternative And Recommendation Generation
 
-- Core evidence: decision request, options, criteria, constraints, risks, costs, and prior decisions.
-- Skill-specific evidence: purpose, accountable owner, time horizon, and success criteria.
-- Required metadata: source, date, owner, status, and confidence.
-- If evidence is missing, list the gap rather than filling it by inference.
+## Required inputs
+- Decision statement, authority, deadline, and desired outcome
+- Options, constraints, evaluation criteria, and weights
+- Benefits, costs, risks, stakeholder effects, and assumptions
+- Prior decisions, evidence sources, and consequences of delay
+
+## Validation
+- Confirm source, owner, effective date, and approval status.
+- Flag missing, conflicting, stale, or unverified inputs.
+- Use synthetic or explicitly approved data only in the demonstration.

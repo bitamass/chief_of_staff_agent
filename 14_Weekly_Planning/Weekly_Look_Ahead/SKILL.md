@@ -1,18 +1,21 @@
 ---
 name: weekly-planning-weekly-look-ahead
-description: Produce the five-day executive work plan used for executive Chief of Staff work. Use when the user needs weekly look ahead within weekly planning.
+description: Perform weekly look ahead using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
 ---
 # Weekly Look Ahead
 
 ## Purpose
-Weekly Look Ahead helps build a five-day executive plan that balances outcomes, meetings, decisions, and capacity.
+Perform **weekly look ahead** as a distinct executive workflow—not as a generic summary.
 
-## Instructions
-1. Confirm the executive question, owner, and time horizon.
-2. Use only dated, attributable evidence.
-3. Sequence fixed commitments first, reserve preparation and focus time, then fit realistic priorities.
-4. Produce the five-day executive work plan defined in OUTPUTS.md.
-5. State gaps, assumptions, and items requiring human review.
+## Skill logic
+1. Place fixed commitments and deadlines first.
+2. Score outcomes by value, urgency, consequence, and effort.
+3. Reserve realistic preparation, focus, transition, and contingency time.
+4. Resolve overload through deferral, delegation, shortening, or rescheduling.
 
-## Boundary
-Keep the plan achievable and distinguish commitments from recommendations.
+## Operating rules
+- Use INPUTS.md as the evidence contract.
+- Produce every item in OUTPUTS.md.
+- Cite material findings and explain every score.
+- Separate facts, assumptions, analysis, and recommendations.
+- Require human review before distribution, approval, reassignment, or action.

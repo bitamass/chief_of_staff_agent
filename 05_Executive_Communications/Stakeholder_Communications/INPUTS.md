@@ -1,6 +1,12 @@
 # Inputs — Stakeholder Communications
 
-- Core evidence: approved facts, decisions, messages, audience needs, tone, timing, and disclosure limits.
-- Skill-specific evidence: Stakeholder roles, influence, interests, and decision rights; Audience, approved message, tone, channel, and disclosure limits.
-- Required metadata: source, date, owner, status, and confidence.
-- If evidence is missing, list the gap rather than filling it by inference.
+## Required inputs
+- Approved facts, decisions, metrics, and source material
+- Audience, purpose, tone, channel, timing, and call to action
+- Sensitive topics, disclosure limits, and approval authority
+- Likely questions, stakeholder concerns, and support resources
+
+## Validation
+- Confirm source, owner, effective date, and approval status.
+- Flag missing, conflicting, stale, or unverified inputs.
+- Use synthetic or explicitly approved data only in the demonstration.

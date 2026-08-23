@@ -1,18 +1,21 @@
 ---
 name: initiative-strategic-alignment-map-initiatives-to-strategic-objectives
-description: Produce the strategic alignment traceability matrix used for executive Chief of Staff work. Use when the user needs map initiatives to strategic objectives within initiative strategic alignment.
+description: Perform map initiatives to strategic objectives using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
 ---
 # Map Initiatives To Strategic Objectives
 
 ## Purpose
-Map Initiatives To Strategic Objectives helps connect initiatives and deliverables to institutional strategy.
+Perform **map initiatives to strategic objectives** as a distinct executive workflow—not as a generic summary.
 
-## Instructions
-1. Confirm the executive question, owner, and time horizon.
-2. Use only dated, attributable evidence.
-3. Trace objectives to outcomes and deliverables, assess health and dependencies, and flag intervention needs.
-4. Produce the strategic alignment traceability matrix defined in OUTPUTS.md.
-5. State gaps, assumptions, and items requiring human review.
+## Skill logic
+1. Trace objectives to outcomes, measures, milestones, and deliverables.
+2. Compare current evidence with plan, target, and capacity.
+3. Identify variance, dependencies, duplication, and root causes.
+4. Recommend sequencing, recovery, resource, or governance intervention.
 
-## Boundary
-Flag weak or inferred alignment instead of treating it as established.
+## Operating rules
+- Use INPUTS.md as the evidence contract.
+- Produce every item in OUTPUTS.md.
+- Cite material findings and explain every score.
+- Separate facts, assumptions, analysis, and recommendations.
+- Require human review before distribution, approval, reassignment, or action.

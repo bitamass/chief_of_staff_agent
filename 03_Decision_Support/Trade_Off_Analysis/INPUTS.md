@@ -1,6 +1,13 @@
 # Inputs — Trade Off Analysis
 
-- Core evidence: decision request, options, criteria, constraints, risks, costs, and prior decisions.
-- Skill-specific evidence: purpose, accountable owner, time horizon, and success criteria.
-- Required metadata: source, date, owner, status, and confidence.
-- If evidence is missing, list the gap rather than filling it by inference.
+## Required inputs
+- Decision options including do-nothing
+- Weighted evaluation criteria
+- Benefits, costs, risks, speed, and reversibility for each option
+- Stakeholder and operational impacts
+- Constraints and assumptions requiring sensitivity testing
+
+## Validation
+- Confirm source, owner, effective date, and approval status.
+- Flag missing, conflicting, stale, or unverified inputs.
+- Use synthetic or explicitly approved data only in the demonstration.

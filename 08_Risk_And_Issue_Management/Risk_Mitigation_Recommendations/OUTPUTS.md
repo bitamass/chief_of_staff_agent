@@ -1,9 +1,13 @@
-# Output — Risk Mitigation Recommendations
+# Outputs — Risk Mitigation Recommendations
 
-Produce the **risk treatment plan** containing:
+## Required work product
+- Purpose-built risk mitigation recommendations executive work product
+- Evidence, owner, date, status, and source fields
+- Analysis findings and exceptions
+- Recommended action and human-review requirement
 
-- Executive purpose and time horizon
-- Evidence-based findings specific to risk mitigation recommendations
-- Owner, dates, status, and source references
-- Exceptions, dependencies, or unresolved questions
-- Recommended executive action and human-review note
+## Executive presentation
+- Lead with the decision, priority, exception, or action required.
+- Show owners, dates, status, scores, rationale, and sources where applicable.
+- Identify evidence gaps, conflicts, and unresolved assumptions.
+- End with recommendations and items requiring human approval.

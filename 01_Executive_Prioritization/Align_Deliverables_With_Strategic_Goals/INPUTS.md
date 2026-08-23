@@ -1,6 +1,14 @@
 # Inputs — Align Deliverables With Strategic Goals
 
-- Core evidence: strategic goals, initiative charters, deliverables, constraints, and executive deadlines.
-- Skill-specific evidence: Charter, milestones, dependencies, benefits, and latest status.
-- Required metadata: source, date, owner, status, and confidence.
-- If evidence is missing, list the gap rather than filling it by inference.
+## Required inputs
+- List of approved strategic goals
+- List of top business priorities
+- List of initiatives with owners and intended outcomes
+- List of deliverables for each initiative
+- Deliverable deadlines, dependencies, effort, and expected value
+- Agreed 1–5 strategic-alignment scoring criteria
+
+## Validation
+- Confirm source, owner, effective date, and approval status.
+- Flag missing, conflicting, stale, or unverified inputs.
+- Use synthetic or explicitly approved data only in the demonstration.

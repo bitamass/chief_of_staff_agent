@@ -1,9 +1,13 @@
-# Output — Risk Warning
+# Outputs — Risk Warning
 
-Produce the **early-warning notice with trigger evidence** containing:
+## Required work product
+- Early-warning notice
+- Trigger evidence and trend
+- Expected impact window
+- Immediate response and escalation recommendation
 
-- Executive purpose and time horizon
-- Evidence-based findings specific to risk warning
-- Owner, dates, status, and source references
-- Exceptions, dependencies, or unresolved questions
-- Recommended executive action and human-review note
+## Executive presentation
+- Lead with the decision, priority, exception, or action required.
+- Show owners, dates, status, scores, rationale, and sources where applicable.
+- Identify evidence gaps, conflicts, and unresolved assumptions.
+- End with recommendations and items requiring human approval.

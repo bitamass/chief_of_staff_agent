@@ -1,9 +1,13 @@
-# Output — One Pagers
+# Outputs — One Pagers
 
-Produce the **one-page executive brief** containing:
+## Required work product
+- Source-linked executive brief
+- Relevant context and prior decisions
+- Risks, actions, decisions, and questions
+- Recommendations and source list
 
-- Executive purpose and time horizon
-- Evidence-based findings specific to one pagers
-- Owner, dates, status, and source references
-- Exceptions, dependencies, or unresolved questions
-- Recommended executive action and human-review note
+## Executive presentation
+- Lead with the decision, priority, exception, or action required.
+- Show owners, dates, status, scores, rationale, and sources where applicable.
+- Identify evidence gaps, conflicts, and unresolved assumptions.
+- End with recommendations and items requiring human approval.

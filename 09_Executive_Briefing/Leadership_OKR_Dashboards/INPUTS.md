@@ -1,6 +1,12 @@
 # Inputs — Leadership OKR Dashboards
 
-- Core evidence: meeting purpose, audience, source documents, metrics, decisions, risks, and time horizon.
-- Skill-specific evidence: Charter, milestones, dependencies, benefits, and latest status.
-- Required metadata: source, date, owner, status, and confidence.
-- If evidence is missing, list the gap rather than filling it by inference.
+## Required inputs
+- Executive question, audience, purpose, and time limit
+- Approved internal evidence, metrics, decisions, and risks
+- Relevant external sources, dates, and credibility where allowed
+- Options, recommendation, requested action, and disclosure limits
+
+## Validation
+- Confirm source, owner, effective date, and approval status.
+- Flag missing, conflicting, stale, or unverified inputs.
+- Use synthetic or explicitly approved data only in the demonstration.

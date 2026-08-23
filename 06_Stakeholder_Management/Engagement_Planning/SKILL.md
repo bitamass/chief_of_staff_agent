@@ -1,18 +1,21 @@
 ---
 name: stakeholder-management-engagement-planning
-description: Produce the stakeholder engagement plan used for executive Chief of Staff work. Use when the user needs engagement planning within stakeholder management.
+description: Perform engagement planning using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
 ---
 # Engagement Planning
 
 ## Purpose
-Engagement Planning helps clarify stakeholder influence, interest, accountability, and engagement needs.
+Perform **engagement planning** as a distinct executive workflow—not as a generic summary.
 
-## Instructions
-1. Confirm the executive question, owner, and time horizon.
-2. Use only dated, attributable evidence.
-3. Map role-based evidence, decision rights, influence, interests, and engagement gaps.
-4. Produce the stakeholder engagement plan defined in OUTPUTS.md.
-5. State gaps, assumptions, and items requiring human review.
+## Skill logic
+1. Map formal roles, decision rights, influence, impact, and interests.
+2. Use evidence rather than personal speculation.
+3. Identify gaps, conflicts, and the appropriate engagement level.
+4. Assign communication or accountability actions.
 
-## Boundary
-Avoid speculative personal judgments; label assumptions and use role-based evidence.
+## Operating rules
+- Use INPUTS.md as the evidence contract.
+- Produce every item in OUTPUTS.md.
+- Cite material findings and explain every score.
+- Separate facts, assumptions, analysis, and recommendations.
+- Require human review before distribution, approval, reassignment, or action.

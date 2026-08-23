@@ -1,9 +1,12 @@
-# Output — Executive Newsletters
+# Outputs — Executive Newsletters
 
-Produce the **executive newsletter draft** containing:
+## Required work product
+- Audience-specific communication plan or draft
+- Approved message, evidence, tone, and call to action
+- Channel, timing, owner, and approval checklist
 
-- Executive purpose and time horizon
-- Evidence-based findings specific to executive newsletters
-- Owner, dates, status, and source references
-- Exceptions, dependencies, or unresolved questions
-- Recommended executive action and human-review note
+## Executive presentation
+- Lead with the decision, priority, exception, or action required.
+- Show owners, dates, status, scores, rationale, and sources where applicable.
+- Identify evidence gaps, conflicts, and unresolved assumptions.
+- End with recommendations and items requiring human approval.

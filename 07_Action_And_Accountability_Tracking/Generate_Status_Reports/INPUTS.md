@@ -1,6 +1,12 @@
 # Inputs — Generate Status Reports
 
-- Core evidence: actions, owners, due dates, source meetings, dependencies, status evidence, and escalation rules.
-- Skill-specific evidence: purpose, accountable owner, time horizon, and success criteria.
-- Required metadata: source, date, owner, status, and confidence.
-- If evidence is missing, list the gap rather than filling it by inference.
+## Required inputs
+- Actions, commitments, deliverables, and acceptance criteria
+- Accountable owners, due dates, status, and completion evidence
+- Source meetings, dependencies, blockers, and revised dates
+- Escalation thresholds, reporting period, and affected outcomes
+
+## Validation
+- Confirm source, owner, effective date, and approval status.
+- Flag missing, conflicting, stale, or unverified inputs.
+- Use synthetic or explicitly approved data only in the demonstration.

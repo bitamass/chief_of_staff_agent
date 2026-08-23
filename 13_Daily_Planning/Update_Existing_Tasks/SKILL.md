@@ -1,18 +1,21 @@
 ---
 name: daily-planning-update-existing-tasks
-description: Produce the update existing tasks executive work product used for executive Chief of Staff work. Use when the user needs update existing tasks within daily planning.
+description: Perform update existing tasks using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
 ---
 # Update Existing Tasks
 
 ## Purpose
-Update Existing Tasks helps translate today's calendar, commitments, and deadlines into a realistic executive plan.
+Perform **update existing tasks** as a distinct executive workflow—not as a generic summary.
 
-## Instructions
-1. Confirm the executive question, owner, and time horizon.
-2. Use only dated, attributable evidence.
-3. Normalize dated evidence, distinguish facts from inference, identify exceptions, and produce the specified executive work product.
-4. Produce the update existing tasks executive work product defined in OUTPUTS.md.
-5. State gaps, assumptions, and items requiring human review.
+## Skill logic
+1. Normalize the dated source evidence.
+2. Apply the skill-specific business rules.
+3. Identify exceptions, dependencies, owners, and uncertainty.
+4. Produce the required executive work product and recommendations.
 
-## Boundary
-Protect focus time and label proposed delegation or schedule changes for human approval.
+## Operating rules
+- Use INPUTS.md as the evidence contract.
+- Produce every item in OUTPUTS.md.
+- Cite material findings and explain every score.
+- Separate facts, assumptions, analysis, and recommendations.
+- Require human review before distribution, approval, reassignment, or action.

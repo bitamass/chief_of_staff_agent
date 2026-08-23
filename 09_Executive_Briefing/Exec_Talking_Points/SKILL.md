@@ -1,18 +1,21 @@
 ---
 name: executive-briefing-exec-talking-points
-description: Produce the concise executive talking points used for executive Chief of Staff work. Use when the user needs exec talking points within executive briefing.
+description: Perform exec talking points using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
 ---
 # Exec Talking Points
 
 ## Purpose
-Exec Talking Points helps compress complex evidence into decision-ready executive briefing material.
+Perform **exec talking points** as a distinct executive workflow—not as a generic summary.
 
-## Instructions
-1. Confirm the executive question, owner, and time horizon.
-2. Use only dated, attributable evidence.
-3. Select only audience-relevant facts, organize the message, cite evidence, and apply tone and disclosure constraints.
-4. Produce the concise executive talking points defined in OUTPUTS.md.
-5. State gaps, assumptions, and items requiring human review.
+## Skill logic
+1. Select only audience- and decision-relevant evidence.
+2. Separate confirmed facts, decisions, risks, and recommendations.
+3. Organize the material for the specified audience and length.
+4. Cite claims and route the draft for human approval.
 
-## Boundary
-Cite sources, state limitations, and keep recommendations separate from facts.
+## Operating rules
+- Use INPUTS.md as the evidence contract.
+- Produce every item in OUTPUTS.md.
+- Cite material findings and explain every score.
+- Separate facts, assumptions, analysis, and recommendations.
+- Require human review before distribution, approval, reassignment, or action.

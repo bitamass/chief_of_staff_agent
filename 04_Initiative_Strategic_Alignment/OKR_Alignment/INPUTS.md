@@ -1,6 +1,12 @@
 # Inputs — OKR Alignment
 
-- Core evidence: strategic objectives, initiative charters, OKRs, benefits, dependencies, and resource limits.
-- Skill-specific evidence: Charter, milestones, dependencies, benefits, and latest status.
-- Required metadata: source, date, owner, status, and confidence.
-- If evidence is missing, list the gap rather than filling it by inference.
+## Required inputs
+- Approved strategic objectives and enterprise priorities
+- Initiative charters, outcomes, deliverables, and owners
+- OKRs, measures, benefits, dependencies, and resource demand
+- Portfolio status, risks, duplication, and investment constraints
+
+## Validation
+- Confirm source, owner, effective date, and approval status.
+- Flag missing, conflicting, stale, or unverified inputs.
+- Use synthetic or explicitly approved data only in the demonstration.

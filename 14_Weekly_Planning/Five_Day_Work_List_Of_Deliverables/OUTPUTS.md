@@ -1,9 +1,13 @@
-# Output — Five Day Work List Of Deliverables
+# Outputs — Five Day Work List Of Deliverables
 
-Produce the **five-day executive work plan** containing:
+## Required work product
+- Accountability register
+- Owner, due date, status, and completion evidence
+- Dependency and source record
+- Follow-up or escalation recommendation
 
-- Executive purpose and time horizon
-- Evidence-based findings specific to five day work list of deliverables
-- Owner, dates, status, and source references
-- Exceptions, dependencies, or unresolved questions
-- Recommended executive action and human-review note
+## Executive presentation
+- Lead with the decision, priority, exception, or action required.
+- Show owners, dates, status, scores, rationale, and sources where applicable.
+- Identify evidence gaps, conflicts, and unresolved assumptions.
+- End with recommendations and items requiring human approval.

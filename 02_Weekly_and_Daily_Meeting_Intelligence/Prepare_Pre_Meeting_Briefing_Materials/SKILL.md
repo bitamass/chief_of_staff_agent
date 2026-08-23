@@ -1,18 +1,21 @@
 ---
 name: weekly-and-daily-meeting-intelligence-prepare-pre-meeting-briefing-materials
-description: Produce the source-linked executive preparation brief used for executive Chief of Staff work. Use when the user needs prepare pre meeting briefing materials within weekly and daily meeting intelligence.
+description: Perform prepare pre meeting briefing materials using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
 ---
 # Prepare Pre Meeting Briefing Materials
 
 ## Purpose
-Prepare Pre Meeting Briefing Materials helps turn meeting history and calendar context into timely preparation and follow-through.
+Perform **prepare pre meeting briefing materials** as a distinct executive workflow—not as a generic summary.
 
-## Instructions
-1. Confirm the executive question, owner, and time horizon.
-2. Use only dated, attributable evidence.
-3. Connect prior discussion, current purpose, participants, decisions, and follow-up without losing chronology.
-4. Produce the source-linked executive preparation brief defined in OUTPUTS.md.
-5. State gaps, assumptions, and items requiring human review.
+## Skill logic
+1. Select only audience- and decision-relevant evidence.
+2. Separate confirmed facts, decisions, risks, and recommendations.
+3. Organize the material for the specified audience and length.
+4. Cite claims and route the draft for human approval.
 
-## Boundary
-Distinguish confirmed records from suggested preparation.
+## Operating rules
+- Use INPUTS.md as the evidence contract.
+- Produce every item in OUTPUTS.md.
+- Cite material findings and explain every score.
+- Separate facts, assumptions, analysis, and recommendations.
+- Require human review before distribution, approval, reassignment, or action.

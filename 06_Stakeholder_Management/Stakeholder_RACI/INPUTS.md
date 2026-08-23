@@ -1,6 +1,12 @@
 # Inputs — Stakeholder RACI
 
-- Core evidence: stakeholder roster, roles, interests, decision rights, relationships, and communication history.
-- Skill-specific evidence: Stakeholder roles, influence, interests, and decision rights.
-- Required metadata: source, date, owner, status, and confidence.
-- If evidence is missing, list the gap rather than filling it by inference.
+## Required inputs
+- List of work packages and decisions
+- Role descriptions and formal authorities
+- Current owners and approval requirements
+- Required consultation and notification relationships
+
+## Validation
+- Confirm source, owner, effective date, and approval status.
+- Flag missing, conflicting, stale, or unverified inputs.
+- Use synthetic or explicitly approved data only in the demonstration.

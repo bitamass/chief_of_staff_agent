@@ -1,9 +1,13 @@
-# Output — Resource Management
+# Outputs — Resource Management
 
-Produce the **capacity and resource allocation view** containing:
+## Required work product
+- Demand-versus-capacity view
+- Allocation and skill gaps
+- Scenario options
+- Recommended allocation and approval request
 
-- Executive purpose and time horizon
-- Evidence-based findings specific to resource management
-- Owner, dates, status, and source references
-- Exceptions, dependencies, or unresolved questions
-- Recommended executive action and human-review note
+## Executive presentation
+- Lead with the decision, priority, exception, or action required.
+- Show owners, dates, status, scores, rationale, and sources where applicable.
+- Identify evidence gaps, conflicts, and unresolved assumptions.
+- End with recommendations and items requiring human approval.

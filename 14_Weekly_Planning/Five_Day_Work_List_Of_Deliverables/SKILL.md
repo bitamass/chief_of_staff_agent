@@ -1,18 +1,21 @@
 ---
 name: weekly-planning-five-day-work-list-of-deliverables
-description: Produce the five-day executive work plan used for executive Chief of Staff work. Use when the user needs five day work list of deliverables within weekly planning.
+description: Perform five day work list of deliverables using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
 ---
 # Five Day Work List Of Deliverables
 
 ## Purpose
-Five Day Work List Of Deliverables helps build a five-day executive plan that balances outcomes, meetings, decisions, and capacity.
+Perform **five day work list of deliverables** as a distinct executive workflow—not as a generic summary.
 
-## Instructions
-1. Confirm the executive question, owner, and time horizon.
-2. Use only dated, attributable evidence.
-3. Trace objectives to outcomes and deliverables, assess health and dependencies, and flag intervention needs.
-4. Produce the five-day executive work plan defined in OUTPUTS.md.
-5. State gaps, assumptions, and items requiring human review.
+## Skill logic
+1. Place fixed commitments and deadlines first.
+2. Score outcomes by value, urgency, consequence, and effort.
+3. Reserve realistic preparation, focus, transition, and contingency time.
+4. Resolve overload through deferral, delegation, shortening, or rescheduling.
 
-## Boundary
-Keep the plan achievable and distinguish commitments from recommendations.
+## Operating rules
+- Use INPUTS.md as the evidence contract.
+- Produce every item in OUTPUTS.md.
+- Cite material findings and explain every score.
+- Separate facts, assumptions, analysis, and recommendations.
+- Require human review before distribution, approval, reassignment, or action.

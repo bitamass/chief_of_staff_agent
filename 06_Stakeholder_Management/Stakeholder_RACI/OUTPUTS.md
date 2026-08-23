@@ -1,9 +1,13 @@
-# Output — Stakeholder RACI
+# Outputs — Stakeholder RACI
 
-Produce the **decision and delivery RACI** containing:
+## Required work product
+- RACI matrix by work package or decision
+- Exactly one accountable role where possible
+- Gap, overlap, and conflict findings
+- Required authority clarification
 
-- Executive purpose and time horizon
-- Evidence-based findings specific to stakeholder raci
-- Owner, dates, status, and source references
-- Exceptions, dependencies, or unresolved questions
-- Recommended executive action and human-review note
+## Executive presentation
+- Lead with the decision, priority, exception, or action required.
+- Show owners, dates, status, scores, rationale, and sources where applicable.
+- Identify evidence gaps, conflicts, and unresolved assumptions.
+- End with recommendations and items requiring human approval.

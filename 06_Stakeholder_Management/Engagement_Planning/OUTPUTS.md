@@ -1,9 +1,13 @@
-# Output — Engagement Planning
+# Outputs — Engagement Planning
 
-Produce the **stakeholder engagement plan** containing:
+## Required work product
+- Purpose-built engagement planning executive work product
+- Evidence, owner, date, status, and source fields
+- Analysis findings and exceptions
+- Recommended action and human-review requirement
 
-- Executive purpose and time horizon
-- Evidence-based findings specific to engagement planning
-- Owner, dates, status, and source references
-- Exceptions, dependencies, or unresolved questions
-- Recommended executive action and human-review note
+## Executive presentation
+- Lead with the decision, priority, exception, or action required.
+- Show owners, dates, status, scores, rationale, and sources where applicable.
+- Identify evidence gaps, conflicts, and unresolved assumptions.
+- End with recommendations and items requiring human approval.

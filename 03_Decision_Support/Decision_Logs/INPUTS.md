@@ -1,6 +1,13 @@
 # Inputs — Decision Logs
 
-- Core evidence: decision request, options, criteria, constraints, risks, costs, and prior decisions.
-- Skill-specific evidence: Decision authority, deadline, and options.
-- Required metadata: source, date, owner, status, and confidence.
-- If evidence is missing, list the gap rather than filling it by inference.
+## Required inputs
+- Exact decision statement and status
+- Decision maker, date, and source meeting
+- Rationale and alternatives considered
+- Affected initiatives, deliverables, and dependencies
+- Follow-up actions, owners, and amendments
+
+## Validation
+- Confirm source, owner, effective date, and approval status.
+- Flag missing, conflicting, stale, or unverified inputs.
+- Use synthetic or explicitly approved data only in the demonstration.

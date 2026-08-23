@@ -1,9 +1,13 @@
-# Output — Exec Talking Points
+# Outputs — Exec Talking Points
 
-Produce the **concise executive talking points** containing:
+## Required work product
+- Three to five executive messages
+- Evidence-backed talking points
+- Anticipated questions and responses
+- Opening, transitions, and close
 
-- Executive purpose and time horizon
-- Evidence-based findings specific to exec talking points
-- Owner, dates, status, and source references
-- Exceptions, dependencies, or unresolved questions
-- Recommended executive action and human-review note
+## Executive presentation
+- Lead with the decision, priority, exception, or action required.
+- Show owners, dates, status, scores, rationale, and sources where applicable.
+- Identify evidence gaps, conflicts, and unresolved assumptions.
+- End with recommendations and items requiring human approval.

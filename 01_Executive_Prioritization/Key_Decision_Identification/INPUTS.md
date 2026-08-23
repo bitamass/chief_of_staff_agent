@@ -1,6 +1,12 @@
 # Inputs — Key Decision Identification
 
-- Core evidence: strategic goals, initiative charters, deliverables, constraints, and executive deadlines.
-- Skill-specific evidence: Decision authority, deadline, and options.
-- Required metadata: source, date, owner, status, and confidence.
-- If evidence is missing, list the gap rather than filling it by inference.
+## Required inputs
+- Approved strategic goals and top business priorities
+- Initiative charters, benefits, owners, and requested decisions
+- Deliverables, deadlines, dependencies, effort, and capacity
+- Priority criteria, weights, and consequences of delay
+
+## Validation
+- Confirm source, owner, effective date, and approval status.
+- Flag missing, conflicting, stale, or unverified inputs.
+- Use synthetic or explicitly approved data only in the demonstration.

@@ -1,18 +1,21 @@
 ---
 name: daily-planning-daily-meetings-and-preparation-material
-description: Produce the daily executive operating plan used for executive Chief of Staff work. Use when the user needs daily meetings and preparation material within daily planning.
+description: Perform daily meetings and preparation material using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
 ---
 # Daily Meetings And Preparation Material
 
 ## Purpose
-Daily Meetings And Preparation Material helps translate today's calendar, commitments, and deadlines into a realistic executive plan.
+Perform **daily meetings and preparation material** as a distinct executive workflow—not as a generic summary.
 
-## Instructions
-1. Confirm the executive question, owner, and time horizon.
-2. Use only dated, attributable evidence.
-3. Connect prior discussion, current purpose, participants, decisions, and follow-up without losing chronology.
-4. Produce the daily executive operating plan defined in OUTPUTS.md.
-5. State gaps, assumptions, and items requiring human review.
+## Skill logic
+1. Place fixed commitments and deadlines first.
+2. Score outcomes by value, urgency, consequence, and effort.
+3. Reserve realistic preparation, focus, transition, and contingency time.
+4. Resolve overload through deferral, delegation, shortening, or rescheduling.
 
-## Boundary
-Protect focus time and label proposed delegation or schedule changes for human approval.
+## Operating rules
+- Use INPUTS.md as the evidence contract.
+- Produce every item in OUTPUTS.md.
+- Cite material findings and explain every score.
+- Separate facts, assumptions, analysis, and recommendations.
+- Require human review before distribution, approval, reassignment, or action.

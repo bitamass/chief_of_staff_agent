@@ -1,6 +1,13 @@
 # Inputs — Create Agendas
 
-- Core evidence: calendar entries, agendas, participants, prior notes, decisions, and action items.
-- Skill-specific evidence: Meeting purpose, attendees, agenda, and prior notes.
-- Required metadata: source, date, owner, status, and confidence.
-- If evidence is missing, list the gap rather than filling it by inference.
+## Required inputs
+- Meeting objective and desired outcomes
+- Decision questions and required approvals
+- Participants, roles, and topic owners
+- Prior decisions, open actions, and unresolved issues
+- Available meeting time and required pre-reads
+
+## Validation
+- Confirm source, owner, effective date, and approval status.
+- Flag missing, conflicting, stale, or unverified inputs.
+- Use synthetic or explicitly approved data only in the demonstration.

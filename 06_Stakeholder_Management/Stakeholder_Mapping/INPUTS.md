@@ -1,6 +1,12 @@
 # Inputs — Stakeholder Mapping
 
-- Core evidence: stakeholder roster, roles, interests, decision rights, relationships, and communication history.
-- Skill-specific evidence: Stakeholder roles, influence, interests, and decision rights.
-- Required metadata: source, date, owner, status, and confidence.
-- If evidence is missing, list the gap rather than filling it by inference.
+## Required inputs
+- Stakeholder roster and role descriptions
+- Formal decision rights and reporting relationships
+- Evidence of influence, interest, impact, and current position
+- Relevant decisions and engagement history
+
+## Validation
+- Confirm source, owner, effective date, and approval status.
+- Flag missing, conflicting, stale, or unverified inputs.
+- Use synthetic or explicitly approved data only in the demonstration.

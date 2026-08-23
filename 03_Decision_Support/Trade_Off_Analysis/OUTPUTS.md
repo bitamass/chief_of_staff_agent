@@ -1,9 +1,13 @@
-# Output — Trade Off Analysis
+# Outputs — Trade Off Analysis
 
-Produce the **option and trade-off matrix** containing:
+## Required work product
+- Option and trade-off matrix
+- Weighted criterion scores
+- Benefits sacrificed and risks accepted
+- Sensitivity analysis and recommendation
 
-- Executive purpose and time horizon
-- Evidence-based findings specific to trade off analysis
-- Owner, dates, status, and source references
-- Exceptions, dependencies, or unresolved questions
-- Recommended executive action and human-review note
+## Executive presentation
+- Lead with the decision, priority, exception, or action required.
+- Show owners, dates, status, scores, rationale, and sources where applicable.
+- Identify evidence gaps, conflicts, and unresolved assumptions.
+- End with recommendations and items requiring human approval.

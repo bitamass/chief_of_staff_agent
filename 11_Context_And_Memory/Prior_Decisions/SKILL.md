@@ -1,18 +1,21 @@
 ---
 name: context-and-memory-prior-decisions
-description: Produce the decision or approval queue used for executive Chief of Staff work. Use when the user needs prior decisions within context and memory.
+description: Perform prior decisions using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
 ---
 # Prior Decisions
 
 ## Purpose
-Prior Decisions helps preserve organizational context so current work reflects prior commitments and operating structures.
+Perform **prior decisions** as a distinct executive workflow—not as a generic summary.
 
-## Instructions
-1. Confirm the executive question, owner, and time horizon.
-2. Use only dated, attributable evidence.
-3. Separate the decision statement, authority, options, rationale, consequences, and follow-up.
-4. Produce the decision or approval queue defined in OUTPUTS.md.
-5. State gaps, assumptions, and items requiring human review.
+## Skill logic
+1. Frame the exact decision, authority, deadline, and desired outcome.
+2. Compare options against explicit criteria and constraints.
+3. Document rationale, consequences, assumptions, and missing evidence.
+4. Recommend a path while preserving human decision authority.
 
-## Boundary
-Use dated, attributable records; do not treat stale or disputed context as current truth.
+## Operating rules
+- Use INPUTS.md as the evidence contract.
+- Produce every item in OUTPUTS.md.
+- Cite material findings and explain every score.
+- Separate facts, assumptions, analysis, and recommendations.
+- Require human review before distribution, approval, reassignment, or action.

@@ -1,18 +1,21 @@
 ---
 name: risk-and-issue-management-risk-scoring
-description: Produce the scored risk register used for executive Chief of Staff work. Use when the user needs risk scoring within risk and issue management.
+description: Perform risk scoring using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
 ---
 # Risk Scoring
 
 ## Purpose
-Risk Scoring helps identify, assess, communicate, and mitigate executive risks and issues.
+Perform **risk scoring** as a distinct executive workflow—not as a generic summary.
 
-## Instructions
-1. Confirm the executive question, owner, and time horizon.
-2. Use only dated, attributable evidence.
-3. Write cause-event-impact statements, assess exposure, test controls, and identify triggers.
-4. Produce the scored risk register defined in OUTPUTS.md.
-5. State gaps, assumptions, and items requiring human review.
+## Skill logic
+1. Write or validate cause-event-impact statements.
+2. Assess likelihood, impact, velocity, controls, and trend using evidence.
+3. Compare exposure with approved thresholds.
+4. Identify triggers, owners, and treatment or escalation needs.
 
-## Boundary
-Separate current issues from future risks and never imply assurance without evidence.
+## Operating rules
+- Use INPUTS.md as the evidence contract.
+- Produce every item in OUTPUTS.md.
+- Cite material findings and explain every score.
+- Separate facts, assumptions, analysis, and recommendations.
+- Require human review before distribution, approval, reassignment, or action.

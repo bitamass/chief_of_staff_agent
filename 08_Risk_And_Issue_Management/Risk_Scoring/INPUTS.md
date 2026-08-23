@@ -1,6 +1,13 @@
 # Inputs — Risk Scoring
 
-- Core evidence: risk statements, likelihood, impact, controls, owners, triggers, dependencies, and incident history.
-- Skill-specific evidence: Likelihood, impact, controls, triggers, and owner.
-- Required metadata: source, date, owner, status, and confidence.
-- If evidence is missing, list the gap rather than filling it by inference.
+## Required inputs
+- Cause-event-impact risk statements
+- Approved likelihood and impact scales
+- Evidence for likelihood, impact, velocity, and proximity
+- Existing controls and control-effectiveness evidence
+- Risk appetite, thresholds, owners, and review dates
+
+## Validation
+- Confirm source, owner, effective date, and approval status.
+- Flag missing, conflicting, stale, or unverified inputs.
+- Use synthetic or explicitly approved data only in the demonstration.

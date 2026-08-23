@@ -1,18 +1,22 @@
 ---
 name: context-and-memory-strategic-priorities
-description: Produce the ranked priorities with scoring rationale used for executive Chief of Staff work. Use when the user needs strategic priorities within context and memory.
+description: Perform strategic priorities using the named evidence, business rules, and executive output defined for this Chief of Staff skill.
 ---
 # Strategic Priorities
 
 ## Purpose
-Strategic Priorities helps preserve organizational context so current work reflects prior commitments and operating structures.
+Perform **strategic priorities** as a distinct executive workflow—not as a generic summary.
 
-## Instructions
-1. Confirm the executive question, owner, and time horizon.
-2. Use only dated, attributable evidence.
-3. Score candidates against explicit criteria, test capacity, and explain the ranking.
-4. Produce the ranked priorities with scoring rationale defined in OUTPUTS.md.
-5. State gaps, assumptions, and items requiring human review.
+## Skill logic
+1. Define and weight explicit value, urgency, effort, risk, and dependency criteria.
+2. Score every item from 1 to 5 for each criterion.
+3. Calculate and explain the overall rank.
+4. Test the ranking against capacity and mandatory constraints.
+5. Recommend what to advance, defer, delegate, or stop.
 
-## Boundary
-Use dated, attributable records; do not treat stale or disputed context as current truth.
+## Operating rules
+- Use INPUTS.md as the evidence contract.
+- Produce every item in OUTPUTS.md.
+- Cite material findings and explain every score.
+- Separate facts, assumptions, analysis, and recommendations.
+- Require human review before distribution, approval, reassignment, or action.
