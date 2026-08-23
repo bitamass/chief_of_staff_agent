@@ -6,7 +6,7 @@ from pathlib import Path
 import streamlit as st
 from docx import Document
 from skill_catalog import CONNECTED_SKILLS, discover_capabilities
-from synthetic_context import build_initiative_scenarios, build_scenario_records, build_synthetic_context, initiative_continuity
+from synthetic_context_v4 import DATASET_VERSION, build_initiative_scenarios, build_scenario_records, build_synthetic_context, initiative_continuity
 
 
 st.set_page_config(
@@ -209,6 +209,7 @@ st.markdown(
     'are available for review in the GitHub repository.</div>',
     unsafe_allow_html=True,
 )
+st.caption(f"Synthetic dataset version: {DATASET_VERSION}")
 
 operating_context = build_synthetic_context(date.today())
 SCENARIOS = build_initiative_scenarios(operating_context)
