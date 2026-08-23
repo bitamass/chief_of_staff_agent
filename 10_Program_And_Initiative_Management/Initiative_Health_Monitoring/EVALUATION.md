@@ -1,6 +1,10 @@
-# Evaluation
+# Evaluation — Initiative Health Monitoring
 
-- Is the information current and relevant?
-- Are the decisions and risks clearly identified?
-- Are actions and owners easy to understand?
-- Is the output concise, factual, and executive-ready?
+The result passes when:
+
+- It answers the specific initiative health monitoring question.
+- Every material claim is traceable to dated evidence.
+- The initiative health report with exception flags has the required fields and accountable owners.
+- Unknowns, conflicts, and assumptions are explicit.
+- Recommendations are practical and clearly separated from facts.
+- Do not replace the program owner; surface exceptions and requested interventions.

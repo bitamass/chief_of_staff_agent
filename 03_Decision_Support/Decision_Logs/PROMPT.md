@@ -1,6 +1,3 @@
-# Prompt
+# Prompt — Decision Logs
 
-Summarize the current state of Decision Logs.
-Identify key decisions, risks, and action items.
-Recommend 3-5 priority next steps for leadership.
-Keep the response concise and executive-ready.
+Using only the provided synthetic or approved evidence, perform **Decision Logs**. Separate the decision statement, authority, options, rationale, consequences, and follow-up. Return the source-linked decision register. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

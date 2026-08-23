@@ -1,6 +1,21 @@
-# Skill: Five Day Work List Of Deliverables
+---
+name: weekly-planning-five-day-work-list-of-deliverables
+description: Perform five day work list of deliverables using its specific evidence contract, business logic, and executive output.
+---
+# Five Day Work List Of Deliverables
 
-This skill organizes the work needed to support Five Day Work List Of Deliverables.
-It helps clarify priorities, risks, and decisions for leadership.
-Use it to capture key context and prepare concise outputs.
-Keep recommendations brief, relevant, and action-oriented.
+## Purpose
+Perform **five day work list of deliverables** as a distinct executive workflow—not as a generic summary.
+
+## Skill logic
+1. Normalize the commitment or work item, owner, deadline, and completion condition.
+2. Compare current evidence with the promised result and date.
+3. Identify missing ownership, dependency, variance, or overdue status.
+4. Recommend follow-up, corrective action, or escalation.
+
+## Operating rules
+- Use INPUTS.md as the evidence contract.
+- Produce every item in OUTPUTS.md.
+- Cite material findings and explain every score.
+- Separate facts, assumptions, analysis, and recommendations.
+- Require human review before distribution, approval, reassignment, or action.

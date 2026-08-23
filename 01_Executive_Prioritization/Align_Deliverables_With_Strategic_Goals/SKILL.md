@@ -1,6 +1,22 @@
-# Skill: Align Deliverables With Strategic Goals
+---
+name: executive-prioritization-align-deliverables-with-strategic-goals
+description: Perform align deliverables with strategic goals using its specific evidence contract, business logic, and executive output.
+---
+# Align Deliverables With Strategic Goals
 
-This skill organizes the work needed to support Align Deliverables With Strategic Goals.
-It helps clarify priorities, risks, and decisions for leadership.
-Use it to capture key context and prepare concise outputs.
-Keep recommendations brief, relevant, and action-oriented.
+## Purpose
+Perform **align deliverables with strategic goals** as a distinct executive workflow—not as a generic summary.
+
+## Skill logic
+1. Evaluate the relevance and time horizon of every strategic goal.
+2. Trace every initiative deliverable to one or more strategic goals.
+3. Score each deliverable from 1 to 5 for strategic alignment, business value, urgency, and dependency.
+4. Rank deliverables by score and explain ties or conflicts.
+5. Recommend keeping, revising, deferring, or removing each deliverable.
+
+## Operating rules
+- Use INPUTS.md as the evidence contract.
+- Produce every item in OUTPUTS.md.
+- Cite material findings and explain every score.
+- Separate facts, assumptions, analysis, and recommendations.
+- Require human review before distribution, approval, reassignment, or action.

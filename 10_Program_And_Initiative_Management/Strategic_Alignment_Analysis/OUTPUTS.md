@@ -1,6 +1,13 @@
-# Outputs
+# Outputs — Strategic Alignment Analysis
 
-- Short summary of the current state.
-- Key decisions, risks, or action items to track.
-- Recommendations and next steps for the leader.
-- Clear status for follow-up or escalation.
+## Required work product
+- Strategic alignment traceability matrix
+- 1–5 alignment score and evidence
+- Coverage gaps, duplication, and unsupported work
+- Revise, combine, defer, or stop recommendation
+
+## Executive presentation
+- Lead with the decision, priority, exception, or action required.
+- Show owners, dates, status, scores, rationale, and sources where applicable.
+- Identify evidence gaps, conflicts, and unresolved assumptions.
+- End with recommendations and items requiring human approval.

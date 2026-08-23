@@ -1,6 +1,3 @@
-# Prompt
+# Prompt — Draft New Tasks
 
-Summarize the current state of Draft New Tasks.
-Identify key decisions, risks, and action items.
-Recommend 3-5 priority next steps for leadership.
-Keep the response concise and executive-ready.
+Using only the provided synthetic or approved evidence, perform **Draft New Tasks**. Normalize dated evidence, distinguish facts from inference, identify exceptions, and produce the specified executive work product. Return the draft new tasks executive work product. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

@@ -1,6 +1,12 @@
-# Inputs
+# Inputs — Draft New Tasks
 
-- Source material related to this capability.
-- Relevant meeting notes, decisions, and follow-ups.
-- Key risks, milestones, or stakeholder context.
-- Any executive priorities or time-sensitive requests.
+## Required inputs
+- Meeting outcomes, decisions, and commitments
+- Project plan and owner roles
+- Deadlines, dependencies, and priority
+- Completion evidence and acceptance criteria
+
+## Validation
+- Confirm source, owner, effective date, and approval status.
+- Flag missing, conflicting, stale, or unverified inputs.
+- Use synthetic or explicitly approved data only in the demonstration.

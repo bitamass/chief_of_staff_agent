@@ -1,6 +1,12 @@
-# Inputs
+# Inputs — Approval Pathways
 
-- Source material related to this capability.
-- Relevant meeting notes, decisions, and follow-ups.
-- Key risks, milestones, or stakeholder context.
-- Any executive priorities or time-sensitive requests.
+## Required inputs
+- Decision or request type
+- Policies, thresholds, committees, and delegated authorities
+- Required evidence, reviews, and sequencing
+- Prior approved examples and escalation route
+
+## Validation
+- Confirm source, owner, effective date, and approval status.
+- Flag missing, conflicting, stale, or unverified inputs.
+- Use synthetic or explicitly approved data only in the demonstration.

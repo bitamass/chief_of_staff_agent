@@ -1,6 +1,3 @@
-# Prompt
+# Prompt — Summarize Prior Discussions
 
-Summarize the current state of Summarize Prior Discussions.
-Identify key decisions, risks, and action items.
-Recommend 3-5 priority next steps for leadership.
-Keep the response concise and executive-ready.
+Using only the provided synthetic or approved evidence, perform **Summarize Prior Discussions**. Connect prior discussion, current purpose, participants, decisions, and follow-up without losing chronology. Return the fact-based summary with decisions and follow-ups. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

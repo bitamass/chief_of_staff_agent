@@ -1,6 +1,3 @@
-# Prompt
+# Prompt — Initiative Dependency Management
 
-Summarize the current state of Initiative Dependency Management.
-Identify key decisions, risks, and action items.
-Recommend 3-5 priority next steps for leadership.
-Keep the response concise and executive-ready.
+Using only the provided synthetic or approved evidence, perform **Initiative Dependency Management**. Trace objectives to outcomes and deliverables, assess health and dependencies, and flag intervention needs. Return the dependency map and intervention list. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

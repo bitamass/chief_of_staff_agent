@@ -1,6 +1,3 @@
-# Prompt
+# Prompt — Weekly Key Decisions Or Approvals
 
-Summarize the current state of Weekly Key Decisions Or Approvals.
-Identify key decisions, risks, and action items.
-Recommend 3-5 priority next steps for leadership.
-Keep the response concise and executive-ready.
+Using only the provided synthetic or approved evidence, perform **Weekly Key Decisions Or Approvals**. Separate the decision statement, authority, options, rationale, consequences, and follow-up. Return the decision or approval queue. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

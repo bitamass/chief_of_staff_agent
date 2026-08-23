@@ -1,6 +1,3 @@
-# Prompt
+# Prompt — Daily Meetings And Preparation Material
 
-Summarize the current state of Daily Meetings And Preparation Material.
-Identify key decisions, risks, and action items.
-Recommend 3-5 priority next steps for leadership.
-Keep the response concise and executive-ready.
+Using only the provided synthetic or approved evidence, perform **Daily Meetings And Preparation Material**. Connect prior discussion, current purpose, participants, decisions, and follow-up without losing chronology. Return the daily executive operating plan. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

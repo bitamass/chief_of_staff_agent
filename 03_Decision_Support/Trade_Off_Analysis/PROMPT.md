@@ -1,6 +1,3 @@
-# Prompt
+# Prompt — Trade Off Analysis
 
-Summarize the current state of Trade Off Analysis.
-Identify key decisions, risks, and action items.
-Recommend 3-5 priority next steps for leadership.
-Keep the response concise and executive-ready.
+Using only the provided synthetic or approved evidence, perform **Trade Off Analysis**. Compare options against explicit criteria, expose benefits and costs, and show which conditions change the conclusion. Return the option and trade-off matrix. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

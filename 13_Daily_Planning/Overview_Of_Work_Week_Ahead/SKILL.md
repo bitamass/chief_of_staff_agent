@@ -1,6 +1,21 @@
-# Skill: Overview Of Work Week Ahead
+---
+name: daily-planning-overview-of-work-week-ahead
+description: Perform overview of work week ahead using its specific evidence contract, business logic, and executive output.
+---
+# Overview Of Work Week Ahead
 
-This skill organizes the work needed to support Overview Of Work Week Ahead.
-It helps clarify priorities, risks, and decisions for leadership.
-Use it to capture key context and prepare concise outputs.
-Keep recommendations brief, relevant, and action-oriented.
+## Purpose
+Perform **overview of work week ahead** as a distinct executive workflow—not as a generic summary.
+
+## Skill logic
+1. Place immovable meetings, deadlines, and decisions first.
+2. Rank outcomes by value, urgency, consequence, and effort.
+3. Reserve preparation, focus, transition, and contingency time.
+4. Resolve overload through deferral, delegation, shortening, or rescheduling.
+
+## Operating rules
+- Use INPUTS.md as the evidence contract.
+- Produce every item in OUTPUTS.md.
+- Cite material findings and explain every score.
+- Separate facts, assumptions, analysis, and recommendations.
+- Require human review before distribution, approval, reassignment, or action.

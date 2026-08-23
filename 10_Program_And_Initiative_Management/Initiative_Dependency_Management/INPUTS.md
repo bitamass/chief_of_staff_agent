@@ -1,6 +1,12 @@
-# Inputs
+# Inputs — Initiative Dependency Management
 
-- Source material related to this capability.
-- Relevant meeting notes, decisions, and follow-ups.
-- Key risks, milestones, or stakeholder context.
-- Any executive priorities or time-sensitive requests.
+## Required inputs
+- Initiative plans and deliverable dates
+- Provider and receiver for each dependency
+- Required-by date, status, and acceptance condition
+- Schedule, resource, external, and decision constraints
+
+## Validation
+- Confirm source, owner, effective date, and approval status.
+- Flag missing, conflicting, stale, or unverified inputs.
+- Use synthetic or explicitly approved data only in the demonstration.

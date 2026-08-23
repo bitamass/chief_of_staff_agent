@@ -1,6 +1,12 @@
-# Inputs
+# Inputs — Stakeholder Communications
 
-- Source material related to this capability.
-- Relevant meeting notes, decisions, and follow-ups.
-- Key risks, milestones, or stakeholder context.
-- Any executive priorities or time-sensitive requests.
+## Required inputs
+- Stakeholder segments and communication objective
+- Approved facts, interests, concerns, and desired action
+- Channel, timing, tone, owner, and feedback mechanism
+- Disclosure limits and approval authority
+
+## Validation
+- Confirm source, owner, effective date, and approval status.
+- Flag missing, conflicting, stale, or unverified inputs.
+- Use synthetic or explicitly approved data only in the demonstration.

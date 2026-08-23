@@ -1,6 +1,3 @@
-# Prompt
+# Prompt — OKR Alignment
 
-Summarize the current state of OKR Alignment.
-Identify key decisions, risks, and action items.
-Recommend 3-5 priority next steps for leadership.
-Keep the response concise and executive-ready.
+Using only the provided synthetic or approved evidence, perform **OKR Alignment**. Trace objectives to outcomes and deliverables, assess health and dependencies, and flag intervention needs. Return the OKR alignment and progress view. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

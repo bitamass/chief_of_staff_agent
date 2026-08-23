@@ -1,6 +1,21 @@
-# Skill: Action Item Management
+---
+name: weekly-and-daily-meeting-intelligence-action-item-management
+description: Perform action item management using its specific evidence contract, business logic, and executive output.
+---
+# Action Item Management
 
-This skill organizes the work needed to support Action Item Management.
-It helps clarify priorities, risks, and decisions for leadership.
-Use it to capture key context and prepare concise outputs.
-Keep recommendations brief, relevant, and action-oriented.
+## Purpose
+Perform **action item management** as a distinct executive workflow—not as a generic summary.
+
+## Skill logic
+1. Normalize the commitment or work item, owner, deadline, and completion condition.
+2. Compare current evidence with the promised result and date.
+3. Identify missing ownership, dependency, variance, or overdue status.
+4. Recommend follow-up, corrective action, or escalation.
+
+## Operating rules
+- Use INPUTS.md as the evidence contract.
+- Produce every item in OUTPUTS.md.
+- Cite material findings and explain every score.
+- Separate facts, assumptions, analysis, and recommendations.
+- Require human review before distribution, approval, reassignment, or action.

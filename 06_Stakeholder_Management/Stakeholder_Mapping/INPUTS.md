@@ -1,6 +1,12 @@
-# Inputs
+# Inputs — Stakeholder Mapping
 
-- Source material related to this capability.
-- Relevant meeting notes, decisions, and follow-ups.
-- Key risks, milestones, or stakeholder context.
-- Any executive priorities or time-sensitive requests.
+## Required inputs
+- Stakeholder roster and role descriptions
+- Formal authority and reporting relationships
+- Evidence of influence, interest, impact, and current position
+- Relevant decisions and engagement history
+
+## Validation
+- Confirm source, owner, effective date, and approval status.
+- Flag missing, conflicting, stale, or unverified inputs.
+- Use synthetic or explicitly approved data only in the demonstration.

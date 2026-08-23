@@ -1,6 +1,3 @@
-# Prompt
+# Prompt — Map Initiatives To Strategic Objectives
 
-Summarize the current state of Map Initiatives To Strategic Objectives.
-Identify key decisions, risks, and action items.
-Recommend 3-5 priority next steps for leadership.
-Keep the response concise and executive-ready.
+Using only the provided synthetic or approved evidence, perform **Map Initiatives To Strategic Objectives**. Trace objectives to outcomes and deliverables, assess health and dependencies, and flag intervention needs. Return the strategic alignment traceability matrix. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

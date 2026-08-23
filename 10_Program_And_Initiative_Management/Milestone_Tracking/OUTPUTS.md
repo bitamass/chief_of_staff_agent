@@ -1,6 +1,13 @@
-# Outputs
+# Outputs — Milestone Tracking
 
-- Short summary of the current state.
-- Key decisions, risks, or action items to track.
-- Recommendations and next steps for the leader.
-- Clear status for follow-up or escalation.
+## Required work product
+- Integrated milestone timeline
+- Baseline, forecast, actual, and variance
+- Owner, dependency, and acceptance evidence
+- Corrective action or escalation
+
+## Executive presentation
+- Lead with the decision, priority, exception, or action required.
+- Show owners, dates, status, scores, rationale, and sources where applicable.
+- Identify evidence gaps, conflicts, and unresolved assumptions.
+- End with recommendations and items requiring human approval.

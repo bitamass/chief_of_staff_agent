@@ -1,6 +1,13 @@
-# Outputs
+# Outputs — Stakeholder RACI
 
-- Short summary of the current state.
-- Key decisions, risks, or action items to track.
-- Recommendations and next steps for the leader.
-- Clear status for follow-up or escalation.
+## Required work product
+- RACI matrix by work package or decision
+- One accountable role where possible
+- Gap, overlap, and authority-conflict findings
+- Required clarification
+
+## Executive presentation
+- Lead with the decision, priority, exception, or action required.
+- Show owners, dates, status, scores, rationale, and sources where applicable.
+- Identify evidence gaps, conflicts, and unresolved assumptions.
+- End with recommendations and items requiring human approval.

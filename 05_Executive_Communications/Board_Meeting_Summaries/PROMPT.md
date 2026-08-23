@@ -1,6 +1,3 @@
-# Prompt
+# Prompt — Board Meeting Summaries
 
-Summarize the current state of Board Meeting Summaries.
-Identify key decisions, risks, and action items.
-Recommend 3-5 priority next steps for leadership.
-Keep the response concise and executive-ready.
+Using only the provided synthetic or approved evidence, perform **Board Meeting Summaries**. Connect prior discussion, current purpose, participants, decisions, and follow-up without losing chronology. Return the board meeting summaries executive work product. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

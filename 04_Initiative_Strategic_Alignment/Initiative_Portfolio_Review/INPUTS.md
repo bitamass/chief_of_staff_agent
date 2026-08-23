@@ -1,6 +1,12 @@
-# Inputs
+# Inputs — Initiative Portfolio Review
 
-- Source material related to this capability.
-- Relevant meeting notes, decisions, and follow-ups.
-- Key risks, milestones, or stakeholder context.
-- Any executive priorities or time-sensitive requests.
+## Required inputs
+- Complete initiative portfolio and charters
+- Strategic goals and expected benefits
+- Status, cost, risk, dependencies, and resource demand
+- Priority criteria, capacity, and investment constraints
+
+## Validation
+- Confirm source, owner, effective date, and approval status.
+- Flag missing, conflicting, stale, or unverified inputs.
+- Use synthetic or explicitly approved data only in the demonstration.
