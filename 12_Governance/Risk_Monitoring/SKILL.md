@@ -1,6 +1,18 @@
-# Skill: Risk Monitoring
+---
+name: governance-risk-monitoring
+description: Produce a risk monitoring executive work product for executive Chief of Staff work. Use when the user needs to risk monitoring within governance.
+---
+# Risk Monitoring
 
-This skill organizes the work needed to support Risk Monitoring.
-It helps clarify priorities, risks, and decisions for leadership.
-Use it to capture key context and prepare concise outputs.
-Keep recommendations brief, relevant, and action-oriented.
+## Purpose
+Risk Monitoring helps apply decision rights, escalation paths, controls, and oversight consistently.
+
+## Instructions
+1. Confirm the executive question, owner, and time horizon.
+2. Use only dated, attributable evidence.
+3. Write cause-event-impact statements, assess exposure, test controls, and identify triggers.
+4. Produce the risk monitoring executive work product defined in OUTPUTS.md.
+5. State gaps, assumptions, and items requiring human review.
+
+## Boundary
+Do not claim approval or compliance; identify the responsible authority and required review.

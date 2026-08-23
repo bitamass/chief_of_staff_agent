@@ -1,6 +1,9 @@
-# Outputs
+# Output — Map Initiatives To Strategic Objectives
 
-- Short summary of the current state.
-- Key decisions, risks, or action items to track.
-- Recommendations and next steps for the leader.
-- Clear status for follow-up or escalation.
+Produce a **strategic alignment traceability matrix** containing:
+
+- Executive purpose and time horizon
+- Evidence-based findings specific to map initiatives to strategic objectives
+- Owner, dates, status, and source references
+- Exceptions, dependencies, or unresolved questions
+- Recommended executive action and human-review note

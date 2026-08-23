@@ -1,6 +1,9 @@
-# Outputs
+# Output — Daily Meetings And Preparation Material
 
-- Short summary of the current state.
-- Key decisions, risks, or action items to track.
-- Recommendations and next steps for the leader.
-- Clear status for follow-up or escalation.
+Produce a **daily executive operating plan** containing:
+
+- Executive purpose and time horizon
+- Evidence-based findings specific to daily meetings and preparation material
+- Owner, dates, status, and source references
+- Exceptions, dependencies, or unresolved questions
+- Recommended executive action and human-review note

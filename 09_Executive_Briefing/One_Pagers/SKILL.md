@@ -1,6 +1,18 @@
-# Skill: One Pagers
+---
+name: executive briefing-one-pagers
+description: Produce a one-page executive brief for executive Chief of Staff work. Use when the user needs to one pagers within executive briefing.
+---
+# One Pagers
 
-This skill organizes the work needed to support One Pagers.
-It helps clarify priorities, risks, and decisions for leadership.
-Use it to capture key context and prepare concise outputs.
-Keep recommendations brief, relevant, and action-oriented.
+## Purpose
+One Pagers helps compress complex evidence into decision-ready executive briefing material.
+
+## Instructions
+1. Confirm the executive question, owner, and time horizon.
+2. Use only dated, attributable evidence.
+3. Select only audience-relevant facts, organize the message, cite evidence, and apply tone and disclosure constraints.
+4. Produce the one-page executive brief defined in OUTPUTS.md.
+5. State gaps, assumptions, and items requiring human review.
+
+## Boundary
+Cite sources, state limitations, and keep recommendations separate from facts.

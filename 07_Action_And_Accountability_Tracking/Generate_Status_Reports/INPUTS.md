@@ -1,6 +1,6 @@
-# Inputs
+# Inputs — Generate Status Reports
 
-- Source material related to this capability.
-- Relevant meeting notes, decisions, and follow-ups.
-- Key risks, milestones, or stakeholder context.
-- Any executive priorities or time-sensitive requests.
+- Core evidence: actions, owners, due dates, source meetings, dependencies, status evidence, and escalation rules.
+- Skill-specific evidence: purpose, accountable owner, time horizon, and success criteria.
+- Required metadata: source, date, owner, status, and confidence.
+- If evidence is missing, list the gap rather than filling it by inference.

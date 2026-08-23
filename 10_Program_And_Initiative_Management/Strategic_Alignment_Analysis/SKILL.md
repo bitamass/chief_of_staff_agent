@@ -1,6 +1,18 @@
-# Skill: Strategic Alignment Analysis
+---
+name: program and initiative management-strategic-alignment-analysis
+description: Produce a strategic alignment traceability matrix for executive Chief of Staff work. Use when the user needs to strategic alignment analysis within program and initiative management.
+---
+# Strategic Alignment Analysis
 
-This skill organizes the work needed to support Strategic Alignment Analysis.
-It helps clarify priorities, risks, and decisions for leadership.
-Use it to capture key context and prepare concise outputs.
-Keep recommendations brief, relevant, and action-oriented.
+## Purpose
+Strategic Alignment Analysis helps monitor initiative delivery, dependencies, resources, outcomes, and intervention needs.
+
+## Instructions
+1. Confirm the executive question, owner, and time horizon.
+2. Use only dated, attributable evidence.
+3. Trace objectives to outcomes and deliverables, assess health and dependencies, and flag intervention needs.
+4. Produce the strategic alignment traceability matrix defined in OUTPUTS.md.
+5. State gaps, assumptions, and items requiring human review.
+
+## Boundary
+Do not replace the program owner; surface exceptions and requested interventions.

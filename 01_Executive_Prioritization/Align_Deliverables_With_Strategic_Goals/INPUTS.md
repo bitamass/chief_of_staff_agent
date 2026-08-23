@@ -1,6 +1,6 @@
-# Inputs
+# Inputs — Align Deliverables With Strategic Goals
 
-- Source material related to this capability.
-- Relevant meeting notes, decisions, and follow-ups.
-- Key risks, milestones, or stakeholder context.
-- Any executive priorities or time-sensitive requests.
+- Core evidence: strategic goals, initiative charters, deliverables, constraints, and executive deadlines.
+- Skill-specific evidence: Charter, milestones, dependencies, benefits, and latest status.
+- Required metadata: source, date, owner, status, and confidence.
+- If evidence is missing, list the gap rather than filling it by inference.

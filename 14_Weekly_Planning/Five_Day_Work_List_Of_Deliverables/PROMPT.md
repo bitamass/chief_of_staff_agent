@@ -1,6 +1,3 @@
-# Prompt
+# Prompt — Five Day Work List Of Deliverables
 
-Summarize the current state of Five Day Work List Of Deliverables.
-Identify key decisions, risks, and action items.
-Recommend 3-5 priority next steps for leadership.
-Keep the response concise and executive-ready.
+Using only the provided synthetic or approved evidence, perform **Five Day Work List Of Deliverables**. Trace objectives to outcomes and deliverables, assess health and dependencies, and flag intervention needs. Return a five-day executive work plan. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

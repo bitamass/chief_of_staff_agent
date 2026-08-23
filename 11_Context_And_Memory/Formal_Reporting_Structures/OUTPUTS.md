@@ -1,6 +1,9 @@
-# Outputs
+# Output — Formal Reporting Structures
 
-- Short summary of the current state.
-- Key decisions, risks, or action items to track.
-- Recommendations and next steps for the leader.
-- Clear status for follow-up or escalation.
+Produce a **role and reporting structure map** containing:
+
+- Executive purpose and time horizon
+- Evidence-based findings specific to formal reporting structures
+- Owner, dates, status, and source references
+- Exceptions, dependencies, or unresolved questions
+- Recommended executive action and human-review note

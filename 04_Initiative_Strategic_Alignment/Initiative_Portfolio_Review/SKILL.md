@@ -1,6 +1,18 @@
-# Skill: Initiative Portfolio Review
+---
+name: initiative strategic alignment-initiative-portfolio-review
+description: Produce a initiative portfolio review executive work product for executive Chief of Staff work. Use when the user needs to initiative portfolio review within initiative strategic alignment.
+---
+# Initiative Portfolio Review
 
-This skill organizes the work needed to support Initiative Portfolio Review.
-It helps clarify priorities, risks, and decisions for leadership.
-Use it to capture key context and prepare concise outputs.
-Keep recommendations brief, relevant, and action-oriented.
+## Purpose
+Initiative Portfolio Review helps connect initiatives and deliverables to institutional strategy.
+
+## Instructions
+1. Confirm the executive question, owner, and time horizon.
+2. Use only dated, attributable evidence.
+3. Trace objectives to outcomes and deliverables, assess health and dependencies, and flag intervention needs.
+4. Produce the initiative portfolio review executive work product defined in OUTPUTS.md.
+5. State gaps, assumptions, and items requiring human review.
+
+## Boundary
+Flag weak or inferred alignment instead of treating it as established.

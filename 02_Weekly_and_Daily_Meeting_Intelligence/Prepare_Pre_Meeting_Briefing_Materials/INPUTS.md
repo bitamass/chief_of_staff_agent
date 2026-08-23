@@ -1,6 +1,6 @@
-# Inputs
+# Inputs — Prepare Pre Meeting Briefing Materials
 
-- Source material related to this capability.
-- Relevant meeting notes, decisions, and follow-ups.
-- Key risks, milestones, or stakeholder context.
-- Any executive priorities or time-sensitive requests.
+- Core evidence: calendar entries, agendas, participants, prior notes, decisions, and action items.
+- Skill-specific evidence: Meeting purpose, attendees, agenda, and prior notes; Audience, approved message, tone, channel, and disclosure limits.
+- Required metadata: source, date, owner, status, and confidence.
+- If evidence is missing, list the gap rather than filling it by inference.

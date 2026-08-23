@@ -1,6 +1,18 @@
-# Skill: Key Decision Identification
+---
+name: executive prioritization-key-decision-identification
+description: Produce a decision or approval queue for executive Chief of Staff work. Use when the user needs to key decision identification within executive prioritization.
+---
+# Key Decision Identification
 
-This skill organizes the work needed to support Key Decision Identification.
-It helps clarify priorities, risks, and decisions for leadership.
-Use it to capture key context and prepare concise outputs.
-Keep recommendations brief, relevant, and action-oriented.
+## Purpose
+Key Decision Identification helps rank executive attention against strategic value, urgency, dependency, and capacity.
+
+## Instructions
+1. Confirm the executive question, owner, and time horizon.
+2. Use only dated, attributable evidence.
+3. Separate the decision statement, authority, options, rationale, consequences, and follow-up.
+4. Produce the decision or approval queue defined in OUTPUTS.md.
+5. State gaps, assumptions, and items requiring human review.
+
+## Boundary
+Do not invent priorities or silently override accountable owners.

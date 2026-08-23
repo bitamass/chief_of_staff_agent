@@ -1,6 +1,3 @@
-# Prompt
+# Prompt — Stakeholder RACI
 
-Summarize the current state of Stakeholder RACI.
-Identify key decisions, risks, and action items.
-Recommend 3-5 priority next steps for leadership.
-Keep the response concise and executive-ready.
+Using only the provided synthetic or approved evidence, perform **Stakeholder RACI**. Map role-based evidence, decision rights, influence, interests, and engagement gaps. Return a decision and delivery RACI. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

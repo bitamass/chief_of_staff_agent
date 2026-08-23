@@ -1,6 +1,9 @@
-# Outputs
+# Output — One Pagers
 
-- Short summary of the current state.
-- Key decisions, risks, or action items to track.
-- Recommendations and next steps for the leader.
-- Clear status for follow-up or escalation.
+Produce a **one-page executive brief** containing:
+
+- Executive purpose and time horizon
+- Evidence-based findings specific to one pagers
+- Owner, dates, status, and source references
+- Exceptions, dependencies, or unresolved questions
+- Recommended executive action and human-review note

@@ -1,6 +1,6 @@
-# Inputs
+# Inputs — Priority Conflict Detection
 
-- Source material related to this capability.
-- Relevant meeting notes, decisions, and follow-ups.
-- Key risks, milestones, or stakeholder context.
-- Any executive priorities or time-sensitive requests.
+- Core evidence: strategic objectives, initiative charters, OKRs, benefits, dependencies, and resource limits.
+- Skill-specific evidence: Scoring criteria and capacity limits.
+- Required metadata: source, date, owner, status, and confidence.
+- If evidence is missing, list the gap rather than filling it by inference.

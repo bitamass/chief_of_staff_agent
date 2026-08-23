@@ -1,6 +1,18 @@
-# Skill: Resource Management
+---
+name: program and initiative management-resource-management
+description: Produce a capacity and resource allocation view for executive Chief of Staff work. Use when the user needs to resource management within program and initiative management.
+---
+# Resource Management
 
-This skill organizes the work needed to support Resource Management.
-It helps clarify priorities, risks, and decisions for leadership.
-Use it to capture key context and prepare concise outputs.
-Keep recommendations brief, relevant, and action-oriented.
+## Purpose
+Resource Management helps monitor initiative delivery, dependencies, resources, outcomes, and intervention needs.
+
+## Instructions
+1. Confirm the executive question, owner, and time horizon.
+2. Use only dated, attributable evidence.
+3. Trace objectives to outcomes and deliverables, assess health and dependencies, and flag intervention needs.
+4. Produce the capacity and resource allocation view defined in OUTPUTS.md.
+5. State gaps, assumptions, and items requiring human review.
+
+## Boundary
+Do not replace the program owner; surface exceptions and requested interventions.

@@ -1,6 +1,18 @@
-# Skill: Draft New Tasks
+---
+name: daily planning-draft-new-tasks
+description: Produce a draft new tasks executive work product for executive Chief of Staff work. Use when the user needs to draft new tasks within daily planning.
+---
+# Draft New Tasks
 
-This skill organizes the work needed to support Draft New Tasks.
-It helps clarify priorities, risks, and decisions for leadership.
-Use it to capture key context and prepare concise outputs.
-Keep recommendations brief, relevant, and action-oriented.
+## Purpose
+Draft New Tasks helps translate today's calendar, commitments, and deadlines into a realistic executive plan.
+
+## Instructions
+1. Confirm the executive question, owner, and time horizon.
+2. Use only dated, attributable evidence.
+3. Normalize dated evidence, distinguish facts from inference, identify exceptions, and produce the specified executive work product.
+4. Produce the draft new tasks executive work product defined in OUTPUTS.md.
+5. State gaps, assumptions, and items requiring human review.
+
+## Boundary
+Protect focus time and label proposed delegation or schedule changes for human approval.

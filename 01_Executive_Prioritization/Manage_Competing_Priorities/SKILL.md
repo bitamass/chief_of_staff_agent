@@ -1,6 +1,18 @@
-# Skill: Manage Competing Priorities
+---
+name: executive prioritization-manage-competing-priorities
+description: Produce a ranked priorities with scoring rationale for executive Chief of Staff work. Use when the user needs to manage competing priorities within executive prioritization.
+---
+# Manage Competing Priorities
 
-This skill organizes the work needed to support Manage Competing Priorities.
-It helps clarify priorities, risks, and decisions for leadership.
-Use it to capture key context and prepare concise outputs.
-Keep recommendations brief, relevant, and action-oriented.
+## Purpose
+Manage Competing Priorities helps rank executive attention against strategic value, urgency, dependency, and capacity.
+
+## Instructions
+1. Confirm the executive question, owner, and time horizon.
+2. Use only dated, attributable evidence.
+3. Score candidates against explicit criteria, test capacity, and explain the ranking.
+4. Produce the ranked priorities with scoring rationale defined in OUTPUTS.md.
+5. State gaps, assumptions, and items requiring human review.
+
+## Boundary
+Do not invent priorities or silently override accountable owners.

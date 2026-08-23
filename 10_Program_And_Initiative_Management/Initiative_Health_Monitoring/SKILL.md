@@ -1,6 +1,18 @@
-# Skill: Initiative Health Monitoring
+---
+name: program and initiative management-initiative-health-monitoring
+description: Produce a initiative health report with exception flags for executive Chief of Staff work. Use when the user needs to initiative health monitoring within program and initiative management.
+---
+# Initiative Health Monitoring
 
-This skill organizes the work needed to support Initiative Health Monitoring.
-It helps clarify priorities, risks, and decisions for leadership.
-Use it to capture key context and prepare concise outputs.
-Keep recommendations brief, relevant, and action-oriented.
+## Purpose
+Initiative Health Monitoring helps monitor initiative delivery, dependencies, resources, outcomes, and intervention needs.
+
+## Instructions
+1. Confirm the executive question, owner, and time horizon.
+2. Use only dated, attributable evidence.
+3. Trace objectives to outcomes and deliverables, assess health and dependencies, and flag intervention needs.
+4. Produce the initiative health report with exception flags defined in OUTPUTS.md.
+5. State gaps, assumptions, and items requiring human review.
+
+## Boundary
+Do not replace the program owner; surface exceptions and requested interventions.

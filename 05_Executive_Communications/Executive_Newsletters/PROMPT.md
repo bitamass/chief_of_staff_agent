@@ -1,6 +1,3 @@
-# Prompt
+# Prompt — Executive Newsletters
 
-Summarize the current state of Executive Newsletters.
-Identify key decisions, risks, and action items.
-Recommend 3-5 priority next steps for leadership.
-Keep the response concise and executive-ready.
+Using only the provided synthetic or approved evidence, perform **Executive Newsletters**. Select only audience-relevant facts, organize the message, cite evidence, and apply tone and disclosure constraints. Return a executive newsletter draft. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.
