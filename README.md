@@ -6,6 +6,10 @@ This independent exploratory Streamlit prototype demonstrates one Chief of Staff
 
 The initiative selector appears above the timeline. Changing it immediately filters the people, prior meetings, prior decisions, prior actions, upcoming meetings, actions due and owners, upcoming decisions, and detailed supporting lists to the selected initiative.
 
+The four synthetic initiatives are Clinical Operations Modernization, Agentification Pilot, Monthly Business Review, and Clinical Research Developments. All names, roles, meetings, decisions, actions, and supporting records are fictional and created only for this demonstration.
+
+The app discovers numbered capability folders and their child skill folders directly from the repository. It currently connects selected meeting-intelligence, decision-log, and initiative-portfolio skills to the synthetic context; other discovered skills remain clearly labeled as framework-only until their instruction and input contracts are implemented.
+
 ## Run on Windows
 
 1. Extract the ZIP file.
@@ -19,7 +23,7 @@ The initiative selector appears above the timeline. Changing it immediately filt
 
    `python -m streamlit run app.py`
 
-6. Choose an initiative, select **Load Sample Meeting Materials**, and then select **Create Executive Meeting Brief**.
+6. Choose an initiative, select **Update Relevant Meeting Materials**, and then select **Create Executive Meeting Brief**.
 
 ## Prototype boundary
 

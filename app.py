@@ -1,9 +1,11 @@
 import re
 from datetime import date
 from io import BytesIO
+from pathlib import Path
 
 import streamlit as st
 from docx import Document
+from skill_catalog import CONNECTED_SKILLS, discover_capabilities
 from synthetic_context import build_initiative_scenarios, build_scenario_records, build_synthetic_context, initiative_continuity
 
 
@@ -202,8 +204,9 @@ st.markdown(
     unsafe_allow_html=True,
 )
 st.markdown(
-    '<div class="safe-banner"><b>Guided demonstration:</b> Uses sample data only. '
-    'No UW production systems, Epic, Outlook, Teams, or SharePoint are connected.</div>',
+    '<div class="safe-banner"><b>Chiefs of Staff Demo:</b> This demo is based on synthetic data generated for this demo only. '
+    'There are no connections to any UW production systems. Synthetic data, the demo App, and Chief of Staff skills '
+    'are available for review in the GitHub repository.</div>',
     unsafe_allow_html=True,
 )
 
@@ -226,6 +229,33 @@ for index, person in enumerate(continuity["participants"]):
     with people_columns[index % len(people_columns)]:
         st.markdown(f"**{person['name']}**  \n{person['role']}")
 
+capabilities = discover_capabilities(Path(__file__).parent)
+capability_labels = list(capabilities)
+default_capability_index = next((i for i, label in enumerate(capability_labels) if label.startswith("02 ")), 0)
+st.markdown("#### Choose a Chief of Staff capability and skill")
+capability_name = st.selectbox(
+    "Capability",
+    capability_labels,
+    index=default_capability_index,
+    key="capability_name",
+)
+skill_options = capabilities[capability_name]
+preferred_skill = "Prepare Pre-Meeting Briefing Materials"
+default_skill_index = skill_options.index(preferred_skill) if preferred_skill in skill_options else 0
+skill_name = st.selectbox(
+    "Skill",
+    skill_options,
+    index=default_skill_index,
+    key=f"skill_name_{capability_name}",
+)
+if skill_name in CONNECTED_SKILLS:
+    st.success(f"Selected repository skill: {capability_name} → {skill_name}")
+else:
+    st.info(
+        f"{skill_name} is available in the repository framework but is not yet connected to this demo's synthetic inputs. "
+        "Its SKILL, INPUTS, WORKFLOW, OUTPUTS, PROMPT, and EVALUATION files should be reviewed before activation."
+    )
+
 st.subheader("Executive timeline")
 st.caption(f"Filtered to {scenario_name}: three weeks of operating history and two weeks of forward plans.")
 
@@ -245,25 +275,88 @@ st.markdown("#### Meetings, decisions, and actions for the selected initiative")
 detail_meetings, detail_decisions, detail_actions = st.columns(3)
 with detail_meetings:
     st.markdown("##### Meetings")
-    for item in reversed(continuity["prior_meetings"]):
-        st.markdown(f"- **Prior · {item['date']:%b %d}:** {item['title']}")
-    for item in continuity["current_meetings"]:
-        st.markdown(f"- **Today · {item['date']:%b %d}:** {item['title']}")
-    for item in continuity["upcoming_meetings"]:
-        st.markdown(f"- **Upcoming · {item['date']:%b %d}:** {item['title']}")
+    with st.container(border=True):
+        st.markdown("**Prior**")
+        if continuity["prior_meetings"]:
+            for item in reversed(continuity["prior_meetings"]):
+                st.markdown(f"- **{item['date']:%b %d}:** {item['title']}")
+        else:
+            st.caption("No prior meetings recorded.")
+    with st.container(border=True):
+        st.markdown("**Current and upcoming**")
+        for item in continuity["current_meetings"]:
+            st.markdown(f"- **Today · {item['date']:%b %d}:** {item['title']}")
+        for item in continuity["upcoming_meetings"]:
+            st.markdown(f"- **{item['date']:%b %d}:** {item['title']}")
 with detail_decisions:
     st.markdown("##### Decisions")
-    for item in reversed(continuity["prior_decisions"]):
-        source_meeting = operating_context["meetings"][item["meeting_id"]]
-        st.markdown(f"- **Made · {item['date']:%b %d}:** {item['decision']}  \n  <span class='source'>{source_meeting['title']}</span>", unsafe_allow_html=True)
-    for item in continuity["upcoming_decisions"]:
-        meeting = operating_context["meetings"][item["meeting_id"]]
-        st.markdown(f"- **Upcoming · {item['date']:%b %d}:** {item['decision']}  \n  <span class='source'>{meeting['title']}</span>", unsafe_allow_html=True)
+    with st.container(border=True):
+        st.markdown("**Prior**")
+        if continuity["prior_decisions"]:
+            for item in reversed(continuity["prior_decisions"]):
+                source_meeting = operating_context["meetings"][item["meeting_id"]]
+                st.markdown(f"- **{item['date']:%b %d}:** {item['decision']}  \n  <span class='source'>{source_meeting['title']}</span>", unsafe_allow_html=True)
+        else:
+            st.caption("No prior decisions recorded.")
+    with st.container(border=True):
+        st.markdown("**Upcoming**")
+        if continuity["upcoming_decisions"]:
+            for item in continuity["upcoming_decisions"]:
+                meeting = operating_context["meetings"][item["meeting_id"]]
+                st.markdown(f"- **{item['date']:%b %d}:** {item['decision']}  \n  <span class='source'>{meeting['title']}</span>", unsafe_allow_html=True)
+        else:
+            st.caption("No upcoming decisions recorded.")
 with detail_actions:
     st.markdown("##### Actions")
+    with st.container(border=True):
+        st.markdown("**Prior**")
+        if continuity["prior_actions"]:
+            for item in continuity["prior_actions"]:
+                owner = operating_context["participants"][item["owner"]]
+                st.markdown(f"- **{item['status']} · Due {item['due_date']:%b %d}:** {item['action']}  \n  <span class='source'>Owner: {owner['name']} — {owner['role']}</span>", unsafe_allow_html=True)
+        else:
+            st.caption("No prior actions recorded.")
+    with st.container(border=True):
+        st.markdown("**Upcoming**")
+        if continuity["actions_due"]:
+            for item in continuity["actions_due"]:
+                owner = operating_context["participants"][item["owner"]]
+                st.markdown(f"- **{item['status']} · Due {item['due_date']:%b %d}:** {item['action']}  \n  <span class='source'>Owner: {owner['name']} — {owner['role']}</span>", unsafe_allow_html=True)
+        else:
+            st.caption("No upcoming actions recorded.")
+
+st.markdown("#### Selected Chief of Staff skill output")
+skill_records = build_scenario_records(operating_context, scenario_name)
+if skill_name in {"Action Item Management", "Follow Up On Commitments"}:
     for item in continuity["all_actions"]:
         owner = operating_context["participants"][item["owner"]]
-        st.markdown(f"- **{item['status']} · Due {item['due_date']:%b %d}:** {item['action']}  \n  <span class='source'>Owner: {owner['name']} — {owner['role']}</span>", unsafe_allow_html=True)
+        st.markdown(f"- **{item['status']} · Due {item['due_date']:%b %d}:** {item['action']} — {owner['name']}, {owner['role']}")
+elif skill_name == "Calendar Prioritization":
+    for priority, item in enumerate(continuity["current_meetings"] + continuity["upcoming_meetings"], start=1):
+        st.markdown(f"- **Priority {priority} · {item['date']:%b %d}:** {item['title']} — {item['summary']}")
+elif skill_name == "Create Agendas":
+    st.code(skill_records[0]["text"], language="text")
+elif skill_name == "Meeting Preparation":
+    st.markdown(f"**Meeting:** {scenario['title']}  \n**Date:** {scenario['date']:%b %d, %Y}  \n**Objective:** {scenario['objective']}  \n**Attendees:** {scenario['attendees']}")
+elif skill_name == "Prepare Pre-Meeting Briefing Materials":
+    st.write("The meeting context and three source-linked briefing materials below are ready for executive brief generation.")
+elif skill_name == "Summarize Prior Discussions":
+    for item in reversed(continuity["prior_meetings"]):
+        st.markdown(f"- **{item['date']:%b %d} · {item['title']}:** {item['summary']}")
+elif skill_name in {"Track Decisions", "Decision Logs"}:
+    for item in reversed(continuity["prior_decisions"]):
+        st.markdown(f"- **Made {item['date']:%b %d}:** {item['decision']}")
+    for item in continuity["upcoming_decisions"]:
+        st.markdown(f"- **Upcoming {item['date']:%b %d}:** {item['decision']}")
+elif skill_name == "Initiative Portfolio Review":
+    initiative = operating_context["initiatives"][scenario["initiative_id"]]
+    charter = operating_context["charters"][initiative["charter_id"]]
+    st.markdown(f"**Status:** {initiative['status']}  \n**Objective:** {initiative['objective']}  \n**Charter:** {charter['title']}  \n**Success measures:** {', '.join(charter['success_measures'])}")
+    for item in operating_context["deliverables"].values():
+        if item["initiative_id"] == scenario["initiative_id"]:
+            st.markdown(f"- **{item['status']} · Due {item['due_date']:%b %d}:** {item['name']}")
+else:
+    st.warning("This skill is listed for framework review only. It is not executed because its repository instructions and required synthetic inputs have not yet been connected.")
 
 with st.expander("Explore the complete five-week synthetic calendar and supporting records"):
     calendar_rows = []
@@ -285,7 +378,7 @@ with st.expander("Explore the complete five-week synthetic calendar and supporti
 
 with st.sidebar:
     st.header("Demonstration Safeguards")
-    st.success("Guided demonstration")
+    st.success("Chiefs of Staff Demo")
     for label in [
         "Human review required",
         "Source traceability enabled",
@@ -297,10 +390,10 @@ with st.sidebar:
     st.subheader("Future state—not connected")
     st.caption("Outlook calendar · Teams summaries · SharePoint · Approved external intelligence")
 
-st.subheader("Prepare the selected initiative brief")
+st.subheader("Most relevant upcoming meeting")
 scenario_action, scenario_description = st.columns([1, 2.4])
 with scenario_action:
-    if st.button("Load Sample Meeting Materials", width="stretch"):
+    if st.button("Update Relevant Meeting Materials", width="stretch"):
         st.session_state.meeting_title = scenario["title"]
         st.session_state.meeting_objective = scenario["objective"]
         st.session_state.attendees = scenario["attendees"]
@@ -309,7 +402,7 @@ with scenario_action:
         st.session_state.pop("brief", None)
         st.rerun()
 with scenario_description:
-    st.caption("Loads three curated demonstration documents and updates the meeting context.")
+    st.caption("Updates the agenda, prior notes, background information, and meeting context for the selected initiative.")
 
 default_scenario = next(iter(SCENARIOS.values()))
 if "meeting_title" not in st.session_state:
@@ -343,7 +436,7 @@ if records:
 
 if st.button("Create Executive Meeting Brief", width="stretch"):
     if not records:
-        st.warning("Select Load Sample Meeting Materials before creating the brief.")
+        st.warning("Select Update Relevant Meeting Materials before creating the brief.")
     else:
         st.session_state.brief = make_demo_brief(
             meeting_title,
@@ -399,7 +492,7 @@ if "brief" in st.session_state:
             st.markdown(f"- {item}")
 
     with st.expander("Agent governance record"):
-        st.write("**Purpose:** Prepare an executive meeting brief from user-selected documents.")
+        st.write("**Purpose:** Apply the selected Chief of Staff skill to the selected synthetic initiative context.")
         st.write("**Data accessed:** " + ", ".join(r["name"] for r in saved_records))
         st.write("**External systems accessed:** None")
         st.write("**Retention:** Session only")
@@ -412,18 +505,11 @@ if "brief" in st.session_state:
     d1.download_button("Download Word Brief", docx, "executive_meeting_brief.docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", width="stretch")
     d2.download_button("Download Markdown Brief", md, "executive_meeting_brief.md", "text/markdown", width="stretch")
 
-with st.expander("Other potential Chief of Staff skills — not included in this prototype"):
-    st.markdown(
-        "- Daily and weekly planning\n"
-        "- Calendar and priority preparation\n"
-        "- Decision and commitment tracking\n"
-        "- Initiative and risk monitoring\n"
-        "- Executive communications\n"
-        "- Stakeholder coordination\n"
-        "- Organizational context and memory\n"
-        "- Specialized-agent orchestration"
-    )
-    st.caption("These capabilities are part of the broader vision and are not active in the current demonstration.")
+with st.expander("Chief of Staff capability framework discovered from the repository"):
+    for capability, skills in capabilities.items():
+        st.markdown(f"**{capability}**")
+        st.write(" · ".join(skills))
+    st.caption("A skill is executed only when its repository instructions and required synthetic inputs are connected to this demo.")
 
 st.divider()
-st.caption("Prototype boundary: sample data only; no autonomous actions; no production connections. Any institutional pilot would require approved authentication, role-based access, logging, privacy, security, records-management, and governance review.")
+st.caption("Prototype boundary: synthetic data only; no autonomous actions; no production connections. Any institutional pilot would require approved authentication, role-based access, logging, privacy, security, records-management, and governance review.")
