@@ -1,3 +1,3 @@
 # Prompt — Prepare Pre Meeting Briefing Materials
 
-Using only the provided synthetic or approved evidence, perform **Prepare Pre Meeting Briefing Materials**. Select only audience-relevant facts, organize the message, cite evidence, and apply tone and disclosure constraints. Return a source-linked executive preparation brief. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.
+Using only the provided synthetic or approved evidence, perform **Prepare Pre Meeting Briefing Materials**. Connect prior discussion, current purpose, participants, decisions, and follow-up without losing chronology. Return the source-linked executive preparation brief. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

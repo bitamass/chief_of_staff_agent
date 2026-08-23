@@ -1,6 +1,6 @@
 # Output — Issue And Risk Dashboard
 
-Produce a **executive dashboard specification** containing:
+Produce the **executive dashboard specification** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to issue and risk dashboard

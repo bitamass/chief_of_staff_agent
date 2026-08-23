@@ -1,6 +1,6 @@
 ---
-name: executive briefing-executive-dashboard-generation
-description: Produce a executive dashboard specification for executive Chief of Staff work. Use when the user needs to executive dashboard generation within executive briefing.
+name: executive-briefing-executive-dashboard-generation
+description: Produce the executive dashboard specification used for executive Chief of Staff work. Use when the user needs executive dashboard generation within executive briefing.
 ---
 # Executive Dashboard Generation
 

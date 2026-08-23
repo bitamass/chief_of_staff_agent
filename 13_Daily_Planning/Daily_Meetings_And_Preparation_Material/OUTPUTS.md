@@ -1,6 +1,6 @@
 # Output — Daily Meetings And Preparation Material
 
-Produce a **daily executive operating plan** containing:
+Produce the **daily executive operating plan** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to daily meetings and preparation material

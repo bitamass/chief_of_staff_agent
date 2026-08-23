@@ -1,6 +1,6 @@
 ---
-name: daily planning-overview-of-work-week-ahead
-description: Produce a daily executive operating plan for executive Chief of Staff work. Use when the user needs to overview of work week ahead within daily planning.
+name: daily-planning-overview-of-work-week-ahead
+description: Produce the daily executive operating plan used for executive Chief of Staff work. Use when the user needs overview of work week ahead within daily planning.
 ---
 # Overview Of Work Week Ahead
 

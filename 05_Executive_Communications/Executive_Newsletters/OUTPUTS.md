@@ -1,6 +1,6 @@
 # Output — Executive Newsletters
 
-Produce a **executive newsletter draft** containing:
+Produce the **executive newsletter draft** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to executive newsletters

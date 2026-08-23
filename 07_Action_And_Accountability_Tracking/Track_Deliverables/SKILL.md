@@ -1,6 +1,6 @@
 ---
-name: action and accountability tracking-track-deliverables
-description: Produce a track deliverables executive work product for executive Chief of Staff work. Use when the user needs to track deliverables within action and accountability tracking.
+name: action-and-accountability-tracking-track-deliverables
+description: Produce the track deliverables executive work product used for executive Chief of Staff work. Use when the user needs track deliverables within action and accountability tracking.
 ---
 # Track Deliverables
 

@@ -1,6 +1,6 @@
 # Output — Approval Pathways
 
-Produce a **decision or approval queue** containing:
+Produce the **decision or approval queue** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to approval pathways

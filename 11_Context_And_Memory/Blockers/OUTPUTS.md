@@ -1,6 +1,6 @@
 # Output — Blockers
 
-Produce a **blocker register with resolution path** containing:
+Produce the **blocker register with resolution path** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to blockers

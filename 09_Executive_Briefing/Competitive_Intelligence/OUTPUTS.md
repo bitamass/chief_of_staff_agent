@@ -1,6 +1,6 @@
 # Output — Competitive Intelligence
 
-Produce a **competitive intelligence executive work product** containing:
+Produce the **competitive intelligence executive work product** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to competitive intelligence

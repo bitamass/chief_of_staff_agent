@@ -1,6 +1,6 @@
 ---
-name: initiative strategic alignment-map-initiatives-to-strategic-objectives
-description: Produce a strategic alignment traceability matrix for executive Chief of Staff work. Use when the user needs to map initiatives to strategic objectives within initiative strategic alignment.
+name: initiative-strategic-alignment-map-initiatives-to-strategic-objectives
+description: Produce the strategic alignment traceability matrix used for executive Chief of Staff work. Use when the user needs map initiatives to strategic objectives within initiative strategic alignment.
 ---
 # Map Initiatives To Strategic Objectives
 

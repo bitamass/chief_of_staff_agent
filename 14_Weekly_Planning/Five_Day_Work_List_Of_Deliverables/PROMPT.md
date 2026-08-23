@@ -1,3 +1,3 @@
 # Prompt — Five Day Work List Of Deliverables
 
-Using only the provided synthetic or approved evidence, perform **Five Day Work List Of Deliverables**. Trace objectives to outcomes and deliverables, assess health and dependencies, and flag intervention needs. Return a five-day executive work plan. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.
+Using only the provided synthetic or approved evidence, perform **Five Day Work List Of Deliverables**. Trace objectives to outcomes and deliverables, assess health and dependencies, and flag intervention needs. Return the five-day executive work plan. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

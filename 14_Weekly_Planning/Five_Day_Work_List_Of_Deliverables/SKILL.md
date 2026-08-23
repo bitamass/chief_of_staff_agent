@@ -1,6 +1,6 @@
 ---
-name: weekly planning-five-day-work-list-of-deliverables
-description: Produce a five-day executive work plan for executive Chief of Staff work. Use when the user needs to five day work list of deliverables within weekly planning.
+name: weekly-planning-five-day-work-list-of-deliverables
+description: Produce the five-day executive work plan used for executive Chief of Staff work. Use when the user needs five day work list of deliverables within weekly planning.
 ---
 # Five Day Work List Of Deliverables
 

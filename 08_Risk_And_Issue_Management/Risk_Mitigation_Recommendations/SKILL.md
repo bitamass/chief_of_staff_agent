@@ -1,6 +1,6 @@
 ---
-name: risk and issue management-risk-mitigation-recommendations
-description: Produce a risk treatment plan for executive Chief of Staff work. Use when the user needs to risk mitigation recommendations within risk and issue management.
+name: risk-and-issue-management-risk-mitigation-recommendations
+description: Produce the risk treatment plan used for executive Chief of Staff work. Use when the user needs risk mitigation recommendations within risk and issue management.
 ---
 # Risk Mitigation Recommendations
 

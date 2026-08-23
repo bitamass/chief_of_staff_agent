@@ -1,6 +1,6 @@
 ---
-name: program and initiative management-milestone-tracking
-description: Produce a milestone outlook with variance flags for executive Chief of Staff work. Use when the user needs to milestone tracking within program and initiative management.
+name: program-and-initiative-management-milestone-tracking
+description: Produce the milestone outlook with variance flags used for executive Chief of Staff work. Use when the user needs milestone tracking within program and initiative management.
 ---
 # Milestone Tracking
 

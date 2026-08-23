@@ -1,6 +1,6 @@
 ---
-name: weekly and daily meeting intelligence-action-item-management
-description: Produce a accountability tracker with owners and due dates for executive Chief of Staff work. Use when the user needs to action item management within weekly and daily meeting intelligence.
+name: weekly-and-daily-meeting-intelligence-action-item-management
+description: Produce the accountability tracker with owners and due dates used for executive Chief of Staff work. Use when the user needs action item management within weekly and daily meeting intelligence.
 ---
 # Action Item Management
 

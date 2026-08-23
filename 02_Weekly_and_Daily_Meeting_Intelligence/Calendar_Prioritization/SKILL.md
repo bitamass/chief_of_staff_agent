@@ -1,6 +1,6 @@
 ---
-name: weekly and daily meeting intelligence-calendar-prioritization
-description: Produce a ranked priorities with scoring rationale for executive Chief of Staff work. Use when the user needs to calendar prioritization within weekly and daily meeting intelligence.
+name: weekly-and-daily-meeting-intelligence-calendar-prioritization
+description: Produce the ranked priorities with scoring rationale used for executive Chief of Staff work. Use when the user needs calendar prioritization within weekly and daily meeting intelligence.
 ---
 # Calendar Prioritization
 

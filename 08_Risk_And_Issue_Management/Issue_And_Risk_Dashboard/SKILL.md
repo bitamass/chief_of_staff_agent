@@ -1,6 +1,6 @@
 ---
-name: risk and issue management-issue-and-risk-dashboard
-description: Produce a executive dashboard specification for executive Chief of Staff work. Use when the user needs to issue and risk dashboard within risk and issue management.
+name: risk-and-issue-management-issue-and-risk-dashboard
+description: Produce the executive dashboard specification used for executive Chief of Staff work. Use when the user needs issue and risk dashboard within risk and issue management.
 ---
 # Issue And Risk Dashboard
 

@@ -1,6 +1,6 @@
 # Output — Initiative Portfolio Review
 
-Produce a **initiative portfolio review executive work product** containing:
+Produce the **initiative portfolio review executive work product** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to initiative portfolio review

@@ -1,6 +1,6 @@
 ---
-name: executive communications-leadership-briefings
-description: Produce a source-linked executive preparation brief for executive Chief of Staff work. Use when the user needs to leadership briefings within executive communications.
+name: executive-communications-leadership-briefings
+description: Produce the source-linked executive preparation brief used for executive Chief of Staff work. Use when the user needs leadership briefings within executive communications.
 ---
 # Leadership Briefings
 

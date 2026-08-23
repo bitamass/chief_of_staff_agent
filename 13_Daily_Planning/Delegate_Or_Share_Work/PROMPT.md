@@ -1,3 +1,3 @@
 # Prompt — Delegate Or Share Work
 
-Using only the provided synthetic or approved evidence, perform **Delegate Or Share Work**. Normalize dated evidence, distinguish facts from inference, identify exceptions, and produce the specified executive work product. Return a delegate or share work executive work product. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.
+Using only the provided synthetic or approved evidence, perform **Delegate Or Share Work**. Normalize dated evidence, distinguish facts from inference, identify exceptions, and produce the specified executive work product. Return the delegate or share work executive work product. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

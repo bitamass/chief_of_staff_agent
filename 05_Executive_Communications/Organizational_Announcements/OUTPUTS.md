@@ -1,6 +1,6 @@
 # Output — Organizational Announcements
 
-Produce a **organizational announcement draft** containing:
+Produce the **organizational announcement draft** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to organizational announcements

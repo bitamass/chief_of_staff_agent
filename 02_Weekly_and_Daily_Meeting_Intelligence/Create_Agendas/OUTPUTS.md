@@ -1,6 +1,6 @@
 # Output — Create Agendas
 
-Produce a **decision-oriented agenda** containing:
+Produce the **decision-oriented agenda** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to create agendas

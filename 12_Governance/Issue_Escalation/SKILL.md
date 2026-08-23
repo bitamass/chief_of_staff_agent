@@ -1,6 +1,6 @@
 ---
 name: governance-issue-escalation
-description: Produce a issue escalation executive work product for executive Chief of Staff work. Use when the user needs to issue escalation within governance.
+description: Produce the issue escalation executive work product used for executive Chief of Staff work. Use when the user needs issue escalation within governance.
 ---
 # Issue Escalation
 

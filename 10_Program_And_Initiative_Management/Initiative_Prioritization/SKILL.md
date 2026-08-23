@@ -1,6 +1,6 @@
 ---
-name: program and initiative management-initiative-prioritization
-description: Produce a ranked priorities with scoring rationale for executive Chief of Staff work. Use when the user needs to initiative prioritization within program and initiative management.
+name: program-and-initiative-management-initiative-prioritization
+description: Produce the ranked priorities with scoring rationale used for executive Chief of Staff work. Use when the user needs initiative prioritization within program and initiative management.
 ---
 # Initiative Prioritization
 

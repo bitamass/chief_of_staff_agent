@@ -1,6 +1,6 @@
 ---
-name: context and memory-formal-reporting-structures
-description: Produce a role and reporting structure map for executive Chief of Staff work. Use when the user needs to formal reporting structures within context and memory.
+name: context-and-memory-formal-reporting-structures
+description: Produce the role and reporting structure map used for executive Chief of Staff work. Use when the user needs formal reporting structures within context and memory.
 ---
 # Formal Reporting Structures
 

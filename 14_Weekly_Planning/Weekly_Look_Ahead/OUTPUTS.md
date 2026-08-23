@@ -1,6 +1,6 @@
 # Output — Weekly Look Ahead
 
-Produce a **five-day executive work plan** containing:
+Produce the **five-day executive work plan** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to weekly look ahead

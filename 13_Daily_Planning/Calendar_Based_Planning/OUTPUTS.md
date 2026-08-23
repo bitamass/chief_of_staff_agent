@@ -1,6 +1,6 @@
 # Output — Calendar Based Planning
 
-Produce a **protected-time calendar plan** containing:
+Produce the **protected-time calendar plan** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to calendar based planning

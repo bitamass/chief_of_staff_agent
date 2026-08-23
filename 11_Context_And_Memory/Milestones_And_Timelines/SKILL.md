@@ -1,6 +1,6 @@
 ---
-name: context and memory-milestones-and-timelines
-description: Produce a milestone outlook with variance flags for executive Chief of Staff work. Use when the user needs to milestones and timelines within context and memory.
+name: context-and-memory-milestones-and-timelines
+description: Produce the milestone outlook with variance flags used for executive Chief of Staff work. Use when the user needs milestones and timelines within context and memory.
 ---
 # Milestones And Timelines
 

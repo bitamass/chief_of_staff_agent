@@ -4,5 +4,5 @@
 2. Gather and date the required evidence from INPUTS.md.
 3. Write cause-event-impact statements, assess exposure, test controls, and identify triggers.
 4. Validate owners, sources, and contradictory evidence.
-5. Format the result as a early-warning notice with trigger evidence.
+5. Format the result as the early-warning notice with trigger evidence.
 6. Route recommendations and uncertain items for human review.

@@ -1,6 +1,6 @@
 ---
 name: governance-risk-monitoring
-description: Produce a risk monitoring executive work product for executive Chief of Staff work. Use when the user needs to risk monitoring within governance.
+description: Produce the risk monitoring executive work product used for executive Chief of Staff work. Use when the user needs risk monitoring within governance.
 ---
 # Risk Monitoring
 

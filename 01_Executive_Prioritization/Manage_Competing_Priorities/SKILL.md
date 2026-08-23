@@ -1,6 +1,6 @@
 ---
-name: executive prioritization-manage-competing-priorities
-description: Produce a ranked priorities with scoring rationale for executive Chief of Staff work. Use when the user needs to manage competing priorities within executive prioritization.
+name: executive-prioritization-manage-competing-priorities
+description: Produce the ranked priorities with scoring rationale used for executive Chief of Staff work. Use when the user needs manage competing priorities within executive prioritization.
 ---
 # Manage Competing Priorities
 

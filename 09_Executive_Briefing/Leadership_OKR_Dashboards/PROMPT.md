@@ -1,3 +1,3 @@
 # Prompt — Leadership OKR Dashboards
 
-Using only the provided synthetic or approved evidence, perform **Leadership OKR Dashboards**. Trace objectives to outcomes and deliverables, assess health and dependencies, and flag intervention needs. Return a executive dashboard specification. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.
+Using only the provided synthetic or approved evidence, perform **Leadership OKR Dashboards**. Trace objectives to outcomes and deliverables, assess health and dependencies, and flag intervention needs. Return the executive dashboard specification. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

@@ -1,6 +1,6 @@
 ---
-name: weekly planning-weekly-key-decisions-or-approvals
-description: Produce a decision or approval queue for executive Chief of Staff work. Use when the user needs to weekly key decisions or approvals within weekly planning.
+name: weekly-planning-weekly-key-decisions-or-approvals
+description: Produce the decision or approval queue used for executive Chief of Staff work. Use when the user needs weekly key decisions or approvals within weekly planning.
 ---
 # Weekly Key Decisions Or Approvals
 

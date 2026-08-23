@@ -1,6 +1,6 @@
 # Output — Track Decisions
 
-Produce a **source-linked decision register** containing:
+Produce the **source-linked decision register** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to track decisions

@@ -1,6 +1,6 @@
 # Output — Generate Status Reports
 
-Produce a **initiative health report with exception flags** containing:
+Produce the **initiative health report with exception flags** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to generate status reports

@@ -4,5 +4,5 @@
 2. Gather and date the required evidence from INPUTS.md.
 3. Separate the decision statement, authority, options, rationale, consequences, and follow-up.
 4. Validate owners, sources, and contradictory evidence.
-5. Format the result as a source-linked decision register.
+5. Format the result as the source-linked decision register.
 6. Route recommendations and uncertain items for human review.

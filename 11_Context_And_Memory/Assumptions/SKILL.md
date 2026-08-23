@@ -1,6 +1,6 @@
 ---
-name: context and memory-assumptions
-description: Produce a dated assumption register for executive Chief of Staff work. Use when the user needs to assumptions within context and memory.
+name: context-and-memory-assumptions
+description: Produce the dated assumption register used for executive Chief of Staff work. Use when the user needs assumptions within context and memory.
 ---
 # Assumptions
 

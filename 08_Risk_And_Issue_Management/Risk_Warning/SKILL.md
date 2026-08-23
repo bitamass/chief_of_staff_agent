@@ -1,6 +1,6 @@
 ---
-name: risk and issue management-risk-warning
-description: Produce a early-warning notice with trigger evidence for executive Chief of Staff work. Use when the user needs to risk warning within risk and issue management.
+name: risk-and-issue-management-risk-warning
+description: Produce the early-warning notice with trigger evidence used for executive Chief of Staff work. Use when the user needs risk warning within risk and issue management.
 ---
 # Risk Warning
 

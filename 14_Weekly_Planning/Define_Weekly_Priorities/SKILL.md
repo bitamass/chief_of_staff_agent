@@ -1,6 +1,6 @@
 ---
-name: weekly planning-define-weekly-priorities
-description: Produce a ranked priorities with scoring rationale for executive Chief of Staff work. Use when the user needs to define weekly priorities within weekly planning.
+name: weekly-planning-define-weekly-priorities
+description: Produce the ranked priorities with scoring rationale used for executive Chief of Staff work. Use when the user needs define weekly priorities within weekly planning.
 ---
 # Define Weekly Priorities
 

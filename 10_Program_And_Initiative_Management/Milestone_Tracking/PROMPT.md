@@ -1,3 +1,3 @@
 # Prompt — Milestone Tracking
 
-Using only the provided synthetic or approved evidence, perform **Milestone Tracking**. Trace objectives to outcomes and deliverables, assess health and dependencies, and flag intervention needs. Return a milestone outlook with variance flags. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.
+Using only the provided synthetic or approved evidence, perform **Milestone Tracking**. Trace objectives to outcomes and deliverables, assess health and dependencies, and flag intervention needs. Return the milestone outlook with variance flags. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

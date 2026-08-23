@@ -1,6 +1,6 @@
 ---
-name: initiative strategic alignment-priority-conflict-detection
-description: Produce a ranked priorities with scoring rationale for executive Chief of Staff work. Use when the user needs to priority conflict detection within initiative strategic alignment.
+name: initiative-strategic-alignment-priority-conflict-detection
+description: Produce the ranked priorities with scoring rationale used for executive Chief of Staff work. Use when the user needs priority conflict detection within initiative strategic alignment.
 ---
 # Priority Conflict Detection
 

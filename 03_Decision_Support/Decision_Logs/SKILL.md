@@ -1,6 +1,6 @@
 ---
-name: decision support-decision-logs
-description: Produce a source-linked decision register for executive Chief of Staff work. Use when the user needs to decision logs within decision support.
+name: decision-support-decision-logs
+description: Produce the source-linked decision register used for executive Chief of Staff work. Use when the user needs decision logs within decision support.
 ---
 # Decision Logs
 

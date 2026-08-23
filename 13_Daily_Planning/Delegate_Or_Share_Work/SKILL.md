@@ -1,6 +1,6 @@
 ---
-name: daily planning-delegate-or-share-work
-description: Produce a delegate or share work executive work product for executive Chief of Staff work. Use when the user needs to delegate or share work within daily planning.
+name: daily-planning-delegate-or-share-work
+description: Produce the delegate or share work executive work product used for executive Chief of Staff work. Use when the user needs delegate or share work within daily planning.
 ---
 # Delegate Or Share Work
 

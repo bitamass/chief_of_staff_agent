@@ -1,6 +1,6 @@
 # Output — Align Deliverables With Strategic Goals
 
-Produce a **strategic alignment traceability matrix** containing:
+Produce the **strategic alignment traceability matrix** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to align deliverables with strategic goals

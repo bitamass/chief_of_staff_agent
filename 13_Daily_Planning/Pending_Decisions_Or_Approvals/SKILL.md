@@ -1,6 +1,6 @@
 ---
-name: daily planning-pending-decisions-or-approvals
-description: Produce a decision or approval queue for executive Chief of Staff work. Use when the user needs to pending decisions or approvals within daily planning.
+name: daily-planning-pending-decisions-or-approvals
+description: Produce the decision or approval queue used for executive Chief of Staff work. Use when the user needs pending decisions or approvals within daily planning.
 ---
 # Pending Decisions Or Approvals
 

@@ -1,6 +1,6 @@
 ---
-name: context and memory-blockers
-description: Produce a blocker register with resolution path for executive Chief of Staff work. Use when the user needs to blockers within context and memory.
+name: context-and-memory-blockers
+description: Produce the blocker register with resolution path used for executive Chief of Staff work. Use when the user needs blockers within context and memory.
 ---
 # Blockers
 

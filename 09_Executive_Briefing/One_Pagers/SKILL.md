@@ -1,6 +1,6 @@
 ---
-name: executive briefing-one-pagers
-description: Produce a one-page executive brief for executive Chief of Staff work. Use when the user needs to one pagers within executive briefing.
+name: executive-briefing-one-pagers
+description: Produce the one-page executive brief used for executive Chief of Staff work. Use when the user needs one pagers within executive briefing.
 ---
 # One Pagers
 

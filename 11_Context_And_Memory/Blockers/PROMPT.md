@@ -1,3 +1,3 @@
 # Prompt — Blockers
 
-Using only the provided synthetic or approved evidence, perform **Blockers**. Normalize dated evidence, distinguish facts from inference, identify exceptions, and produce the specified executive work product. Return a blocker register with resolution path. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.
+Using only the provided synthetic or approved evidence, perform **Blockers**. Normalize dated evidence, distinguish facts from inference, identify exceptions, and produce the specified executive work product. Return the blocker register with resolution path. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

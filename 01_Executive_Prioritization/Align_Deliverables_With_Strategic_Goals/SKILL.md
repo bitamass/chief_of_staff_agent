@@ -1,6 +1,6 @@
 ---
-name: executive prioritization-align-deliverables-with-strategic-goals
-description: Produce a strategic alignment traceability matrix for executive Chief of Staff work. Use when the user needs to align deliverables with strategic goals within executive prioritization.
+name: executive-prioritization-align-deliverables-with-strategic-goals
+description: Produce the strategic alignment traceability matrix used for executive Chief of Staff work. Use when the user needs align deliverables with strategic goals within executive prioritization.
 ---
 # Align Deliverables With Strategic Goals
 

@@ -1,6 +1,6 @@
 # Output — Risk Mitigation Recommendations
 
-Produce a **risk treatment plan** containing:
+Produce the **risk treatment plan** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to risk mitigation recommendations

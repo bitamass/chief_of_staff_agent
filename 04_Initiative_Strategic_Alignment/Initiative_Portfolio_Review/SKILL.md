@@ -1,6 +1,6 @@
 ---
-name: initiative strategic alignment-initiative-portfolio-review
-description: Produce a initiative portfolio review executive work product for executive Chief of Staff work. Use when the user needs to initiative portfolio review within initiative strategic alignment.
+name: initiative-strategic-alignment-initiative-portfolio-review
+description: Produce the initiative portfolio review executive work product used for executive Chief of Staff work. Use when the user needs initiative portfolio review within initiative strategic alignment.
 ---
 # Initiative Portfolio Review
 

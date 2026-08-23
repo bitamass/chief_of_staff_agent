@@ -1,6 +1,6 @@
 ---
-name: stakeholder management-engagement-planning
-description: Produce a stakeholder engagement plan for executive Chief of Staff work. Use when the user needs to engagement planning within stakeholder management.
+name: stakeholder-management-engagement-planning
+description: Produce the stakeholder engagement plan used for executive Chief of Staff work. Use when the user needs engagement planning within stakeholder management.
 ---
 # Engagement Planning
 

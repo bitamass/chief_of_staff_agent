@@ -1,6 +1,6 @@
 ---
-name: program and initiative management-initiative-dependency-management
-description: Produce a dependency map and intervention list for executive Chief of Staff work. Use when the user needs to initiative dependency management within program and initiative management.
+name: program-and-initiative-management-initiative-dependency-management
+description: Produce the dependency map and intervention list used for executive Chief of Staff work. Use when the user needs initiative dependency management within program and initiative management.
 ---
 # Initiative Dependency Management
 

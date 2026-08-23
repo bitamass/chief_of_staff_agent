@@ -1,6 +1,6 @@
 ---
-name: program and initiative management-okr-tracking-and-reporting
-description: Produce a OKR alignment and progress view for executive Chief of Staff work. Use when the user needs to okr tracking and reporting within program and initiative management.
+name: program-and-initiative-management-okr-tracking-and-reporting
+description: Produce the OKR alignment and progress view used for executive Chief of Staff work. Use when the user needs okr tracking and reporting within program and initiative management.
 ---
 # OKR Tracking And Reporting
 

@@ -1,6 +1,6 @@
 ---
-name: weekly and daily meeting intelligence-meeting-preparation
-description: Produce a source-linked executive preparation brief for executive Chief of Staff work. Use when the user needs to meeting preparation within weekly and daily meeting intelligence.
+name: weekly-and-daily-meeting-intelligence-meeting-preparation
+description: Produce the source-linked executive preparation brief used for executive Chief of Staff work. Use when the user needs meeting preparation within weekly and daily meeting intelligence.
 ---
 # Meeting Preparation
 
@@ -10,7 +10,7 @@ Meeting Preparation helps turn meeting history and calendar context into timely 
 ## Instructions
 1. Confirm the executive question, owner, and time horizon.
 2. Use only dated, attributable evidence.
-3. Normalize dated evidence, distinguish facts from inference, identify exceptions, and produce the specified executive work product.
+3. Connect prior discussion, current purpose, participants, decisions, and follow-up without losing chronology.
 4. Produce the source-linked executive preparation brief defined in OUTPUTS.md.
 5. State gaps, assumptions, and items requiring human review.
 

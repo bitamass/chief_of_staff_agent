@@ -1,6 +1,6 @@
 ---
-name: executive communications-executive-updates
-description: Produce a executive updates executive work product for executive Chief of Staff work. Use when the user needs to executive updates within executive communications.
+name: executive-communications-executive-updates
+description: Produce the executive updates executive work product used for executive Chief of Staff work. Use when the user needs executive updates within executive communications.
 ---
 # Executive Updates
 

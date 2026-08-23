@@ -1,3 +1,3 @@
 # Prompt — Issue And Risk Dashboard
 
-Using only the provided synthetic or approved evidence, perform **Issue And Risk Dashboard**. Write cause-event-impact statements, assess exposure, test controls, and identify triggers. Return a executive dashboard specification. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.
+Using only the provided synthetic or approved evidence, perform **Issue And Risk Dashboard**. Write cause-event-impact statements, assess exposure, test controls, and identify triggers. Return the executive dashboard specification. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

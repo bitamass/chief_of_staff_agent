@@ -1,6 +1,6 @@
 # Output — Exec Talking Points
 
-Produce a **concise executive talking points** containing:
+Produce the **concise executive talking points** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to exec talking points

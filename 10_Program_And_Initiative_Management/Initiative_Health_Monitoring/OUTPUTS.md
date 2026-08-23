@@ -1,6 +1,6 @@
 # Output — Initiative Health Monitoring
 
-Produce a **initiative health report with exception flags** containing:
+Produce the **initiative health report with exception flags** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to initiative health monitoring

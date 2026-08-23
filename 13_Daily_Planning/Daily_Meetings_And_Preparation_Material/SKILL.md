@@ -1,6 +1,6 @@
 ---
-name: daily planning-daily-meetings-and-preparation-material
-description: Produce a daily executive operating plan for executive Chief of Staff work. Use when the user needs to daily meetings and preparation material within daily planning.
+name: daily-planning-daily-meetings-and-preparation-material
+description: Produce the daily executive operating plan used for executive Chief of Staff work. Use when the user needs daily meetings and preparation material within daily planning.
 ---
 # Daily Meetings And Preparation Material
 
@@ -10,7 +10,7 @@ Daily Meetings And Preparation Material helps translate today's calendar, commit
 ## Instructions
 1. Confirm the executive question, owner, and time horizon.
 2. Use only dated, attributable evidence.
-3. Sequence fixed commitments first, reserve preparation and focus time, then fit realistic priorities.
+3. Connect prior discussion, current purpose, participants, decisions, and follow-up without losing chronology.
 4. Produce the daily executive operating plan defined in OUTPUTS.md.
 5. State gaps, assumptions, and items requiring human review.
 

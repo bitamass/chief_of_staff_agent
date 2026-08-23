@@ -1,6 +1,6 @@
 ---
-name: risk and issue management-risk-scoring
-description: Produce a scored risk register for executive Chief of Staff work. Use when the user needs to risk scoring within risk and issue management.
+name: risk-and-issue-management-risk-scoring
+description: Produce the scored risk register used for executive Chief of Staff work. Use when the user needs risk scoring within risk and issue management.
 ---
 # Risk Scoring
 

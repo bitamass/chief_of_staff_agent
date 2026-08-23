@@ -1,6 +1,6 @@
 ---
-name: action and accountability tracking-escalate-overdue-actions
-description: Produce a accountability tracker with owners and due dates for executive Chief of Staff work. Use when the user needs to escalate overdue actions within action and accountability tracking.
+name: action-and-accountability-tracking-escalate-overdue-actions
+description: Produce the accountability tracker with owners and due dates used for executive Chief of Staff work. Use when the user needs escalate overdue actions within action and accountability tracking.
 ---
 # Escalate Overdue Actions
 

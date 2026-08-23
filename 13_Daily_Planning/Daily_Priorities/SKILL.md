@@ -1,6 +1,6 @@
 ---
-name: daily planning-daily-priorities
-description: Produce a ranked priorities with scoring rationale for executive Chief of Staff work. Use when the user needs to daily priorities within daily planning.
+name: daily-planning-daily-priorities
+description: Produce the ranked priorities with scoring rationale used for executive Chief of Staff work. Use when the user needs daily priorities within daily planning.
 ---
 # Daily Priorities
 

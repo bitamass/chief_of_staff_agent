@@ -1,6 +1,6 @@
 ---
-name: stakeholder management-stakeholder-raci
-description: Produce a decision and delivery RACI for executive Chief of Staff work. Use when the user needs to stakeholder raci within stakeholder management.
+name: stakeholder-management-stakeholder-raci
+description: Produce the decision and delivery RACI used for executive Chief of Staff work. Use when the user needs stakeholder raci within stakeholder management.
 ---
 # Stakeholder RACI
 

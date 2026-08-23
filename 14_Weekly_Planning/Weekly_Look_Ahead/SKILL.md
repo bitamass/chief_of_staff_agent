@@ -1,6 +1,6 @@
 ---
-name: weekly planning-weekly-look-ahead
-description: Produce a five-day executive work plan for executive Chief of Staff work. Use when the user needs to weekly look ahead within weekly planning.
+name: weekly-planning-weekly-look-ahead
+description: Produce the five-day executive work plan used for executive Chief of Staff work. Use when the user needs weekly look ahead within weekly planning.
 ---
 # Weekly Look Ahead
 

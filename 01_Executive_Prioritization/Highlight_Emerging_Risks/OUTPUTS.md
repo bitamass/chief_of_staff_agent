@@ -1,6 +1,6 @@
 # Output — Highlight Emerging Risks
 
-Produce a **highlight emerging risks executive work product** containing:
+Produce the **highlight emerging risks executive work product** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to highlight emerging risks

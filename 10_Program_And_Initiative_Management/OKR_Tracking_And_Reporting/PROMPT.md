@@ -1,3 +1,3 @@
 # Prompt — OKR Tracking And Reporting
 
-Using only the provided synthetic or approved evidence, perform **OKR Tracking And Reporting**. Trace objectives to outcomes and deliverables, assess health and dependencies, and flag intervention needs. Return a OKR alignment and progress view. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.
+Using only the provided synthetic or approved evidence, perform **OKR Tracking And Reporting**. Trace objectives to outcomes and deliverables, assess health and dependencies, and flag intervention needs. Return the OKR alignment and progress view. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

@@ -1,6 +1,6 @@
 # Output — Resource Management
 
-Produce a **capacity and resource allocation view** containing:
+Produce the **capacity and resource allocation view** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to resource management

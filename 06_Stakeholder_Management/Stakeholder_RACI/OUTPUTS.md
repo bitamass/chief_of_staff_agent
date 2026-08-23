@@ -1,6 +1,6 @@
 # Output — Stakeholder RACI
 
-Produce a **decision and delivery RACI** containing:
+Produce the **decision and delivery RACI** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to stakeholder raci

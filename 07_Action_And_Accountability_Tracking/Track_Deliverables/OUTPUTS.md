@@ -1,6 +1,6 @@
 # Output — Track Deliverables
 
-Produce a **track deliverables executive work product** containing:
+Produce the **track deliverables executive work product** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to track deliverables

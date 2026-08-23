@@ -1,6 +1,6 @@
 ---
-name: context and memory-organizational-structure
-description: Produce a role and reporting structure map for executive Chief of Staff work. Use when the user needs to organizational structure within context and memory.
+name: context-and-memory-organizational-structure
+description: Produce the role and reporting structure map used for executive Chief of Staff work. Use when the user needs organizational structure within context and memory.
 ---
 # Organizational Structure
 

@@ -1,6 +1,6 @@
 # Output — Risk Warning
 
-Produce a **early-warning notice with trigger evidence** containing:
+Produce the **early-warning notice with trigger evidence** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to risk warning

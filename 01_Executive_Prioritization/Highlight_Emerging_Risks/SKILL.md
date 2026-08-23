@@ -1,6 +1,6 @@
 ---
-name: executive prioritization-highlight-emerging-risks
-description: Produce a highlight emerging risks executive work product for executive Chief of Staff work. Use when the user needs to highlight emerging risks within executive prioritization.
+name: executive-prioritization-highlight-emerging-risks
+description: Produce the highlight emerging risks executive work product used for executive Chief of Staff work. Use when the user needs highlight emerging risks within executive prioritization.
 ---
 # Highlight Emerging Risks
 

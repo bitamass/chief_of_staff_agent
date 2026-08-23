@@ -1,6 +1,6 @@
 ---
-name: program and initiative management-initiative-health-monitoring
-description: Produce a initiative health report with exception flags for executive Chief of Staff work. Use when the user needs to initiative health monitoring within program and initiative management.
+name: program-and-initiative-management-initiative-health-monitoring
+description: Produce the initiative health report with exception flags used for executive Chief of Staff work. Use when the user needs initiative health monitoring within program and initiative management.
 ---
 # Initiative Health Monitoring
 

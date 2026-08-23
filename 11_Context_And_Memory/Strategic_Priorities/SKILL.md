@@ -1,6 +1,6 @@
 ---
-name: context and memory-strategic-priorities
-description: Produce a ranked priorities with scoring rationale for executive Chief of Staff work. Use when the user needs to strategic priorities within context and memory.
+name: context-and-memory-strategic-priorities
+description: Produce the ranked priorities with scoring rationale used for executive Chief of Staff work. Use when the user needs strategic priorities within context and memory.
 ---
 # Strategic Priorities
 

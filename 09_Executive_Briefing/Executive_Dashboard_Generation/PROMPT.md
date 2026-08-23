@@ -1,3 +1,3 @@
 # Prompt — Executive Dashboard Generation
 
-Using only the provided synthetic or approved evidence, perform **Executive Dashboard Generation**. Normalize dated evidence, distinguish facts from inference, identify exceptions, and produce the specified executive work product. Return a executive dashboard specification. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.
+Using only the provided synthetic or approved evidence, perform **Executive Dashboard Generation**. Normalize dated evidence, distinguish facts from inference, identify exceptions, and produce the specified executive work product. Return the executive dashboard specification. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

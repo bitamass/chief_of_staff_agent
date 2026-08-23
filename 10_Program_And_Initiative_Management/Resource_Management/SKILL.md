@@ -1,6 +1,6 @@
 ---
-name: program and initiative management-resource-management
-description: Produce a capacity and resource allocation view for executive Chief of Staff work. Use when the user needs to resource management within program and initiative management.
+name: program-and-initiative-management-resource-management
+description: Produce the capacity and resource allocation view used for executive Chief of Staff work. Use when the user needs resource management within program and initiative management.
 ---
 # Resource Management
 

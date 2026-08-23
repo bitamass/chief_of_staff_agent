@@ -1,6 +1,6 @@
 ---
-name: weekly and daily meeting intelligence-create-agendas
-description: Produce a decision-oriented agenda for executive Chief of Staff work. Use when the user needs to create agendas within weekly and daily meeting intelligence.
+name: weekly-and-daily-meeting-intelligence-create-agendas
+description: Produce the decision-oriented agenda used for executive Chief of Staff work. Use when the user needs create agendas within weekly and daily meeting intelligence.
 ---
 # Create Agendas
 
@@ -10,7 +10,7 @@ Create Agendas helps turn meeting history and calendar context into timely prepa
 ## Instructions
 1. Confirm the executive question, owner, and time horizon.
 2. Use only dated, attributable evidence.
-3. Normalize dated evidence, distinguish facts from inference, identify exceptions, and produce the specified executive work product.
+3. Translate the meeting objective into sequenced topics, decision questions, owners, evidence, and time boxes.
 4. Produce the decision-oriented agenda defined in OUTPUTS.md.
 5. State gaps, assumptions, and items requiring human review.
 

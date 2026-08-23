@@ -1,6 +1,6 @@
 ---
-name: action and accountability tracking-monitor-commitments
-description: Produce a accountability tracker with owners and due dates for executive Chief of Staff work. Use when the user needs to monitor commitments within action and accountability tracking.
+name: action-and-accountability-tracking-monitor-commitments
+description: Produce the accountability tracker with owners and due dates used for executive Chief of Staff work. Use when the user needs monitor commitments within action and accountability tracking.
 ---
 # Monitor Commitments
 

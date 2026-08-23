@@ -1,3 +1,3 @@
 # Prompt — Daily Meetings And Preparation Material
 
-Using only the provided synthetic or approved evidence, perform **Daily Meetings And Preparation Material**. Sequence fixed commitments first, reserve preparation and focus time, then fit realistic priorities. Return a daily executive operating plan. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.
+Using only the provided synthetic or approved evidence, perform **Daily Meetings And Preparation Material**. Connect prior discussion, current purpose, participants, decisions, and follow-up without losing chronology. Return the daily executive operating plan. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

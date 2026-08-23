@@ -1,6 +1,6 @@
 ---
-name: program and initiative management-strategic-alignment-analysis
-description: Produce a strategic alignment traceability matrix for executive Chief of Staff work. Use when the user needs to strategic alignment analysis within program and initiative management.
+name: program-and-initiative-management-strategic-alignment-analysis
+description: Produce the strategic alignment traceability matrix used for executive Chief of Staff work. Use when the user needs strategic alignment analysis within program and initiative management.
 ---
 # Strategic Alignment Analysis
 

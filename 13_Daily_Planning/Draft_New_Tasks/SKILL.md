@@ -1,6 +1,6 @@
 ---
-name: daily planning-draft-new-tasks
-description: Produce a draft new tasks executive work product for executive Chief of Staff work. Use when the user needs to draft new tasks within daily planning.
+name: daily-planning-draft-new-tasks
+description: Produce the draft new tasks executive work product used for executive Chief of Staff work. Use when the user needs draft new tasks within daily planning.
 ---
 # Draft New Tasks
 

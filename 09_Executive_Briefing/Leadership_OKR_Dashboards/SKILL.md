@@ -1,6 +1,6 @@
 ---
-name: executive briefing-leadership-okr-dashboards
-description: Produce a executive dashboard specification for executive Chief of Staff work. Use when the user needs to leadership okr dashboards within executive briefing.
+name: executive-briefing-leadership-okr-dashboards
+description: Produce the executive dashboard specification used for executive Chief of Staff work. Use when the user needs leadership okr dashboards within executive briefing.
 ---
 # Leadership OKR Dashboards
 

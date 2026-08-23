@@ -4,5 +4,5 @@
 2. Gather and date the required evidence from INPUTS.md.
 3. Map role-based evidence, decision rights, influence, interests, and engagement gaps.
 4. Validate owners, sources, and contradictory evidence.
-5. Format the result as a audience-specific communication plan and draft.
+5. Format the result as the audience-specific communication plan and draft.
 6. Route recommendations and uncertain items for human review.

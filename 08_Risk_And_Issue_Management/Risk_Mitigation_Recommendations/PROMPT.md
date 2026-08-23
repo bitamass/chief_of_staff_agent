@@ -1,3 +1,3 @@
 # Prompt — Risk Mitigation Recommendations
 
-Using only the provided synthetic or approved evidence, perform **Risk Mitigation Recommendations**. Write cause-event-impact statements, assess exposure, test controls, and identify triggers. Return a risk treatment plan. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.
+Using only the provided synthetic or approved evidence, perform **Risk Mitigation Recommendations**. Write cause-event-impact statements, assess exposure, test controls, and identify triggers. Return the risk treatment plan. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

@@ -1,6 +1,6 @@
 ---
-name: executive prioritization-key-decision-identification
-description: Produce a decision or approval queue for executive Chief of Staff work. Use when the user needs to key decision identification within executive prioritization.
+name: executive-prioritization-key-decision-identification
+description: Produce the decision or approval queue used for executive Chief of Staff work. Use when the user needs key decision identification within executive prioritization.
 ---
 # Key Decision Identification
 

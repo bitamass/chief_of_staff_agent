@@ -1,6 +1,6 @@
 ---
-name: executive communications-stakeholder-communications
-description: Produce a audience-specific communication plan and draft for executive Chief of Staff work. Use when the user needs to stakeholder communications within executive communications.
+name: executive-communications-stakeholder-communications
+description: Produce the audience-specific communication plan and draft used for executive Chief of Staff work. Use when the user needs stakeholder communications within executive communications.
 ---
 # Stakeholder Communications
 

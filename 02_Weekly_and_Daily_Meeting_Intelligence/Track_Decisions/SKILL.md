@@ -1,6 +1,6 @@
 ---
-name: weekly and daily meeting intelligence-track-decisions
-description: Produce a source-linked decision register for executive Chief of Staff work. Use when the user needs to track decisions within weekly and daily meeting intelligence.
+name: weekly-and-daily-meeting-intelligence-track-decisions
+description: Produce the source-linked decision register used for executive Chief of Staff work. Use when the user needs track decisions within weekly and daily meeting intelligence.
 ---
 # Track Decisions
 

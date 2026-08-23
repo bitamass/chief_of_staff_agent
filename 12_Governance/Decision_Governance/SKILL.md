@@ -1,6 +1,6 @@
 ---
 name: governance-decision-governance
-description: Produce a decision or approval queue for executive Chief of Staff work. Use when the user needs to decision governance within governance.
+description: Produce the decision or approval queue used for executive Chief of Staff work. Use when the user needs decision governance within governance.
 ---
 # Decision Governance
 

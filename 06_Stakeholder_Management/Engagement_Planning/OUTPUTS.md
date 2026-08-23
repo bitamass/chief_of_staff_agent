@@ -1,6 +1,6 @@
 # Output — Engagement Planning
 
-Produce a **stakeholder engagement plan** containing:
+Produce the **stakeholder engagement plan** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to engagement planning

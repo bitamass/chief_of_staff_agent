@@ -1,6 +1,6 @@
 # Output — Assumptions
 
-Produce a **dated assumption register** containing:
+Produce the **dated assumption register** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to assumptions

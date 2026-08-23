@@ -1,3 +1,3 @@
 # Prompt — Map Initiatives To Strategic Objectives
 
-Using only the provided synthetic or approved evidence, perform **Map Initiatives To Strategic Objectives**. Trace objectives to outcomes and deliverables, assess health and dependencies, and flag intervention needs. Return a strategic alignment traceability matrix. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.
+Using only the provided synthetic or approved evidence, perform **Map Initiatives To Strategic Objectives**. Trace objectives to outcomes and deliverables, assess health and dependencies, and flag intervention needs. Return the strategic alignment traceability matrix. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

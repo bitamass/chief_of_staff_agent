@@ -1,6 +1,6 @@
 ---
-name: initiative strategic alignment-okr-alignment
-description: Produce a OKR alignment and progress view for executive Chief of Staff work. Use when the user needs to okr alignment within initiative strategic alignment.
+name: initiative-strategic-alignment-okr-alignment
+description: Produce the OKR alignment and progress view used for executive Chief of Staff work. Use when the user needs okr alignment within initiative strategic alignment.
 ---
 # OKR Alignment
 

@@ -1,6 +1,6 @@
 # Output — Alternative And Recommendation Generation
 
-Produce a **alternatives memo with recommendation** containing:
+Produce the **alternatives memo with recommendation** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to alternative and recommendation generation

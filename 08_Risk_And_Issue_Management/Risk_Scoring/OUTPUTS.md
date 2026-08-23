@@ -1,6 +1,6 @@
 # Output — Risk Scoring
 
-Produce a **scored risk register** containing:
+Produce the **scored risk register** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to risk scoring

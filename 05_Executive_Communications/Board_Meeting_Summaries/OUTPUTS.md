@@ -1,6 +1,6 @@
 # Output — Board Meeting Summaries
 
-Produce a **board meeting summaries executive work product** containing:
+Produce the **board meeting summaries executive work product** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to board meeting summaries

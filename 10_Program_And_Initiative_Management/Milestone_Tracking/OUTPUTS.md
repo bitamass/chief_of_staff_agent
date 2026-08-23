@@ -1,6 +1,6 @@
 # Output — Milestone Tracking
 
-Produce a **milestone outlook with variance flags** containing:
+Produce the **milestone outlook with variance flags** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to milestone tracking

@@ -1,6 +1,6 @@
 # Output — OKR Alignment
 
-Produce a **OKR alignment and progress view** containing:
+Produce the **OKR alignment and progress view** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to okr alignment

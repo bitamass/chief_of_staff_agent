@@ -1,6 +1,6 @@
 ---
-name: daily planning-calendar-based-planning
-description: Produce a protected-time calendar plan for executive Chief of Staff work. Use when the user needs to calendar based planning within daily planning.
+name: daily-planning-calendar-based-planning
+description: Produce the protected-time calendar plan used for executive Chief of Staff work. Use when the user needs calendar based planning within daily planning.
 ---
 # Calendar Based Planning
 

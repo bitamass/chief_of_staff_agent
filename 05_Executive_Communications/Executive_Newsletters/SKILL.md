@@ -1,6 +1,6 @@
 ---
-name: executive communications-executive-newsletters
-description: Produce a executive newsletter draft for executive Chief of Staff work. Use when the user needs to executive newsletters within executive communications.
+name: executive-communications-executive-newsletters
+description: Produce the executive newsletter draft used for executive Chief of Staff work. Use when the user needs executive newsletters within executive communications.
 ---
 # Executive Newsletters
 

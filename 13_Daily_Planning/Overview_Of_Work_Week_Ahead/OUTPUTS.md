@@ -1,6 +1,6 @@
 # Output — Overview Of Work Week Ahead
 
-Produce a **daily executive operating plan** containing:
+Produce the **daily executive operating plan** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to overview of work week ahead

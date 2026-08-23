@@ -1,6 +1,6 @@
 # Output — Stakeholder Mapping
 
-Produce a **influence-interest stakeholder map** containing:
+Produce the **influence-interest stakeholder map** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to stakeholder mapping

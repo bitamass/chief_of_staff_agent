@@ -1,6 +1,6 @@
 # Output — Stakeholder Communications
 
-Produce a **audience-specific communication plan and draft** containing:
+Produce the **audience-specific communication plan and draft** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to stakeholder communications

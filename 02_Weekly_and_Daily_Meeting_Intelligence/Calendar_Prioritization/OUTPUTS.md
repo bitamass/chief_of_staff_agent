@@ -1,6 +1,6 @@
 # Output — Calendar Prioritization
 
-Produce a **ranked priorities with scoring rationale** containing:
+Produce the **ranked priorities with scoring rationale** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to calendar prioritization

@@ -1,6 +1,6 @@
 ---
-name: executive communications-organizational-announcements
-description: Produce a organizational announcement draft for executive Chief of Staff work. Use when the user needs to organizational announcements within executive communications.
+name: executive-communications-organizational-announcements
+description: Produce the organizational announcement draft used for executive Chief of Staff work. Use when the user needs organizational announcements within executive communications.
 ---
 # Organizational Announcements
 

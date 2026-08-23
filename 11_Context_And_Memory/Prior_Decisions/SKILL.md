@@ -1,6 +1,6 @@
 ---
-name: context and memory-prior-decisions
-description: Produce a decision or approval queue for executive Chief of Staff work. Use when the user needs to prior decisions within context and memory.
+name: context-and-memory-prior-decisions
+description: Produce the decision or approval queue used for executive Chief of Staff work. Use when the user needs prior decisions within context and memory.
 ---
 # Prior Decisions
 

@@ -1,6 +1,6 @@
 # Output — Draft New Tasks
 
-Produce a **draft new tasks executive work product** containing:
+Produce the **draft new tasks executive work product** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to draft new tasks

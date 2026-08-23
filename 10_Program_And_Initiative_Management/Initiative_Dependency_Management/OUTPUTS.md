@@ -1,6 +1,6 @@
 # Output — Initiative Dependency Management
 
-Produce a **dependency map and intervention list** containing:
+Produce the **dependency map and intervention list** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to initiative dependency management

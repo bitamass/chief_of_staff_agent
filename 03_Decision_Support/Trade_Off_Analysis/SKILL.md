@@ -1,6 +1,6 @@
 ---
-name: decision support-trade-off-analysis
-description: Produce a option and trade-off matrix for executive Chief of Staff work. Use when the user needs to trade off analysis within decision support.
+name: decision-support-trade-off-analysis
+description: Produce the option and trade-off matrix used for executive Chief of Staff work. Use when the user needs trade off analysis within decision support.
 ---
 # Trade Off Analysis
 
@@ -10,7 +10,7 @@ Trade Off Analysis helps make decision choices, rationale, alternatives, and con
 ## Instructions
 1. Confirm the executive question, owner, and time horizon.
 2. Use only dated, attributable evidence.
-3. Normalize dated evidence, distinguish facts from inference, identify exceptions, and produce the specified executive work product.
+3. Compare options against explicit criteria, expose benefits and costs, and show which conditions change the conclusion.
 4. Produce the option and trade-off matrix defined in OUTPUTS.md.
 5. State gaps, assumptions, and items requiring human review.
 

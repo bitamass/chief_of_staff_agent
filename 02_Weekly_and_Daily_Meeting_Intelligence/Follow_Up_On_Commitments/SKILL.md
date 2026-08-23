@@ -1,6 +1,6 @@
 ---
-name: weekly and daily meeting intelligence-follow-up-on-commitments
-description: Produce a accountability tracker with owners and due dates for executive Chief of Staff work. Use when the user needs to follow up on commitments within weekly and daily meeting intelligence.
+name: weekly-and-daily-meeting-intelligence-follow-up-on-commitments
+description: Produce the accountability tracker with owners and due dates used for executive Chief of Staff work. Use when the user needs follow up on commitments within weekly and daily meeting intelligence.
 ---
 # Follow Up On Commitments
 

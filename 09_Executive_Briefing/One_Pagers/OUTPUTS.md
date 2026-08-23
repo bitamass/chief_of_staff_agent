@@ -1,6 +1,6 @@
 # Output — One Pagers
 
-Produce a **one-page executive brief** containing:
+Produce the **one-page executive brief** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to one pagers

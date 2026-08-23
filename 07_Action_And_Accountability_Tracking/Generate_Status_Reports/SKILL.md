@@ -1,6 +1,6 @@
 ---
-name: action and accountability tracking-generate-status-reports
-description: Produce a initiative health report with exception flags for executive Chief of Staff work. Use when the user needs to generate status reports within action and accountability tracking.
+name: action-and-accountability-tracking-generate-status-reports
+description: Produce the initiative health report with exception flags used for executive Chief of Staff work. Use when the user needs generate status reports within action and accountability tracking.
 ---
 # Generate Status Reports
 

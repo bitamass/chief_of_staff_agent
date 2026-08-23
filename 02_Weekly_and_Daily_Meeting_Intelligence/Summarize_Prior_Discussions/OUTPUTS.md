@@ -1,6 +1,6 @@
 # Output — Summarize Prior Discussions
 
-Produce a **fact-based summary with decisions and follow-ups** containing:
+Produce the **fact-based summary with decisions and follow-ups** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to summarize prior discussions

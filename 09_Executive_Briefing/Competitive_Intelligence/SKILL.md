@@ -1,6 +1,6 @@
 ---
-name: executive briefing-competitive-intelligence
-description: Produce a competitive intelligence executive work product for executive Chief of Staff work. Use when the user needs to competitive intelligence within executive briefing.
+name: executive-briefing-competitive-intelligence
+description: Produce the competitive intelligence executive work product used for executive Chief of Staff work. Use when the user needs competitive intelligence within executive briefing.
 ---
 # Competitive Intelligence
 

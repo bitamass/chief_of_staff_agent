@@ -4,5 +4,5 @@
 2. Gather and date the required evidence from INPUTS.md.
 3. Trace objectives to outcomes and deliverables, assess health and dependencies, and flag intervention needs.
 4. Validate owners, sources, and contradictory evidence.
-5. Format the result as a dependency map and intervention list.
+5. Format the result as the dependency map and intervention list.
 6. Route recommendations and uncertain items for human review.

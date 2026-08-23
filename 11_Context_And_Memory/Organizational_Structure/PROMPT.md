@@ -1,3 +1,3 @@
 # Prompt — Organizational Structure
 
-Using only the provided synthetic or approved evidence, perform **Organizational Structure**. Normalize dated evidence, distinguish facts from inference, identify exceptions, and produce the specified executive work product. Return a role and reporting structure map. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.
+Using only the provided synthetic or approved evidence, perform **Organizational Structure**. Normalize dated evidence, distinguish facts from inference, identify exceptions, and produce the specified executive work product. Return the role and reporting structure map. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

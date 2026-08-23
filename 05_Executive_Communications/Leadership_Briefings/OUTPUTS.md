@@ -1,6 +1,6 @@
 # Output — Leadership Briefings
 
-Produce a **source-linked executive preparation brief** containing:
+Produce the **source-linked executive preparation brief** containing:
 
 - Executive purpose and time horizon
 - Evidence-based findings specific to leadership briefings

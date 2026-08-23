@@ -1,3 +1,3 @@
 # Prompt — Generate Status Reports
 
-Using only the provided synthetic or approved evidence, perform **Generate Status Reports**. Normalize dated evidence, distinguish facts from inference, identify exceptions, and produce the specified executive work product. Return a initiative health report with exception flags. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.
+Using only the provided synthetic or approved evidence, perform **Generate Status Reports**. Normalize dated evidence, distinguish facts from inference, identify exceptions, and produce the specified executive work product. Return the initiative health report with exception flags. Cite each material claim, identify missing evidence, distinguish facts from recommendations, and do not take actions or imply approval.

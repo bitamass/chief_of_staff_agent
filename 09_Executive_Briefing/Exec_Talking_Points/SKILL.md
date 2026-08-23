@@ -1,6 +1,6 @@
 ---
-name: executive briefing-exec-talking-points
-description: Produce a concise executive talking points for executive Chief of Staff work. Use when the user needs to exec talking points within executive briefing.
+name: executive-briefing-exec-talking-points
+description: Produce the concise executive talking points used for executive Chief of Staff work. Use when the user needs exec talking points within executive briefing.
 ---
 # Exec Talking Points
 
