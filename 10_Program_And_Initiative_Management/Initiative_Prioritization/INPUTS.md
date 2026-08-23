@@ -1,10 +1,11 @@
 # Inputs — Initiative Prioritization
 
 ## Required inputs
-- Candidates to prioritize
-- Strategic value, urgency, effort, risk, and dependency criteria
-- Available capacity and mandatory constraints
-- Owners, deadlines, and consequences of delay
+- Active program and initiative inventory
+- Delivery health, milestone status, and benefit-realization evidence
+- Remaining effort, resource demand, and available delivery capacity
+- Cross-initiative dependencies, delivery risks, and sequencing constraints
+- Approved portfolio priority and intervention criteria
 
 ## Validation
 - Confirm source, owner, effective date, and approval status.
