@@ -5,7 +5,13 @@ from pathlib import Path
 
 import streamlit as st
 from docx import Document
-from skill_catalog import CONNECTED_SKILLS, discover_capabilities
+from skill_catalog import discover_skill_catalog
+from skill_runner import (
+    REQUIRED_DOCUMENTS,
+    result_docx,
+    result_markdown,
+    run_repository_skill,
+)
 from synthetic_context_v4 import DATASET_VERSION, build_initiative_scenarios, build_scenario_records, build_synthetic_context, initiative_continuity
 
 
