@@ -5,7 +5,7 @@ import streamlit as st
 
 from skill_catalog import discover_skill_catalog
 from skill_runner import REQUIRED_DOCUMENTS, result_docx, result_markdown, run_repository_skill
-from synthetic_context_v4 import (
+from synthetic_context import (
     DATASET_VERSION,
     build_initiative_scenarios,
     build_scenario_records,
@@ -46,7 +46,11 @@ def set_meeting_context(scenario):
     st.session_state.meeting_objective = scenario["objective"]
     st.session_state.attendees = scenario["attendees"]
     st.session_state.meeting_date = scenario["date"]
-    st.session_state.meeting_context_scenario = scenario["initiative_id"]
+    st.session_state.meeting_context_signature = (
+        scenario["initiative_id"],
+        scenario["meeting_id"],
+        scenario["date"],
+    )
     clear_skill_result()
 
 
@@ -136,7 +140,12 @@ def render_skills_view(context, scenarios, scenario_name, catalog):
 
         # Streamlit retains widget values between reruns. Synchronize the
         # meeting fields whenever the selected initiative changes.
-        if st.session_state.get("meeting_context_scenario") != scenario["initiative_id"]:
+        meeting_signature = (
+            scenario["initiative_id"],
+            scenario["meeting_id"],
+            scenario["date"],
+        )
+        if st.session_state.get("meeting_context_signature") != meeting_signature:
             set_meeting_context(scenario)
 
         action, description = st.columns([1, 2.4])
