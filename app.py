@@ -5,12 +5,12 @@ from pathlib import Path
 
 import streamlit as st
 from docx import Document
-from skill_catalog import CONNECTED_SKILLS, discover_skill_catalog
+from skill_catalog import CONNECTED_SKILLS, discover_capabilities
 from synthetic_context_v4 import DATASET_VERSION, build_initiative_scenarios, build_scenario_records, build_synthetic_context, initiative_continuity
 
 
 st.set_page_config(
-    page_title="Chief of Staff Agent Demo",
+    page_title="Chief of Staff Agent",
     page_icon="🧭",
     layout="wide",
 )
@@ -18,21 +18,19 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    :root { --earth:#6f5b45; --clay:#9b7653; --sand:#d8c7ad; --cream:#f7f2e8; --sage:#7a846b; --ink:#34312d; }
+    :root { --uw-purple:#4b2e83; --uw-gold:#b7a57a; --ink:#172033; --soft:#f5f3f8; }
     .block-container {padding-top: 2.2rem; max-width: 1280px;}
     h1, h2, h3 {color: var(--ink);}
-    .hero {border-left:6px solid var(--clay); padding:.25rem 0 .25rem 1rem; margin-bottom:1rem;}
+    .hero {border-left:6px solid var(--uw-gold); padding:.25rem 0 .25rem 1rem; margin-bottom:1rem;}
     .hero h1 {margin:0; font-size:2.25rem;}
     .hero p {margin:.35rem 0 0; color:#5a6475;}
-    .safe-banner {background:var(--cream); border:1px solid var(--sand); border-radius:10px; padding:.8rem 1rem; margin:.7rem 0 1.2rem;}
+    .safe-banner {background:#f4f0fa; border:1px solid #d9cfea; border-radius:10px; padding:.8rem 1rem; margin:.7rem 0 1.2rem;}
     .brief-card {background:white; border:1px solid #e3e6eb; border-radius:12px; padding:1rem 1.1rem; min-height:145px; box-shadow:0 2px 8px rgba(20,30,50,.04);}
-    .brief-card h4 {color:var(--earth); margin:0 0 .5rem;}
+    .brief-card h4 {color:var(--uw-purple); margin:0 0 .5rem;}
     .source {color:#5b6677; font-size:.86rem;}
-    div.stButton > button {background:var(--earth); color:white; border:1px solid var(--earth); border-radius:8px; font-weight:650;}
-    div.stButton > button:hover {background:var(--clay); border-color:var(--clay); color:white;}
-    [data-testid="stMetric"] {background:var(--cream); border:1px solid var(--sand); padding:.8rem; border-radius:10px;}
-    [data-testid="stVerticalBlockBorderWrapper"] {border-color:var(--sand) !important; background:#fffdf9;}
-    div[data-testid="stAlert"] {background:var(--cream); color:var(--ink); border-color:var(--sand);}
+    div.stButton > button {background:var(--uw-purple); color:white; border:0; border-radius:8px; font-weight:650;}
+    div.stButton > button:hover {background:#382261; color:white;}
+    [data-testid="stMetric"] {background:#faf9fc; border:1px solid #e2dbea; padding:.8rem; border-radius:10px;}
     </style>
     """,
     unsafe_allow_html=True,
@@ -142,7 +140,6 @@ def brief_markdown(brief, records):
     return f"""# Executive Meeting Brief
 
 **Meeting:** {brief['title']}  
-**Chief of Staff skill:** {brief.get('skill_name', 'Executive Meeting Preparation')}  
 **Objective:** {brief['objective']}  
 **Attendees / roles:** {brief['attendees']}
 
@@ -176,7 +173,6 @@ def brief_docx(brief, records):
     doc = Document()
     doc.add_heading("Executive Meeting Brief", 0)
     doc.add_paragraph(f"Meeting: {brief['title']}")
-    doc.add_paragraph(f"Chief of Staff skill: {brief.get('skill_name', 'Executive Meeting Preparation')}")
     doc.add_paragraph(f"Objective: {brief['objective']}")
     doc.add_paragraph(f"Attendees / roles: {brief['attendees']}")
     sections = [
@@ -202,247 +198,21 @@ def brief_docx(brief, records):
     return output.getvalue()
 
 
-def render_skills_view(operating_context, scenarios, scenario_name, skill_catalog, capabilities):
-    """Render the repository-backed skill workspace for one initiative."""
-    scenario = scenarios[scenario_name]
-    continuity = initiative_continuity(operating_context, scenario["initiative_id"])
-
-    with st.container(border=True):
-        st.subheader("Choose a Chief of Staff capability and skill")
-        st.caption(f"Applying the selected skill to: **{scenario_name}**")
-        capability_labels = list(capabilities)
-        default_capability_index = next((i for i, label in enumerate(capability_labels) if label.startswith("02 ")), 0)
-        capability_name = st.selectbox(
-            "Capability",
-            capability_labels,
-            index=default_capability_index,
-            key="capability_name",
-        )
-        skill_options = capabilities[capability_name]
-        preferred_skill = "Prepare Pre-Meeting Briefing Materials"
-        default_skill_index = skill_options.index(preferred_skill) if preferred_skill in skill_options else 0
-        skill_name = st.selectbox(
-            "Skill",
-            skill_options,
-            index=default_skill_index,
-            key=f"skill_name_{capability_name}",
-        )
-        selected_skill = skill_catalog[capability_name][skill_name]
-        existing_brief = st.session_state.get("brief", {})
-        if (
-            existing_brief.get("skill_name") not in {None, skill_name}
-            or existing_brief.get("scenario_name") not in {None, scenario_name}
-        ):
-            st.session_state.pop("brief", None)
-            st.session_state.pop("records", None)
-        repository_documents = selected_skill["documents"]
-        if selected_skill["source"] == "repository":
-            definition_status = f"Loaded from `{selected_skill['repository_path']}`"
-        else:
-            definition_status = "Using the built-in catalog fallback because repository skill folders were not found."
-        if selected_skill["connected"]:
-            st.success(f"Connected skill: {capability_name} → {skill_name}. {definition_status}")
-        else:
-            st.info(
-                f"Framework-only skill: {capability_name} → {skill_name}. {definition_status} "
-                "The definition can be reviewed, but this prototype does not execute it yet."
-            )
-
-    with st.container(border=True):
-        st.markdown("#### Selected Chief of Staff skill output")
-        skill_records = build_scenario_records(operating_context, scenario_name)
-        if skill_name in {"Action Item Management", "Follow Up On Commitments"}:
-            for item in continuity["all_actions"]:
-                owner = operating_context["participants"][item["owner"]]
-                st.markdown(f"- **{item['status']} · Due {item['due_date']:%b %d}:** {item['action']} — {owner['name']}, {owner['role']}")
-        elif skill_name == "Calendar Prioritization":
-            for priority, item in enumerate(continuity["current_meetings"] + continuity["upcoming_meetings"], start=1):
-                st.markdown(f"- **Priority {priority} · {item['date']:%b %d}:** {item['title']} — {item['summary']}")
-        elif skill_name == "Create Agendas":
-            st.code(skill_records[0]["text"], language="text")
-        elif skill_name == "Meeting Preparation":
-            st.markdown(f"**Meeting:** {scenario['title']}  \n**Date:** {scenario['date']:%b %d, %Y}  \n**Objective:** {scenario['objective']}  \n**Attendees:** {scenario['attendees']}")
-        elif skill_name == "Prepare Pre-Meeting Briefing Materials":
-            st.write("The meeting context and three source-linked briefing materials below are ready for executive brief generation.")
-        elif skill_name == "Summarize Prior Discussions":
-            for item in reversed(continuity["prior_meetings"]):
-                st.markdown(f"- **{item['date']:%b %d} · {item['title']}:** {item['summary']}")
-        elif skill_name in {"Track Decisions", "Decision Logs"}:
-            for item in reversed(continuity["prior_decisions"]):
-                st.markdown(f"- **Made {item['date']:%b %d}:** {item['decision']}")
-            for item in continuity["upcoming_decisions"]:
-                st.markdown(f"- **Upcoming {item['date']:%b %d}:** {item['decision']}")
-        elif skill_name == "Initiative Portfolio Review":
-            initiative = operating_context["initiatives"][scenario["initiative_id"]]
-            charter = operating_context["charters"][initiative["charter_id"]]
-            st.markdown(f"**Status:** {initiative['status']}  \n**Objective:** {initiative['objective']}  \n**Charter:** {charter['title']}  \n**Success measures:** {', '.join(charter['success_measures'])}")
-            for item in operating_context["deliverables"].values():
-                if item["initiative_id"] == scenario["initiative_id"]:
-                    st.markdown(f"- **{item['status']} · Due {item['due_date']:%b %d}:** {item['name']}")
-        else:
-            st.warning("This repository skill is available for framework review but is not yet connected to executable demo behavior.")
-
-    with st.container(border=True):
-        st.subheader("Most relevant upcoming meeting")
-        scenario_action, scenario_description = st.columns([1, 2.4])
-        with scenario_action:
-            if st.button("Press to update to relevant skills", width="stretch"):
-                st.session_state.meeting_title = scenario["title"]
-                st.session_state.meeting_objective = scenario["objective"]
-                st.session_state.attendees = scenario["attendees"]
-                st.session_state.meeting_date = scenario["date"]
-                st.session_state.active_scenario = scenario_name
-                st.session_state.pop("brief", None)
-                st.rerun()
-        with scenario_description:
-            st.caption("Updates the agenda, prior notes, background information, and meeting context for the chosen skill and initiative.")
-
-        if "meeting_title" not in st.session_state:
-            st.session_state.meeting_title = scenario["title"]
-        if "meeting_objective" not in st.session_state:
-            st.session_state.meeting_objective = scenario["objective"]
-        if "attendees" not in st.session_state:
-            st.session_state.attendees = scenario["attendees"]
-        if "meeting_date" not in st.session_state:
-            st.session_state.meeting_date = scenario["date"]
-
-        left, right = st.columns([1.15, 1])
-        with left:
-            meeting_title = st.text_input("Meeting title", key="meeting_title")
-            meeting_objective = st.text_area("Meeting objective", key="meeting_objective", height=95)
-        with right:
-            meeting_date = st.date_input("Meeting date", key="meeting_date")
-            attendees = st.text_area("Attendees / roles", key="attendees", height=95)
-
-        records = build_scenario_records(operating_context, scenario_name)
-        st.info("Sources ready: " + ", ".join(r["name"] for r in records))
-
-    with st.container(border=True):
-        st.subheader("Relevant executive brief materials")
-        st.caption("This is relevant executive brief for the chosen skill intended to prepare the executive for key upcoming meetings.")
-        if st.button("Press to Create Relevant Executive Brief Materials", width="stretch"):
-            generated_brief = make_demo_brief(
-                meeting_title, meeting_objective, attendees, records, scenario_name
-            )
-            generated_brief["skill_name"] = skill_name
-            generated_brief["capability_name"] = capability_name
-            generated_brief["scenario_name"] = scenario_name
-            st.session_state.brief = generated_brief
-            st.session_state.records = records
-            st.session_state.generated_date = str(meeting_date)
-
-    if "brief" in st.session_state:
-        brief = st.session_state.brief
-        saved_records = st.session_state.records
-        with st.container(border=True):
-            st.header("Executive Brief")
-            m1, m2, m3, m4 = st.columns(4)
-            m1.metric("Sources reviewed", len(saved_records))
-            m2.metric("Decisions surfaced", len(brief["decisions"]))
-            m3.metric("Risks identified", len(brief["risks"]))
-            m4.metric("Review status", "Human review")
-            st.subheader(brief["title"])
-            st.caption(
-                f"Meeting date: {st.session_state.generated_date} · "
-                f"Skill: {brief.get('skill_name', 'Executive Meeting Preparation')} · "
-                "Prepared from synthetic demonstration documents"
-            )
-            st.write(brief["objective"])
-
-        output_left, output_right = st.columns(2)
-        with output_left:
-            with st.container(border=True):
-                st.markdown("#### Decisions or Alignment Needed")
-                for text, source in brief["decisions"]:
-                    st.markdown(f"- {text}  \n  <span class='source'>Source: {source}</span>", unsafe_allow_html=True)
-        with output_right:
-            with st.container(border=True):
-                st.markdown("#### Open Issues and Risks")
-                for text, source in brief["risks"]:
-                    st.markdown(f"- {text}  \n  <span class='source'>Source: {source}</span>", unsafe_allow_html=True)
-
-        with st.container(border=True):
-            st.markdown("#### Prior Decisions and Commitments")
-            for text, source in brief["commitments"]:
-                st.markdown(f"- {text} **[{source}]**")
-
-        qcol, ncol = st.columns(2)
-        with qcol:
-            with st.container(border=True):
-                st.markdown("#### Recommended Questions")
-                for item in brief["questions"]:
-                    st.markdown(f"- {item}")
-        with ncol:
-            with st.container(border=True):
-                st.markdown("#### Recommended Next Steps")
-                for item in brief["next_steps"]:
-                    st.markdown(f"- {item}")
-
-        md = brief_markdown(brief, saved_records)
-        docx = brief_docx(brief, saved_records)
-        d1, d2 = st.columns(2)
-        d1.download_button("Download Word Brief", docx, "executive_meeting_brief.docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", width="stretch")
-        d2.download_button("Download Markdown Brief", md, "executive_meeting_brief.md", "text/markdown", width="stretch")
-
-    # Kept at the end by design so operational outputs appear before technical documentation.
-    with st.expander("View the selected repository skill definition"):
-        if repository_documents:
-            st.caption("Read from the GitHub repository checkout deployed with this Streamlit app; no GitHub token is used.")
-            document_labels = {
-                "SKILL.md": "Skill definition", "README.md": "Overview",
-                "INPUTS.md": "Required inputs", "WORKFLOW.md": "Workflow",
-                "OUTPUTS.md": "Expected outputs", "PROMPT.md": "Prompt instructions",
-                "EVALUATION.md": "Evaluation criteria",
-            }
-            for filename, content in repository_documents.items():
-                st.markdown(f"##### {document_labels.get(filename, filename)}")
-                st.markdown(content)
-        else:
-            st.warning("No definition files were found. Confirm that the numbered capability folders are in the repository root.")
-
-
 st.markdown(
-    '<div class="hero"><h1>Chief of Staff Agent Demo</h1>'
-    '<p>An exploratory demonstration of an executive assistant agent based on relevant skills - by Bita Massoudi</p></div>',
+    '<div class="hero"><h1>Chief of Staff Agent</h1>'
+    '<p>Exploratory demonstration of one executive-support skill.</p></div>',
     unsafe_allow_html=True,
 )
 st.markdown(
-    '<div class="safe-banner">This demonstration has no connection to any University of Washington (UW) production systems. '
-    'All data used in this demo is synthetic and was created solely for demonstration purposes. Any resemblance to actual '
-    'individuals, organizations, projects, or activities is entirely coincidental. The synthetic dataset and agent skills '
-    'used in this demonstration are created by Bita Massoudi and are available on GitHub for evaluation and review.</div>',
+    '<div class="safe-banner"><b>Chiefs of Staff Demo:</b> This demo is based on synthetic data generated for this demo only. '
+    'There are no connections to any UW production systems. Synthetic data, the demo App, and Chief of Staff skills '
+    'are available for review in the GitHub repository.</div>',
     unsafe_allow_html=True,
 )
 st.caption(f"Synthetic dataset version: {DATASET_VERSION}")
 
 operating_context = build_synthetic_context(date.today())
 SCENARIOS = build_initiative_scenarios(operating_context)
-skill_catalog = discover_skill_catalog(Path(__file__).parent)
-capabilities = {capability: list(skills) for capability, skills in skill_catalog.items()}
-
-if "view_mode" not in st.session_state:
-    st.session_state.view_mode = "Initiative View"
-
-navigation_left, navigation_right = st.columns(2)
-with navigation_left:
-    if st.button("Initiative View", width="stretch", type="primary" if st.session_state.view_mode == "Initiative View" else "secondary"):
-        st.session_state.view_mode = "Initiative View"
-        st.rerun()
-with navigation_right:
-    if st.button("Skills View", width="stretch", type="primary" if st.session_state.view_mode == "Skills View" else "secondary"):
-        st.session_state.view_mode = "Skills View"
-        st.rerun()
-
-st.caption(f"Current workspace: {st.session_state.view_mode}")
-
-if st.session_state.view_mode == "Skills View":
-    active_initiative = st.session_state.get("scenario_name", next(iter(SCENARIOS)))
-    if active_initiative not in SCENARIOS:
-        active_initiative = next(iter(SCENARIOS))
-    render_skills_view(operating_context, SCENARIOS, active_initiative, skill_catalog, capabilities)
-    st.divider()
-    st.caption("Prototype boundary: synthetic data only; no autonomous actions; no production connections. Human review is required.")
-    st.stop()
 
 st.subheader("Choose an initiative")
 scenario_name = st.selectbox(
@@ -459,6 +229,33 @@ people_columns = st.columns(min(len(continuity["participants"]), 4))
 for index, person in enumerate(continuity["participants"]):
     with people_columns[index % len(people_columns)]:
         st.markdown(f"**{person['name']}**  \n{person['role']}")
+
+capabilities = discover_capabilities(Path(__file__).parent)
+capability_labels = list(capabilities)
+default_capability_index = next((i for i, label in enumerate(capability_labels) if label.startswith("02 ")), 0)
+st.markdown("#### Choose a Chief of Staff capability and skill")
+capability_name = st.selectbox(
+    "Capability",
+    capability_labels,
+    index=default_capability_index,
+    key="capability_name",
+)
+skill_options = capabilities[capability_name]
+preferred_skill = "Prepare Pre-Meeting Briefing Materials"
+default_skill_index = skill_options.index(preferred_skill) if preferred_skill in skill_options else 0
+skill_name = st.selectbox(
+    "Skill",
+    skill_options,
+    index=default_skill_index,
+    key=f"skill_name_{capability_name}",
+)
+if skill_name in CONNECTED_SKILLS:
+    st.success(f"Selected repository skill: {capability_name} → {skill_name}")
+else:
+    st.info(
+        f"{skill_name} is available in the repository framework but is not yet connected to this demo's synthetic inputs. "
+        "Its SKILL, INPUTS, WORKFLOW, OUTPUTS, PROMPT, and EVALUATION files should be reviewed before activation."
+    )
 
 st.subheader("Executive timeline")
 st.caption(f"Filtered to {scenario_name}: three weeks of operating history and two weeks of forward plans.")
@@ -529,100 +326,6 @@ with detail_actions:
         else:
             st.caption("No upcoming actions recorded.")
 
-with st.expander("Explore the complete five-week synthetic calendar and supporting records"):
-    calendar_rows = []
-    for day in operating_context["calendar"]:
-        event = day["meeting"]
-        calendar_rows.append({
-            "Date": day["date"].strftime("%a, %b %d"),
-            "Relative day": "Today" if day["offset"] == 0 else f"{day['offset']:+d}",
-            "Meeting": event["title"] if event else "—",
-            "Context": event["summary"] if event else "No scheduled executive meeting; continuity retained.",
-        })
-    st.dataframe(calendar_rows, width="stretch", hide_index=True)
-    st.markdown("#### Documented backend records")
-    st.write("**Participants:** " + ", ".join(p["role"] for p in operating_context["participants"].values()))
-    st.write("**Initiatives:** " + "; ".join(i["name"] for i in operating_context["initiatives"].values()))
-    st.write("**Charters:** " + "; ".join(c["title"] for c in operating_context["charters"].values()))
-    st.write("**Deliverables:** " + "; ".join(d["name"] for d in operating_context["deliverables"].values()))
-    st.caption("Every meeting, decision, action, initiative, charter, and deliverable uses a synthetic identifier so related records can be traced across time.")
-
-with st.sidebar:
-    st.header("Demonstration Safeguards")
-    st.success("Chiefs of Staff Demo")
-    for label in [
-        "Human review required",
-        "Source traceability enabled",
-        "Session-only document use",
-        "No production or Epic data",
-    ]:
-        st.checkbox(label, value=True, disabled=True)
-    st.divider()
-    st.subheader("Future state—not connected")
-    st.caption("Outlook calendar · Teams summaries · SharePoint · Approved external intelligence")
-
-if st.session_state.view_mode == "Initiative View":
-    st.divider()
-    st.caption("Switch to Skills View to apply a repository-backed Chief of Staff skill to this initiative.")
-    st.stop()
-
-capability_labels = list(capabilities)
-default_capability_index = next((i for i, label in enumerate(capability_labels) if label.startswith("02 ")), 0)
-st.markdown("#### Choose a Chief of Staff capability and skill")
-capability_name = st.selectbox(
-    "Capability",
-    capability_labels,
-    index=default_capability_index,
-    key="capability_name",
-)
-skill_options = capabilities[capability_name]
-preferred_skill = "Prepare Pre-Meeting Briefing Materials"
-default_skill_index = skill_options.index(preferred_skill) if preferred_skill in skill_options else 0
-skill_name = st.selectbox(
-    "Skill",
-    skill_options,
-    index=default_skill_index,
-    key=f"skill_name_{capability_name}",
-)
-selected_skill = skill_catalog[capability_name][skill_name]
-repository_documents = selected_skill["documents"]
-if selected_skill["source"] == "repository":
-    definition_status = f"Loaded from `{selected_skill['repository_path']}`"
-else:
-    definition_status = "Repository skill folders were not included in this deployment; using the built-in catalog fallback."
-
-if selected_skill["connected"]:
-    st.success(f"Connected skill: {capability_name} → {skill_name}. {definition_status}")
-else:
-    st.info(
-        f"Framework-only skill: {capability_name} → {skill_name}. {definition_status} "
-        "The definition can be reviewed, but this prototype does not execute it yet."
-    )
-
-with st.expander("View the selected repository skill definition"):
-    if repository_documents:
-        st.caption(
-            "These files were read from the GitHub repository checkout deployed with this Streamlit app. "
-            "No live GitHub API connection or token is used."
-        )
-        document_labels = {
-            "SKILL.md": "Skill definition",
-            "README.md": "Overview",
-            "INPUTS.md": "Required inputs",
-            "WORKFLOW.md": "Workflow",
-            "OUTPUTS.md": "Expected outputs",
-            "PROMPT.md": "Prompt instructions",
-            "EVALUATION.md": "Evaluation criteria",
-        }
-        for filename, content in repository_documents.items():
-            st.markdown(f"##### {document_labels.get(filename, filename)}")
-            st.markdown(content)
-    else:
-        st.warning(
-            "No definition files were found for this skill in the deployed app. "
-            "Confirm that the numbered capability folders were uploaded to the repository root."
-        )
-
 st.markdown("#### Selected Chief of Staff skill output")
 skill_records = build_scenario_records(operating_context, scenario_name)
 if skill_name in {"Action Item Management", "Follow Up On Commitments"}:
@@ -655,6 +358,38 @@ elif skill_name == "Initiative Portfolio Review":
             st.markdown(f"- **{item['status']} · Due {item['due_date']:%b %d}:** {item['name']}")
 else:
     st.warning("This skill is listed for framework review only. It is not executed because its repository instructions and required synthetic inputs have not yet been connected.")
+
+with st.expander("Explore the complete five-week synthetic calendar and supporting records"):
+    calendar_rows = []
+    for day in operating_context["calendar"]:
+        event = day["meeting"]
+        calendar_rows.append({
+            "Date": day["date"].strftime("%a, %b %d"),
+            "Relative day": "Today" if day["offset"] == 0 else f"{day['offset']:+d}",
+            "Meeting": event["title"] if event else "—",
+            "Context": event["summary"] if event else "No scheduled executive meeting; continuity retained.",
+        })
+    st.dataframe(calendar_rows, width="stretch", hide_index=True)
+    st.markdown("#### Documented backend records")
+    st.write("**Participants:** " + ", ".join(p["role"] for p in operating_context["participants"].values()))
+    st.write("**Initiatives:** " + "; ".join(i["name"] for i in operating_context["initiatives"].values()))
+    st.write("**Charters:** " + "; ".join(c["title"] for c in operating_context["charters"].values()))
+    st.write("**Deliverables:** " + "; ".join(d["name"] for d in operating_context["deliverables"].values()))
+    st.caption("Every meeting, decision, action, initiative, charter, and deliverable uses a synthetic identifier so related records can be traced across time.")
+
+with st.sidebar:
+    st.header("Demonstration Safeguards")
+    st.success("Chiefs of Staff Demo")
+    for label in [
+        "Human review required",
+        "Source traceability enabled",
+        "Session-only document use",
+        "No production or Epic data",
+    ]:
+        st.checkbox(label, value=True, disabled=True)
+    st.divider()
+    st.subheader("Future state—not connected")
+    st.caption("Outlook calendar · Teams summaries · SharePoint · Approved external intelligence")
 
 st.subheader("Most relevant upcoming meeting")
 scenario_action, scenario_description = st.columns([1, 2.4])

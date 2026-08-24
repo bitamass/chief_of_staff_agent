@@ -1,0 +1,273 @@
+"""Repository-driven, deterministic execution of Chief of Staff skill contracts.
+
+The runner reads SKILL.md, INPUTS.md, and OUTPUTS.md from the deployed GitHub
+checkout.  OUTPUTS.md supplies the report structure; the selected initiative's
+synthetic records supply the evidence.  No model API or production connection
+is used.
+"""
+
+from __future__ import annotations
+
+import re
+from datetime import date, datetime
+from io import BytesIO
+
+from docx import Document
+
+
+REQUIRED_DOCUMENTS = ("SKILL.md", "INPUTS.md", "OUTPUTS.md")
+
+
+def _plain_heading(value: str) -> str:
+    return re.sub(r"[*_`]", "", value).strip().rstrip(":")
+
+
+def _headings(markdown: str) -> list[str]:
+    """Return the most useful output section headings from OUTPUTS.md."""
+    found: list[tuple[int, str]] = []
+    for line in markdown.splitlines():
+        match = re.match(r"^(#{2,4})\s+(.+?)\s*$", line)
+        if match:
+            found.append((len(match.group(1)), _plain_heading(match.group(2))))
+    if not found:
+        return ["Executive summary", "Evidence and findings", "Recommended next steps"]
+    minimum = min(level for level, _ in found)
+    sections = [heading for level, heading in found if level == minimum]
+    return sections[:12]
+
+
+def _bullets(markdown: str) -> list[str]:
+    items = []
+    for line in markdown.splitlines():
+        match = re.match(r"^\s*[-*]\s+(.+?)\s*$", line)
+        if match:
+            item = re.sub(r"[*_`]", "", match.group(1)).strip()
+            if item and item not in items:
+                items.append(item)
+    return items
+
+
+def _fmt(value) -> str:
+    if isinstance(value, (date, datetime)):
+        return value.strftime("%b %d, %Y")
+    return str(value)
+
+
+def _source(label: str, text: str) -> dict:
+    return {"text": text, "source": label}
+
+
+def _initiative_evidence(context, scenario_name: str) -> dict:
+    """Normalize the selected initiative into reusable evidence families."""
+    from synthetic_context_v4 import build_initiative_scenarios, initiative_continuity
+
+    scenario = build_initiative_scenarios(context)[scenario_name]
+    initiative_id = scenario["initiative_id"]
+    initiative = context["initiatives"][initiative_id]
+    continuity = initiative_continuity(context, initiative_id)
+    charter = context["charters"][initiative["charter_id"]]
+    deliverables = [d for d in context["deliverables"].values() if d["initiative_id"] == initiative_id]
+
+    participants = []
+    for person in continuity["participants"]:
+        participants.append(_source("Synthetic participant register", f"{person['name']} — {person['role']}"))
+
+    meetings = []
+    for item in reversed(continuity["prior_meetings"]):
+        meetings.append(_source(item["title"], f"Prior · {_fmt(item['date'])}: {item['summary']}"))
+    for item in continuity["current_meetings"]:
+        meetings.append(_source(item["title"], f"Today · {_fmt(item['date'])}: {item['summary']}"))
+    for item in continuity["upcoming_meetings"]:
+        meetings.append(_source(item["title"], f"Upcoming · {_fmt(item['date'])}: {item['summary']}"))
+
+    decisions = []
+    for item in reversed(continuity["prior_decisions"]):
+        source_meeting = context["meetings"][item["meeting_id"]]["title"]
+        decisions.append(_source(source_meeting, f"Decided {_fmt(item['date'])}: {item['decision']}"))
+
+    upcoming_decisions = []
+    for item in continuity["upcoming_decisions"]:
+        source_meeting = context["meetings"][item["meeting_id"]]["title"]
+        upcoming_decisions.append(_source(source_meeting, f"Decision due {_fmt(item['date'])}: {item['decision']}"))
+
+    actions = []
+    for item in continuity["all_actions"]:
+        owner = context["participants"][item["owner"]]
+        actions.append(
+            _source(
+                context["meetings"][item["source_meeting_id"]]["title"],
+                f"{item['status']} · Due {_fmt(item['due_date'])}: {item['action']} Owner: {owner['name']} ({owner['role']}).",
+            )
+        )
+
+    risks = []
+    risk_terms = ("risk", "security", "privacy", "dependency", "constraint", "incomplete", "delay", "control", "readiness")
+    for meeting in meetings:
+        if any(term in meeting["text"].lower() for term in risk_terms):
+            risks.append(meeting)
+    for action in actions:
+        if any(term in action["text"].lower() for term in ("blocked", "not started", "dependency", "security", "risk")):
+            risks.append(action)
+    if not risks:
+        risks.append(_source("Synthetic charter", "No explicit risk statement was found; validate dependencies, ownership, timing, and evidence before use."))
+
+    deliverable_items = [
+        _source("Synthetic deliverable register", f"{d['name']} — {d['status']}; due {_fmt(d['due_date'])}.")
+        for d in sorted(deliverables, key=lambda x: x["due_date"])
+    ]
+    objectives = [
+        _source("Synthetic initiative register", f"Initiative: {initiative['name']}. Status: {initiative['status']}."),
+        _source("Synthetic initiative register", f"Objective: {initiative['objective']}"),
+        _source("Synthetic charter", f"Scope: {charter['scope']}"),
+        _source("Synthetic charter", f"Out of scope: {charter['out_of_scope']}"),
+        _source("Synthetic charter", "Success measures: " + ", ".join(charter["success_measures"])),
+    ]
+
+    summary = [
+        _source("Synthetic initiative register", f"{initiative['name']} is {initiative['status'].lower()} and supports: {initiative['objective']}"),
+        _source("Synthetic calendar", f"Most relevant meeting: {scenario['title']} on {_fmt(scenario['date'])}."),
+        _source("Synthetic continuity record", f"{len(decisions)} prior decisions, {len(actions)} actions, and {len(upcoming_decisions)} upcoming decisions are linked to this initiative."),
+    ]
+
+    questions = [_source("Synthetic meeting context", question) for question in scenario["questions"]]
+    recommendations = [_source("Synthetic action register", step) for step in scenario["next_steps"]]
+    gaps = [
+        _source("Demo limitation", "Only synthetic records in the five-week demonstration window were evaluated."),
+        _source("Demo limitation", "No production-system validation, external intelligence, or autonomous action was performed."),
+    ]
+
+    return {
+        "summary": summary,
+        "overview": summary + objectives[:2],
+        "objective": objectives,
+        "alignment": objectives + deliverable_items,
+        "participants": participants,
+        "stakeholders": participants,
+        "meetings": meetings,
+        "timeline": meetings,
+        "history": meetings + decisions,
+        "decisions": decisions,
+        "upcoming_decisions": upcoming_decisions,
+        "actions": actions,
+        "commitments": actions,
+        "deliverables": deliverable_items,
+        "risks": risks,
+        "issues": risks,
+        "dependencies": risks,
+        "questions": questions,
+        "recommendations": recommendations,
+        "next_steps": recommendations,
+        "gaps": gaps,
+        "confidence": gaps,
+        "sources": [
+            _source("Repository", "SKILL.md — workflow and guardrails"),
+            _source("Repository", "INPUTS.md — required evidence contract"),
+            _source("Repository", "OUTPUTS.md — report structure"),
+            _source("Synthetic dataset", "Initiative, calendar, meeting, decision, action, charter, participant, and deliverable records"),
+        ],
+        "meeting": [_source("Synthetic calendar", f"{scenario['title']} · {_fmt(scenario['date'])} · {scenario['attendees']}")],
+        "charter": objectives[2:],
+        "governance": gaps,
+    }
+
+
+def _evidence_for_heading(heading: str, evidence: dict) -> list[dict]:
+    value = heading.lower()
+    rules = (
+        (("source", "traceability", "evidence"), "sources"),
+        (("human review", "governance", "guardrail"), "governance"),
+        (("information gap", "confidence", "limitation", "readiness status"), "gaps"),
+        (("participant", "stakeholder"), "participants"),
+        (("meeting", "agenda", "calendar"), "meetings"),
+        (("prior discussion", "history", "timeline", "what led"), "history"),
+        (("upcoming decision", "leadership decision", "decisions required", "decision expected"), "upcoming_decisions"),
+        (("decision", "alignment required", "decision register", "decision log"), "decisions"),
+        (("action", "commitment", "follow-up", "implementation"), "actions"),
+        (("risk", "issue", "dependency", "conflict"), "risks"),
+        (("deliverable", "milestone"), "deliverables"),
+        (("objective", "strategic", "okr", "portfolio", "coverage", "mapping"), "alignment"),
+        (("question",), "questions"),
+        (("recommend", "next step", "preparation", "resolution", "response"), "recommendations"),
+        (("overview", "profile", "context", "summary", "current state", "why"), "summary"),
+    )
+    for terms, key in rules:
+        if any(term in value for term in terms):
+            return evidence[key][:6]
+    return evidence["overview"][:4]
+
+
+def assess_inputs(inputs_markdown: str, evidence: dict) -> list[dict]:
+    """Match documented input requirements to the available synthetic evidence."""
+    checks = []
+    available_text = " ".join(item["text"].lower() for values in evidence.values() for item in values)
+    for requirement in _bullets(inputs_markdown)[:18]:
+        tokens = [t for t in re.findall(r"[a-z]{4,}", requirement.lower()) if t not in {"required", "current", "relevant", "including", "information", "supporting"}]
+        matched = any(token in available_text for token in tokens[:6])
+        checks.append({"requirement": requirement, "status": "Available" if matched else "Not represented in synthetic demo"})
+    return checks
+
+
+def run_repository_skill(selected_skill: dict, context, scenario_name: str) -> dict:
+    """Execute a skill contract against synthetic initiative evidence."""
+    documents = selected_skill.get("documents", {})
+    missing = [name for name in REQUIRED_DOCUMENTS if not documents.get(name, "").strip()]
+    if missing:
+        raise ValueError("Missing required repository files: " + ", ".join(missing))
+
+    evidence = _initiative_evidence(context, scenario_name)
+    sections = []
+    for heading in _headings(documents["OUTPUTS.md"]):
+        sections.append({"heading": heading, "items": _evidence_for_heading(heading, evidence)})
+
+    return {
+        "skill_name": selected_skill["name"],
+        "capability_name": selected_skill["capability"],
+        "repository_path": selected_skill["repository_path"],
+        "scenario_name": scenario_name,
+        "sections": sections,
+        "input_checks": assess_inputs(documents["INPUTS.md"], evidence),
+        "documents_used": list(REQUIRED_DOCUMENTS),
+        "review_status": "Human review required",
+        "engine": "Repository-driven deterministic synthesis",
+    }
+
+
+def result_markdown(result: dict) -> str:
+    lines = [
+        f"# {result['skill_name']}",
+        "",
+        f"**Capability:** {result['capability_name']}  ",
+        f"**Initiative:** {result['scenario_name']}  ",
+        f"**Repository path:** `{result['repository_path']}`  ",
+        f"**Review status:** {result['review_status']}",
+        "",
+    ]
+    for section in result["sections"]:
+        lines.extend([f"## {section['heading']}", ""])
+        for item in section["items"]:
+            lines.append(f"- {item['text']} **[{item['source']}]**")
+        lines.append("")
+    lines.extend([
+        "## Governance notice",
+        "",
+        "Generated from repository skill contracts and synthetic demonstration records. No UW production systems were accessed. Human review is required.",
+    ])
+    return "\n".join(lines)
+
+
+def result_docx(result: dict) -> bytes:
+    doc = Document()
+    doc.add_heading(result["skill_name"], 0)
+    doc.add_paragraph(f"Capability: {result['capability_name']}")
+    doc.add_paragraph(f"Initiative: {result['scenario_name']}")
+    doc.add_paragraph(f"Repository path: {result['repository_path']}")
+    doc.add_paragraph(f"Review status: {result['review_status']}")
+    for section in result["sections"]:
+        doc.add_heading(section["heading"], level=1)
+        for item in section["items"]:
+            doc.add_paragraph(f"{item['text']} [{item['source']}]", style="List Bullet")
+    doc.add_heading("Governance notice", level=1)
+    doc.add_paragraph("Generated from repository skill contracts and synthetic demonstration records. No UW production systems were accessed. Human review is required.")
+    output = BytesIO()
+    doc.save(output)
+    return output.getvalue()
