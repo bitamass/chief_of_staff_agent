@@ -423,3 +423,4 @@ with st.sidebar:
 
 st.divider()
 st.caption("Switch to Skills View to run a repository-backed Chief of Staff skill against this synthetic initiative context.")
+
