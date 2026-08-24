@@ -33,7 +33,7 @@ def _headings(markdown: str) -> list[str]:
         return ["Executive summary", "Evidence and findings", "Recommended next steps"]
     minimum = min(level for level, _ in found)
     sections = [heading for level, heading in found if level == minimum]
-    return sections[:12]
+    return sections[:16]
 
 
 def _bullets(markdown: str) -> list[str]:
@@ -551,9 +551,134 @@ def _initiative_evidence(context, scenario_name: str) -> dict:
     }
 
 
+def _matches_heading(value: str, phrase: str) -> bool:
+    """Match complete heading words/phrases, not accidental substrings.
+
+    This prevents, for example, ``source`` from matching ``resource`` and
+    ``action`` from matching ``satisfaction``.
+    """
+    pattern = r"(?<![a-z0-9])" + re.escape(phrase.lower()).replace(r"\ ", r"[\s-]+") + r"(?![a-z0-9])"
+    return bool(re.search(pattern, value.lower()))
+
+
+def _first(values: list[dict], fallback: str, source: str = "Demo assessment") -> dict:
+    return values[0] if values else _source(source, fallback)
+
+
+def _skill_specific_evidence(skill_name: str, heading: str, evidence: dict) -> list[dict] | None:
+    """Return differentiated evidence for high-value analytical skills."""
+    skill = skill_name.lower()
+    value = heading.lower()
+    summary = evidence["summary"]
+    objective = _first(evidence["objective"], "No initiative objective is represented.")
+    risks = evidence["risks"]
+    actions = evidence["actions"]
+    decisions = evidence["decisions"]
+    upcoming = evidence["upcoming_decisions"]
+    deliverables = evidence["deliverables"]
+
+    if skill == "align deliverables with strategic goals":
+        score_rows = []
+        for index, item in enumerate(deliverables, start=1):
+            alignment = max(2, 5 - index + 1)
+            urgency = max(2, 5 - index)
+            overall = round((alignment * .45) + (urgency * .25) + (4 * .2) + (3 * .1), 1)
+            disposition = "Accelerate" if overall >= 4.2 else "Keep" if overall >= 3.5 else "Revise"
+            score_rows.append(_source(item["source"], f"{item['text']} | Strategic alignment {alignment}/5 | Business contribution 4/5 | Expected value 4/5 | Urgency {urgency}/5 | Dependency importance 3/5 | Feasibility 3/5 | Weighted score {overall}/5 | Recommendation: {disposition}. Scores are demonstration assessments requiring owner validation."))
+        mapping = {
+            "executive summary": [summary[0], _source("Alignment assessment", f"{len(deliverables)} deliverable(s) were assessed against the documented initiative objective as a proxy; no approved enterprise strategic-goal record is available."), _source("Human-review control", "Do not change priorities or resources until the proxy goal, weights, and scores are approved.")],
+            "strategic-goal evaluation": [objective, _source("Strategic-goal limitation", "The initiative objective is used as a transparent proxy because approved enterprise goals and top business priorities are not represented."), _source("Coverage assessment", f"{len(deliverables)} deliverable(s) provide partial coverage; enterprise-level coverage cannot be determined.")],
+            "deliverable alignment matrix": score_rows,
+            "prioritized deliverable list": [
+                _source(item["source"], f"Rank {index}: {item['text'].split(' | ')[0]} | {item['text'].split('Recommendation: ')[-1]}")
+                for index, item in enumerate(
+                    sorted(score_rows, key=lambda row: float(re.search(r"Weighted score ([0-9.]+)", row["text"]).group(1)), reverse=True),
+                    start=1,
+                )
+            ],
+            "strategic coverage gaps": [_source("Coverage assessment", "Approved enterprise strategic goals, priority weights, targets, and measurement owners are missing."), _source("Coverage assessment", "Deliverable contribution is qualitatively supported but quantitative outcome contribution is not documented."), _source("Coverage assessment", "Validate resource capacity, dependencies, and completion criteria before final prioritization.")],
+            "executive decisions and recommendations": (upcoming[:3] or evidence["recommendations"][:3]) + [_source("Draft recommendation", "Approve or revise the scoring criteria, weights, and recommended dispositions; assign owners for unresolved evidence gaps.")],
+            "human-review requirement": [_source("Human-review control", "An authorized strategy and initiative owner must validate the proxy goal, scores, weights, rationale, and Keep/Accelerate/Revise recommendations before any change.")],
+        }
+        return mapping.get(value)
+
+    if skill == "trade off analysis":
+        alternatives = [
+            _source("Demonstration option analysis", "Option A — proceed with the limited current scope. Gain: earlier learning and time to value. Sacrifice: incomplete assurance and possible rework. Reversibility: medium. Confidence: medium."),
+            _source("Demonstration option analysis", "Option B — pause for missing cost, security, ownership, and readiness evidence. Gain: stronger assurance. Sacrifice: delay and lost learning time. Reversibility: high. Confidence: medium."),
+            _source("Demonstration option analysis", "Option C — defer the initiative. Gain: preserves near-term capacity. Sacrifice: delays the documented objective and expected value. Reversibility: high. Confidence: low."),
+        ]
+        mapping = {
+            "executive trade-off summary": (evidence["tradeoffs"][:3] or upcoming[:2]) + [_source("Trade-off synthesis", "Leadership is balancing speed and learning against assurance, capacity, and the cost of avoidable rework.")],
+            "decision framing": (upcoming[:2] or decisions[:2]) + [objective, _source("Decision framing", "Success should be judged against the charter measures, constraints, available capacity, and consequence of delay.")],
+            "alternative profiles": alternatives,
+            "trade-off comparison matrix": [_source("Demonstration comparison", "Option A | Alignment 4/5 | Time to value 5/5 | Assurance 2/5 | Capacity demand 4/5 | Reversibility 3/5"), _source("Demonstration comparison", "Option B | Alignment 4/5 | Time to value 2/5 | Assurance 5/5 | Capacity demand 3/5 | Reversibility 5/5"), _source("Demonstration comparison", "Option C | Alignment 1/5 | Time to value 1/5 | Assurance 4/5 | Capacity demand 1/5 | Reversibility 5/5")],
+            "gains and sacrifices": [_source("Trade-off synthesis", "Option A gains early learning but sacrifices assurance and may create rework."), _source("Trade-off synthesis", "Option B gains assurance and evidence quality but sacrifices speed and delays value."), _source("Trade-off synthesis", "Option C preserves near-term capacity but sacrifices momentum, learning, and progress toward the objective.")],
+            "resource and opportunity-cost analysis": evidence["capacity"][:4] + [_source("Opportunity-cost assessment", "The same leadership, architecture, finance, clinical, and security capacity cannot simultaneously support all alternatives; validate effort and funding before selection.")],
+            "risk and uncertainty analysis": risks[:4] + [_source("Uncertainty assessment", "Cost, benefit timing, stakeholder burden, and control effectiveness are not fully quantified; reconsider if a key dependency fails.")],
+            "stakeholder impact analysis": evidence["participants"][:5],
+            "sensitivity analysis": [_source("Sensitivity assessment", "Option A becomes less attractive if cost, implementation time, or control gaps increase."), _source("Sensitivity assessment", "Option B becomes more attractive when assurance requirements or uncertainty increase, but less attractive when delay costs rise."), _source("Sensitivity assessment", "The choice is most sensitive to time-to-value, readiness, available capacity, and the consequence of delay.")],
+            "leadership judgment required": [_source("Leadership judgment", "Choose the acceptable balance between speed and assurance, near-term cost and long-term capability, and central control and local flexibility.")],
+            "information gaps and confidence": evidence["gaps"][:3] + [_source("Confidence assessment", "Overall confidence is medium-low until comparable cost, benefit, resource, control, and stakeholder evidence is validated.")],
+            "human-review requirement": [_source("Human-review control", "Authorized leadership must validate the alternatives, assumptions, comparison dimensions, risks, and opportunity costs before committing resources.")],
+        }
+        return mapping.get(value)
+
+    if skill == "risk scoring":
+        risk = _first(risks, "No explicit risk was documented; specialist validation is required.")
+        mapping = {
+            "risk-scoring record": [risk, _source("Demonstration scoring method", "Risk-01 | Operational and assurance readiness | Five-point probability × five-point impact matrix | Assessment owner: initiative owner | Confidence: low-to-medium.")],
+            "inherent risk assessment": [_source("Demonstration risk assessment", "Probability 4/5; impact 4/5; inherent rating 16/25 (High). Rationale: unresolved dependencies could delay delivery and weaken assurance. Velocity: medium; detectability: medium; confidence: low-to-medium."), risk],
+            "control assessment": [_source("Synthetic control assessment", "Existing controls represented: synthetic data boundary, human review, source traceability, and scoped charter. Design appears relevant; operating effectiveness has not been tested."), _source("Control gap", "Formal identity, access, retention, monitoring, cost, and incident-response controls require validation before institutional connection.")],
+            "residual risk assessment": [_source("Demonstration residual assessment", "Residual probability 3/5; impact 4/5; residual rating 12/25 (High). Reduction reflects demo safeguards only; institutional tolerance and acceptance authority are not documented."), risk],
+            "planned treatment view": (actions[:3] or evidence["recommendations"][:3]) + [_source("Target-state estimate", "Target rating 8/25 (Medium) after validated controls; target is prospective and must not be reported as current residual risk.")],
+            "trend analysis": [_source("Trend limitation", "No prior approved risk scores exist, so numeric trend cannot be calculated."), _source("Qualitative trend", "Exposure is stable-to-improving if documented readiness actions close on time; otherwise it worsens as decision dates approach.")],
+            "risk-priority view": [risk, _source("Priority assessment", "Executive review is warranted because residual exposure remains high and control effectiveness is unverified.")],
+            "scoring-quality report": [_source("Scoring-quality assessment", "Missing: approved scoring framework, tolerance, control tests, prior score, specialist validation, and acceptance authority."), _source("Human-review control", "A qualified risk owner must validate every score and rationale; planned controls must remain separate from existing controls.")],
+        }
+        return mapping.get(value)
+
+    if skill == "decision governance":
+        mapping = {
+            "decision-governance summary": (upcoming[:2] or decisions[:2]) + [_source("Governance assessment", "Decision level and formal authority are not fully documented; readiness is partial and specialist review may be required.")],
+            "decision-rights matrix": [_source("Provisional rights matrix", "Requester: initiative owner | Preparer: program lead | Consultees: finance, operations, architecture, security/privacy | Approver and risk-acceptance authority: not documented | Informed: initiative participants."), _source("Authority limitation", "Roles are provisional and must not be treated as approved RACI or delegated authority.")],
+            "governance pathway": [_source("Provisional governance pathway", "Request → classify → prepare evidence → consult specialists → compare options → authorized deliberation → decision → conditions → implementation → monitoring → review/closure."), _source("Pathway gap", "Authorized bodies, entry/exit criteria, target dates, escalation route, and source of authority require confirmation.")],
+            "decision-readiness assessment": evidence["readiness"][:4] + [_source("Readiness classification", "Partially ready — core context exists, but authority, comparable options, cost/resource evidence, specialized reviews, and monitoring details remain incomplete.")],
+            "option comparison": (evidence["tradeoffs"][:3] or evidence["recommendations"][:3]) + [_source("Comparison limitation", "Comparable option cost, feasibility, reversibility, stakeholder impact, and governance implications require validation.")],
+            "deliberation brief": summary[:3] + evidence["questions"][:3],
+            "decision record": evidence["decision_log_entries"][:4] or [_source("Decision record gap", "No completed decision record is available for the upcoming decision; create one after authorization.")],
+            "conditions and obligations": actions[:4] + [_source("Governance condition", "Document evidence, monitoring, escalation triggers, and closure authority for every approval condition.")],
+            "implementation and accountability plan": evidence["ownership"][:5],
+            "decision monitoring": evidence["status"][:4] + [_source("Monitoring requirement", "Confirm outcome measures, review date, continued validity, and modification or closure authority.")],
+            "governance gaps and conflicts": [_source("Governance gap", "Approving authority, risk-acceptance authority, and source of delegated authority are not represented."), _source("Governance gap", "Quorum, specialized review completion, implementation authorization, and monitoring cadence are not documented.")],
+            "executive attention": (upcoming[:3] or risks[:3]) + [_source("Escalation requirement", "Escalate unresolved authority, material risk, time-sensitive readiness, or cross-functional disagreement to the authorized body.")],
+            "source and confidence report": evidence["sources"] + [_source("Confidence assessment", "Medium-low: synthetic source records are traceable, but formal authority and institutional governance records are absent.")],
+        }
+        return mapping.get(value)
+
+    if skill == "risk mitigation recommendations":
+        mapping = {
+            "risk summary": risks[:4] + [_source("Risk assessment limitation", "Inherent and residual numeric ratings require an approved framework and qualified owner validation.")],
+            "mitigation options": [_source("Mitigation option", "Option 1 — Reduce: complete documented security, architecture, ownership, and dependency actions. Expected effect: lower probability; confidence: medium."), _source("Mitigation option", "Option 2 — Avoid: pause institutional connection until required controls are validated. Expected effect: lowers immediate exposure but delays value; confidence: high."), _source("Mitigation option", "Option 3 — Accept with monitoring: continue only within the synthetic, human-reviewed boundary. Expected effect: contains scope but does not resolve production readiness; confidence: medium.")],
+            "comparative analysis": [_source("Mitigation comparison", "Reduce | Risk reduction: medium-high | Time: medium | Resource demand: medium-high | Reversible: yes"), _source("Mitigation comparison", "Avoid | Risk reduction: high | Time to value: delayed | Resource demand: low | Reversible: yes"), _source("Mitigation comparison", "Accept with monitoring | Risk reduction: low-medium | Time: immediate | Resource demand: low | Residual uncertainty: high")],
+            "recommended mitigation": (actions[:3] or evidence["recommendations"][:3]) + [_source("Draft recommendation", "Use a phased Reduce strategy while retaining the synthetic-data and human-review boundary; obtain formal acceptance for any residual exposure.")],
+            "contingency plan": [_source("Draft contingency", "Trigger: failed control, unapproved data access, material evidence contradiction, or missed readiness condition. Contain by stopping the affected activity, preserving records, notifying the owner, and escalating for review.")],
+            "implementation roadmap": actions[:5] + evidence["schedule"][:3],
+            "monitoring plan": [_source("Draft monitoring plan", "Track overdue actions, readiness dependencies, control validation, evidence contradictions, and decision dates; review at each linked governance meeting."), _source("Escalation threshold", "Escalate any unapproved connection, missing accountable owner, failed required control, or high residual risk.")],
+            "executive decision request": (upcoming[:3] or evidence["approvals"][:3]) + [_source("Decision request", "Approve the mitigation direction, owner, resources, target dates, and residual-risk acceptance authority.")],
+            "data-quality and validation summary": evidence["gaps"][:3] + [_source("Validation requirement", "Control effectiveness, cost, impact, residual risk, and specialist reviews require confirmation.")],
+        }
+        return mapping.get(value)
+
+    return None
+
+
 def _evidence_for_heading(heading: str, evidence: dict, skill_name: str = "") -> list[dict]:
     value = heading.lower()
     normalized_skill = skill_name.lower()
+    specialized = _skill_specific_evidence(skill_name, heading, evidence)
+    if specialized is not None:
+        return specialized[:8]
     if value == "raci matrix" and normalized_skill == "stakeholder raci":
         return evidence["raci_matrix"]
     if value == "role summaries" and normalized_skill == "stakeholder raci":
@@ -613,7 +738,7 @@ def _evidence_for_heading(heading: str, evidence: dict, skill_name: str = "") ->
         (("overview", "profile", "context", "summary", "why"), "summary"),
     )
     for terms, key in rules:
-        if any(term in value for term in terms):
+        if any(_matches_heading(value, term) for term in terms):
             return evidence[key][:6]
     return evidence["overview"][:4]
 
