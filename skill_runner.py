@@ -1,4 +1,4 @@
-"""Repository-driven, deterministic execution of Chief of Staff skill contracts.
+""Repository-driven, deterministic execution of Chief of Staff skill contracts.
 
 The runner reads SKILL.md, INPUTS.md, and OUTPUTS.md from the deployed GitHub
 checkout.  OUTPUTS.md supplies the report structure; the selected initiative's
@@ -57,9 +57,14 @@ def _source(label: str, text: str) -> dict:
     return {"text": text, "source": label}
 
 
+def _person(context, person_id: str) -> str:
+    person = context["participants"][person_id]
+    return f"{person['name']} ({person['role']})"
+
+
 def _initiative_evidence(context, scenario_name: str) -> dict:
     """Normalize the selected initiative into reusable evidence families."""
-    from synthetic_context_v4 import build_initiative_scenarios, initiative_continuity
+    from synthetic_context import build_initiative_scenarios, initiative_continuity
 
     scenario = build_initiative_scenarios(context)[scenario_name]
     initiative_id = scenario["initiative_id"]
@@ -136,6 +141,115 @@ def _initiative_evidence(context, scenario_name: str) -> dict:
         _source("Demo limitation", "No production-system validation, external intelligence, or autonomous action was performed."),
     ]
 
+    priorities = []
+    for index, item in enumerate(sorted(deliverables, key=lambda value: value["due_date"]), start=1):
+        priorities.append(
+            _source(
+                "Synthetic deliverable register",
+                f"Priority {index}: {item['name']} — {item['status']}; owned by {_person(context, item['owner'])}; due {_fmt(item['due_date'])}.",
+            )
+        )
+    for item in continuity["upcoming_decisions"][:3]:
+        priorities.append(
+            _source(
+                context["meetings"][item["meeting_id"]]["title"],
+                f"Decision priority: {item['decision']} Required by {_fmt(item['date'])}.",
+            )
+        )
+
+    readiness = []
+    for item in sorted(deliverables, key=lambda value: value["due_date"]):
+        status = "Ready for review" if item["status"].lower() in {"complete", "draft complete"} else "Preparation required"
+        readiness.append(
+            _source(
+                "Synthetic deliverable register",
+                f"{status}: {item['name']} is {item['status'].lower()}, owned by {_person(context, item['owner'])}, and due {_fmt(item['due_date'])}.",
+            )
+        )
+    readiness.extend(risks[:3])
+
+    schedule = []
+    for item in continuity["upcoming_meetings"][:5]:
+        schedule.append(_source(item["title"], f"{_fmt(item['date'])}: {item['title']} — {item['summary']}"))
+    for item in sorted(deliverables, key=lambda value: value["due_date"]):
+        schedule.append(_source("Synthetic deliverable register", f"Due {_fmt(item['due_date'])}: {item['name']} — {item['status']}."))
+
+    ownership = participants[:]
+    for item in continuity["all_actions"]:
+        ownership.append(
+            _source(
+                "Synthetic action register",
+                f"{_person(context, item['owner'])} owns: {item['action']} Status: {item['status']}; due {_fmt(item['due_date'])}.",
+            )
+        )
+
+    outcomes = [
+        _source("Synthetic initiative register", f"Advance the initiative objective: {initiative['objective']}"),
+        _source("Synthetic charter", f"Weekly success should be assessed using: {', '.join(charter['success_measures'])}."),
+    ]
+    outcomes.extend(
+        _source("Synthetic deliverable register", f"Move {item['name']} from {item['status'].lower()} to its next documented review state by {_fmt(item['due_date'])}.")
+        for item in sorted(deliverables, key=lambda value: value["due_date"])
+    )
+
+    success_measures = [
+        _source("Synthetic charter", f"Measure: {measure}. Confirm the definition, baseline, target, and evidence owner before reporting success.")
+        for measure in charter["success_measures"]
+    ]
+
+    capacity = []
+    open_actions = [item for item in continuity["all_actions"] if item["status"].lower() != "complete"]
+    owner_counts = {}
+    for item in open_actions:
+        owner_counts[item["owner"]] = owner_counts.get(item["owner"], 0) + 1
+    for owner_id, count in sorted(owner_counts.items(), key=lambda value: (-value[1], value[0])):
+        capacity.append(_source("Synthetic action register", f"{_person(context, owner_id)} has {count} open action(s) in this initiative during the five-week window."))
+    capacity.append(
+        _source(
+            "Synthetic calendar",
+            f"The initiative has {len(continuity['upcoming_meetings'])} upcoming meeting(s), {len(open_actions)} open action(s), and {len(continuity['upcoming_decisions'])} upcoming decision(s) in the demonstration window.",
+        )
+    )
+
+    tradeoffs = []
+    for item in continuity["upcoming_decisions"][:4]:
+        tradeoffs.append(
+            _source(
+                context["meetings"][item["meeting_id"]]["title"],
+                f"Trade-off for leadership: {item['decision']} Evaluate value, timing, risk, capacity, and the consequence of delay before selecting a direction.",
+            )
+        )
+
+    approvals = upcoming_decisions or [
+        _source("Synthetic governance record", "No formal upcoming approval was found for this initiative in the five-week window; confirm whether an approval is required.")
+    ]
+
+    status = [
+        _source("Synthetic initiative register", f"Initiative status: {initiative['status']} — {initiative['name']}."),
+        _source("Synthetic continuity record", f"Operating record: {len(meetings)} linked meetings, {len(decisions)} prior decisions, {len(actions)} actions, and {len(upcoming_decisions)} upcoming decisions."),
+    ] + deliverable_items
+
+    priority_rationale = []
+    for item in sorted(deliverables, key=lambda value: value["due_date"]):
+        priority_rationale.append(
+            _source(
+                "Synthetic charter and deliverable register",
+                f"Prioritize {item['name']} because it supports '{initiative['objective']}', is currently {item['status'].lower()}, and is due {_fmt(item['due_date'])}. Validate effort and consequence before changing its rank.",
+            )
+        )
+
+    dependency_map = []
+    for item in continuity["all_actions"]:
+        review = context["meetings"].get(item.get("review_meeting_id"), {})
+        review_text = f" Review is scheduled at {review['title']} on {_fmt(review['date'])}." if review else ""
+        dependency_map.append(
+            _source(
+                context["meetings"][item["source_meeting_id"]]["title"],
+                f"Dependency: {item['action']} Owner: {_person(context, item['owner'])}; due {_fmt(item['due_date'])}.{review_text}",
+            )
+        )
+    dependency_map.extend(risks[:3])
+
     return {
         "summary": summary,
         "overview": summary + objectives[:2],
@@ -151,6 +265,18 @@ def _initiative_evidence(context, scenario_name: str) -> dict:
         "actions": actions,
         "commitments": actions,
         "deliverables": deliverable_items,
+        "priorities": priorities,
+        "priority_rationale": priority_rationale,
+        "outcomes": outcomes,
+        "success_measures": success_measures,
+        "readiness": readiness,
+        "schedule": schedule,
+        "ownership": ownership,
+        "capacity": capacity,
+        "tradeoffs": tradeoffs,
+        "dependency_map": dependency_map,
+        "approvals": approvals,
+        "status": status,
         "risks": risks,
         "issues": risks,
         "dependencies": risks,
@@ -176,7 +302,18 @@ def _evidence_for_heading(heading: str, evidence: dict) -> list[dict]:
     rules = (
         (("source", "traceability", "evidence"), "sources"),
         (("human review", "governance", "guardrail"), "governance"),
-        (("information gap", "confidence", "limitation", "readiness status"), "gaps"),
+        (("success measure", "measure of success", "completion criteria", "acceptance criteria"), "success_measures"),
+        (("capacity", "workload", "feasibility", "resource demand", "resource plan"), "capacity"),
+        (("trade-off", "tradeoff", "defer", "delegate", "stop recommendation"), "tradeoffs"),
+        (("priority rationale", "ranking rationale", "prioritization rationale"), "priority_rationale"),
+        (("dependency map", "dependency schedule", "sequencing report", "sequence map"), "dependency_map"),
+        (("readiness", "exception", "validation", "quality assessment"), "readiness"),
+        (("schedule", "day-by-day", "five-day", "calendar of", "due by date", "look-ahead"), "schedule"),
+        (("owner", "ownership", "responsibility", "raci", "accountability"), "ownership"),
+        (("approval", "authorization", "disposition"), "approvals"),
+        (("weekly outcome", "daily outcome", "outcome plan", "expected outcome"), "outcomes"),
+        (("priority", "prioritized", "ranking", "ranked"), "priorities"),
+        (("information gap", "confidence", "limitation"), "gaps"),
         (("participant", "stakeholder"), "participants"),
         (("meeting", "agenda", "calendar"), "meetings"),
         (("prior discussion", "history", "timeline", "what led"), "history"),
@@ -184,11 +321,12 @@ def _evidence_for_heading(heading: str, evidence: dict) -> list[dict]:
         (("decision", "alignment required", "decision register", "decision log"), "decisions"),
         (("action", "commitment", "follow-up", "implementation"), "actions"),
         (("risk", "issue", "dependency", "conflict"), "risks"),
-        (("deliverable", "milestone"), "deliverables"),
+        (("deliverable", "milestone", "work list"), "deliverables"),
         (("objective", "strategic", "okr", "portfolio", "coverage", "mapping"), "alignment"),
         (("question",), "questions"),
         (("recommend", "next step", "preparation", "resolution", "response"), "recommendations"),
-        (("overview", "profile", "context", "summary", "current state", "why"), "summary"),
+        (("current status", "status dashboard", "current state"), "status"),
+        (("overview", "profile", "context", "summary", "why"), "summary"),
     )
     for terms, key in rules:
         if any(term in value for term in terms):
