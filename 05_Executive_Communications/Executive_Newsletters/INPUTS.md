@@ -1,6 +1,12 @@
 # Inputs
 
-- Source material related to this capability.
-- Relevant meeting notes, decisions, and follow-ups.
-- Key risks, milestones, or stakeholder context.
-- Any executive priorities or time-sensitive requests.
+- Newsletter purpose, communication objectives, and intended audience.
+- Executive messages, strategic priorities, and leadership themes.
+- Recent organizational updates, decisions, accomplishments, and milestones.
+- Initiative and program status updates.
+- Upcoming events, deadlines, launches, or important dates.
+- Employee, team, partner, or stakeholder recognition items.
+- Relevant performance measures and approved data points.
+- Risks, operational changes, or issues that should be communicated.
+- Previous newsletters and organizational style or branding guidance.
+- Required approvals, confidentiality restrictions, and prohibited content.
