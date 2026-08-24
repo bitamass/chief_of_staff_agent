@@ -95,6 +95,65 @@ def _initiative_evidence(context, scenario_name: str) -> dict:
         source_meeting = context["meetings"][item["meeting_id"]]["title"]
         upcoming_decisions.append(_source(source_meeting, f"Decision due {_fmt(item['date'])}: {item['decision']}"))
 
+    decision_summary = [
+        _source(
+            "Synthetic decision register",
+            f"Decision record contains {len(decisions)} prior decision(s) and {len(upcoming_decisions)} upcoming decision(s) for {initiative['name']}.",
+        )
+    ]
+    if decisions:
+        most_recent = continuity["prior_decisions"][0]
+        decision_summary.append(
+            _source(
+                context["meetings"][most_recent["meeting_id"]]["title"],
+                f"Most recent decision · {_fmt(most_recent['date'])}: {most_recent['decision']}",
+            )
+        )
+    if continuity["upcoming_decisions"]:
+        next_decision = continuity["upcoming_decisions"][0]
+        decision_summary.append(
+            _source(
+                context["meetings"][next_decision["meeting_id"]]["title"],
+                f"Next decision required · {_fmt(next_decision['date'])}: {next_decision['decision']}",
+            )
+        )
+
+    decision_log_entries = []
+    for item in reversed(continuity["prior_decisions"]):
+        source_meeting = context["meetings"][item["meeting_id"]]
+        decision_log_entries.append(
+            _source(
+                source_meeting["title"],
+                f"{item['id']} | Decided {_fmt(item['date'])} | {item['decision']} | Initiative: {initiative['name']} | Meeting: {source_meeting['title']}.",
+            )
+        )
+
+    complete_records = sum(
+        bool(item.get("id") and item.get("date") and item.get("decision") and item.get("meeting_id") and item.get("initiative_id"))
+        for item in continuity["prior_decisions"]
+    )
+    record_completeness = [
+        _source(
+            "Synthetic decision register",
+            f"Required demo fields are present for {complete_records} of {len(decisions)} prior decision record(s): ID, date, decision statement, initiative, and source meeting.",
+        ),
+        _source(
+            "Completeness assessment",
+            "Not represented in the synthetic decision records: named decision owner, decision rationale, alternatives considered, approval authority, and supersession status.",
+        ),
+        _source(
+            "Completeness assessment",
+            f"{len(upcoming_decisions)} upcoming decision(s) are documented separately and should not be reported as completed decisions.",
+        ),
+    ]
+
+    decision_human_review = [
+        _source("Human-review control", "Confirm each decision statement and date against the cited meeting record."),
+        _source("Human-review control", "Add or validate the decision owner, approval authority, rationale, and alternatives considered before formal use."),
+        _source("Human-review control", "Confirm that upcoming decisions are clearly separated from decisions already made."),
+        _source("Human-review control", "Resolve contradictions or superseded decisions and approve the log before distribution."),
+    ]
+
     actions = []
     for item in continuity["all_actions"]:
         owner = context["participants"][item["owner"]]
@@ -261,6 +320,10 @@ def _initiative_evidence(context, scenario_name: str) -> dict:
         "timeline": meetings,
         "history": meetings + decisions,
         "decisions": decisions,
+        "decision_summary": decision_summary,
+        "decision_log_entries": decision_log_entries,
+        "record_completeness": record_completeness,
+        "decision_human_review": decision_human_review,
         "upcoming_decisions": upcoming_decisions,
         "actions": actions,
         "commitments": actions,
@@ -300,6 +363,10 @@ def _initiative_evidence(context, scenario_name: str) -> dict:
 def _evidence_for_heading(heading: str, evidence: dict) -> list[dict]:
     value = heading.lower()
     rules = (
+        (("decision-log summary", "decision log summary"), "decision_summary"),
+        (("decision-log entry", "decision log entry"), "decision_log_entries"),
+        (("record completeness", "completeness status"), "record_completeness"),
+        (("human-review requirement", "human review requirement"), "decision_human_review"),
         (("source", "traceability", "evidence"), "sources"),
         (("human review", "governance", "guardrail"), "governance"),
         (("success measure", "measure of success", "completion criteria", "acceptance criteria"), "success_measures"),
