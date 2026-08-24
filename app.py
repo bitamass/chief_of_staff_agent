@@ -26,6 +26,10 @@ st.markdown(
     .hero p {margin:.35rem 0 0; color:#5a6475;}
     .safe-banner {background:var(--cream); border:1px solid var(--sand); border-radius:10px; padding:.8rem 1rem; margin:.7rem 0 1.2rem;}
     .source {color:#5b6677; font-size:.86rem;}
+    .result-card {background:var(--cream); border:1px solid var(--sand); border-radius:10px; padding:.7rem .8rem; min-height:92px;}
+    .result-card-label {color:#5d5a54; font-size:.78rem; margin-bottom:.42rem;}
+    .result-card-value {color:var(--ink); font-size:1.55rem; line-height:1.12; overflow-wrap:anywhere;}
+    .result-card-value.long {font-size:1.05rem; line-height:1.25;}
     div.stButton > button {background:var(--earth); color:white; border:1px solid var(--earth); border-radius:8px; font-weight:650;}
     div.stButton > button:hover {background:var(--clay); border-color:var(--clay); color:white;}
     [data-testid="stMetric"] {background:var(--cream); border:1px solid var(--sand); padding:.8rem; border-radius:10px;}
@@ -41,14 +45,14 @@ def clear_skill_result():
     st.session_state.pop("skill_result", None)
 
 
-def compact_initiative_name(name):
-    """Return a concise label that fits cleanly inside the summary card."""
-    return {
-        "Clinical Operations Modernization": "Clinical Operations",
-        "Agentification Pilot": "Agentification Pilot",
-        "Monthly Business Review": "Monthly Business Review",
-        "Clinical Research Developments": "Clinical Research",
-    }.get(name, name)
+def render_result_card(column, label, value, compact=False):
+    value_class = "result-card-value long" if compact else "result-card-value"
+    with column:
+        st.markdown(
+            f'<div class="result-card"><div class="result-card-label">{label}</div>'
+            f'<div class="{value_class}">{value}</div></div>',
+            unsafe_allow_html=True,
+        )
 
 
 def set_meeting_context(scenario):
@@ -75,10 +79,10 @@ def render_skill_result(result):
     with st.container(border=True):
         st.header(result["skill_name"])
         m1, m2, m3, m4 = st.columns(4)
-        m1.metric("Repository files", len(result["documents_used"]))
-        m2.metric("Output sections", len(result["sections"]))
-        m3.metric("Initiative", compact_initiative_name(result["scenario_name"]), help=result["scenario_name"])
-        m4.metric("Review status", "Human review")
+        render_result_card(m1, "Repository files", len(result["documents_used"]))
+        render_result_card(m2, "Output sections", len(result["sections"]))
+        render_result_card(m3, "Initiative", result["scenario_name"], compact=True)
+        render_result_card(m4, "Review status", "Human review", compact=True)
         st.caption(
             f"{result['engine']} · Loaded from `{result['repository_path']}` · "
             "Generated from synthetic demonstration records"
