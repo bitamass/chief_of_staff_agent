@@ -577,6 +577,37 @@ def _skill_specific_evidence(skill_name: str, heading: str, evidence: dict) -> l
     upcoming = evidence["upcoming_decisions"]
     deliverables = evidence["deliverables"]
 
+    if skill == "executive dashboard generation":
+        most_recent_decision = _first(decisions, "No completed decision is represented.")
+        next_decision = _first(upcoming, "No upcoming executive decision is represented.")
+        next_action = _first(actions, "No open action is represented.")
+        next_milestone = _first(evidence["schedule"], "No upcoming milestone is represented.")
+        principal_risk = _first(risks, "No material risk is explicitly represented; owner validation is required.")
+        mapping = {
+            "dashboard specification": [
+                _source("Dashboard design", "Purpose: give executive leaders a concise exception-oriented view of initiative status, decisions, actions, risks, and upcoming milestones."),
+                _source("Dashboard design", "Audience: executive sponsor and initiative leadership. Scope: selected synthetic initiative. Cutoff: current demonstration date. Proposed refresh: before each executive review."),
+                _source("Dashboard limitation", "No approved KPI definitions, targets, thresholds, financial actuals, access classification, or prior-period dashboard are represented; display those as gaps rather than invented values."),
+            ],
+            "executive summary panel": [summary[0], most_recent_decision, principal_risk, next_decision, next_milestone],
+            "key performance indicators": [
+                _source("Synthetic initiative register", "KPI candidate — Initiative status | Current value: documented initiative status | Target and threshold: not represented | Owner validation required."),
+                _source("Synthetic action register", f"KPI candidate — Open commitments | Current evidence: {len(actions)} linked action(s) | Target and previous period: not represented."),
+                _source("Synthetic decision register", f"KPI candidate — Pending executive decisions | Current evidence: {len(upcoming)} | Target and tolerance: not represented."),
+                _source("Data-quality control", "Do not display calculated performance, trend arrows, or red/amber/green status until definitions, targets, periods, owners, and source timestamps are approved."),
+            ],
+            "strategic-priority view": [objective] + evidence["priorities"][:4],
+            "initiative and portfolio view": summary[:3] + deliverables[:4],
+            "financial and resource view": evidence["capacity"][:4] + [_source("Financial-data gap", "Approved budget, actual spending, forecast, benefits realized, staffing plan, and vendor commitments are not represented in the synthetic dataset.")],
+            "risk and issue view": risks[:5],
+            "decisions and actions view": [next_decision, next_action] + decisions[:3] + actions[:3],
+            "milestone and forward-look view": evidence["schedule"][:6],
+            "exception and attention panel": [principal_risk, next_decision, next_action, _source("Executive attention", "Validate missing ownership, thresholds, financial evidence, and stale or conflicting data before distribution.")],
+            "drill-down and source view": evidence["sources"] + [_source("Traceability requirement", "Every future metric should include definition, calculation, owner, reporting period, last refresh, underlying record, and limitation.")],
+            "data-quality panel": evidence["gaps"][:3] + [_source("Data-quality assessment", "Completeness is sufficient for a synthetic workflow demonstration but insufficient for official operational, financial, clinical, audit, or compliance reporting.")],
+        }
+        return mapping.get(value)
+
     if skill == "align deliverables with strategic goals":
         score_rows = []
         for index, item in enumerate(deliverables, start=1):
