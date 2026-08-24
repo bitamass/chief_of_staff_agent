@@ -1,5 +1,6 @@
 from datetime import date
 from pathlib import Path
+import re
 
 import streamlit as st
 
@@ -30,6 +31,8 @@ st.markdown(
     .result-card-label {color:#5d5a54; font-size:.78rem; margin-bottom:.42rem;}
     .result-card-value {color:var(--ink); font-size:1.55rem; line-height:1.12; overflow-wrap:anywhere;}
     .result-card-value.long {font-size:1.05rem; line-height:1.25;}
+    .section-card {min-height:100%;}
+    div[data-testid="stDataFrame"] {border:1px solid var(--sand); border-radius:8px; overflow:hidden;}
     div.stButton > button {background:var(--earth); color:white; border:1px solid var(--earth); border-radius:8px; font-weight:650;}
     div.stButton > button:hover {background:var(--clay); border-color:var(--clay); color:white;}
     [data-testid="stMetric"] {background:var(--cream); border:1px solid var(--sand); padding:.8rem; border-radius:10px;}
@@ -55,17 +58,82 @@ def render_result_card(column, label, value, compact=False):
         )
 
 
-def set_meeting_context(scenario):
+def set_meeting_context(scenario, signature=None):
     st.session_state.meeting_title = scenario["title"]
     st.session_state.meeting_objective = scenario["objective"]
     st.session_state.attendees = scenario["attendees"]
     st.session_state.meeting_date = scenario["date"]
-    st.session_state.meeting_context_signature = (
+    st.session_state.meeting_context_signature = signature or (
         scenario["initiative_id"],
         scenario["meeting_id"],
         scenario["date"],
     )
     clear_skill_result()
+
+
+def select_relevant_meeting(context, scenario, selected_skill):
+    """Choose an upcoming initiative meeting using the selected skill contract."""
+    initiative_id = scenario["initiative_id"]
+    candidates = [
+        meeting for meeting in context["meetings"].values()
+        if initiative_id in meeting["initiative_ids"] and meeting["date"] > context["today"]
+    ]
+    if not candidates:
+        return scenario
+
+    documents = selected_skill.get("documents", {})
+    skill_text = " ".join([
+        selected_skill.get("name", ""), selected_skill.get("capability", ""),
+        documents.get("SKILL.md", ""), documents.get("INPUTS.md", ""),
+        documents.get("OUTPUTS.md", ""),
+    ]).lower()
+    stop = {"about", "after", "against", "before", "current", "every", "from", "into", "other", "provide", "required", "selected", "should", "their", "these", "this", "through", "using", "with"}
+    skill_terms = {term for term in re.findall(r"[a-z]{4,}", skill_text) if term not in stop}
+    intent_groups = {
+        "risk": {"risk", "security", "privacy", "control", "architecture", "readiness", "mitigation"},
+        "decision": {"decision", "approve", "recommendation", "prioritization", "funding", "conditions"},
+        "action": {"action", "closure", "commitment", "status", "follow", "accountability"},
+        "meeting": {"meeting", "brief", "agenda", "preparation", "demonstration", "readout"},
+        "requirements": {"requirements", "planning", "intake", "discovery", "validation"},
+    }
+    expanded_terms = set(skill_terms)
+    for group in intent_groups.values():
+        if skill_terms & group:
+            expanded_terms |= group
+
+    # Skill-specific intent phrases resolve cases where a long repository
+    # definition contains several related concepts with equal lexical weight.
+    skill_cues = {
+        "alternative and recommendation generation": {"prioritization", "requirements"},
+        "decision logs": {"decision", "funding", "conditions", "business review"},
+        "stakeholder raci": {"governance", "ownership", "requirements"},
+        "risk scoring": {"risk", "security", "readiness"},
+        "risk mitigation recommendations": {"architecture", "security", "recommendation"},
+        "align deliverables with strategic goals": {"demonstration", "validation", "portfolio"},
+        "generate status reports": {"monthly business review", "performance"},
+        "decision governance": {"validation", "readout", "governance"},
+    }
+    preferred_phrases = skill_cues.get(selected_skill.get("name", "").lower(), set())
+
+    def score(meeting):
+        meeting_text = f"{meeting['title']} {meeting['summary']}".lower()
+        meeting_terms = set(re.findall(r"[a-z]{4,}", meeting_text))
+        lexical = len(expanded_terms & meeting_terms) * 5
+        lexical += sum(12 for phrase in preferred_phrases if phrase in meeting_text)
+        # A small recency preference breaks ties without overwhelming relevance.
+        proximity = max(0, 15 - (meeting["date"] - context["today"]).days) / 15
+        return lexical + proximity
+
+    meeting = max(candidates, key=score)
+    attendee_ids = [pid for pid in meeting["participants"] if pid in context["initiatives"][initiative_id]["participant_ids"]]
+    return {
+        **scenario,
+        "meeting_id": meeting["id"],
+        "title": meeting["title"],
+        "date": meeting["date"],
+        "objective": meeting["summary"],
+        "attendees": "; ".join(context["participants"][pid]["role"] for pid in attendee_ids),
+    }
 
 
 def render_source_item(item):
@@ -94,8 +162,20 @@ def render_skill_result(result):
             with column:
                 with st.container(border=True):
                     st.markdown(f"#### {section['heading']}")
-                    for item in section["items"]:
-                        render_source_item(item)
+                    if section["heading"].lower() in {"raci matrix", "role summaries"} and section["items"]:
+                        rows = []
+                        for item in section["items"]:
+                            parts = [part.strip() for part in item["text"].split("|")]
+                            if len(parts) > 1:
+                                rows.append({"Record": parts[0], "Details": "\n".join(parts[1:]), "Source": item["source"]})
+                        if rows:
+                            st.dataframe(rows, width="stretch", hide_index=True)
+                        else:
+                            for item in section["items"]:
+                                render_source_item(item)
+                    else:
+                        for item in section["items"]:
+                            render_source_item(item)
 
     with st.expander("Input coverage from INPUTS.md"):
         st.caption("Shows which documented input requirements are represented in the synthetic demo context.")
@@ -137,6 +217,7 @@ def render_skills_view(context, scenarios, scenario_name, catalog):
         default_skill = skill_options.index(preferred) if preferred in skill_options else 0
         skill_name = st.selectbox("Skill", skill_options, index=default_skill, key=f"skill_name_{capability_name}")
         selected_skill = catalog[capability_name][skill_name]
+        scenario = select_relevant_meeting(context, scenario, selected_skill)
         documents = selected_skill["documents"]
         missing = [name for name in REQUIRED_DOCUMENTS if not documents.get(name, "").strip()]
         signature = (capability_name, skill_name, scenario_name)
@@ -157,20 +238,22 @@ def render_skills_view(context, scenarios, scenario_name, catalog):
     with st.container(border=True):
         st.subheader("Most relevant upcoming meeting")
 
-        # Streamlit retains widget values between reruns. Synchronize the
-        # meeting fields whenever the selected initiative changes.
+        # Synchronize when the initiative, capability, skill, or selected
+        # meeting changes. The user never needs to clear stale widget values.
         meeting_signature = (
             scenario["initiative_id"],
             scenario["meeting_id"],
             scenario["date"],
+            capability_name,
+            skill_name,
         )
         if st.session_state.get("meeting_context_signature") != meeting_signature:
-            set_meeting_context(scenario)
+            set_meeting_context(scenario, meeting_signature)
 
         action, description = st.columns([1, 2.4])
         with action:
             if st.button("Refresh Relevant Meeting Context", width="stretch"):
-                set_meeting_context(scenario)
+                set_meeting_context(scenario, meeting_signature)
                 st.rerun()
         with description:
             st.caption("Refreshes the meeting context and synthetic evidence supplied to the selected repository skill.")
