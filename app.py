@@ -35,6 +35,9 @@ st.markdown(
     div[data-testid="stDataFrame"] {border:1px solid var(--sand); border-radius:8px; overflow:hidden;}
     div.stButton > button {background:var(--earth); color:white; border:1px solid var(--earth); border-radius:8px; font-weight:650;}
     div.stButton > button:hover {background:var(--clay); border-color:var(--clay); color:white;}
+    button[data-testid="stBaseButton-primary"], div.stButton > button[kind="primary"] {background:#594631 !important; color:white !important; border:2px solid #594631 !important; box-shadow:0 2px 5px rgba(52,49,45,.22) !important;}
+    button[data-testid="stBaseButton-secondary"], div.stButton > button[kind="secondary"] {background:#f4eee4 !important; color:var(--ink) !important; border:1px solid var(--sand) !important; box-shadow:none !important;}
+    button[data-testid="stBaseButton-secondary"]:hover, div.stButton > button[kind="secondary"]:hover {background:#ebe0d1 !important; color:var(--ink) !important; border-color:var(--clay) !important;}
     [data-testid="stMetric"] {background:var(--cream); border:1px solid var(--sand); padding:.8rem; border-radius:10px;}
     [data-testid="stVerticalBlockBorderWrapper"] {border-color:var(--sand) !important; background:#fffdf9;}
     div[data-testid="stAlert"] {background:var(--cream); color:var(--ink); border-color:var(--sand);}
@@ -252,7 +255,7 @@ def render_skills_view(context, scenarios, scenario_name, catalog):
 
         action, description = st.columns([1, 2.4])
         with action:
-            if st.button("Refresh Relevant Meeting Context", width="stretch"):
+            if st.button("Refresh Meeting Context", width="stretch"):
                 set_meeting_context(scenario, meeting_signature)
                 st.rerun()
         with description:
@@ -276,7 +279,7 @@ def render_skills_view(context, scenarios, scenario_name, catalog):
             "and OUTPUTS.md as the output structure."
         )
         disabled = bool(missing) or selected_skill["source"] != "repository"
-        if st.button("Press to Create Relevant Executive Brief Materials", width="stretch", disabled=disabled):
+        if st.button("Generate Skill Output", width="stretch", disabled=disabled):
             try:
                 st.session_state.skill_result = run_repository_skill(selected_skill, context, scenario_name)
             except ValueError as error:
@@ -309,7 +312,7 @@ st.markdown(
     'used in this demonstration are created by Bita Massoudi and are available on GitHub for evaluation and review.</div>',
     unsafe_allow_html=True,
 )
-st.caption(f"Synthetic dataset version: {DATASET_VERSION}")
+st.caption(f"Synthetic dataset version: {DATASET_VERSION} · App build: final-review-v2")
 
 context = build_synthetic_context(date.today())
 scenarios = build_initiative_scenarios(context)
@@ -319,11 +322,13 @@ st.session_state.setdefault("view_mode", "Initiative View")
 st.session_state.setdefault("scenario_name", next(iter(scenarios)))
 navigation_left, navigation_right = st.columns(2)
 with navigation_left:
-    if st.button("Initiative View", width="stretch", type="primary" if st.session_state.view_mode == "Initiative View" else "secondary"):
+    initiative_label = "✓ Initiative View" if st.session_state.view_mode == "Initiative View" else "Initiative View"
+    if st.button(initiative_label, width="stretch", type="primary" if st.session_state.view_mode == "Initiative View" else "secondary"):
         st.session_state.view_mode = "Initiative View"
         st.rerun()
 with navigation_right:
-    if st.button("Skills View", width="stretch", type="primary" if st.session_state.view_mode == "Skills View" else "secondary"):
+    skills_label = "✓ Skills View" if st.session_state.view_mode == "Skills View" else "Skills View"
+    if st.button(skills_label, width="stretch", type="primary" if st.session_state.view_mode == "Skills View" else "secondary"):
         st.session_state.view_mode = "Skills View"
         st.rerun()
 st.caption(f"Current workspace: {st.session_state.view_mode}")
@@ -423,4 +428,3 @@ with st.sidebar:
 
 st.divider()
 st.caption("Switch to Skills View to run a repository-backed Chief of Staff skill against this synthetic initiative context.")
-
