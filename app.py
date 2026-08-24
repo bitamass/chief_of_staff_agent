@@ -118,12 +118,17 @@ def render_skill_result(result):
 
 
 def render_skills_view(context, scenarios, scenario_name, catalog):
-    scenario = scenarios[scenario_name]
     capabilities = {capability: list(skills) for capability, skills in catalog.items()}
 
     with st.container(border=True):
         st.subheader("Choose a Chief of Staff capability and skill")
-        st.caption(f"Applying the selected repository skill to: **{scenario_name}**")
+        scenario_name = st.selectbox(
+            "Apply this skill to initiative",
+            list(scenarios),
+            key="scenario_name",
+            help="The selected skill uses this initiative's synthetic meetings, decisions, actions, and deliverables.",
+        )
+        scenario = scenarios[scenario_name]
         capability_labels = list(capabilities)
         default_capability = next((i for i, label in enumerate(capability_labels) if label.startswith("02 ")), 0)
         capability_name = st.selectbox("Capability", capability_labels, index=default_capability, key="capability_name")
