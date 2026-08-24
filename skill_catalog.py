@@ -81,12 +81,13 @@ def discover_skill_catalog(repo_root):
             if not skill_dir.is_dir() or skill_dir.name.startswith("."):
                 continue
             skill_label = display_name(skill_dir.name)
+            documents = _read_instruction_files(skill_dir)
             skills[skill_label] = {
                 "capability": capability_label,
                 "name": skill_label,
                 "repository_path": str(skill_dir.relative_to(repo_root)),
-                "documents": _read_instruction_files(skill_dir),
-                "connected": skill_label in CONNECTED_SKILLS,
+                "documents": documents,
+                "connected": all(name in documents for name in ("SKILL.md", "INPUTS.md", "OUTPUTS.md")),
                 "source": "repository",
             }
         if skills:
@@ -104,7 +105,7 @@ def discover_skill_catalog(repo_root):
                 "name": skill,
                 "repository_path": None,
                 "documents": {},
-                "connected": skill in CONNECTED_SKILLS,
+                "connected": False,
                 "source": "fallback",
             }
             for skill in skills
@@ -117,17 +118,3 @@ def discover_capabilities(repo_root):
     """Return capability labels and child skills discovered from GitHub folders."""
     catalog = discover_skill_catalog(repo_root)
     return {capability: list(skills) for capability, skills in catalog.items()}
-
-
-CONNECTED_SKILLS = {
-    "Action Item Management",
-    "Calendar Prioritization",
-    "Create Agendas",
-    "Follow Up On Commitments",
-    "Meeting Preparation",
-    "Prepare Pre-Meeting Briefing Materials",
-    "Summarize Prior Discussions",
-    "Track Decisions",
-    "Decision Logs",
-    "Initiative Portfolio Review",
-}
