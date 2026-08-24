@@ -8,6 +8,9 @@ Dates use offsets from ``today`` so the model always covers three weeks of histo
 from datetime import timedelta
 
 
+DATASET_VERSION = "four-initiatives-v5"
+
+
 PARTICIPANTS = {
     "p01": {"name": "Alex Morgan", "role": "Chief Technology Officer"},
     "p02": {"name": "Jordan Lee", "role": "Senior Technology Manager"},
@@ -136,9 +139,9 @@ def build_initiative_scenarios(context):
             (meeting for meeting in context["meetings"].values() if initiative_id in meeting["initiative_ids"]),
             key=lambda meeting: meeting["date"],
         )
-        current = next((meeting for meeting in related_meetings if meeting["date"] == today), None)
         upcoming = next((meeting for meeting in related_meetings if meeting["date"] > today), None)
-        meeting = current or upcoming or related_meetings[-1]
+        current = next((meeting for meeting in related_meetings if meeting["date"] == today), None)
+        meeting = upcoming or current or related_meetings[-1]
         attendee_ids = [pid for pid in meeting["participants"] if pid in initiative["participant_ids"]]
         attendee_roles = [context["participants"][pid]["role"] for pid in attendee_ids]
         charter = context["charters"][initiative["charter_id"]]
