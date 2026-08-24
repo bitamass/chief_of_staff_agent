@@ -1,6 +1,13 @@
 # Inputs
 
-- Source material related to this capability.
-- Relevant meeting notes, decisions, and follow-ups.
-- Key risks, milestones, or stakeholder context.
-- Any executive priorities or time-sensitive requests.
+- Briefing purpose, intended leader, audience, date, and available preparation time.
+- Upcoming meeting, event, decision, or stakeholder engagement.
+- Agenda, objectives, expected outcomes, and discussion topics.
+- Relevant organizational priorities, initiatives, and strategic context.
+- Prior meeting notes, decisions, commitments, and unresolved matters.
+- Stakeholder names, roles, interests, influence, and likely perspectives.
+- Current performance measures, financial information, and approved facts.
+- Known risks, sensitivities, dependencies, and areas of disagreement.
+- Decision options, recommendations, and supporting evidence.
+- Relevant external developments, when approved for use.
+- Confidentiality, distribution, and approval requirements.
