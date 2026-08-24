@@ -1,179 +1,181 @@
-# Inputs
+# Outputs
 
-## Work context
+## Blocker register
 
-- Initiative, program, project, workstream, decision, deliverable, milestone, or action.
-- Strategic objective or expected outcome.
-- Executive sponsor.
-- Accountable owner.
-- Current phase and status.
-- Reporting period and cutoff date.
-- Relevant roadmap, schedule, charter, or operating plan.
-- Upcoming decisions, milestones, and deadlines.
-- Source and last update date.
+For every blocker:
 
-## Blocker record
+- Blocker ID.
+- Description.
+- Category.
+- Initiative or workstream.
+- Work blocked.
+- Blocker owner.
+- Resolution owner.
+- Date identified.
+- Current status.
+- Target resolution date.
+- Schedule and outcome impact.
+- Required decision or input.
+- Next action.
+- Escalation status.
+- Source and confidence level.
+
+## Blocker classification
+
+Each blocker should be classified as:
+
+- Reported.
+- Under validation.
+- Confirmed.
+- Resolution in progress.
+- Workaround active.
+- Pending decision.
+- Pending approval.
+- Pending external party.
+- Escalated.
+- Resolved.
+- Closed.
+- Reclassified as risk, issue, dependency, or action.
+- Insufficient evidence.
+
+The output must explain the basis for the classification.
+
+## Critical-blocker summary
+
+Identify blockers that:
+
+- Stop critical-path work.
+- Prevent an executive or governance decision.
+- Threaten a major milestone.
+- Affect multiple initiatives.
+- Create material operational, financial, clinical, security, privacy, legal, regulatory, or reputational exposure.
+- Lack an owner.
+- Have no credible resolution plan.
+- Require executive authority.
+- Are approaching a point of irreversible impact.
+
+For each critical blocker:
+
+- What is blocked.
+- Why it matters.
+- Cause.
+- Owner.
+- Required resolution.
+- Decision or resource needed.
+- Required date.
+- Consequence of delay.
+- Escalation recommendation.
+- Confidence level.
+
+## Impact analysis
+
+For each material blocker:
+
+- Immediate impact.
+- Forecast impact.
+- Schedule variance.
+- Cost of delay.
+- Downstream effect.
+- Initiatives and stakeholders affected.
+- Critical-path effect.
+- Time available to act.
+- Residual exposure.
+- Reasonable worst-case consequence.
+
+## Root-cause and pattern analysis
+
+- Immediate causes.
+- Confirmed root causes.
+- Suspected causes requiring validation.
+- Recurring blocker categories.
+- Common approval or decision bottlenecks.
+- Repeated vendor or dependency failures.
+- Resource or capacity patterns.
+- Process or governance gaps.
+- Blockers created by unclear scope, ownership, or acceptance criteria.
+
+## Resolution plan
 
 For each blocker:
 
-- Blocker ID.
-- Clear description of what cannot proceed.
-- Blocker category:
-  - Decision.
-  - Approval.
-  - Resource.
-  - Funding.
-  - Staffing or expertise.
-  - Technology.
-  - Architecture or integration.
-  - Data or data access.
-  - Vendor or procurement.
-  - Security, privacy, legal, clinical, regulatory, or policy.
-  - Dependency.
-  - Scope or requirements.
-  - Stakeholder alignment.
-  - Operational readiness.
-  - Communication or change management.
-- Date identified.
-- Person or role who identified it.
-- Blocker owner.
-- Resolution owner.
-- Current status.
-- Last update.
-- Source and confidence level.
+- Resolution action.
+- Owner.
+- Required contributor.
+- Required decision or approval.
+- Required resource.
+- Target date.
+- Intermediate checkpoint.
+- Evidence of resolution.
+- Workaround.
+- Contingency.
+- Escalation trigger.
+- Next review date.
 
-## Blocked work
-
-- Activity, deliverable, milestone, decision, or outcome blocked.
-- Responsible owner.
-- Planned start or completion date.
-- Current forecast.
-- Critical-path status.
-- Work that can continue despite the blocker.
-- Work that must stop.
-- Downstream activities affected.
-- Other initiatives affected.
-- Acceptance or completion criteria that cannot be met.
-
-## Cause information
-
-- Immediate cause.
-- Underlying cause, when established.
-- Missing input, decision, approval, resource, or capability.
-- Person, team, vendor, system, or governing body controlling the missing condition.
-- Whether the blocker is internal or external.
-- Whether it was anticipated.
-- Whether it is recurring.
-- Evidence supporting the cause.
-- Alternative explanations.
-- Confidence in the cause assessment.
-
-## Impact information
-
-- Schedule impact.
-- Financial impact.
-- Resource impact.
-- Scope or quality impact.
-- Strategic or outcome impact.
-- Operational or service impact.
-- Clinical, research, security, privacy, legal, regulatory, policy, or reputational impact.
-- Stakeholders affected.
-- Cost of delay.
-- Time available before the impact increases.
-- Reversibility.
-- Reasonable worst-case consequence.
-
-## Dependency information
-
-- Upstream dependency.
-- Provider.
-- Provider owner.
-- Required input.
-- Required-by date.
-- Current forecast.
-- Acceptance status.
-- Downstream dependencies.
-- Shared-resource dependency.
-- Single point of failure.
-- Alternative provider or workaround.
-- Dependency escalation status.
-
-## Decision and approval information
-
-When the blocker requires a decision or approval:
+## Decision and approval blockers
 
 - Decision or approval required.
 - Authorized decision-maker.
-- Required materials.
+- Materials missing.
+- Required submission date.
+- Decision deadline.
+- Consequence of delay.
 - Current preparation status.
-- Required decision date.
-- Review or governance forum.
-- Outstanding questions.
-- Conditions.
-- Consequence of delayed decision.
-- Escalation path.
+- Recommended escalation or meeting forum.
 
-## Resolution information
+## Blocker aging and trend
 
-- Proposed resolution.
-- Resolution owner.
-- Required actions.
-- Required resources.
-- Required decision or approval.
-- Target resolution date.
-- Interim milestones.
-- Expected impact of resolution.
-- Dependencies.
-- Evidence required to confirm removal.
-- Residual risk.
-- Contingency or workaround.
-- Current progress.
+- New blockers.
+- Resolved blockers.
+- Active blockers by age.
+- Blockers past the target resolution date.
+- Reopened blockers.
+- Repeatedly revised resolution dates.
+- Blockers by category, initiative, owner, and source.
+- Average and median resolution time, when meaningful.
+- Change from the previous reporting period.
 
-## Follow-up and escalation history
+## Workaround and contingency analysis
 
-- Previous follow-up dates.
-- People or groups contacted.
-- Responses received.
-- Decisions made.
-- Actions assigned.
-- Revised resolution dates.
-- Previous escalation.
-- Escalation recipient.
-- Escalation outcome.
-- Support or intervention requested.
-- Current next action.
+- Available workaround.
+- Work enabled by the workaround.
+- Limitations.
+- Cost.
+- New risks created.
+- Duration for which it is viable.
+- Owner.
+- Approval required.
+- Condition for ending the workaround.
 
-## Related records
+## Executive attention
 
-- Related risks.
-- Related issues.
-- Related assumptions.
-- Related decisions.
-- Related actions and commitments.
-- Related milestones and deliverables.
-- Similar or recurring blockers.
-- Previous lessons learned.
-- Duplicate or overlapping blocker records.
+- Blockers requiring executive decision.
+- Priority or resource conflicts.
+- Cross-organizational ownership conflicts.
+- Material governance or assurance delays.
+- External dependencies requiring senior intervention.
+- Blockers that may require scope, schedule, or investment changes.
+- Requested action, decision-maker, and required date.
 
-## Governance and sensitivity inputs
+## Closure validation
 
-- Applicable policies and standards.
-- Required security, privacy, legal, clinical, regulatory, finance, procurement, architecture, labor, accessibility, or governance review.
-- Confidentiality classification.
-- Personnel or vendor sensitivity.
-- Information-sharing restrictions.
-- Required incident or specialized escalation process.
-- Decision authority and delegation rules.
+For each blocker proposed for closure:
 
-## Data-quality inputs
+- Resolution implemented.
+- Evidence.
+- Blocked work able to proceed.
+- Required owner confirmation.
+- Residual actions.
+- Residual risks.
+- Closure approver.
+- Closure date.
 
-- Missing owner.
-- Missing target date.
-- Missing evidence.
+## Data-quality summary
+
+- Missing owners or dates.
 - Stale status.
-- Conflicting cause assessments.
-- Blocker recorded without clearly blocked work.
-- Ordinary delay incorrectly labeled as a blocker.
-- Resolved blocker still shown as active.
-- Confidence level.
-- Items requiring human validation.
+- Unsupported root-cause claims.
+- Conflicting sources.
+- Duplicate records.
+- Blockers without identified impact.
+- Closed blockers without evidence.
+- Items requiring human confirmation.
