@@ -1,4 +1,4 @@
-""Repository-driven, deterministic execution of Chief of Staff skill contracts.
+"""Repository-driven, deterministic execution of Chief of Staff skill contracts.
 
 The runner reads SKILL.md, INPUTS.md, and OUTPUTS.md from the deployed GitHub
 checkout.  OUTPUTS.md supplies the report structure; the selected initiative's
