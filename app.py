@@ -41,6 +41,16 @@ def clear_skill_result():
     st.session_state.pop("skill_result", None)
 
 
+def compact_initiative_name(name):
+    """Return a concise label that fits cleanly inside the summary card."""
+    return {
+        "Clinical Operations Modernization": "Clinical Operations",
+        "Agentification Pilot": "Agentification Pilot",
+        "Monthly Business Review": "Monthly Business Review",
+        "Clinical Research Developments": "Clinical Research",
+    }.get(name, name)
+
+
 def set_meeting_context(scenario):
     st.session_state.meeting_title = scenario["title"]
     st.session_state.meeting_objective = scenario["objective"]
@@ -67,7 +77,7 @@ def render_skill_result(result):
         m1, m2, m3, m4 = st.columns(4)
         m1.metric("Repository files", len(result["documents_used"]))
         m2.metric("Output sections", len(result["sections"]))
-        m3.metric("Initiative", result["scenario_name"])
+        m3.metric("Initiative", compact_initiative_name(result["scenario_name"]), help=result["scenario_name"])
         m4.metric("Review status", "Human review")
         st.caption(
             f"{result['engine']} · Loaded from `{result['repository_path']}` · "
@@ -150,11 +160,11 @@ def render_skills_view(context, scenarios, scenario_name, catalog):
 
         action, description = st.columns([1, 2.4])
         with action:
-            if st.button("Press to update to relevant skills", width="stretch"):
+            if st.button("Refresh Relevant Meeting Context", width="stretch"):
                 set_meeting_context(scenario)
                 st.rerun()
         with description:
-            st.caption("Updates the meeting context and synthetic evidence supplied to the selected repository skill.")
+            st.caption("Refreshes the meeting context and synthetic evidence supplied to the selected repository skill.")
 
         left, right = st.columns([1.15, 1])
         with left:
