@@ -242,6 +242,89 @@ def _initiative_evidence(context, scenario_name: str) -> dict:
             )
         )
 
+    raci_rows = []
+    initiative_owner = _person(context, initiative["owner"])
+    for item in sorted(deliverables, key=lambda value: value["due_date"]):
+        responsible = _person(context, item["owner"])
+        raci_rows.append(
+            _source(
+                "Synthetic deliverable and initiative registers",
+                f"Deliverable: {item['name']} | R: {responsible} | A (provisional): {initiative_owner} | C: Not documented | I: Not documented | Due: {_fmt(item['due_date'])} | Validation: Formal authority and consultation assignments require confirmation.",
+            )
+        )
+    for item in continuity["all_actions"]:
+        responsible = _person(context, item["owner"])
+        raci_rows.append(
+            _source(
+                context["meetings"][item["source_meeting_id"]]["title"],
+                f"Action: {item['action']} | R: {responsible} | A (provisional): {initiative_owner} | C: Not documented | I: Not documented | Due: {_fmt(item['due_date'])} | Status: {item['status']} | Validation: Provisional assignment.",
+            )
+        )
+    for item in continuity["upcoming_decisions"]:
+        raci_rows.append(
+            _source(
+                context["meetings"][item["meeting_id"]]["title"],
+                f"Decision: {item['decision']} | R: Not documented | A: Not documented | C: Meeting participants are candidates only | I: Not documented | Due: {_fmt(item['date'])} | Validation: Decision authority must be confirmed.",
+            )
+        )
+
+    responsible_counts = {}
+    for item in list(deliverables) + list(continuity["all_actions"]):
+        responsible_counts[item["owner"]] = responsible_counts.get(item["owner"], 0) + 1
+    role_summaries = []
+    for person_id in initiative["participant_ids"]:
+        assignments = responsible_counts.get(person_id, 0)
+        accountable = "Provisional initiative accountability" if person_id == initiative["owner"] else "No accountable assignment documented"
+        role_summaries.append(
+            _source(
+                "Synthetic participant, action, and deliverable registers",
+                f"{_person(context, person_id)} | Responsible assignments: {assignments} | Accountability: {accountable} | Approval authority: Not documented | Consultation/information duties: Not documented | Backup: Not documented.",
+            )
+        )
+
+    raci_gaps = [
+        _source("RACI validation", f"{len(continuity['upcoming_decisions'])} upcoming decision(s) lack a documented Responsible role and accountable decision authority."),
+        _source("RACI validation", "Consulted and Informed assignments are not explicitly documented for actions or deliverables."),
+        _source("RACI validation", "The initiative owner is used only as a provisional Accountable role; formal delegation and approval authority are not represented."),
+        _source("RACI validation", "Acceptance owners, escalation paths, delegation arrangements, and backup coverage are not represented in the synthetic records."),
+    ]
+
+    same_ra = [
+        item["name"] if "name" in item else item["action"]
+        for item in list(deliverables) + list(continuity["all_actions"])
+        if item["owner"] == initiative["owner"]
+    ]
+    raci_conflicts = [
+        _source(
+            "RACI validation",
+            ("Potential R/A concentration requiring review: " + "; ".join(same_ra))
+            if same_ra
+            else "No row has the same documented Responsible owner and provisional Accountable owner in the synthetic records.",
+        ),
+        _source("RACI validation", "Multiple accountable owners are not documented; this cannot be confirmed without formal governance and delegation records."),
+        _source("RACI validation", "Consultation overload, overlapping team assignments, and authority-resource conflicts cannot be assessed because C/I roles, capacity, and delegation data are absent."),
+    ]
+
+    raci_workload = [
+        _source("Synthetic assignment register", f"{_person(context, person_id)} has {count} Responsible assignment(s) across documented actions and deliverables.")
+        for person_id, count in sorted(responsible_counts.items(), key=lambda pair: (-pair[1], pair[0]))
+    ]
+    raci_workload.append(_source("Workload limitation", "Availability, percentage allocation, scheduling conflicts, and backup capacity are not represented; workload risk cannot be fully scored."))
+
+    raci_governance = [
+        _source("Draft recommendation — human approval required", "Confirm one accountable authority for every deliverable, action, and decision."),
+        _source("Draft recommendation — human approval required", "Assign Consulted and Informed roles based on required expertise, governance, and communication needs."),
+        _source("Draft recommendation — human approval required", "Document escalation, delegation, backup, acceptance, and approval authority before operational use."),
+        _source("Draft recommendation — human approval required", f"Review and approve the RACI at {scenario['title']} on {_fmt(scenario['date'])}, then reassess when scope, ownership, or governance changes."),
+    ]
+
+    raci_executive_summary = [
+        _source("RACI assessment", f"{len(raci_rows)} work or decision row(s) were assessed for {initiative['name']}."),
+        _source("RACI assessment", f"Documented Responsible assignments exist for actions and deliverables; {len(continuity['upcoming_decisions'])} upcoming decision(s) still lack explicit decision authority."),
+        _source("RACI assessment", "Material gaps remain in formal accountability, consultation, informed parties, approval authority, escalation, and backup coverage."),
+        _source("RACI assessment", "Do not treat provisional assignments as an approved RACI until accountable leaders and governance partners validate them."),
+    ]
+
     outcomes = [
         _source("Synthetic initiative register", f"Advance the initiative objective: {initiative['objective']}"),
         _source("Synthetic charter", f"Weekly success should be assessed using: {', '.join(charter['success_measures'])}."),
@@ -436,6 +519,13 @@ def _initiative_evidence(context, scenario_name: str) -> dict:
         "readiness": readiness,
         "schedule": schedule,
         "ownership": ownership,
+        "raci_matrix": raci_rows,
+        "raci_role_summaries": role_summaries,
+        "raci_gaps": raci_gaps,
+        "raci_conflicts": raci_conflicts,
+        "raci_workload": raci_workload,
+        "raci_governance": raci_governance,
+        "raci_executive_summary": raci_executive_summary,
         "capacity": capacity,
         "tradeoffs": tradeoffs,
         "dependency_map": dependency_map,
@@ -464,12 +554,24 @@ def _initiative_evidence(context, scenario_name: str) -> dict:
 def _evidence_for_heading(heading: str, evidence: dict, skill_name: str = "") -> list[dict]:
     value = heading.lower()
     normalized_skill = skill_name.lower()
+    if value == "raci matrix" and normalized_skill == "stakeholder raci":
+        return evidence["raci_matrix"]
+    if value == "role summaries" and normalized_skill == "stakeholder raci":
+        return evidence["raci_role_summaries"]
+    if value == "executive summary" and normalized_skill == "stakeholder raci":
+        return evidence["raci_executive_summary"][:6]
     if any(term in value for term in ("human-review requirement", "human review requirement")):
         if normalized_skill == "decision logs":
             return evidence["decision_human_review"][:6]
         if normalized_skill == "okr alignment":
             return evidence["okr_human_review"][:6]
     rules = (
+        (("raci matrix",), "raci_matrix"),
+        (("role summaries",), "raci_role_summaries"),
+        (("responsibility gaps",), "raci_gaps"),
+        (("responsibility conflicts",), "raci_conflicts"),
+        (("workload and concentration",), "raci_workload"),
+        (("governance and escalation",), "raci_governance"),
         (("executive okr summary",), "okr_summary"),
         (("okr inventory",), "okr_inventory"),
         (("objective quality assessment",), "objective_quality"),
