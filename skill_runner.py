@@ -256,6 +256,97 @@ def _initiative_evidence(context, scenario_name: str) -> dict:
         for measure in charter["success_measures"]
     ]
 
+    # The synthetic dataset does not contain approved institutional OKRs. For
+    # this skill, the initiative objective and charter success measures are
+    # evaluated transparently as demonstration proxies rather than represented
+    # as approved OKRs.
+    okr_summary = [
+        _source(
+            "Synthetic initiative and charter records",
+            f"One initiative-level objective and {len(charter['success_measures'])} candidate success measure(s) were available as OKR proxies for {initiative['name']}.",
+        ),
+        _source(
+            "OKR evidence assessment",
+            "Alignment to approved enterprise strategic priorities is unclear because no approved strategic-priority or organization-level OKR record is included in the synthetic dataset.",
+        ),
+        _source(
+            "OKR evidence assessment",
+            "The candidate measures name intended outcomes but lack documented baselines, targets, current values, measurement periods, and data owners.",
+        ),
+    ]
+
+    okr_inventory = [
+        _source(
+            "Synthetic initiative register",
+            f"Objective proxy {initiative_id}: {initiative['objective']} Level: Initiative; owner: {_person(context, initiative['owner'])}; status: {initiative['status']}; planning period: five-week demonstration window.",
+        )
+    ]
+    okr_inventory.extend(
+        _source(
+            "Synthetic charter",
+            f"Candidate key-result proxy KR-{index}: {measure}. Baseline, target, current value, measurement period, frequency, and accountable data owner are not documented.",
+        )
+        for index, measure in enumerate(charter["success_measures"], start=1)
+    )
+
+    objective_quality = [
+        _source("Synthetic initiative register", f"Strategic relevance: Unverified — no approved strategic-priority record is available to validate alignment for '{initiative['objective']}'."),
+        _source("Objective-quality assessment", "Clarity and outcome orientation: Partially demonstrated — the objective names the intended operational improvement but does not define a quantified end state."),
+        _source("Objective-quality assessment", f"Ownership: Represented by {_person(context, initiative['owner'])}; confirm formal accountability before use."),
+        _source("Objective-quality assessment", "Time-bound focus: Needs clarification — the demonstration window is not an approved objective period or deadline."),
+        _source("Objective-quality assessment", "Overall classification: Needs clarification before it can be treated as an approved OKR objective."),
+    ]
+
+    key_result_quality = []
+    for index, measure in enumerate(charter["success_measures"], start=1):
+        key_result_quality.append(
+            _source(
+                "Synthetic charter",
+                f"KR-{index} proxy · {measure}: classification cannot be confirmed as outcome, output, activity, or milestone. Missing baseline, target, current value, unit, period, frequency, data source, and accountable owner; confidence is low.",
+            )
+        )
+
+    vertical_alignment = [
+        _source("Synthetic initiative register", f"Initiative objective: {initiative['objective']}"),
+        _source("Synthetic charter", f"Candidate measures supporting the objective: {', '.join(charter['success_measures'])}."),
+        _source("Synthetic deliverable register", "Supporting work: " + "; ".join(item["name"] for item in deliverables) + "."),
+        _source("Alignment limitation", "Enterprise, division, department, and team objectives are not represented; vertical alignment above the initiative level cannot be validated."),
+    ]
+
+    horizontal_alignment = [
+        _source("Synthetic participant register", "Cross-functional roles represented: " + "; ".join(person["text"] for person in participants) + "."),
+        _source("Synthetic continuity record", f"Coordination demand: {len(continuity['upcoming_meetings'])} upcoming meeting(s) and {len(open_actions) if 'open_actions' in locals() else len(actions)} documented action record(s)."),
+        _source("Alignment limitation", "Peer-team OKRs, shared targets, metric ownership, resource conflicts, and duplicate objectives are not represented in the synthetic dataset."),
+    ]
+
+    okr_coverage_gaps = [
+        _source("Coverage assessment", "Approved strategic priorities and parent objectives are missing, so strategic coverage cannot be scored."),
+        _source("Coverage assessment", "The objective proxy lacks formally defined and approved measurable key results."),
+        _source("Coverage assessment", "Candidate measures lack baselines, targets, current values, measurement periods, data sources, and measurement owners."),
+        _source("Coverage assessment", "Initiative deliverables are documented, but their quantitative contribution to candidate key results is not."),
+    ]
+
+    okr_revisions = [
+        _source("Draft recommendation — owner approval required", f"Clarify the objective with an approved outcome, target population or process, quantified end state, and deadline: {initiative['objective']}"),
+        _source("Draft recommendation — owner approval required", "Convert each charter success measure into a defined key result with a baseline, target, current value, unit, period, data source, frequency, and accountable owner."),
+        _source("Draft recommendation — owner approval required", "Map the initiative objective to an approved strategic priority and document the evidence and confidence for that relationship."),
+        _source("Draft recommendation — owner approval required", "Document how each deliverable contributes to a key result and how that contribution will be measured."),
+    ]
+
+    okr_progress = [
+        _source("Synthetic initiative register", f"Current initiative status: {initiative['status']}. This status is not evidence of OKR outcome achievement."),
+        _source("Synthetic deliverable register", f"Delivery activity: {len(deliverables)} deliverable(s) are represented; activity completion must not be substituted for key-result performance."),
+        _source("Progress limitation", "Progress and likelihood of achievement cannot be calculated because baseline, target, current-value, and measurement-period records are absent."),
+        _source("Synthetic calendar", f"Next review opportunity: {scenario['title']} on {_fmt(scenario['date'])}."),
+    ]
+
+    okr_human_review = [
+        _source("Human-review control", "The strategy owner must confirm the approved strategic priority and objective hierarchy."),
+        _source("Human-review control", "Objective and key-result owners must approve wording, ownership, baselines, targets, periods, and data sources."),
+        _source("Human-review control", "Metric owners must validate current values, measurement frequency, and evidence quality before progress is reported."),
+        _source("Human-review control", "Draft mappings and revisions must not alter an official OKR or performance record without authorization."),
+    ]
+
     capacity = []
     open_actions = [item for item in continuity["all_actions"] if item["status"].lower() != "complete"]
     owner_counts = {}
@@ -332,6 +423,16 @@ def _initiative_evidence(context, scenario_name: str) -> dict:
         "priority_rationale": priority_rationale,
         "outcomes": outcomes,
         "success_measures": success_measures,
+        "okr_summary": okr_summary,
+        "okr_inventory": okr_inventory,
+        "objective_quality": objective_quality,
+        "key_result_quality": key_result_quality,
+        "vertical_alignment": vertical_alignment,
+        "horizontal_alignment": horizontal_alignment,
+        "okr_coverage_gaps": okr_coverage_gaps,
+        "okr_revisions": okr_revisions,
+        "okr_progress": okr_progress,
+        "okr_human_review": okr_human_review,
         "readiness": readiness,
         "schedule": schedule,
         "ownership": ownership,
@@ -360,13 +461,27 @@ def _initiative_evidence(context, scenario_name: str) -> dict:
     }
 
 
-def _evidence_for_heading(heading: str, evidence: dict) -> list[dict]:
+def _evidence_for_heading(heading: str, evidence: dict, skill_name: str = "") -> list[dict]:
     value = heading.lower()
+    normalized_skill = skill_name.lower()
+    if any(term in value for term in ("human-review requirement", "human review requirement")):
+        if normalized_skill == "decision logs":
+            return evidence["decision_human_review"][:6]
+        if normalized_skill == "okr alignment":
+            return evidence["okr_human_review"][:6]
     rules = (
+        (("executive okr summary",), "okr_summary"),
+        (("okr inventory",), "okr_inventory"),
+        (("objective quality assessment",), "objective_quality"),
+        (("key-result quality assessment", "key result quality assessment"), "key_result_quality"),
+        (("vertical alignment",), "vertical_alignment"),
+        (("horizontal alignment",), "horizontal_alignment"),
+        (("strategic coverage gap",), "okr_coverage_gaps"),
+        (("recommended okr revision",), "okr_revisions"),
+        (("progress and confidence assessment",), "okr_progress"),
         (("decision-log summary", "decision log summary"), "decision_summary"),
         (("decision-log entry", "decision log entry"), "decision_log_entries"),
         (("record completeness", "completeness status"), "record_completeness"),
-        (("human-review requirement", "human review requirement"), "decision_human_review"),
         (("source", "traceability", "evidence"), "sources"),
         (("human review", "governance", "guardrail"), "governance"),
         (("success measure", "measure of success", "completion criteria", "acceptance criteria"), "success_measures"),
@@ -422,7 +537,7 @@ def run_repository_skill(selected_skill: dict, context, scenario_name: str) -> d
     evidence = _initiative_evidence(context, scenario_name)
     sections = []
     for heading in _headings(documents["OUTPUTS.md"]):
-        sections.append({"heading": heading, "items": _evidence_for_heading(heading, evidence)})
+        sections.append({"heading": heading, "items": _evidence_for_heading(heading, evidence, selected_skill["name"])})
 
     return {
         "skill_name": selected_skill["name"],
