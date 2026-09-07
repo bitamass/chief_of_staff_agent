@@ -1,5 +1,14 @@
 # Inputs — Trade-Off Analysis
 
+## Obtain required data from data_analyst_agent
+- Go to data_analysis_agent and ask for relevant data regarding the decision that is being made
+- provide to data_analyst_agent the list of data that you need for trade-off analysis
+- ask for historical trends related to the decision for the last 12 months
+- ask for data sources
+- ask for visulaized data for trend analysis
+- challenge the data_analysis_agent for quality data
+- use the data from data_analysis_agent for prioritization
+
 ## Required decision context
 
 * Clear decision question.
