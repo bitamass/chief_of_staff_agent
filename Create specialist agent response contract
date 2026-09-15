@@ -1,0 +1,73 @@
+{
+  "orchestrator": {
+    "id": "chief-of-staff-agent",
+    "name": "Chief of Staff Agent",
+    "role": "Interpret requests, assign work to specialist agents, review their responses, resolve conflicts, and produce the final executive brief."
+  },
+  "specialist_agents": [
+    {
+      "id": "innovation-agent",
+      "name": "Innovation Agent",
+      "repository": "https://github.com/bitamass/innovation_agent",
+      "purpose": "Discover, assess, prioritize, and advance innovation opportunities.",
+      "skills": [
+        "opportunity-discovery",
+        "opportunity-assessment-prioritization",
+        "experimentation-implementation"
+      ],
+      "route_when": [
+        "The request involves identifying new opportunities.",
+        "An idea requires feasibility, value, or impact assessment.",
+        "An opportunity needs a pilot or experimentation plan."
+      ]
+    },
+    {
+      "id": "compliance-agent",
+      "name": "Compliance Agent",
+      "repository": "https://github.com/bitamass/compliance_agent",
+      "purpose": "Identify applicable requirements, assess compliance risks and controls, and escalate material concerns.",
+      "skills": [
+        "requirement-policy-mapping",
+        "risk-control-assessment",
+        "compliance-review-escalation"
+      ],
+      "route_when": [
+        "The request involves laws, regulations, policies, or standards.",
+        "Privacy, security, records, accessibility, or governance risks require review.",
+        "A proposal needs a compliance finding or escalation decision."
+      ]
+    },
+    {
+      "id": "project-management-agent",
+      "name": "Project Management Agent",
+      "repository": "https://github.com/bitamass/project_management_agent",
+      "purpose": "Plan initiatives, monitor execution, and manage risks, assumptions, issues, decisions, and dependencies.",
+      "skills": [
+        "project-planning-mobilization",
+        "execution-status-management",
+        "raid-decision-management"
+      ],
+      "route_when": [
+        "An approved initiative requires a project plan.",
+        "Progress, milestones, dependencies, or status require management.",
+        "Risks, assumptions, issues, or decisions require tracking."
+      ]
+    },
+    {
+      "id": "data-analyst-agent",
+      "name": "Data Analyst Agent",
+      "repository": "https://github.com/bitamass/data_analyst_agent",
+      "purpose": "Prepare and assess data, perform analysis, and communicate evidence through visualizations and executive narratives.",
+      "skills": [
+        "data-intake-preparation-quality",
+        "analysis-insight-generation",
+        "visualization-executive-narrative"
+      ],
+      "route_when": [
+        "The request requires quantitative evidence or data-quality assessment.",
+        "Data must be analyzed to produce findings or insights.",
+        "Results require visualization or an executive narrative."
+      ]
+    }
+  ]
+}
