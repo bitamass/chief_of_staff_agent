@@ -1,67 +1,200 @@
-# Project Overview
-This project aims to classify brain synapses into excitatory and inhibitory types using 2D electron microscopy (EM) patches and 3D image cubes extracted from the MICrONS dataset. Our best 2D model was the ResNet-50 model @ 76.89% accuracy. Our best 3D model was...
+# Chief of Staff Multi-Agent Assistant
 
+A governed executive decision-support prototype in which a Chief of Staff Agent orchestrates four specialist AI agents:
 
-# Setup
-#### 1. Clone the repository (or click download):
-```
-git clone https://github.com/<your_repo>.git
-cd <your_repo>
+- Innovation Agent
+- Compliance Agent
+- Project Management Agent
+- Data Analyst Agent
+
+The Chief of Staff interprets an executive request, determines which specialists are needed, assigns focused work, reviews their findings, and produces one consolidated executive response.
+
+## Architecture
+
+```mermaid
+flowchart TD
+    COS["Chief of Staff Agent"]
+    INN["Innovation Agent"]
+    COM["Compliance Agent"]
+    PM["Project Management Agent"]
+    DA["Data Analyst Agent"]
+
+    COS --> INN
+    COS --> COM
+    COS --> PM
+    COS --> DA
 ```
 
-#### 2. Install dependencies (or install manually on Anaconda Prompt)
+The Chief of Staff remains responsible for the final response. Specialist agents provide structured analysis and recommendations but do not make or approve organizational decisions.
+
+## Specialist Agents
+
+| Agent | Purpose | Core skills |
+|---|---|---|
+| [Innovation Agent](https://github.com/bitamass/innovation_agent) | Discover, assess, prioritize, and advance innovation opportunities | Opportunity discovery; opportunity assessment and prioritization; experimentation and implementation |
+| [Compliance Agent](https://github.com/bitamass/compliance_agent) | Identify applicable requirements, evaluate risks and controls, and escalate material concerns | Requirement and policy mapping; risk and control assessment; compliance review and escalation |
+| [Project Management Agent](https://github.com/bitamass/project_management_agent) | Plan initiatives, monitor execution, and manage risks, assumptions, issues, decisions, and dependencies | Project planning and mobilization; execution and status management; RAID and decision management |
+| [Data Analyst Agent](https://github.com/bitamass/data_analyst_agent) | Assess data, generate insights, and communicate evidence for executive decisions | Data intake, preparation, and quality; analysis and insight generation; visualization and executive narrative |
+
+Each specialist repository contains reusable skills under:
+
+```text
+.agents/skills/<skill-name>/SKILL.md
 ```
+
+The Chief of Staff application loads those skill instructions from the specialist repositories when the agents are created.
+
+## Prototype Capabilities
+
+The repository currently includes two related experiences:
+
+### Executive meeting-preparation demonstration
+
+The original Streamlit interface uses synthetic data to demonstrate:
+
+- Initiative views
+- Meeting intelligence
+- Decision support
+- Executive briefing
+- Action and accountability tracking
+- Risk and issue management
+- Daily and weekly planning
+- Skills-based analysis
+
+### Multi-agent decision-support assistant
+
+The Multi-Agent Assistant allows a user to submit an executive question. The Chief of Staff can consult one or more specialist agents and synthesize their findings into:
+
+- Executive summary
+- Evidence and assumptions
+- Material findings
+- Risks and limitations
+- Recommendation
+- Decisions needed
+- Next actions and owners
+
+## Repository Structure
+
+```text
+chief_of_staff_agent/
+├── app.py
+├── orchestrator.py
+├── specialist_agents.py
+├── specialist_skill_loader.py
+├── requirements.txt
+├── config/
+│   └── specialist-agents.json
+├── contracts/
+│   ├── agent-assignment.schema.json
+│   └── specialist-response.schema.json
+├── pages/
+│   └── 15_Multi_Agent_Assistant.py
+├── sample_data/
+└── 01_Executive_Prioritization/
+    ...
+```
+
+## Assignment and Response Contracts
+
+The Chief of Staff sends each specialist a structured assignment containing:
+
+- Assignment identifier
+- Target agent
+- Objective
+- Relevant context
+- Requested skills and deliverables
+- Constraints
+- Available evidence
+- Due date, when applicable
+
+Every specialist returns a consistent response containing:
+
+- Executive summary
+- Findings
+- Evidence
+- Assumptions
+- Risks
+- Recommendation
+- Decisions needed
+- Next actions
+- Confidence
+- Limitations
+
+This shared contract allows the Chief of Staff to combine findings from different specialists consistently.
+
+## Safeguards
+
+This prototype is designed for decision support and includes the following principles:
+
+- Human review is required.
+- Outputs are advisory, not approvals.
+- Evidence must be separated from assumptions.
+- Agents must not fabricate facts, policies, costs, or decisions.
+- Material uncertainty and limitations must be disclosed.
+- Legal and regulatory conclusions require qualified human review.
+- Production, confidential, personal, regulated, or Epic data must not be used in this demonstration.
+- Synthetic data is used for demonstration and testing.
+
+## Local Setup
+
+Python 3.12 is recommended.
+
+Install the dependencies:
+
+```bash
 pip install -r requirements.txt
 ```
 
-# Running the Demos
+Set the OpenAI API key as an environment variable.
 
-#### 1. Download the 2D model and 2D dataset and place them in the checkpoints and data folder respectively:
+PowerShell:
 
-###### Google Drive Links
+```powershell
+$env:OPENAI_API_KEY="your-api-key"
+```
 
-2D ResNet-50 Model w/ 76.89% Accuracy:
-https://drive.google.com/file/d/1CUZ2VUxfnIqTzDNdOPkU1feiZv1Qau1f/view?usp=sharing
+macOS or Linux:
 
-2D 256x256 Dataset:
-https://drive.google.com/drive/folders/1YyoQjH1dlb3aOVXdFJ3UI226gsIorvmC?usp=sharing
+```bash
+export OPENAI_API_KEY="your-api-key"
+```
 
-#### 2. Open and run demo2d.ipynb
+Run the application:
 
-# Expected Output
+```bash
+streamlit run app.py
+```
 
-After you run demo2d.ipynb, you should see the testing accuracy listed, the example true vs predicted images, and then the confusion matrix + metrics. There are no outputs to the results folder since all the results are within the demo notebook.
+Do not commit API keys or `.streamlit/secrets.toml` to GitHub.
 
-# Pre-trained Model Link:
+## Streamlit Deployment
 
-###### Google Drive Links
+For Streamlit Community Cloud, add the API key through the application’s private Secrets settings:
 
-2D ResNet-50 Model w/ 76.89% Accuracy:
-https://drive.google.com/file/d/1CUZ2VUxfnIqTzDNdOPkU1feiZv1Qau1f/view?usp=sharing
+```toml
+OPENAI_API_KEY = "your-api-key"
+```
 
-# Acknowledgements:
-Thank you to MICrONS and the Allen Institute. 
+The API key must never be added directly to repository files.
 
+## Example Multi-Agent Test
 
-# Reproducibility (and more)
+```text
+We are considering a 90-day pilot of an AI assistant that summarizes
+executive meeting materials and tracks follow-up actions using synthetic data.
 
-## About the src Folder...
+Assess whether we should proceed. Evaluate the opportunity and expected value,
+identify data requirements and success measures, review compliance and
+governance risks, and propose a high-level pilot plan.
+```
 
-### You will find several notebooks:
+## Current Status
 
-#### TeamProjectResnetModelTrain.ipynb
-This notebook trains a ResNet model (either ResNet-18 or Resnet-50) on the 2D image datset (either 128x128 or 256x256) and saves the model. You can see example training and validation accuracy of the trained model in the notebook.
+This is an exploratory prototype. It demonstrates multi-agent orchestration, skill-based specialization, structured delegation, and executive synthesis.
 
-For this notebook you can currently find in the /src folder, we trained the network for 30 epochs with a batch size of 32 and an initial learning rate of 0.0005. We used the Adam optimizer along with a cross-entropy loss function, which is standard for two-class classification tasks. To improve convergence, we applied a cosine annealing learning-rate scheduler with $T_{max} = 30$, which gradually reduces the learning rate over the course of training. All training was performed end-to-end using ImageNet-pretrained ResNet backbones, with inputs resized to 256×256 and normalized using ImageNet mean and standard deviation. We also applied several data augmentation strategies—including horizontal and vertical flips, small rotations, Gaussian blur, and color jitter—to improve generalization. To ensure reproducibility, a fixed random seed of 42 was used for Python, NumPy, and PyTorch.
+It is not connected to University of Washington production systems, Microsoft 365, Epic, or other institutional data sources.
 
-#### TeamProjectExtractImages.ipynb
-This notebook utilizes MICrONS tools to extract a dataset of 2D images of excitatory and inhibitory matrix. The train, val, and test set all have their unique neurons and synapses to avoid data leakage. This notebook took 1+ hour to run.
+## Author
 
-#### TeamProjectCNNModelTrain.ipynb
-This notebook trains a custom CNN model (either on 128x128 or 256x256 data) and saves it. You can see example training and validation accuracy of the trained model in the notebook.
-
-For this notebook you can currently find in the /src folder, the custom CNN is trained on 256×256 EM patches, we used a batch size of 32 and trained the model for 30 epochs. The learning rate was set to 0.00025, and optimization was performed using the Adam optimizer. As with the ResNet experiments, we used cross-entropy loss for the binary excitatory vs. inhibitory classification task. No learning-rate scheduler was used for this architecture, allowing the model to train with a fixed learning rate throughout all epochs. All reproducibility controls, including setting the random seed, were kept consistent like the ResNet notebook.
-
-# 3-D Notebooks
-
-Add information here
+Bita Massoudi  
+Strategic Business Decisions Consulting
