@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Specialist Agent Assignment",
+  "type": "object",
+  "required": [
+    "assignment_id",
+    "target_agent",
+    "objective",
+    "requested_deliverables"
+  ],
+  "properties": {
+    "assignment_id": {
+      "type": "string",
+      "description": "Unique identifier assigned by the Chief of Staff Agent."
+    },
+    "target_agent": {
+      "type": "string",
+      "enum": [
+        "innovation-agent",
+        "compliance-agent",
+        "project-management-agent",
+        "data-analyst-agent"
+      ]
+    },
+    "objective": {
+      "type": "string",
+      "description": "The outcome the specialist must help achieve."
+    },
+    "context": {
+      "type": "string",
+      "description": "Relevant background supplied by the Chief of Staff Agent."
+    },
+    "requested_skills": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "requested_deliverables": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "available_evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "due_date": {
+      "type": ["string", "null"]
+    }
+  },
+  "additionalProperties": false
+}
