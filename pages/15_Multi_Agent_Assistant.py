@@ -23,6 +23,36 @@ def configure_openai_key() -> bool:
     return bool(os.getenv("OPENAI_API_KEY"))
 
 
+def display_consulted_specialists(
+    specialists: list[dict],
+) -> None:
+    """Display the specialists and skill sets used during the run."""
+
+    st.subheader("Orchestration Summary")
+
+    if not specialists:
+        st.info(
+            "The Chief of Staff answered directly without consulting "
+            "a specialist agent."
+        )
+        return
+
+    st.write(
+        f"The Chief of Staff consulted "
+        f"{len(specialists)} specialist agent(s)."
+    )
+
+    columns = st.columns(len(specialists))
+
+    for column, specialist in zip(columns, specialists):
+        with column:
+            st.markdown(f"#### {specialist['agent']}")
+            st.caption("Skill set loaded for this consultation")
+
+            for skill in specialist.get("skills", []):
+                st.markdown(f"- {skill}")
+
+
 st.title("Chief of Staff Multi-Agent Assistant")
 
 st.caption(
@@ -64,10 +94,15 @@ if st.button(
             with st.spinner(
                 "The Chief of Staff is consulting the appropriate agents..."
             ):
-                response = run_chief_of_staff(executive_request)
+                run_result = run_chief_of_staff(executive_request)
 
+            display_consulted_specialists(
+                run_result["consulted_specialists"]
+            )
+
+            st.divider()
             st.subheader("Chief of Staff Response")
-            st.markdown(response)
+            st.markdown(run_result["response"])
 
         except Exception as exc:
             st.error(
