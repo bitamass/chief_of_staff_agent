@@ -1,5 +1,6 @@
 """Chief of Staff multi-agent orchestration."""
 
+import re
 from collections.abc import Mapping
 from typing import Any
 
@@ -98,11 +99,8 @@ Final-response requirements:
 - Never invent evidence or imply approval that has not occurred.
 - Use concise headings, bullets, and standard Markdown.
 - Keep paragraphs short and readable.
-- When using a table, include a complete header and separator row.
-- Use this exact three-column structure for plans:
-  | Timing | Focus | Exit condition |
-  |---|---|---|
-- Do not combine table headings into a single cell.
+- Do not use Markdown tables.
+- Present plans as bullets organized by timing, focus, and exit condition.
 """.strip()
 
 
@@ -246,7 +244,99 @@ def _used_external_intelligence(result: Any) -> bool:
 
     return False
 
+def _object_field(value: Any, field_name: str) -> Any:
+    """Read a field from a dictionary or SDK object."""
 
+    if isinstance(value, Mapping):
+        return value.get(field_name)
+
+    return getattr(value, field_name, None)
+
+
+def _extract_external_sources(
+    result: Any,
+) -> list[dict[str, str]]:
+    """Extract URL citations from OpenAI response annotations."""
+
+    sources = []
+    recorded_urls = set()
+
+    for response in getattr(result, "raw_responses", []):
+        output_items = _object_field(response, "output") or []
+
+        for output_item in output_items:
+            content_items = _object_field(output_item, "content") or []
+
+            for content_item in content_items:
+                annotations = (
+                    _object_field(content_item, "annotations") or []
+                )
+
+                for annotation in annotations:
+                    annotation_type = _object_field(
+                        annotation,
+                        "type",
+                    )
+
+                    if annotation_type != "url_citation":
+                        continue
+
+                    citation = (
+                        _object_field(annotation, "url_citation")
+                        or annotation
+                    )
+
+                    url = _object_field(citation, "url")
+                    title = (
+                        _object_field(citation, "title")
+                        or "External source"
+                    )
+
+                    if url and url not in recorded_urls:
+                        sources.append(
+                            {
+                                "title": str(title),
+                                "url": str(url),
+                            }
+                        )
+                        recorded_urls.add(url)
+
+    return sources
+
+
+def _clean_response_text(
+    response_text: str,
+    external_sources: list[dict[str, str]],
+) -> str:
+    """Remove internal citation tokens and duplicate source sections."""
+
+    cleaned_text = re.sub(
+        r"",
+        "",
+        response_text,
+    )
+
+    if external_sources:
+        cleaned_text = re.split(
+            r"\n#{1,6}\s+External sources\s*\n",
+            cleaned_text,
+            maxsplit=1,
+            flags=re.IGNORECASE,
+        )[0]
+
+    cleaned_text = re.sub(
+        r"[ \t]+\n",
+        "\n",
+        cleaned_text,
+    )
+
+    cleaned_text = re.sub(
+        r"\n{3,}",
+        "\n\n",
+        cleaned_text,
+    )
+
+    return cleaned_text.strip()
 def run_chief_of_staff(
     request: str,
     include_external_intelligence: bool = False,
@@ -265,9 +355,17 @@ def run_chief_of_staff(
         request.strip(),
     )
 
+    external_sources = _extract_external_sources(result)
+
+    cleaned_response = _clean_response_text(
+        str(result.final_output),
+        external_sources,
+    )
+
     return {
-        "response": str(result.final_output),
+        "response": cleaned_response,
         "consulted_specialists": _get_consulted_specialists(result),
         "external_intelligence_enabled": include_external_intelligence,
         "external_intelligence_used": _used_external_intelligence(result),
+        "external_sources": external_sources,
     }
