@@ -53,6 +53,31 @@ def display_consulted_specialists(
                 st.markdown(f"- {skill}")
 
 
+def display_external_intelligence_status(
+    enabled: bool,
+    used: bool,
+) -> None:
+    """Explain whether external public information was enabled and used."""
+
+    st.markdown("#### External Intelligence")
+
+    if used:
+        st.success(
+            "Current public information was consulted for this analysis. "
+            "Review the cited external sources before relying on the findings."
+        )
+    elif enabled:
+        st.info(
+            "External intelligence was enabled, but the Chief of Staff "
+            "determined that web search was not necessary for this request."
+        )
+    else:
+        st.caption(
+            "External intelligence was not enabled. The response is based "
+            "only on the request and the specialist-agent guidance."
+        )
+
+
 st.title("Chief of Staff Multi-Agent Assistant")
 
 st.caption(
@@ -131,9 +156,24 @@ specialists only when their expertise is materially relevant.
 should explain its limitation, identify required qualified reviewers,
 and recommend an appropriate review and escalation process.
 
+### 8. Current external intelligence
+
+Select **Include current external intelligence**, and then enter:
+
+> Summarize recent public developments in AI governance that an
+> executive team should consider when evaluating an internal AI-agent
+> pilot. Distinguish verified developments from your analysis and cite
+> the external sources used.
+
+**Expected behavior:** The Chief of Staff should search current public
+information, use credible sources, identify relevant dates, distinguish
+facts from analysis, and provide clickable external-source links.
+
 ### What to evaluate
 
 - Were the appropriate specialists consulted?
+- Was external information used only when it was relevant?
+- Were external sources credible, dated, and clearly cited?
 - Was evidence separated from assumptions?
 - Did the response avoid inventing organizational facts?
 - Were risks, uncertainty, and limitations disclosed?
@@ -159,6 +199,22 @@ executive_request = st.text_area(
     ),
 )
 
+include_external_intelligence = st.checkbox(
+    "Include current external intelligence",
+    value=False,
+    help=(
+        "Allows the Chief of Staff to search current public web sources when "
+        "recent external information would materially improve the analysis."
+    ),
+)
+
+if include_external_intelligence:
+    st.warning(
+        "External intelligence searches public web sources. Do not enter "
+        "confidential, personal, privileged, restricted, or unpublished "
+        "information in this request."
+    )
+
 if st.button(
     "Run Chief of Staff Analysis",
     type="primary",
@@ -168,13 +224,37 @@ if st.button(
         st.warning("Enter a request before running the analysis.")
     else:
         try:
-            with st.spinner(
-                "The Chief of Staff is consulting the appropriate agents..."
-            ):
-                run_result = run_chief_of_staff(executive_request)
+            if include_external_intelligence:
+                spinner_message = (
+                    "The Chief of Staff is consulting the appropriate agents "
+                    "and reviewing relevant public information..."
+                )
+            else:
+                spinner_message = (
+                    "The Chief of Staff is consulting the appropriate agents..."
+                )
+
+            with st.spinner(spinner_message):
+                run_result = run_chief_of_staff(
+                    executive_request,
+                    include_external_intelligence=(
+                        include_external_intelligence
+                    ),
+                )
 
             display_consulted_specialists(
                 run_result["consulted_specialists"]
+            )
+
+            display_external_intelligence_status(
+                enabled=run_result.get(
+                    "external_intelligence_enabled",
+                    False,
+                ),
+                used=run_result.get(
+                    "external_intelligence_used",
+                    False,
+                ),
             )
 
             st.divider()
