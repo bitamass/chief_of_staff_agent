@@ -99,8 +99,10 @@ Final-response requirements:
 - Never invent evidence or imply approval that has not occurred.
 - Use concise headings, bullets, and standard Markdown.
 - Keep paragraphs short and readable.
-- Do not use Markdown tables.
-- Present plans as bullets organized by timing, focus, and exit condition.
+- Never use Markdown tables.
+- Present plans and timelines as structured bullet lists.
+- For every plan stage, provide its timing, focus, and exit condition as
+  separate bullets.
 """.strip()
 
 
@@ -134,9 +136,11 @@ External intelligence rules:
   security, or organizational approval.
 - Include a section titled "External intelligence findings" when search results
   materially affect the response.
-- Include a final section titled "External sources" containing clickable
-  Markdown links and publication dates, when available, for every external
-  source used.
+- Include a final section titled "External sources".
+- In the External sources section, provide clickable Markdown links.
+- Include the source title, publisher, and publication date when available.
+- Never display internal citation identifiers such as turn0search1.
+- Never present external intelligence findings in a Markdown table.
 - If current external information is unnecessary, do not search merely because
   the tool is available.
 """.strip()
@@ -167,7 +171,7 @@ def create_chief_of_staff_agent(
         specialists["project-management-agent"].as_tool(
             tool_name="consult_project_management_agent",
             tool_description=(
-                "Consult the Project Management Agent about plans about plans, "
+                "Consult the Project Management Agent about plans, "
                 "milestones, execution, dependencies, or RAID."
             ),
         ),
@@ -188,6 +192,7 @@ def create_chief_of_staff_agent(
                 search_context_size="medium",
             )
         )
+
         instructions = (
             CHIEF_OF_STAFF_INSTRUCTIONS
             + "\n\n"
@@ -212,7 +217,9 @@ def _raw_field(item: Any, field_name: str) -> Any:
     return getattr(raw_item, field_name, None)
 
 
-def _get_consulted_specialists(result: Any) -> list[dict[str, Any]]:
+def _get_consulted_specialists(
+    result: Any,
+) -> list[dict[str, Any]]:
     """Identify specialist tools called during the orchestration run."""
 
     consulted = []
@@ -244,6 +251,7 @@ def _used_external_intelligence(result: Any) -> bool:
 
     return False
 
+
 def _object_field(value: Any, field_name: str) -> Any:
     """Read a field from a dictionary or SDK object."""
 
@@ -265,12 +273,16 @@ def _extract_external_sources(
         output_items = _object_field(response, "output") or []
 
         for output_item in output_items:
-            content_items = _object_field(output_item, "content") or []
+            content_items = _object_field(
+                output_item,
+                "content",
+            ) or []
 
             for content_item in content_items:
-                annotations = (
-                    _object_field(content_item, "annotations") or []
-                )
+                annotations = _object_field(
+                    content_item,
+                    "annotations",
+                ) or []
 
                 for annotation in annotations:
                     annotation_type = _object_field(
@@ -282,7 +294,10 @@ def _extract_external_sources(
                         continue
 
                     citation = (
-                        _object_field(annotation, "url_citation")
+                        _object_field(
+                            annotation,
+                            "url_citation",
+                        )
                         or annotation
                     )
 
@@ -304,25 +319,14 @@ def _extract_external_sources(
     return sources
 
 
-def _clean_response_text(
-    response_text: str,
-    external_sources: list[dict[str, str]],
-) -> str:
-    """Remove internal citation tokens and duplicate source sections."""
+def _clean_response_text(response_text: str) -> str:
+    """Remove internal citation tokens from visible response text."""
 
     cleaned_text = re.sub(
         r"",
         "",
         response_text,
     )
-
-    if external_sources:
-        cleaned_text = re.split(
-            r"\n#{1,6}\s+External sources\s*\n",
-            cleaned_text,
-            maxsplit=1,
-            flags=re.IGNORECASE,
-        )[0]
 
     cleaned_text = re.sub(
         r"[ \t]+\n",
@@ -337,6 +341,8 @@ def _clean_response_text(
     )
 
     return cleaned_text.strip()
+
+
 def run_chief_of_staff(
     request: str,
     include_external_intelligence: bool = False,
@@ -358,14 +364,17 @@ def run_chief_of_staff(
     external_sources = _extract_external_sources(result)
 
     cleaned_response = _clean_response_text(
-        str(result.final_output),
-        external_sources,
+        str(result.final_output)
     )
 
     return {
         "response": cleaned_response,
         "consulted_specialists": _get_consulted_specialists(result),
-        "external_intelligence_enabled": include_external_intelligence,
-        "external_intelligence_used": _used_external_intelligence(result),
+        "external_intelligence_enabled": (
+            include_external_intelligence
+        ),
+        "external_intelligence_used": (
+            _used_external_intelligence(result)
+        ),
         "external_sources": external_sources,
     }
